@@ -165,6 +165,25 @@
   .proj.feature .ptags span{background:rgba(255,255,255,.15);border-color:rgba(255,255,255,.3)}
   .proj.feature .top img{filter:brightness(0) invert(1)}
 
+  .proj{cursor:pointer;position:relative}
+  .proj .more{display:none}
+  .proj.open{grid-column:span 2;grid-row:span 2;cursor:default;box-shadow:0 24px 50px -24px rgba(21,24,29,.45)}
+  .proj.feature.open{grid-column:1/-1}
+  .proj.open .more{display:block;animation:fadein .4s ease}
+  .proj.open h4{font-size:36px}
+  .proj .more p{font-size:16px;color:var(--ink-2);margin-top:14px;max-width:640px}
+  .proj.feature .more p{color:rgba(255,255,255,.9)}
+  .pimgs{display:grid;grid-template-columns:1fr 1fr;gap:12px;margin-top:20px}
+  .pimg{aspect-ratio:4/3;border-radius:14px;border:1.5px dashed var(--line);background:var(--paper);display:flex;align-items:center;justify-content:center;font-size:13px;font-weight:600;color:var(--ink-2)}
+  .pimg img{width:100%;height:100%;object-fit:cover;border-radius:12px}
+  .proj.feature .pimg{background:rgba(255,255,255,.12);border-color:rgba(255,255,255,.4);color:#fff}
+  .toggle{align-self:flex-start;margin-top:18px;background:none;border:none;font:700 13px var(--sans);color:var(--accent);cursor:pointer;padding:0;display:flex;gap:6px;align-items:center}
+  .toggle b{font-size:18px;line-height:1;transition:transform .3s}
+  .proj.open .toggle b{transform:rotate(45deg)}
+  .proj.feature .toggle{color:#fff}
+  @keyframes fadein{from{opacity:0;transform:translateY(8px)}to{opacity:1;transform:none}}
+  .proj-grid{grid-auto-flow:dense}
+
   /* SKILLS */
   .skills-grid{display:grid;grid-template-columns:240px 1fr;gap:32px}
   .skill-groups{display:grid;grid-template-columns:repeat(2,1fr);gap:20px}
@@ -277,6 +296,8 @@
     .sticker:nth-child(n){transform:none}
     .proj-grid{grid-template-columns:1fr}
     .proj.feature{grid-column:auto}
+    .proj.open,.proj.feature.open{grid-column:auto;grid-row:auto}
+    .pimgs{grid-template-columns:1fr}
     section.block{padding:72px 0}
     .job h3{font-size:28px}
   }
@@ -449,70 +470,130 @@
       <button data-f="ok">OK</button>
     </div>
     <div class="proj-grid reveal">
-      <article class="proj feature" data-c="deg">
+      <article tabindex="0" class="proj feature" data-c="deg">
         <div class="top"><img class="wide" src="logos/deg.svg" alt="Design Eyewear Group"><span class="yr">2019 — 2021</span></div>
         <h4>Ny webshop: fra opstart til 120 mio. kr.</h4>
         <p>Drev og optimerede en ny webshop fra årlig omsætning på 15 mio. kr. til 120 mio. kr. på to år. Samtidig voksede den digitale forretning fra 5 % til 23 % af virksomhedens samlede omsætning.</p>
         <div class="metric">15 → 120 mio. kr.<small>Årlig webshop-omsætning</small></div>
         <div class="ptags"><span>E-commerce</span><span>CRO</span><span>Vækst</span></div>
+        <div class="more">
+          <p>Med reference til CEO og indkøbschef havde jeg ansvaret for både masterdata og e-commerce-løsningen. Webshoppen blev bygget på et solidt masterdata-fundament, så alle markeder arbejdede ud fra de samme, korrekte produktdata.</p>
+          <p>Gennem løbende optimering af sortiment, indhold og konvertering voksede webshoppen fra 15 til 120 mio. kr. på to år, og den digitale andel af omsætningen steg fra 5 % til 23 %.</p>
+          <div class="pimgs"><div class="pimg"><span>＋ Billede</span></div><div class="pimg"><span>＋ Billede</span></div></div>
+        </div>
+        <button class="toggle" aria-expanded="false">Læs mere <b>+</b></button>
       </article>
-      <article class="proj" data-c="ok">
+      <article tabindex="0" class="proj" data-c="ok">
         <div class="top"><img src="logos/ok.svg" alt="OK" style="max-height:26px"><span class="yr">2011 — 2017</span></div>
         <h4>"Tank og Betal"-appen</h4>
         <p>Kommercielt ansvarlig for OK's prisvindende app til B2C- og B2B-kunder.</p>
         <div class="metric">Prisvindende<small>App til B2C og B2B</small></div>
         <div class="ptags"><span>App</span><span>B2C/B2B</span></div>
+        <div class="more">
+          <p>Som kommercielt ansvarlig havde jeg fokus på salget gennem appen, både til private og til erhvervskunder.</p>
+          <p>Appen blev prisvindende og var en vigtig del af OK's digitale forretning ved siden af ok.dk.</p>
+          <div class="pimgs"><div class="pimg"><span>＋ Billede</span></div><div class="pimg"><span>＋ Billede</span></div></div>
+        </div>
+        <button class="toggle" aria-expanded="false">Læs mere <b>+</b></button>
       </article>
-      <article class="proj" data-c="ok">
+      <article tabindex="0" class="proj" data-c="ok">
         <div class="top"><img src="logos/ok.svg" alt="OK" style="max-height:26px"><span class="yr">2011 — 2017</span></div>
         <h4>Webshop på ok.dk</h4>
         <p>Ledede og optimerede en ny webshop for OK Energi. Målrettede dashboards skabte fokus på digitalt salg i hele organisationen.</p>
         <div class="metric">600 mio. kr.<small>Årlig omsætning</small></div>
         <div class="ptags"><span>E-commerce</span><span>Dashboards</span></div>
+        <div class="more">
+          <p>Webshoppen var primært rettet mod private kunder, men også mod erhvervskunder. Jeg havde ansvaret for salget på ok.dk med reference til onlinechefen.</p>
+          <p>Med målrettede dashboards skabte vi synlighed om det digitale salg i hele organisationen, og det løftede den samlede digitale forretning. Omsætningen voksede til 600 mio. kr. om året.</p>
+          <div class="pimgs"><div class="pimg"><span>＋ Billede</span></div><div class="pimg"><span>＋ Billede</span></div></div>
+        </div>
+        <button class="toggle" aria-expanded="false">Læs mere <b>+</b></button>
       </article>
-      <article class="proj" data-c="ok">
+      <article tabindex="0" class="proj" data-c="ok">
         <div class="top"><img src="logos/ok.svg" alt="OK" style="max-height:26px"><span class="yr">2011 — 2017</span></div>
         <h4>Marketing automation</h4>
         <p>Byggede automatiske flows som "one-click-buy" og "abandoned cart"-mails, og var ansvarlig for kundeuniverset "MIN OK" og e-mailmarketing.</p>
         <div class="ptags"><span>Automation</span><span>E-mail</span><span>Loyalitet</span></div>
+        <div class="more">
+          <p>Jeg byggede automatiske flows, der fulgte kunden hele vejen: "one-click-buy", der gjorde genkøb hurtigt, og "abandoned cart"-mails, der fik kunder tilbage til en forladt kurv.</p>
+          <p>Samtidig havde jeg ansvaret for kundeuniverset "MIN OK" og den løbende e-mailmarketing.</p>
+          <div class="pimgs"><div class="pimg"><span>＋ Billede</span></div><div class="pimg"><span>＋ Billede</span></div></div>
+        </div>
+        <button class="toggle" aria-expanded="false">Læs mere <b>+</b></button>
       </article>
-      <article class="proj" data-c="deg">
+      <article tabindex="0" class="proj" data-c="deg">
         <div class="top"><img class="wide" src="logos/deg.svg" alt="Design Eyewear Group"><span class="yr">2017 — 2023</span></div>
         <h4>8 brandsites og webshop på 4 sprog</h4>
         <p>Ansvarlig for hele den digitale platform: brandsites, webshop og systemerne bag, herunder PIM, DAM, ERP og loyalitetsprogrammer.</p>
         <div class="metric">8 + 1<small>Brandsites og webshop</small></div>
         <div class="ptags"><span>PIM</span><span>DAM</span><span>ERP</span></div>
+        <div class="more">
+          <p>Platformen bestod af 8 brandsites og 1 webshop, alle på 4 sprog. Jeg var ansvarlig for alle de digitale løsninger bag, herunder PIM, DAM, ERP og kundeloyalitetsprogrammer.</p>
+          <p>Det krævede tæt samarbejde med markeder, indkøb og ledelse, så produktdata, billeder og indhold altid var ens og opdaterede på tværs af sites og sprog.</p>
+          <div class="pimgs"><div class="pimg"><span>＋ Billede</span></div><div class="pimg"><span>＋ Billede</span></div></div>
+        </div>
+        <button class="toggle" aria-expanded="false">Læs mere <b>+</b></button>
       </article>
-      <article class="proj" data-c="deg">
+      <article tabindex="0" class="proj" data-c="deg">
         <div class="top"><img class="wide" src="logos/deg.svg" alt="Design Eyewear Group"><span class="yr">2017 — 2023</span></div>
         <h4>"Travel-order": iOS-app til salget</h4>
         <p>Ansvarlig for ordresystemet "Travel-order", en iOS-app, som salgsteamet brugte til at tage ordrer ude hos kunderne.</p>
         <div class="ptags"><span>iOS</span><span>Salg</span><span>Ordresystem</span></div>
+        <div class="more">
+          <p>"Travel-order" var en iOS-app, som salgsteamet brugte til at tage ordrer ude hos kunderne. Jeg havde ansvaret for systemet og for, at produktdata og ordrer hang sammen med resten af forretningen.</p>
+          <p>Appen gjorde salgsbesøgene mere effektive og ordrerne mere præcise.</p>
+          <div class="pimgs"><div class="pimg"><span>＋ Billede</span></div><div class="pimg"><span>＋ Billede</span></div></div>
+        </div>
+        <button class="toggle" aria-expanded="false">Læs mere <b>+</b></button>
       </article>
-      <article class="proj" data-c="deg">
+      <article tabindex="0" class="proj" data-c="deg">
         <div class="top"><img class="wide" src="logos/deg.svg" alt="Design Eyewear Group"><span class="yr">2017 — 2023</span></div>
         <h4>Masterdata-setup for alle markeder</h4>
         <p>Byggede et nyt masterdata-setup med nem adgang for alle markeder og etablerede en ny digital RMA-proces for returvarer.</p>
         <div class="ptags"><span>Masterdata</span><span>RMA</span><span>WMS</span></div>
+        <div class="more">
+          <p>Jeg byggede et nyt masterdata-setup, som gav alle markeder nem adgang til de samme produktdata. Via min rolle som masterdata-ansvarlig var jeg også involveret i WMS-projekter.</p>
+          <p>Samtidig etablerede jeg en ny RMA-proces for returvarer med digital dokumentation, så reklamationer og returneringer blev hurtigere og nemmere at følge.</p>
+          <div class="pimgs"><div class="pimg"><span>＋ Billede</span></div><div class="pimg"><span>＋ Billede</span></div></div>
+        </div>
+        <button class="toggle" aria-expanded="false">Læs mere <b>+</b></button>
       </article>
-      <article class="proj" data-c="plast">
+      <article tabindex="0" class="proj" data-c="plast">
         <div class="top"><img src="logos/plastline.svg" alt="Plast-Line A/S"><span class="yr">2023 — i dag</span></div>
         <h4>Masterdata-governance</h4>
         <p>Retningslinjer og workflows for produkt-, leverandør- og materialestamdata på tværs af produktion, indkøb, lager og salg.</p>
         <div class="metric">Færre fejl<small>Bedre datakvalitet i driften</small></div>
         <div class="ptags"><span>Masterdata</span><span>ERP</span><span>WMS</span></div>
+        <div class="more">
+          <p>Plast-Line er både producent og grossist, så masterdata dækker alt fra produktion og indkøb til lager og salg. Jeg har udviklet og implementeret retningslinjer og workflows for oprettelse og vedligeholdelse af produkt-, leverandør- og materialestamdata.</p>
+          <p>Løbende datarensning og validering har givet bedre datakvalitet, færre fejl i driften og bedre udnyttelse af webshoppen.</p>
+          <div class="pimgs"><div class="pimg"><span>＋ Billede</span></div><div class="pimg"><span>＋ Billede</span></div></div>
+        </div>
+        <button class="toggle" aria-expanded="false">Læs mere <b>+</b></button>
       </article>
-      <article class="proj" data-c="plast">
+      <article tabindex="0" class="proj" data-c="plast">
         <div class="top"><img src="logos/plastline.svg" alt="Plast-Line A/S"><span class="yr">2023 — i dag</span></div>
         <h4>Databaser til EPD, CAD og certificering</h4>
         <p>Har oprettet nye databaser, så miljøvaredeklarationer, tegninger og certifikater er samlet og nemme at finde for kunder og kolleger.</p>
         <div class="ptags"><span>EPD</span><span>CAD</span><span>Dokumentation</span></div>
+        <div class="more">
+          <p>Jeg har oprettet flere nye databaser, der samler miljøvaredeklarationer (EPD), CAD-tegninger og certificeringsdokumenter ét sted.</p>
+          <p>Det gør dokumentationen nem at finde for både kunder og kolleger, og den hænger sammen med produktdata i ERP og på webshoppen.</p>
+          <div class="pimgs"><div class="pimg"><span>＋ Billede</span></div><div class="pimg"><span>＋ Billede</span></div></div>
+        </div>
+        <button class="toggle" aria-expanded="false">Læs mere <b>+</b></button>
       </article>
-      <article class="proj" data-c="plast">
+      <article tabindex="0" class="proj" data-c="plast">
         <div class="top"><img src="logos/plastline.svg" alt="Plast-Line A/S"><span class="yr">2023 — i dag</span></div>
         <h4>ERP-ændringer og migrering</h4>
         <p>Deltager i datamapping og test ved ERP-ændringer og migreringer, og sikrer forankring gennem træning af brugerne.</p>
         <div class="ptags"><span>ERP</span><span>Datamapping</span><span>Træning</span></div>
+        <div class="more">
+          <p>Ved ERP-ændringer og migreringer deltager jeg i datamapping og test, så data flytter korrekt med.</p>
+          <p>Jeg prioriterer og planlægger dataforbedringer og sikrer, at de bliver brugt i hverdagen, gennem kommunikation på tværs af afdelinger og træning af brugerne.</p>
+          <div class="pimgs"><div class="pimg"><span>＋ Billede</span></div><div class="pimg"><span>＋ Billede</span></div></div>
+        </div>
+        <button class="toggle" aria-expanded="false">Læs mere <b>+</b></button>
       </article>
     </div>
   </div>
@@ -728,6 +809,19 @@
     const f=b.dataset.f;
     document.querySelectorAll('.proj').forEach(p=>p.classList.toggle('hide',f!=='alle'&&p.dataset.c!==f));
   }));
+
+  const projs=[...document.querySelectorAll('.proj')];
+  function setOpen(p,on){p.classList.toggle('open',on);const t=p.querySelector('.toggle');t.setAttribute('aria-expanded',on);t.firstChild.textContent=on?'Luk ':'Læs mere ';}
+  projs.forEach(p=>{
+    p.addEventListener('click',e=>{
+      const wasOpen=p.classList.contains('open');
+      if(wasOpen && !e.target.closest('.toggle')) return;
+      projs.forEach(q=>q!==p&&setOpen(q,false));
+      setOpen(p,!wasOpen);
+      if(!wasOpen) setTimeout(()=>p.scrollIntoView({behavior:'smooth',block:'nearest'}),60);
+    });
+    p.addEventListener('keydown',e=>{if(e.key==='Enter'&&e.target===p){p.click()}});
+  });
 </script>
 </body>
 </html>

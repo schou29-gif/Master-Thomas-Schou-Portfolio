@@ -100,6 +100,36 @@
   .chip b{color:var(--accent)}
   .sub{font-size:12px;font-weight:700;letter-spacing:.14em;text-transform:uppercase;margin-top:24px;color:var(--ink)}
 
+  /* PHOTOS */
+  .portrait{display:block;width:210px;aspect-ratio:3/4;object-fit:cover;border-radius:18px;border:6px solid #fff;box-shadow:0 20px 40px -18px rgba(21,24,29,.45);transform:rotate(2.5deg);margin:0 0 26px -6px}
+  .about-photo{width:100%;max-width:240px;aspect-ratio:4/5;object-fit:cover;border-radius:20px;border:6px solid var(--paper);transform:rotate(-3deg)}
+
+  /* RECOMMENDATION */
+  #anbefaling{background:var(--paper-2)}
+  .rec{display:grid;grid-template-columns:240px 1fr;gap:32px}
+  .rec-quote{font-family:var(--serif);font-size:clamp(30px,3.6vw,46px);line-height:1.15;letter-spacing:-.01em;position:relative}
+  .rec-quote::before{content:"“";position:absolute;left:-.55em;top:-.25em;font-size:2.4em;color:var(--accent);line-height:1}
+  .rec-quote em{color:var(--accent)}
+  .rec-by{display:flex;align-items:center;gap:18px;margin-top:30px;flex-wrap:wrap}
+  .rec-by .av{width:52px;height:52px;border-radius:50%;background:var(--ink);color:var(--paper);display:flex;align-items:center;justify-content:center;font-weight:700}
+  .rec-by b{display:block}
+  .rec-by span{font-size:14px;color:var(--ink-2)}
+  .rec-by img{height:26px;margin-left:8px}
+  .rec-points{display:grid;grid-template-columns:repeat(3,1fr);gap:16px;margin-top:40px}
+  .rec-points div{background:#fff;border:1px solid var(--line);border-radius:16px;padding:20px}
+  .rec-points b{font-family:var(--serif);font-weight:400;font-size:24px;display:block;margin-bottom:6px}
+  .rec-points p{font-size:14px;color:var(--ink-2)}
+  details.letter{margin-top:28px;background:#fff;border:1px solid var(--line);border-radius:16px;padding:0 24px}
+  details.letter summary{cursor:pointer;font-weight:700;padding:18px 0;list-style:none;display:flex;justify-content:space-between}
+  details.letter summary::after{content:"+";color:var(--accent);font-size:22px;line-height:1}
+  details.letter[open] summary::after{content:"–"}
+  details.letter .body{padding:0 0 24px;color:var(--ink-2);font-size:16px;max-width:760px}
+  details.letter .body p+p{margin-top:14px}
+  .rec-private{margin-top:90px;display:grid;grid-template-columns:240px 1fr;gap:32px;align-items:center}
+  .rec-private .card{background:#E9B44C;color:var(--ink);border-radius:24px;padding:30px 32px;transform:rotate(-1deg);max-width:760px}
+  .rec-private .card p{font-family:var(--serif);font-size:30px;line-height:1.2}
+  .rec-private .card small{display:block;margin-top:14px;font-size:14px;font-weight:600}
+
   /* LOGOS */
   .job-logo{display:flex;align-items:center;height:64px;margin-bottom:14px}
   .job-logo img{max-height:34px;max-width:170px;width:auto;display:block}
@@ -232,6 +262,10 @@
     .proj-grid{grid-template-columns:1fr 1fr}
     .proj.feature{grid-column:span 2}
     .profile-body .text{font-size:19px}
+    .rec,.rec-private{grid-template-columns:1fr;gap:16px}
+    .rec-points{grid-template-columns:1fr}
+    .rec-quote::before{position:static;display:block;height:.5em}
+    .portrait{width:170px}
     .about-intro,.motto{grid-template-columns:1fr;gap:20px}
     .about-intro p{font-size:19px}
     .stickers{grid-template-columns:1fr 1fr;gap:28px 18px}
@@ -258,6 +292,7 @@
       <li><a href="#profil">Profil</a></li>
       <li><a href="#erfaring">Erfaring</a></li>
       <li><a href="#projekter">Projekter</a></li>
+      <li><a href="#anbefaling">Anbefaling</a></li>
       <li><a href="#kompetencer">Kompetencer</a></li>
       <li><a href="#uddannelse">Uddannelse</a></li>
       <li><a href="#om-mig">Om mig</a></li>
@@ -280,6 +315,7 @@
         </div>
       </div>
       <div class="hero-meta">
+        <img class="portrait" src="images/portraet.jpg" alt="Portræt af Thomas Hansen">
         <strong>Nuværende rolle</strong>
         Masterdata Manager / E-commerce hos Plast-Line A/S
         <strong>Base</strong>
@@ -482,9 +518,42 @@
   </div>
 </section>
 
+<section class="block" id="anbefaling">
+  <div class="wrap">
+    <div class="sec-head reveal"><div class="idx">04 — Anbefaling</div><h2>Hvad en tidligere<br><em>chef</em> siger.</h2></div>
+    <div class="rec reveal">
+      <div></div>
+      <div>
+        <blockquote class="rec-quote">Thomas har et helt enestående drive og en <em>fantastisk entusiasme</em>, der smitter af på hans omgivelser.</blockquote>
+        <div class="rec-by">
+          <div class="av">HC</div>
+          <div><b>Heidi Collin</b><span>Onlinechef, OK a.m.b.a. · Aarhus, 2015</span></div>
+          <img src="logos/ok.svg" alt="OK">
+        </div>
+        <div class="rec-points">
+          <div><b>Handlekraft</b><p>Driver og optimerer salget i onlinekanalen mod klare KPI'er.</p></div>
+          <div><b>Nysgerrighed</b><p>Tør afprøve nye metoder og lader sig ikke slå ud, når et forsøg fejler.</p></div>
+          <div><b>Samarbejde</b><p>Spreder optimisme og kampgejst og arbejder godt på tværs af organisationen.</p></div>
+        </div>
+        <details class="letter">
+          <summary>Læs hele anbefalingen</summary>
+          <div class="body">
+            <p>Thomas Schou Hansen har været ansat på fuld tid i OK's Onlineafdeling siden den 7. december 2011. Først som Webkoordinator og fra februar 2014 som Online Sales Manager. Thomas er stadig ansat i jobbet den 1. september 2015, hvor jeg har valgt at fratræde mit job som Onlinechef. Onlineafdelingen består pt. af 10 medarbejdere og er organisatorisk placeret under Salgsdirektøren.</p>
+            <p>Thomas har ansvaret for at drive og optimere salget i OK's onlinekanal, så vi når de opstillede KPI'er for afdelingen. Opgaverne består i konstant at følge onlinekanalens performance og løbende at planlægge, prioritere og igangsætte nye tiltag og nye forsøg sammen med resten af onlineteamet, så konverteringen løftes. Jobbet kræver en resultatorienteret profil med stor handlekraft og som evner at samarbejde med mange forskellige profiler, både inde i onlineafdelingen og på tværs af hele organisationen.</p>
+            <p>Thomas har et helt enestående drive og en fantastisk entusiasme, der smitter af på hans omgivelser. Han er nysgerrig på nye metoder og veje at gå, tør afprøve nye ting og lader sig ikke slå ud, hvis vi i en periode ligger under mål, eller hvis de første forsøg på at løfte konverteringen ikke lykkes.</p>
+            <p>Thomas har en fantastisk evne til at sprede sin optimisme og kampgejst til resten af teamet. Han bringer højt humør og masser af grin til afdelingen dagligt. Samtidigt nærer han stor omsorg for sine kollegaer, og har en rigtig god føling med deres humør og situation.</p>
+            <p>Jeg kan kun give Thomas mine varmeste anbefalinger! Alt i alt vil han være en stor gevinst for enhver virksomhed, både på det faglige og på det personlige plan.</p>
+            <p><b>Heidi Collin</b>, Onlinechef · Århus, 24. august 2015<br>Kontaktoplysninger på referencen udleveres gerne på forespørgsel.</p>
+          </div>
+        </details>
+      </div>
+    </div>
+  </div>
+</section>
+
 <section class="block" id="kompetencer">
   <div class="wrap">
-    <div class="sec-head reveal"><div class="idx">04 — Kompetencer</div><h2>Værktøjskassen.</h2></div>
+    <div class="sec-head reveal"><div class="idx">05 — Kompetencer</div><h2>Værktøjskassen.</h2></div>
     <div class="skills-grid">
       <div></div>
       <div class="skill-groups reveal">
@@ -514,7 +583,7 @@
 
 <section class="block" id="uddannelse" style="padding-top:0">
   <div class="wrap">
-    <div class="sec-head reveal"><div class="idx">05 — Baggrund</div><h2>Uddannelse &amp; <em>projekter</em>.</h2></div>
+    <div class="sec-head reveal"><div class="idx">06 — Baggrund</div><h2>Uddannelse &amp; <em>projekter</em>.</h2></div>
     <div class="two-col reveal">
       <div></div>
       <div>
@@ -542,9 +611,9 @@
     <span>Håndbold</span><i>✦</i><span>Fodbold</span><i>✦</i><span>Smukfest</span><i>✦</i><span>Spinning</span><i>✦</i><span>Fællesskab</span><i>✦</i><span>Ungerne</span><i>✦</i><span>Holdånd</span><i>✦</i>
   </div></div>
   <div class="wrap">
-    <div class="sec-head reveal"><div class="idx">06 — Om mig</div><h2>Når skærmen<br>er <em>slukket</em>.</h2></div>
+    <div class="sec-head reveal"><div class="idx">07 — Om mig</div><h2>Når skærmen<br>er <em>slukket</em>.</h2></div>
     <div class="about-intro reveal">
-      <div></div>
+      <div><img class="about-photo" src="images/privat.jpg" alt="Thomas Hansen privat"></div>
       <p>Uden for kontoret handler mit liv om mennesker. Jeg bor i Horsens og er far til to, og hjemme er der sjældent stille, når Alberte og Valdemar kommer og går. Den røde tråd i alt, hvad jeg laver, er fællesskab: på banen, på festivalpladsen og i spinningsalen.</p>
     </div>
 
@@ -594,6 +663,14 @@
         <div class="k">Hjemme</div>
         <h4>Alberte &amp; Valdemar</h4>
         <p>Jeg er far til Alberte på 19 og Valdemar på 16. Jeg bor alene, men døren står altid åben, og når ungerne kommer forbi, er det dem, der sætter dagsordenen. Sådan skal det være.</p>
+      </div>
+    </div>
+
+    <div class="rec-private reveal">
+      <div class="idx" style="font-size:13px;font-weight:700;letter-spacing:.14em;text-transform:uppercase;color:rgba(243,240,232,.6)">Det siger andre</div>
+      <div class="card">
+        <p>"Han bringer højt humør og masser af grin til afdelingen dagligt. Samtidigt nærer han stor omsorg for sine kollegaer."</p>
+        <small>Heidi Collin, tidligere onlinechef hos OK</small>
       </div>
     </div>
 

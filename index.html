@@ -107,6 +107,7 @@
   /* RECOMMENDATION */
   #anbefaling{background:var(--paper-2)}
   .rec{display:grid;grid-template-columns:240px 1fr;gap:32px}
+  .rec+.rec{margin-top:80px;padding-top:64px;border-top:1px solid var(--line)}
   .rec-quote{font-family:var(--serif);font-size:clamp(30px,3.6vw,46px);line-height:1.15;letter-spacing:-.01em;position:relative}
   .rec-quote::before{content:"“";position:absolute;left:-.55em;top:-.25em;font-size:2.4em;color:var(--accent);line-height:1}
   .rec-quote em{color:var(--accent)}
@@ -601,7 +602,30 @@
 
 <section class="block" id="anbefaling">
   <div class="wrap">
-    <div class="sec-head reveal"><div class="idx">04 — Anbefaling</div><h2>Hvad en tidligere<br><em>chef</em> siger.</h2></div>
+    <div class="sec-head reveal"><div class="idx">04 — Anbefaling</div><h2>Hvad tidligere<br><em>chefer</em> siger.</h2></div>
+    <div class="rec reveal">
+      <div></div>
+      <div>
+        <blockquote class="rec-quote">Thomas har altid udført sit arbejde <em>professionelt, samvittighedsfuldt</em> og til punkt og prikke.</blockquote>
+        <div class="rec-by">
+          <div class="av">LF</div>
+          <div><b>Lars Flyvholm</b><span>CEO, Design Eyewear Group</span></div>
+          <img src="logos/deg.svg" alt="Design Eyewear Group" style="height:auto;width:180px">
+        </div>
+        <div class="rec-points">
+          <div><b>Professionel</b><p>Leverer sit arbejde grundigt og til punkt og prikke.</p></div>
+          <div><b>Pålidelig</b><p>En engageret medarbejder, man kan regne med.</p></div>
+          <div><b>Værdsat</b><p>Værdsat af både kolleger og ledelse.</p></div>
+        </div>
+        <details class="letter">
+          <summary>Læs hele anbefalingen</summary>
+          <div class="body">
+            <p>"Jeg giver Thomas Schou Hansen mine bedste anbefalinger. Gennem sin tid hos Design Eyewear Group har Thomas altid udført sit arbejde professionelt, samvittighedsfuldt og til punkt og prikke. Han er en pålidelig og engageret medarbejder, som har været værdsat af både kolleger og ledelse."</p>
+            <p><b>Lars Flyvholm</b>, CEO, Design Eyewear Group</p>
+          </div>
+        </details>
+      </div>
+    </div>
     <div class="rec reveal">
       <div></div>
       <div>

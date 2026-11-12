@@ -181,6 +181,7 @@
   .pimgs{align-items:start}
   .pimg.shot,.proj.feature .pimg.shot{aspect-ratio:auto;display:block;border:0;background:none;margin:0}
   .pimg.shot img{height:auto;display:block;border-radius:12px;background:#fff;box-shadow:0 14px 30px -18px rgba(0,0,0,.45)}
+  .pimgs.crop .pimg.shot img{aspect-ratio:3/4;object-fit:cover}
   .pimg.shot figcaption{font-size:12px;font-weight:600;margin-top:8px;opacity:.85}
   .toggle{align-self:flex-start;margin-top:18px;background:none;border:none;font:700 13px var(--sans);color:var(--accent);cursor:pointer;padding:0;display:flex;gap:6px;align-items:center}
   .toggle b{font-size:18px;line-height:1;transition:transform .3s}
@@ -303,6 +304,7 @@
     .proj.feature{grid-column:auto}
     .proj.open,.proj.feature.open{grid-column:auto;grid-row:auto}
     .pimgs{grid-template-columns:1fr}
+    .pimgs.crop{grid-template-columns:1fr 1fr}
     section.block{padding:72px 0}
     .job h3{font-size:28px}
   }
@@ -497,7 +499,7 @@
         <div class="more">
           <p>Som kommercielt ansvarlig havde jeg fokus på salget gennem appen, både til private og til erhvervskunder.</p>
           <p>Appen blev prisvindende og var en vigtig del af OK's digitale forretning ved siden af ok.dk.</p>
-          <div class="pimgs"><div class="pimg"><span>＋ Billede</span></div><div class="pimg"><span>＋ Billede</span></div></div>
+          <div class="pimgs crop"><figure class="pimg shot"><img src="images/ok-app-i-bilen.jpg" alt="Tank og Betal-appen på en telefon i bilen med valg af standere og vaskehaller" loading="lazy" style="object-position:52% 50%"><figcaption>Vælg stander direkte fra bilen</figcaption></figure><figure class="pimg shot"><img src="images/ok-app-find.jpg" alt="Tank og Betal-appen med oversigt over nærmeste stationer og ledige ladere" loading="lazy" style="object-position:50% 0%"><figcaption>Find station og ledige ladere</figcaption></figure></div>
         </div>
         <button class="toggle" aria-expanded="false">Læs mere <b>+</b></button>
       </article>
@@ -522,7 +524,7 @@
         <div class="more">
           <p>Jeg byggede automatiske flows, der fulgte kunden hele vejen: "one-click-buy", der gjorde genkøb hurtigt, og "abandoned cart"-mails, der fik kunder tilbage til en forladt kurv.</p>
           <p>Samtidig havde jeg ansvaret for kundeuniverset "MIN OK" og den løbende e-mailmarketing.</p>
-          <div class="pimgs"><div class="pimg"><span>＋ Billede</span></div><div class="pimg"><span>＋ Billede</span></div></div>
+          <div class="pimgs" style="grid-template-columns:1fr"><figure class="pimg shot"><img src="images/marketing-automation.png" alt="Illustration: segmentering, hvor kunder samles i grupper, over for personalisering, hvor hver kunde behandles individuelt" loading="lazy"><figcaption>Fra segmentering til personalisering</figcaption></figure></div>
         </div>
         <button class="toggle" aria-expanded="false">Læs mere <b>+</b></button>
       </article>

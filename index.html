@@ -149,6 +149,7 @@
   .proj{background:#fff;border:1px solid var(--line);border-radius:20px;padding:26px 24px 24px;display:flex;flex-direction:column;transition:transform .3s, box-shadow .3s, opacity .3s}
   .proj:hover{transform:translateY(-5px);box-shadow:0 18px 40px -20px rgba(21,24,29,.35)}
   .proj.hide{display:none}
+  .proj-empty{font-size:16px;color:var(--ink-2);padding:24px 0}
   .proj .top{display:flex;justify-content:space-between;align-items:center;gap:10px;margin-bottom:22px;min-height:30px}
   .proj .top img{max-height:22px;max-width:120px}
   .proj .top img.wide{max-height:none;width:140px}
@@ -472,12 +473,14 @@
     <div class="sec-head reveal"><div class="idx">03 — Projekter</div><h2>Projekter jeg har<br><em>stået i spidsen</em> for.</h2></div>
     <div class="filters reveal" role="tablist">
       <button class="on" data-f="alle">Alle</button>
-      <button data-f="plast">Plast-Line</button>
-      <button data-f="deg">Design Eyewear Group</button>
-      <button data-f="ok">OK</button>
+      <button data-f="app">App</button>
+      <button data-f="ai">AI</button>
+      <button data-f="masterdata">Masterdata</button>
+      <button data-f="ecom">E-commerce</button>
+      <button data-f="some">SoMe</button>
     </div>
     <div class="proj-grid reveal">
-      <article tabindex="0" class="proj feature" data-c="deg">
+      <article tabindex="0" class="proj feature" data-c="deg" data-t="ecom masterdata">
         <div class="top"><img class="wide" src="logos/deg.svg" alt="Design Eyewear Group"><span class="yr">2019 — 2021</span></div>
         <h4>Ny webshop: fra opstart til 120 mio. kr.</h4>
         <p>Drev og optimerede en ny webshop fra årlig omsætning på 15 mio. kr. til 120 mio. kr. på to år. Samtidig voksede den digitale forretning fra 5 % til 23 % af virksomhedens samlede omsætning.</p>
@@ -490,7 +493,7 @@
         </div>
         <button class="toggle" aria-expanded="false">Læs mere <b>+</b></button>
       </article>
-      <article tabindex="0" class="proj" data-c="ok">
+      <article tabindex="0" class="proj" data-c="ok" data-t="app">
         <div class="top"><img src="logos/ok.svg" alt="OK" style="max-height:26px"><span class="yr">2011 — 2017</span></div>
         <h4>"Tank og Betal"-appen</h4>
         <p>Kommercielt ansvarlig for OK's prisvindende app til B2C- og B2B-kunder.</p>
@@ -503,7 +506,7 @@
         </div>
         <button class="toggle" aria-expanded="false">Læs mere <b>+</b></button>
       </article>
-      <article tabindex="0" class="proj" data-c="ok">
+      <article tabindex="0" class="proj" data-c="ok" data-t="ecom">
         <div class="top"><img src="logos/ok.svg" alt="OK" style="max-height:26px"><span class="yr">2011 — 2017</span></div>
         <h4>Webshop på ok.dk</h4>
         <p>Ledede og optimerede en ny webshop for OK Energi. Målrettede dashboards skabte fokus på digitalt salg i hele organisationen.</p>
@@ -516,7 +519,7 @@
         </div>
         <button class="toggle" aria-expanded="false">Læs mere <b>+</b></button>
       </article>
-      <article tabindex="0" class="proj" data-c="ok">
+      <article tabindex="0" class="proj" data-c="ok" data-t="ecom">
         <div class="top"><img src="logos/ok.svg" alt="OK" style="max-height:26px"><span class="yr">2011 — 2017</span></div>
         <h4>Marketing automation</h4>
         <p>Byggede automatiske flows som "one-click-buy" og "abandoned cart"-mails, og var ansvarlig for kundeuniverset "MIN OK" og e-mailmarketing.</p>
@@ -528,7 +531,7 @@
         </div>
         <button class="toggle" aria-expanded="false">Læs mere <b>+</b></button>
       </article>
-      <article tabindex="0" class="proj" data-c="deg">
+      <article tabindex="0" class="proj" data-c="deg" data-t="ecom masterdata">
         <div class="top"><img class="wide" src="logos/deg.svg" alt="Design Eyewear Group"><span class="yr">2017 — 2023</span></div>
         <h4>8 brandsites og webshop på 4 sprog</h4>
         <p>Ansvarlig for hele den digitale platform: brandsites, webshop og systemerne bag, herunder PIM, DAM, ERP og loyalitetsprogrammer.</p>
@@ -541,7 +544,7 @@
         </div>
         <button class="toggle" aria-expanded="false">Læs mere <b>+</b></button>
       </article>
-      <article tabindex="0" class="proj" data-c="deg">
+      <article tabindex="0" class="proj" data-c="deg" data-t="app">
         <div class="top"><img class="wide" src="logos/deg.svg" alt="Design Eyewear Group"><span class="yr">2017 — 2023</span></div>
         <h4>"Travel-order": iOS-app til salget</h4>
         <p>Ansvarlig for ordresystemet "Travel-order", en iOS-app, som salgsteamet brugte til at tage ordrer ude hos kunderne.</p>
@@ -553,7 +556,7 @@
         </div>
         <button class="toggle" aria-expanded="false">Læs mere <b>+</b></button>
       </article>
-      <article tabindex="0" class="proj" data-c="deg">
+      <article tabindex="0" class="proj" data-c="deg" data-t="masterdata">
         <div class="top"><img class="wide" src="logos/deg.svg" alt="Design Eyewear Group"><span class="yr">2017 — 2023</span></div>
         <h4>Masterdata-setup for alle markeder</h4>
         <p>Byggede et nyt masterdata-setup med nem adgang for alle markeder og etablerede en ny digital RMA-proces for returvarer.</p>
@@ -565,7 +568,7 @@
         </div>
         <button class="toggle" aria-expanded="false">Læs mere <b>+</b></button>
       </article>
-      <article tabindex="0" class="proj" data-c="plast">
+      <article tabindex="0" class="proj" data-c="plast" data-t="masterdata">
         <div class="top"><img src="logos/plastline.svg" alt="Plast-Line A/S"><span class="yr">2023 — i dag</span></div>
         <h4>Masterdata-governance</h4>
         <p>Retningslinjer og workflows for produkt-, leverandør- og materialestamdata på tværs af produktion, indkøb, lager og salg.</p>
@@ -578,7 +581,7 @@
         </div>
         <button class="toggle" aria-expanded="false">Læs mere <b>+</b></button>
       </article>
-      <article tabindex="0" class="proj" data-c="plast">
+      <article tabindex="0" class="proj" data-c="plast" data-t="masterdata">
         <div class="top"><img src="logos/plastline.svg" alt="Plast-Line A/S"><span class="yr">2023 — i dag</span></div>
         <h4>Databaser til EPD, CAD og certificering</h4>
         <p>Har oprettet nye databaser, så miljøvaredeklarationer, tegninger og certifikater er samlet og nemme at finde for kunder og kolleger.</p>
@@ -590,7 +593,7 @@
         </div>
         <button class="toggle" aria-expanded="false">Læs mere <b>+</b></button>
       </article>
-      <article tabindex="0" class="proj" data-c="plast">
+      <article tabindex="0" class="proj" data-c="plast" data-t="masterdata">
         <div class="top"><img src="logos/plastline.svg" alt="Plast-Line A/S"><span class="yr">2023 — i dag</span></div>
         <h4>ERP-ændringer og migrering</h4>
         <p>Deltager i datamapping og test ved ERP-ændringer og migreringer, og sikrer forankring gennem træning af brugerne.</p>
@@ -603,6 +606,7 @@
         <button class="toggle" aria-expanded="false">Læs mere <b>+</b></button>
       </article>
     </div>
+    <p class="proj-empty" hidden>Der er ingen projekter i denne kategori endnu.</p>
   </div>
 </section>
 
@@ -837,7 +841,7 @@
   document.querySelectorAll('.filters button').forEach(b=>b.addEventListener('click',()=>{
     document.querySelectorAll('.filters button').forEach(x=>x.classList.toggle('on',x===b));
     const f=b.dataset.f;
-    document.querySelectorAll('.proj').forEach(p=>p.classList.toggle('hide',f!=='alle'&&p.dataset.c!==f));
+    let n=0;document.querySelectorAll('.proj').forEach(p=>{const h=f!=='alle'&&!p.dataset.t.split(' ').includes(f);p.classList.toggle('hide',h);if(!h)n++;});document.querySelector('.proj-empty').hidden=n>0;
   }));
 
   const projs=[...document.querySelectorAll('.proj')];

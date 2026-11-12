@@ -291,6 +291,29 @@
   footer .wrap{display:flex;justify-content:space-between}
 
   /* reveal */
+  #vaerdi .val-intro{display:grid;grid-template-columns:240px 1fr;gap:32px;margin:-24px 0 48px}
+  #vaerdi .val-intro p{font-size:19px;line-height:1.55;color:var(--ink-2);max-width:760px}
+  .val-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:20px}
+  .val{background:#fff;border:1px solid var(--line);border-radius:20px;padding:28px 26px;display:flex;flex-direction:column;transition:transform .3s, box-shadow .3s}
+  .val:hover{transform:translateY(-4px);box-shadow:0 22px 44px -26px rgba(21,24,29,.4)}
+  .val-n{font-family:var(--serif);font-size:22px;color:var(--accent)}
+  .val h4{font-family:var(--serif);font-weight:400;font-size:28px;line-height:1.08;margin:10px 0 12px}
+  .val p{font-size:15px;color:var(--ink-2);flex:1}
+  .val-proof{margin-top:20px;padding-top:16px;border-top:1px dashed var(--line);font-size:13px;color:var(--ink-2)}
+  .val-proof b{color:var(--accent);font-weight:700}
+  .val.accent{background:linear-gradient(135deg,#C8431B,#E9B44C);border:none;color:#fff}
+  .val.accent .val-n,.val.accent p,.val.accent .val-proof,.val.accent .val-proof b{color:#fff}
+  .val.accent .val-proof{border-top-color:rgba(255,255,255,.4)}
+  .plan{margin-top:56px;background:var(--ink);color:var(--paper);border-radius:24px;padding:40px}
+  .plan h3{font-family:var(--serif);font-weight:400;font-size:clamp(32px,4vw,48px);line-height:1}
+  .plan h3 em{color:#F08A63}
+  .plan-steps{display:grid;grid-template-columns:repeat(3,1fr);gap:28px;margin-top:28px}
+  .step{border-top:2px solid rgba(255,255,255,.18);padding-top:18px}
+  .step-k{font-size:12px;letter-spacing:.12em;text-transform:uppercase;font-weight:700;color:#F08A63}
+  .step h5{font-family:var(--serif);font-weight:400;font-size:26px;margin:8px 0 8px}
+  .step p{font-size:15px;opacity:.78}
+  @media (max-width:980px){.val-grid{grid-template-columns:1fr 1fr}}
+  @media (max-width:760px){#vaerdi .val-intro{grid-template-columns:1fr;margin-top:-24px}.val-grid,.plan-steps{grid-template-columns:1fr}.plan{padding:28px 22px}}
   .reveal{opacity:0;transform:translateY(24px);transition:opacity .8s ease, transform .8s ease}
   .reveal.in{opacity:1;transform:none}
 
@@ -345,6 +368,7 @@
       <li><a href="#kompetencer">Kompetencer</a></li>
       <li><a href="#uddannelse">Uddannelse</a></li>
       <li><a href="#om-mig">Om mig</a></li>
+      <li><a href="#vaerdi">Det får I</a></li>
       <li><a href="#kontakt" class="nav-cta">Kontakt mig</a></li>
     </ul>
   </div>
@@ -905,6 +929,63 @@
       <blockquote>Fællesskab <em>over</em> individet.
         <small>Det er min holdning på banen, som frivillig og på jobbet. De bedste resultater skaber vi sammen. Mit job som træner er at få holdet til at lykkes, ikke at være stjernen.</small>
       </blockquote>
+    </div>
+  </div>
+</section>
+
+<section class="block" id="vaerdi">
+  <div class="wrap">
+    <div class="sec-head reveal"><div class="idx">08 — Det får I</div><h2>Sådan kan jeg<br><em>hjælpe jer</em>.</h2></div>
+    <div class="val-intro reveal">
+      <div></div>
+      <p>Jeg kombinerer kommerciel forståelse med styr på data og systemer. Det betyder, at I får én, der både kan rydde op i fundamentet og sørge for, at det kan ses på bundlinjen. Her er, hvad jeg typisk bringer med fra første dag.</p>
+    </div>
+    <div class="val-grid reveal">
+      <div class="val">
+        <div class="val-n">01</div>
+        <h4>Masterdata, I kan stole på</h4>
+        <p>Jeg sætter retningslinjer, workflows og ansvar op, så produkt-, leverandør- og materialedata er korrekte og ens på tværs af produktion, indkøb, lager og salg.</p>
+        <div class="val-proof"><b>25.000</b> produkter oprettet til plast-line.dk · 8+ år som masterdata-ansvarlig</div>
+      </div>
+      <div class="val">
+        <div class="val-n">02</div>
+        <h4>Vækst i den digitale forretning</h4>
+        <p>Jeg driver webshop og onlinesalg med fokus på konvertering, sortiment og indhold, og jeg ved, at gode data er det, der får kunderne til at købe.</p>
+        <div class="val-proof"><b>15 → 120 mio. kr.</b> på to år · digital andel fra 5 % til 23 % · 600 mio. kr. i OK's webshop</div>
+      </div>
+      <div class="val">
+        <div class="val-n">03</div>
+        <h4>Systemer, der spiller sammen</h4>
+        <p>ERP, PIM, DAM, WMS og webshop skal hænge sammen. Jeg står for opsætning, datamapping, test og migrering, så data flytter korrekt, og ingen taster det samme to gange.</p>
+        <div class="val-proof">Visma Business · Dynamics AX · Struct PIM · Kontainer · WMS</div>
+      </div>
+      <div class="val">
+        <div class="val-n">04</div>
+        <h4>Tal, der skaber handling</h4>
+        <p>Jeg bygger dashboards og følger KPI'er tæt, så ledelse og kolleger kan se, hvad der virker, og vi kan prioritere de næste tiltag ud fra fakta.</p>
+        <div class="val-proof">GA4 · Klipfolio · kampagnemåling · CRO</div>
+      </div>
+      <div class="val accent">
+        <div class="val-n">05</div>
+        <h4>Hurtigere med AI</h4>
+        <p>Jeg bruger AI og vibecoding til dataoprydning, tekster og til at bygge løsninger selv. Det, der før krævede et bureau og flere uger, kan jeg ofte levere på dage.</p>
+        <div class="val-proof">Kundeklub til Supermen.dk og ny B2B-side til Leico.dk, bygget i 2026</div>
+      </div>
+      <div class="val">
+        <div class="val-n">06</div>
+        <h4>Én, der får alle med</h4>
+        <p>Data virker kun, når folk bruger dem. Jeg kommunikerer på tværs af afdelinger, træner brugerne og bringer energi og godt humør til teamet.</p>
+        <div class="val-proof">"Et helt enestående drive" – Heidi Collin, tidligere onlinechef i OK</div>
+      </div>
+    </div>
+
+    <div class="plan reveal">
+      <h3>Mine første <em>90 dage</em></h3>
+      <div class="plan-steps">
+        <div class="step"><div class="step-k">Dag 1–30</div><h5>Lyt og kortlæg</h5><p>Jeg lærer forretningen, folkene og systemerne at kende og kortlægger, hvordan data flyder i dag, og hvor det driller.</p></div>
+        <div class="step"><div class="step-k">Dag 31–60</div><h5>Hurtige gevinster</h5><p>Jeg retter de fejl, der koster mest, rydder op i data og sætter et dashboard op, så vi kan følge effekten.</p></div>
+        <div class="step"><div class="step-k">Dag 61–90</div><h5>Faste rammer</h5><p>Jeg indfører workflows og ansvar for masterdata og lægger en plan for de næste skridt sammen med ledelsen.</p></div>
+      </div>
     </div>
   </div>
 </section>

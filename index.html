@@ -135,9 +135,12 @@
   .job-logo{display:flex;align-items:center;height:64px;margin-bottom:14px}
   .job-logo img{max-height:34px;max-width:170px;width:auto;display:block}
   .job-logo img.wide{max-height:none;width:170px}
+  .job-logo img.stack{max-height:60px;max-width:none;width:auto;height:58px}
   .site-logo{height:28px;display:flex;align-items:center;margin-bottom:6px}
   .site-logo img{max-height:26px;max-width:180px}
   .site-logo img.wide{max-height:none;width:200px}
+  .site-logo:has(img.stack){height:44px}
+  .site-logo img.stack{max-height:none;height:42px;width:auto}
 
   /* PROJECTS */
   #projekter{padding-bottom:110px}
@@ -156,6 +159,7 @@
   .proj .top{display:flex;justify-content:space-between;align-items:center;gap:10px;margin-bottom:22px;min-height:30px}
   .proj .top img{max-height:22px;max-width:120px}
   .proj .top img.wide{max-height:none;width:140px}
+  .proj .top img.stack{max-height:none;max-width:none;width:124px;height:auto}
   .proj .yr{font-size:12px;font-weight:700;color:var(--ink-2);white-space:nowrap}
   .proj h4{font-family:var(--serif);font-weight:400;font-size:28px;line-height:1.08;margin-bottom:10px}
   .proj p{font-size:15px;color:var(--ink-2);flex:1}
@@ -417,7 +421,7 @@
     </article>
 
     <article class="job reveal">
-      <div class="when"><div class="job-logo"><img class="wide" src="logos/deg.svg" alt="Design Eyewear Group"></div>Maj 2017 — Sep 2023</div>
+      <div class="when"><div class="job-logo"><img class="stack" src="logos/deg-stacked.svg" alt="Design Eyewear Group"></div>Maj 2017 — Sep 2023</div>
       <div>
         <h3>Masterdata / E-commerce</h3>
         <div class="company">Design Eyewear Group <span>· Aarhus</span></div>
@@ -484,7 +488,7 @@
     </div>
     <div class="proj-grid reveal">
       <article tabindex="0" class="proj feature" data-c="deg" data-t="ecom masterdata">
-        <div class="top"><img class="wide" src="logos/deg.svg" alt="Design Eyewear Group"><span class="yr">2019 — 2021</span></div>
+        <div class="top"><img class="stack" src="logos/deg-stacked.svg" alt="Design Eyewear Group"><span class="yr">2019 — 2021</span></div>
         <div class="pcats"><span>E-commerce</span><span>Masterdata</span></div>
         <h4>Ny webshop: fra opstart til 120 mio. kr.</h4>
         <p>Drev og optimerede en ny webshop fra årlig omsætning på 15 mio. kr. til 120 mio. kr. på to år. Samtidig voksede den digitale forretning fra 5 % til 23 % af virksomhedens samlede omsætning.</p>
@@ -539,7 +543,7 @@
         <button class="toggle" aria-expanded="false">Læs mere <b>+</b></button>
       </article>
       <article tabindex="0" class="proj" data-c="deg" data-t="ecom masterdata">
-        <div class="top"><img class="wide" src="logos/deg.svg" alt="Design Eyewear Group"><span class="yr">2017 — 2023</span></div>
+        <div class="top"><img class="stack" src="logos/deg-stacked.svg" alt="Design Eyewear Group"><span class="yr">2017 — 2023</span></div>
         <div class="pcats"><span>E-commerce</span><span>Masterdata</span></div>
         <h4>8 brandsites og webshop på 4 sprog</h4>
         <p>Ansvarlig for hele den digitale platform: brandsites, webshop og systemerne bag, herunder PIM, DAM, ERP og loyalitetsprogrammer.</p>
@@ -553,7 +557,7 @@
         <button class="toggle" aria-expanded="false">Læs mere <b>+</b></button>
       </article>
       <article tabindex="0" class="proj" data-c="deg" data-t="some">
-        <div class="top"><img class="wide" src="logos/deg.svg" alt="Design Eyewear Group"><span class="yr">2017 — 2023</span></div>
+        <div class="top"><img class="stack" src="logos/deg-stacked.svg" alt="Design Eyewear Group"><span class="yr">2017 — 2023</span></div>
         <div class="pcats"><span>SoMe</span></div>
         <h4>Instagram og influencer marketing</h4>
         <p>Styrede Instagram-profilerne for koncernens internationale brillebrands med organisk indhold, betalt annoncering og influencer marketing på markeder over hele verden.</p>
@@ -566,7 +570,7 @@
         <button class="toggle" aria-expanded="false">Læs mere <b>+</b></button>
       </article>
       <article tabindex="0" class="proj" data-c="deg" data-t="app">
-        <div class="top"><img class="wide" src="logos/deg.svg" alt="Design Eyewear Group"><span class="yr">2017 — 2023</span></div>
+        <div class="top"><img class="stack" src="logos/deg-stacked.svg" alt="Design Eyewear Group"><span class="yr">2017 — 2023</span></div>
         <div class="pcats"><span>App</span></div>
         <h4>"Travel-order": iOS-app til salget</h4>
         <p>Ansvarlig for ordresystemet "Travel-order", en iOS-app, som salgsteamet brugte til at tage ordrer ude hos kunderne.</p>
@@ -579,7 +583,7 @@
         <button class="toggle" aria-expanded="false">Læs mere <b>+</b></button>
       </article>
       <article tabindex="0" class="proj" data-c="deg" data-t="masterdata">
-        <div class="top"><img class="wide" src="logos/deg.svg" alt="Design Eyewear Group"><span class="yr">2017 — 2023</span></div>
+        <div class="top"><img class="stack" src="logos/deg-stacked.svg" alt="Design Eyewear Group"><span class="yr">2017 — 2023</span></div>
         <div class="pcats"><span>Masterdata</span></div>
         <h4>Masterdata-setup for alle markeder</h4>
         <p>Byggede et nyt masterdata-setup med nem adgang for alle markeder og etablerede en ny digital RMA-proces for returvarer.</p>
@@ -646,7 +650,7 @@
         <div class="rec-by">
           <div class="av">LF</div>
           <div><b>Lars Flyvholm</b><span>CEO, Design Eyewear Group</span></div>
-          <img src="logos/deg.svg" alt="Design Eyewear Group" style="height:auto;width:180px">
+          <img src="logos/deg-stacked.svg" alt="Design Eyewear Group" style="height:auto;width:130px">
         </div>
         <div class="rec-points">
           <div><b>Professionel</b><p>Leverer sit arbejde grundigt og til punkt og prikke.</p></div>
@@ -737,7 +741,7 @@
         <div class="col-title">Websites jeg har været med til at bygge</div>
         <div class="sites">
           <a class="site" href="https://www.plast-line.dk" target="_blank" rel="noopener"><div><div class="site-logo"><img src="logos/plastline.svg" alt="Plast-Line A/S"></div><span>plast-line.dk</span></div><span class="arr">↗</span></a>
-          <a class="site" href="https://designeyeweargroup.com" target="_blank" rel="noopener"><div><div class="site-logo"><img class="wide" src="logos/deg.svg" alt="Design Eyewear Group"></div><span>Brandsites &amp; webshop · 4 sprog</span></div><span class="arr">↗</span></a>
+          <a class="site" href="https://designeyeweargroup.com" target="_blank" rel="noopener"><div><div class="site-logo"><img class="stack" src="logos/deg-stacked.svg" alt="Design Eyewear Group"></div><span>Brandsites &amp; webshop · 4 sprog</span></div><span class="arr">↗</span></a>
           <a class="site" href="https://www.prodesigndenmark.com" target="_blank" rel="noopener"><div><div class="site-logo"><img src="logos/prodesign.png" alt="ProDesign Denmark" style="max-height:22px"></div><span>prodesigndenmark.com</span></div><span class="arr">↗</span></a>
           <a class="site" href="https://www.ok.dk" target="_blank" rel="noopener"><div><div class="site-logo"><img src="logos/ok.svg" alt="OK"></div><span>ok.dk · Tank og Betal</span></div><span class="arr">↗</span></a>
         </div>

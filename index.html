@@ -215,6 +215,13 @@
   .sg h4{font-family:var(--serif);font-weight:400;font-size:26px;margin-bottom:16px}
   .sg .tags{display:flex;flex-wrap:wrap;gap:8px}
   .tag{font-size:14px;font-weight:600;padding:6px 12px;border-radius:999px;background:var(--paper);border:1px solid var(--line)}
+  .sg.ai{align-items:start}
+  .ai-badge{display:inline-block;font-size:11px;font-weight:700;letter-spacing:.14em;text-transform:uppercase;background:rgba(255,255,255,.2);border:1px solid rgba(255,255,255,.4);border-radius:999px;padding:6px 12px;margin-bottom:14px}
+  .ai-rows{display:flex;flex-direction:column;gap:14px}
+  .ai-row{display:grid;grid-template-columns:120px 1fr;gap:12px;align-items:baseline;padding-bottom:14px;border-bottom:1px solid rgba(255,255,255,.25)}
+  .ai-row:last-child{border-bottom:none;padding-bottom:0}
+  .ai-k{font-size:12px;letter-spacing:.08em;text-transform:uppercase;font-weight:700;opacity:.85}
+  @media (max-width:860px){.ai-row{grid-template-columns:1fr;gap:6px}}
   .sg.sys{grid-column:span 2;display:grid;grid-template-columns:1fr 1.4fr;gap:28px;align-items:start}
   .sg.sys p{font-size:15px;opacity:.8}
   .sys-rows{display:flex;flex-direction:column;gap:14px}
@@ -366,7 +373,6 @@
       <li><a href="#projekter">Projekter</a></li>
       <li><a href="#anbefaling">Anbefaling</a></li>
       <li><a href="#kompetencer">Kompetencer</a></li>
-      <li><a href="#uddannelse">Uddannelse</a></li>
       <li><a href="#om-mig">Om mig</a></li>
       <li><a href="#vaerdi">Det får I</a></li>
       <li><a href="#kontakt" class="nav-cta">Kontakt mig</a></li>
@@ -783,10 +789,15 @@
       <div class="skill-groups reveal">
         <div class="sg ai">
           <div>
+            <div class="ai-badge">Min største styrke lige nu</div>
             <h4><span class="spark">✦</span> AI &amp; vibecoding</h4>
-            <p>Jeg bruger AI i stort set alt, hvad jeg laver: til analyse, tekster, dataoprydning, idéudvikling og til at bygge løsninger selv. Med vibecoding går jeg fra idé til fungerende værktøj på timer i stedet for uger.</p>
+            <p>AI er en fast del af min hverdag og den kompetence, jeg prioriterer højest. Jeg bruger det til analyse, tekster, dataoprydning og idéudvikling, og med vibecoding bygger jeg selv løsninger, der før krævede et bureau. Jeg går fra idé til fungerende værktøj på timer i stedet for uger.</p>
           </div>
-          <div class="tags"><span class="tag">Vibecoding</span><span class="tag">AI-assistenter i hverdagen</span><span class="tag">Prompting</span><span class="tag">AI til dataoprydning</span><span class="tag">AI til tekst &amp; content</span><span class="tag">Automatisering</span><span class="tag">Hurtige prototyper</span></div>
+          <div class="ai-rows">
+            <div class="ai-row"><div class="ai-k">Værktøjer</div><div class="tags"><span class="tag">Claude.ai</span><span class="tag">Codex</span><span class="tag">Vibecoding</span><span class="tag">Prompting</span></div></div>
+            <div class="ai-row"><div class="ai-k">Bruger AI til</div><div class="tags"><span class="tag">Dataoprydning &amp; validering</span><span class="tag">Produkttekster &amp; content</span><span class="tag">Analyse</span><span class="tag">Automatisering</span><span class="tag">Hurtige prototyper</span></div></div>
+            <div class="ai-row"><div class="ai-k">Bygget med AI</div><div class="tags"><span class="tag">Kundeklub til Supermen.dk</span><span class="tag">Denne hjemmeside</span></div></div>
+          </div>
         </div>
         <div class="sg dark sys">
           <div>

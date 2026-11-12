@@ -178,6 +178,10 @@
   .pimg{aspect-ratio:4/3;border-radius:14px;border:1.5px dashed var(--line);background:var(--paper);display:flex;align-items:center;justify-content:center;font-size:13px;font-weight:600;color:var(--ink-2)}
   .pimg img{width:100%;height:100%;object-fit:cover;border-radius:12px}
   .proj.feature .pimg{background:rgba(255,255,255,.12);border-color:rgba(255,255,255,.4);color:#fff}
+  .pimgs{align-items:start}
+  .pimg.shot,.proj.feature .pimg.shot{aspect-ratio:auto;display:block;border:0;background:none;margin:0}
+  .pimg.shot img{height:auto;display:block;border-radius:12px;background:#fff;box-shadow:0 14px 30px -18px rgba(0,0,0,.45)}
+  .pimg.shot figcaption{font-size:12px;font-weight:600;margin-top:8px;opacity:.85}
   .toggle{align-self:flex-start;margin-top:18px;background:none;border:none;font:700 13px var(--sans);color:var(--accent);cursor:pointer;padding:0;display:flex;gap:6px;align-items:center}
   .toggle b{font-size:18px;line-height:1;transition:transform .3s}
   .proj.open .toggle b{transform:rotate(45deg)}
@@ -480,7 +484,7 @@
         <div class="more">
           <p>Med reference til CEO og indkøbschef havde jeg ansvaret for både masterdata og e-commerce-løsningen. Webshoppen blev bygget på et solidt masterdata-fundament, så alle markeder arbejdede ud fra de samme, korrekte produktdata.</p>
           <p>Gennem løbende optimering af sortiment, indhold og konvertering voksede webshoppen fra 15 til 120 mio. kr. på to år, og den digitale andel af omsætningen steg fra 5 % til 23 %.</p>
-          <div class="pimgs"><div class="pimg"><span>＋ Billede</span></div><div class="pimg"><span>＋ Billede</span></div></div>
+          <div class="pimgs"><figure class="pimg shot"><img src="images/deg-webshop-forside.jpg" alt="Forsiden af Design Eyewear Groups webshop med kampagne for Prodesign" loading="lazy"><figcaption>Webshoppens forside</figcaption></figure><figure class="pimg shot"><img src="images/deg-brandoversigt.jpg" alt="Oversigt over Design Eyewear Groups brand-portefølje: Prodesign, Face à Face, Woow og William Morris London" loading="lazy"><figcaption>Brand-porteføljen</figcaption></figure></div>
         </div>
         <button class="toggle" aria-expanded="false">Læs mere <b>+</b></button>
       </article>

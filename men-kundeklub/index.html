@@ -1,0 +1,1484 @@
+<!DOCTYPE html>
+<html lang="da">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="robots" content="noindex, nofollow">
+<title>MEN Kundeklub</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Jost:wght@400;500;600;700&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --black:#111111; --ink:#1c1c1c; --muted:#6f6c66; --line:#e4e1db;
+    --paper:#ffffff; --sand:#f4f2ee; --olive:#55583a; --ok:#2f6b3f; --warn:#9a3b2a;
+    --head:'Jost', 'Helvetica Neue', Arial, sans-serif;
+    --body:'Inter', 'Helvetica Neue', Arial, sans-serif;
+  }
+  *{box-sizing:border-box}
+  html,body{margin:0;background:var(--paper);color:var(--ink);font-family:var(--body);font-size:15px;line-height:1.5;-webkit-font-smoothing:antialiased}
+  a{color:inherit}
+  button{font-family:var(--head);cursor:pointer}
+  input{font-family:var(--body)}
+  .wrap{max-width:1180px;margin:0 auto;padding:0 20px}
+
+  /* Promo bar */
+  .promo{background:var(--black);color:#fff;font-family:var(--head);font-size:12px;letter-spacing:.14em;text-transform:uppercase;text-align:center;padding:9px 12px}
+  .promo b{font-weight:600}
+
+  /* Header */
+  header.site{border-bottom:1px solid var(--line);background:#fff;position:sticky;top:0;z-index:20}
+  .hdr{display:flex;align-items:center;justify-content:space-between;gap:20px;height:76px}
+  .logo{display:flex;flex-direction:column;align-items:flex-start;text-decoration:none;line-height:1}
+  .logo .m{font-family:var(--head);font-weight:700;font-size:34px;letter-spacing:.06em;color:var(--black)}
+  .logo .s{font-family:var(--head);font-size:9.5px;letter-spacing:.3em;text-transform:uppercase;color:var(--muted);margin-top:3px}
+  nav.views{display:flex;gap:4px}
+  nav.views a{font-family:var(--head);font-size:13px;font-weight:500;letter-spacing:.12em;text-transform:uppercase;text-decoration:none;padding:10px 14px;border-bottom:2px solid transparent;color:var(--ink)}
+  nav.views a.on{border-bottom-color:var(--black)}
+  nav.views a:hover{color:var(--muted)}
+
+  /* Headings & buttons */
+  h1,h2,h3{font-family:var(--head);font-weight:600;letter-spacing:.02em;margin:0}
+  .eyebrow{font-family:var(--head);font-size:12px;letter-spacing:.22em;text-transform:uppercase;color:var(--muted)}
+  .btn{display:inline-flex;align-items:center;justify-content:center;gap:8px;border:1px solid var(--black);background:var(--black);color:#fff;font-size:13px;font-weight:500;letter-spacing:.14em;text-transform:uppercase;padding:14px 22px;border-radius:0;transition:background .15s,color .15s}
+  .btn:hover{background:#333}
+  .btn.ghost{background:#fff;color:var(--black)}
+  .btn.ghost:hover{background:var(--sand)}
+  .btn.small{padding:9px 14px;font-size:11.5px}
+  .btn:disabled{opacity:.4;cursor:not-allowed}
+  .field{display:flex;flex-direction:column;gap:6px}
+  .field label{font-family:var(--head);font-size:12px;letter-spacing:.14em;text-transform:uppercase;color:var(--muted)}
+  .input{border:1px solid #cfcbc4;background:#fff;padding:14px 14px;font-size:16px;border-radius:0;outline:none;width:100%}
+  .input:focus{border-color:var(--black)}
+
+  /* Punch card */
+  .punches{display:flex;gap:12px;flex-wrap:wrap}
+  .punch{width:62px;height:62px;border-radius:50%;border:2px dashed #bdb8af;display:flex;align-items:center;justify-content:center;font-family:var(--head);font-weight:600;font-size:18px;color:#bdb8af;background:#fff;transition:all .25s}
+  .punch.on{border:2px solid var(--black);background:var(--black);color:#fff}
+  .punch.on svg{width:26px;height:26px}
+  .punch.gift{border-style:solid;border-color:var(--olive);color:var(--olive)}
+  .punch.pop{animation:pop .5s ease}
+  @keyframes pop{0%{transform:scale(.6)}60%{transform:scale(1.15)}100%{transform:scale(1)}}
+  .punches.big .punch{width:84px;height:84px;font-size:24px}
+  .punches.big .punch.on svg{width:34px;height:34px}
+  .mini{display:inline-flex;gap:4px;vertical-align:middle}
+  .mini i{width:12px;height:12px;border-radius:50%;border:1.5px solid #bdb8af;display:inline-block}
+  .mini i.on{background:var(--black);border-color:var(--black)}
+
+  .bar{height:6px;background:var(--sand);position:relative;overflow:hidden}
+  .bar span{position:absolute;inset:0 auto 0 0;background:var(--black);transition:width .4s}
+
+  /* Member view */
+  .hero{background:var(--sand);padding:64px 0 56px;border-bottom:1px solid var(--line)}
+  .hero h1{font-size:44px;line-height:1.08;text-transform:uppercase;letter-spacing:.03em;max-width:640px;margin-top:12px}
+  .hero p{max-width:540px;color:#46433e;font-size:16px;margin:16px 0 0}
+  .steps{display:grid;grid-template-columns:repeat(3,1fr);gap:0;border:1px solid var(--line);margin:40px 0 0;background:#fff}
+  .step{padding:24px;border-right:1px solid var(--line)}
+  .step:last-child{border-right:0}
+  .step .n{font-family:var(--head);font-size:30px;font-weight:600}
+  .step h3{font-size:14px;letter-spacing:.14em;text-transform:uppercase;margin:6px 0 6px}
+  .step p{margin:0;color:var(--muted);font-size:14px}
+
+  .lookup{max-width:520px;margin:48px auto;text-align:center}
+  .lookup h2{font-size:22px;text-transform:uppercase;letter-spacing:.08em}
+  .lookup form{display:flex;gap:0;margin-top:20px}
+  .lookup form .input{border-right:0}
+  .lookup .hint{color:var(--muted);font-size:13px;margin-top:10px}
+
+  .status{max-width:820px;margin:44px auto 64px}
+  .status .top{display:flex;justify-content:space-between;align-items:flex-end;gap:16px;flex-wrap:wrap;margin-bottom:22px}
+  .status .top h2{font-size:28px;text-transform:uppercase;letter-spacing:.04em}
+  .card{border:1px solid var(--line);background:#fff;padding:28px}
+  .card + .card{margin-top:18px}
+  .count{font-family:var(--head);font-size:56px;font-weight:600;line-height:1}
+  .count small{font-size:20px;color:var(--muted);font-weight:500}
+  .status .row{display:flex;gap:28px;align-items:center;flex-wrap:wrap;justify-content:space-between}
+  .status .msg{font-size:16px;margin:18px 0 12px}
+  .kv{display:grid;grid-template-columns:repeat(3,1fr);gap:0;border-top:1px solid var(--line);margin-top:22px}
+  .kv div{padding:16px 0 0}
+  .kv b{display:block;font-family:var(--head);font-size:20px;font-weight:600}
+  .kv span{font-size:12px;letter-spacing:.12em;text-transform:uppercase;color:var(--muted)}
+
+  .coupon{display:flex;justify-content:space-between;align-items:center;gap:16px;border:2px dashed var(--black);padding:18px 20px;background:var(--sand)}
+  .coupon + .coupon{margin-top:10px}
+  .coupon .code{font-family:var(--head);font-size:22px;font-weight:600;letter-spacing:.12em}
+  .coupon .val{font-family:var(--head);font-size:26px;font-weight:700}
+  .coupon.used{opacity:.5;border-color:#bdb8af;background:#fff}
+  .coupon .lbl{font-size:12px;color:var(--muted);letter-spacing:.1em;text-transform:uppercase}
+
+  .hist{list-style:none;margin:0;padding:0}
+  .hist li{display:flex;justify-content:space-between;gap:12px;padding:11px 0;border-bottom:1px solid var(--line);font-size:14px}
+  .hist li:last-child{border-bottom:0}
+  .hist .d{color:var(--muted);white-space:nowrap}
+  .sec-title{font-family:var(--head);font-size:13px;letter-spacing:.18em;text-transform:uppercase;margin:0 0 14px;font-weight:600}
+
+  /* Staff view */
+  .staff-head{background:var(--black);color:#fff;padding:22px 0}
+  .staff-head .wrap{display:flex;justify-content:space-between;align-items:center;gap:16px;flex-wrap:wrap}
+  .staff-head h1{font-size:22px;text-transform:uppercase;letter-spacing:.1em}
+  .staff-head .eyebrow{color:#aaa}
+  .staff{display:grid;grid-template-columns:360px 1fr;gap:28px;padding-top:28px;padding-bottom:64px;align-items:start}
+  .list{border:1px solid var(--line);background:#fff}
+  .list .search{padding:16px;border-bottom:1px solid var(--line);background:var(--sand)}
+  .list ul{list-style:none;margin:0;padding:0;max-height:62vh;overflow:auto}
+  .list li{padding:14px 16px;border-bottom:1px solid var(--line);cursor:pointer;display:flex;justify-content:space-between;align-items:center;gap:10px}
+  .list li:hover{background:#faf9f7}
+  .list li.sel{background:var(--sand);box-shadow:inset 3px 0 0 var(--black)}
+  .list li .nm{font-weight:600}
+  .list li .ph{color:var(--muted);font-size:13px}
+  .list .empty{padding:22px 16px;color:var(--muted);font-size:14px}
+  .list .foot{padding:12px 16px;display:flex;justify-content:space-between;align-items:center;font-size:13px;color:var(--muted)}
+  .badge{font-family:var(--head);font-size:11px;letter-spacing:.1em;text-transform:uppercase;background:var(--olive);color:#fff;padding:3px 7px}
+
+  .panel .who{display:flex;justify-content:space-between;align-items:flex-start;gap:16px;flex-wrap:wrap}
+  .panel .who h2{font-size:30px;text-transform:uppercase;letter-spacing:.03em}
+  .panel .who .ph{color:var(--muted)}
+  .bigcount{display:flex;align-items:center;gap:28px;flex-wrap:wrap;margin:24px 0 8px}
+  .bigcount .count{font-size:72px}
+  .action{display:grid;grid-template-columns:1fr auto;gap:0;margin-top:6px}
+  .action .input{font-size:22px;font-family:var(--head);font-weight:500;border-right:0}
+  .quick{display:flex;gap:8px;flex-wrap:wrap;margin-top:10px}
+  .quick button{border:1px solid #cfcbc4;background:#fff;padding:9px 14px;font-size:13px;letter-spacing:.06em}
+  .quick button:hover{border-color:var(--black)}
+  .preview{margin-top:12px;font-size:15px;min-height:24px}
+  .preview b{font-family:var(--head)}
+  .oneclick{display:flex;gap:10px;flex-wrap:wrap;margin-top:18px;padding-top:18px;border-top:1px solid var(--line)}
+  .reward{background:var(--olive);color:#fff;padding:18px 20px;display:flex;justify-content:space-between;align-items:center;gap:12px;margin-bottom:18px;animation:pop .5s ease}
+  .reward .code{font-family:var(--head);font-size:24px;font-weight:700;letter-spacing:.14em}
+  .placeholder{border:1px dashed #cfcbc4;padding:60px 24px;text-align:center;color:var(--muted)}
+  .placeholder h3{color:var(--ink);font-size:16px;letter-spacing:.12em;text-transform:uppercase;margin-bottom:6px}
+
+  /* Modal / toast / notice */
+  .modal-bg{position:fixed;inset:0;background:rgba(17,17,17,.55);display:none;align-items:center;justify-content:center;z-index:50;padding:20px}
+  .modal-bg.open{display:flex}
+  .modal{background:#fff;width:100%;max-width:440px;padding:28px}
+  .modal h3{font-size:18px;text-transform:uppercase;letter-spacing:.1em;margin-bottom:18px}
+  .modal .field{margin-bottom:14px}
+  .modal .acts{display:flex;gap:10px;justify-content:flex-end;margin-top:20px}
+  .err{color:var(--warn);font-size:13px;min-height:18px}
+  .toast{position:fixed;left:50%;bottom:24px;transform:translateX(-50%) translateY(20px);background:var(--black);color:#fff;padding:14px 22px;font-size:14px;opacity:0;transition:all .25s;z-index:60;pointer-events:none;max-width:90vw}
+  .toast.show{opacity:1;transform:translateX(-50%) translateY(0)}
+  .notice{background:#fff7e8;border:1px solid #ecd8ac;padding:12px 16px;font-size:14px;margin:18px 0}
+  .muted{color:var(--muted)}
+
+  /* Header like supermen.dk */
+  .promo{display:flex;align-items:center;justify-content:center;gap:14px;flex-wrap:wrap}
+  .promo-btn{color:#fff;text-decoration:none;border:1px solid #fff;padding:4px 10px;font-size:11px;letter-spacing:.14em}
+  .promo-btn:hover{background:#fff;color:var(--black)}
+  .hdr{display:grid;grid-template-columns:auto 1fr auto;gap:28px}
+  .burger{display:none;background:none;border:0;width:40px;height:40px;padding:8px;flex-direction:column;justify-content:space-between}
+  .burger span{display:block;height:2px;background:var(--black)}
+  .hsearch{display:flex;align-items:center;gap:10px;border:1px solid #d6d2cb;padding:0 14px;max-width:520px;width:100%;justify-self:center;height:44px}
+  .hsearch input{border:0;outline:0;font-size:14px;width:100%;background:transparent}
+  .hsearch:focus-within{border-color:var(--black)}
+  .hicons{display:flex;gap:18px}
+  .hicon{display:flex;flex-direction:column;align-items:center;gap:2px;text-decoration:none;font-size:11px;letter-spacing:.06em}
+  .hicon:hover{color:var(--muted)}
+  .hicon.staffbtn{border-right:1px solid var(--line);padding-right:18px}
+  .hicon.staffbtn.on{color:var(--olive)}
+  .mainnav{border-top:1px solid var(--line);background:#fff}
+  .mainnav > ul{list-style:none;display:flex;justify-content:center;gap:4px;margin:0 auto;padding:0 20px}
+  .mainnav > ul > li > a{display:block;font-family:var(--head);font-size:13.5px;font-weight:500;letter-spacing:.08em;text-transform:uppercase;text-decoration:none;padding:14px 16px}
+  .mainnav > ul > li > a:hover{color:var(--muted)}
+  .mainnav .dd{position:static}
+  .mega{position:absolute;left:0;right:0;top:100%;background:#fff;border-top:1px solid var(--line);border-bottom:1px solid var(--line);box-shadow:0 12px 24px rgba(0,0,0,.06);display:none;z-index:30}
+  .dd:hover .mega,.dd:focus-within .mega{display:block}
+  .mega-in{display:flex;gap:64px;padding:28px 20px 32px}
+  .mega h5{font-family:var(--head);font-size:12px;letter-spacing:.18em;text-transform:uppercase;margin:0 0 12px;color:var(--muted);font-weight:500}
+  .mega a{display:block;text-decoration:none;font-size:14.5px;padding:4px 0}
+  .mega a:hover{text-decoration:underline}
+  .mega a.all{font-weight:600;margin-top:6px}
+  @media (max-width:860px){
+    .hdr{grid-template-columns:auto 1fr auto;gap:12px}
+    .burger{display:flex}
+    .logo{justify-self:center}
+    .hsearch{display:none}
+    .hicon span{display:none}
+    .mainnav{display:none;max-height:75vh;overflow:auto}
+    .mainnav.open{display:block}
+    .mainnav > ul{flex-direction:column;padding:0}
+    .mainnav > ul > li{border-bottom:1px solid var(--line)}
+    .mega{position:static;display:block;box-shadow:none;border:0;background:var(--sand)}
+    .mega-in{flex-direction:column;gap:6px;padding:8px 20px 14px}
+    .mega h5{margin:8px 0 4px}
+  }
+
+  /* Instagram */
+  .insta{border-top:1px solid var(--line);padding:56px 0;background:#fff}
+  .insta-in{display:grid;grid-template-columns:1fr 380px;gap:48px;align-items:center}
+  .insta h2{font-size:30px;letter-spacing:.04em;margin:6px 0 12px}
+  .insta p{color:#46433e;max-width:460px;margin:0 0 22px}
+  .insta-card{display:block;border:1px solid var(--line);text-decoration:none;background:#fff;transition:box-shadow .2s}
+  .insta-card:hover{box-shadow:0 10px 30px rgba(0,0,0,.08)}
+  .ig-top{display:flex;align-items:center;gap:10px;padding:12px 14px;font-size:14px}
+  .ig-av{width:34px;height:34px;border-radius:50%;background:var(--black);color:#fff;font-family:var(--head);font-size:10px;font-weight:700;letter-spacing:.06em;display:flex;align-items:center;justify-content:center;box-shadow:0 0 0 2px #fff,0 0 0 3.5px #c13584}
+  .ig-img{aspect-ratio:1/1;background:linear-gradient(135deg,#f4f2ee,#e6e2da);display:flex;flex-direction:column;gap:10px;align-items:center;justify-content:center;color:#2a2a2a;font-family:var(--head);font-size:12px;letter-spacing:.18em;text-transform:uppercase}
+  .ig-foot{padding:12px 14px;font-family:var(--head);font-size:12px;letter-spacing:.14em;text-transform:uppercase}
+  @media (max-width:860px){ .insta-in{grid-template-columns:1fr} }
+
+  /* Team band */
+  .team{background:var(--sand);border-top:1px solid var(--line);padding:56px 0}
+  .team h2{font-size:26px;text-transform:uppercase;letter-spacing:.06em;margin:6px 0 26px}
+  .team-row{display:grid;grid-template-columns:repeat(4,1fr);gap:20px}
+  .tm{background:#fff;padding:26px 20px;text-align:center;border:1px solid var(--line)}
+  .avatar{width:96px;height:96px;border-radius:50%;background:var(--black);color:#fff;display:flex;align-items:center;justify-content:center;font-family:var(--head);font-size:34px;font-weight:600;letter-spacing:.04em;margin:0 auto 14px}
+  .tm h3{font-size:17px;text-transform:uppercase;letter-spacing:.1em}
+  .tm .role{font-size:12px;letter-spacing:.14em;text-transform:uppercase;color:var(--muted);margin-top:4px}
+  .loginform{flex-direction:column;gap:10px !important}
+  .loginform .input{border-right:1px solid #cfcbc4 !important;border-bottom:1px solid #cfcbc4 !important;text-align:center;font-size:18px}
+  .input.pin{letter-spacing:.5em;font-family:var(--head);font-weight:600}
+  .slogin{text-align:center;padding-top:48px;padding-bottom:72px}
+  .slogin h2{font-size:26px;text-transform:uppercase;letter-spacing:.08em;margin:8px 0 28px}
+  .slogin-row{display:grid;grid-template-columns:repeat(4,minmax(0,170px));gap:16px;justify-content:center}
+  .slogin-row button{background:#fff;border:1px solid var(--line);padding:22px 10px;font-family:var(--head);font-size:16px;font-weight:600;letter-spacing:.08em;text-transform:uppercase}
+  .slogin-row button:hover{border-color:var(--black)}
+  .slogin-row button .avatar{width:72px;height:72px;font-size:26px;margin-bottom:12px}
+  .slogin-row button small{display:block;font-family:var(--body);font-weight:400;font-size:12px;letter-spacing:.04em;text-transform:none;color:var(--muted);margin-top:4px}
+  .slogin-form{max-width:320px;margin:0 auto;display:flex;flex-direction:column;gap:10px}
+  .slogin-form .input{text-align:center;font-size:20px}
+  .slogin-who{display:flex;flex-direction:column;align-items:center;gap:8px;font-family:var(--head);font-size:18px;font-weight:600;text-transform:uppercase;letter-spacing:.08em;margin-bottom:6px}
+  @media (max-width:640px){ .slogin-row{grid-template-columns:repeat(2,1fr)} }
+  .staffband{display:flex;align-items:center;gap:10px;flex-wrap:wrap;padding:16px 0;border-bottom:1px solid var(--line)}
+  .staffband .lbl{font-family:var(--head);font-size:12px;letter-spacing:.16em;text-transform:uppercase;color:var(--muted);margin-right:6px}
+  .who-btn{display:flex;align-items:center;gap:10px;border:1px solid #cfcbc4;background:#fff;padding:6px 14px 6px 6px;font-family:var(--head);font-size:14px;font-weight:500;letter-spacing:.04em}
+  .who-btn .avatar{width:34px;height:34px;font-size:13px;margin:0;background:#bdb8af}
+  .who-btn.on{border-color:var(--black);background:var(--black);color:#fff}
+  .who-btn.on .avatar{background:#fff;color:var(--black)}
+  .who-btn:hover{border-color:var(--black)}
+  .linkbtn{background:none;border:0;font-family:var(--head);font-size:12px;letter-spacing:.12em;text-transform:uppercase;text-decoration:underline;color:var(--muted);padding:6px}
+  .teamedit-row{display:grid;grid-template-columns:1fr 1fr;gap:10px;margin-bottom:10px}
+  @media (max-width:860px){ .team-row{grid-template-columns:repeat(2,1fr)} }
+
+  /* Kundekort */
+  .kk{display:grid;grid-template-columns:340px 1fr;gap:32px;align-items:start}
+  .mcard{aspect-ratio:1.586/1;background:linear-gradient(140deg,#1b1b1b 0%,#0c0c0c 60%,#262620 100%);color:#fff;padding:22px 24px;display:flex;flex-direction:column;justify-content:space-between;box-shadow:0 14px 30px rgba(0,0,0,.18);position:relative;overflow:hidden}
+  .mcard::after{content:"";position:absolute;right:-60px;top:-60px;width:200px;height:200px;border-radius:50%;border:1px solid rgba(255,255,255,.08)}
+  .mcard-top{display:flex;justify-content:space-between;align-items:flex-start}
+  .mcard-logo{font-family:var(--head);font-weight:700;font-size:30px;letter-spacing:.08em;line-height:1}
+  .mcard-sub{font-family:var(--head);font-size:10px;letter-spacing:.32em;text-transform:uppercase;color:#bdb8af;margin-top:4px}
+  .mcard-no{font-family:var(--head);font-size:13px;letter-spacing:.18em;color:#bdb8af}
+  .mcard-chip{width:40px;height:30px;border-radius:5px;background:linear-gradient(135deg,#c9c3b4,#8f8a7c);opacity:.85}
+  .mcard-bottom{display:flex;justify-content:space-between;align-items:flex-end;gap:10px}
+  .mcard-lbl{font-size:9.5px;letter-spacing:.22em;text-transform:uppercase;color:#9d998f}
+  .mcard-name{font-family:var(--head);font-size:17px;font-weight:600;letter-spacing:.1em;text-transform:uppercase;margin-top:2px}
+  .mcard-phone{font-family:var(--head);font-size:15px;letter-spacing:.12em;margin-top:2px}
+  .kk-info{display:grid;grid-template-columns:1fr 1fr;gap:0 24px;margin:0}
+  .kk-info > div{padding:10px 0;border-bottom:1px solid var(--line)}
+  .kk-info > div.wide{grid-column:1/-1;border-bottom:0}
+  .kk-info dt{font-family:var(--head);font-size:11px;letter-spacing:.16em;text-transform:uppercase;color:var(--muted)}
+  .kk-info dd{margin:2px 0 0;font-size:15px;font-weight:500;word-break:break-word}
+  @media (max-width:860px){ .kk{grid-template-columns:1fr} .mcard{max-width:360px} }
+
+  /* Sizes */
+  .sizes-grid{display:grid;grid-template-columns:repeat(5,1fr);gap:12px}
+  .sizes-grid select{appearance:none;-webkit-appearance:none;border:1px solid #cfcbc4;background:#fff url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='10' height='6'%3E%3Cpath d='M1 1l4 4 4-4' fill='none' stroke='%23111' stroke-width='1.4'/%3E%3C/svg%3E") no-repeat right 12px center;padding:12px 30px 12px 12px;font-size:15px;font-family:var(--body);border-radius:0;width:100%}
+  .sizes-grid select:focus{outline:none;border-color:var(--black)}
+  .sizes-acts{display:flex;align-items:center;gap:14px;margin-top:16px;flex-wrap:wrap}
+  .chips{display:flex;flex-wrap:wrap;gap:8px;margin-top:14px}
+  .chip{border:1px solid var(--black);padding:6px 10px;font-size:13px;background:#fff}
+  .chip span{font-family:var(--head);font-size:10.5px;letter-spacing:.14em;text-transform:uppercase;color:var(--muted);margin-right:6px}
+  .chip b{font-family:var(--head);font-weight:600}
+  .chip.none{border-style:dashed;border-color:#cfcbc4;color:var(--muted)}
+  .modal .sizes-grid{grid-template-columns:repeat(3,1fr)}
+  .modal{max-height:92vh;overflow:auto}
+  @media (max-width:860px){ .sizes-grid{grid-template-columns:repeat(2,1fr)} }
+
+  /* Product carousel */
+  .shop{border-top:1px solid var(--line);padding:56px 0 64px;background:#fff}
+  .shop-head{display:flex;justify-content:space-between;align-items:flex-end;gap:16px;margin-bottom:24px;flex-wrap:wrap}
+  .shop-head h2{font-size:26px;text-transform:uppercase;letter-spacing:.06em;margin-top:6px}
+  .shop-nav{display:flex;gap:8px;align-items:center}
+  .shop-nav button{width:44px;height:44px;border:1px solid var(--black);background:#fff;font-size:18px;display:flex;align-items:center;justify-content:center}
+  .shop-nav button:hover{background:var(--black);color:#fff}
+  .shop-nav a{font-family:var(--head);font-size:12.5px;letter-spacing:.14em;text-transform:uppercase;margin-right:10px}
+  .viewport{overflow:hidden}
+  .track{display:flex;gap:20px;transition:transform .7s cubic-bezier(.4,0,.2,1);will-change:transform}
+  .track.jump{transition:none}
+  .prod{flex:0 0 calc((100% - 60px)/4);text-decoration:none;color:inherit;display:block}
+  .prod .img{aspect-ratio:3/4;background:var(--sand);position:relative;display:flex;align-items:center;justify-content:center;overflow:hidden}
+  .prod .img svg{width:46%;height:auto;color:#2a2a2a;opacity:.85;transition:transform .5s}
+  .prod:hover .img svg{transform:scale(1.06)}
+  .prod .brandmark{position:absolute;left:14px;top:12px;font-family:var(--head);font-size:11px;letter-spacing:.2em;text-transform:uppercase;color:var(--muted)}
+  .prod .klik{position:absolute;right:12px;bottom:12px;background:var(--black);color:#fff;font-family:var(--head);font-size:11.5px;letter-spacing:.1em;text-transform:uppercase;padding:6px 9px}
+  .prod .klik.full{background:var(--olive)}
+  .prod .tag{position:absolute;left:12px;bottom:12px;background:#fff;font-family:var(--head);font-size:10.5px;letter-spacing:.14em;text-transform:uppercase;padding:5px 8px}
+  .prod .meta{padding:12px 2px 0}
+  .prod .b{font-family:var(--head);font-size:12px;letter-spacing:.16em;text-transform:uppercase;color:var(--muted)}
+  .prod .t{font-size:14.5px;margin:3px 0 4px;line-height:1.35}
+  .prod .p{font-family:var(--head);font-weight:600;font-size:15px}
+  .prod .see{display:inline-block;margin-top:8px;font-family:var(--head);font-size:11.5px;letter-spacing:.14em;text-transform:uppercase;border-bottom:1px solid var(--black)}
+  .dots{display:flex;gap:6px;justify-content:center;margin-top:24px}
+  .dots button{width:24px;height:3px;border:0;background:#d6d2cb;padding:0}
+  .dots button.on{background:var(--black)}
+  @media (max-width:980px){ .prod{flex-basis:calc((100% - 20px)/2)} }
+  @media (max-width:560px){ .prod{flex-basis:78%} .track{gap:14px} }
+
+  footer.site{background:var(--black);color:#d9d6d0;padding:44px 0 28px;font-size:14px}
+  footer .cols{display:grid;grid-template-columns:repeat(3,1fr);gap:28px}
+  footer h4{font-family:var(--head);color:#fff;font-size:13px;letter-spacing:.18em;text-transform:uppercase;margin:0 0 12px;font-weight:600}
+  footer p{margin:0 0 4px}
+  footer .bottom{border-top:1px solid #2c2c2c;margin-top:30px;padding-top:18px;font-size:12px;color:#8d8a84;display:flex;justify-content:space-between;flex-wrap:wrap;gap:10px}
+  footer a{color:#d9d6d0}
+
+  [hidden]{display:none !important}
+
+  @media (max-width:860px){
+    .staff{grid-template-columns:1fr}
+    .list ul{max-height:280px}
+    .steps{grid-template-columns:1fr}
+    .step{border-right:0;border-bottom:1px solid var(--line)}
+    .step:last-child{border-bottom:0}
+    .hero h1{font-size:32px}
+    footer .cols{grid-template-columns:1fr}
+    .punches.big .punch{width:58px;height:58px;font-size:18px}
+    .punches.big .punch.on svg{width:24px;height:24px}
+    .bigcount .count{font-size:56px}
+    .kv{grid-template-columns:1fr 1fr}
+  }
+  @media (max-width:520px){
+    .hdr{height:64px}
+    .logo .m{font-size:28px}
+    nav.views a{padding:8px 8px;font-size:11.5px;letter-spacing:.08em}
+    .punch{width:48px;height:48px;font-size:15px}
+    .punches{gap:8px}
+    .punches.big .punch{width:50px;height:50px}
+    .lookup form{flex-direction:column}
+    .lookup form .input{border-right:1px solid #cfcbc4;border-bottom:0}
+    .action{grid-template-columns:1fr}
+    .action .input{border-right:1px solid #cfcbc4;border-bottom:0}
+  }
+</style>
+</head>
+<body>
+
+<div class="promo">Fri fragt ved køb over 499 kr. Tid til flere lag – se vores overshirts <a class="promo-btn" href="https://www.supermen.dk/collections/overshirts" target="_blank" rel="noopener">Se overshirts</a></div>
+
+<header class="site">
+  <div class="wrap hdr">
+    <button class="burger" type="button" id="burger" aria-label="Menu" aria-expanded="false"><span></span><span></span><span></span></button>
+    <a class="logo" href="https://www.supermen.dk" aria-label="MEN Supermen.dk">
+      <span class="m">MEN</span>
+      <span class="s">Lokal siden 2006</span>
+    </a>
+    <form class="hsearch" action="https://www.supermen.dk/search" method="get" target="_blank">
+      <svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="1.8"><circle cx="11" cy="11" r="7"/><path d="M20 20l-3.5-3.5"/></svg>
+      <input type="search" name="q" placeholder="Søg efter varer og brands" aria-label="Søg efter varer og brands">
+    </form>
+    <div class="hicons">
+      <a href="#personale" class="hicon staffbtn" title="Personale: registrér klik">
+        <svg viewBox="0 0 24 24" width="22" height="22" fill="none" stroke="currentColor" stroke-width="1.6"><rect x="3" y="6" width="18" height="13" rx="1.5"/><path d="M9 6V4.5h6V6"/><path d="M3 12h18"/><path d="M11 12v2h2v-2"/></svg>
+        <span>Personale</span>
+      </a>
+      <a href="#medlem" id="nav-medlem" class="hicon" title="Log ind">
+        <svg viewBox="0 0 24 24" width="22" height="22" fill="none" stroke="currentColor" stroke-width="1.6"><circle cx="12" cy="8" r="4"/><path d="M4 21c1.5-4 4.5-6 8-6s6.5 2 8 6"/></svg>
+        <span>Log ind</span>
+      </a>
+      <a href="https://www.supermen.dk/cart" class="hicon" target="_blank" rel="noopener" title="Kurv">
+        <svg viewBox="0 0 24 24" width="22" height="22" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M5 8h14l-1.2 12H6.2z"/><path d="M9 8V6a3 3 0 016 0v2"/></svg>
+        <span>Kurv</span>
+      </a>
+    </div>
+  </div>
+  <nav class="mainnav" id="mainnav" aria-label="Hovedmenu">
+    <ul class="wrap">
+      <li><a href="https://www.supermen.dk/collections/nyheder">Nyheder</a></li>
+      <li class="dd"><a href="https://www.supermen.dk/collections/toj">TØJ</a>
+        <div class="mega"><div class="wrap mega-in">
+          <div><h5>Tøj</h5>
+            <a href="https://www.supermen.dk/products/gavekort-valgfrit-belob">Gavekort</a>
+            <a href="https://www.supermen.dk/collections/nyheder">Nyheder</a>
+            <a href="https://www.supermen.dk/collections/all">Alt tøj</a>
+            <a href="https://www.supermen.dk/collections/t-shirts">T-Shirts</a>
+            <a href="https://www.supermen.dk/collections/strik">Strik</a>
+            <a href="https://www.supermen.dk/collections/cardigan">Cardigan</a></div>
+          <div><h5>&nbsp;</h5>
+            <a href="https://www.supermen.dk/collections/sweatshirts">Sweatshirts</a>
+            <a href="https://www.supermen.dk/collections/bukser">Bukser</a>
+            <a href="https://www.supermen.dk/collections/jeans">Jeans</a>
+            <a href="https://www.supermen.dk/collections/polo">Polo</a>
+            <a href="https://www.supermen.dk/collections/skjorter">Skjorter</a>
+            <a class="all" href="https://www.supermen.dk/collections/toj">Se alt i tøj</a></div>
+          <div><h5>Overtøj</h5>
+            <a href="https://www.supermen.dk/collections/overshirts">Overshirts</a>
+            <a href="https://www.supermen.dk/collections/jakkesaet-habitter">Jakkesæt &amp; Habitter</a>
+            <a href="https://www.supermen.dk/collections/frakker-og-jakker">Jakker &amp; Frakker</a></div>
+        </div></div>
+      </li>
+      <li class="dd"><a href="https://www.supermen.dk/collections/sko-stovler">Sko</a>
+        <div class="mega"><div class="wrap mega-in">
+          <div><h5>Sko</h5>
+            <a href="https://www.supermen.dk/collections/sko-stovler">Sko &amp; Støvler</a>
+            <a href="https://www.supermen.dk/collections/hjemmesko">Hjemmesko</a>
+            <a class="all" href="https://www.supermen.dk/collections/sko-stovler">Se alt i sko</a></div>
+        </div></div>
+      </li>
+      <li class="dd"><a href="https://www.supermen.dk/collections/accessories">Accessories</a>
+        <div class="mega"><div class="wrap mega-in">
+          <div><h5>Accessories</h5>
+            <a href="https://www.supermen.dk/collections/accessories">Accessories</a>
+            <a href="https://www.supermen.dk/collections/undertoj">Undertøj</a>
+            <a href="https://www.supermen.dk/collections/sokker">Strømper</a>
+            <a class="all" href="https://www.supermen.dk/collections/accessories">Se alt i accessories</a></div>
+        </div></div>
+      </li>
+      <li class="dd"><a href="https://www.supermen.dk/collections">Brands</a>
+        <div class="mega"><div class="wrap mega-in">
+          <div><h5>Brands</h5>
+            <a href="https://www.supermen.dk/collections/calvin-klein">Calvin Klein</a>
+            <a href="https://www.supermen.dk/collections/clarks">Clarks</a>
+            <a href="https://www.supermen.dk/collections/elsk">Elsk</a>
+            <a href="https://www.supermen.dk/collections/fred-perry">Fred Perry</a>
+            <a href="https://www.supermen.dk/collections/glerups">Glerups</a></div>
+          <div><h5>&nbsp;</h5>
+            <a href="https://www.supermen.dk/collections/jbs">Jbs</a>
+            <a href="https://www.supermen.dk/collections/lee">Lee</a>
+            <a href="https://www.supermen.dk/collections/les-deux">Les Deux</a>
+            <a href="https://www.supermen.dk/collections/the-mercer-brand">The Mercer Brand</a>
+            <a href="https://www.supermen.dk/collections/morris">Morris</a></div>
+          <div><h5>&nbsp;</h5>
+            <a href="https://www.supermen.dk/collections/replay">Replay</a>
+            <a href="https://www.supermen.dk/collections/revolution">Revolution</a>
+            <a href="https://www.supermen.dk/collections/selected">Selected</a>
+            <a href="https://www.supermen.dk/collections/wax-london">Wax London</a>
+            <a href="https://www.supermen.dk/collections/bestsellere">Bestsellere</a>
+            <a class="all" href="https://www.supermen.dk/collections">Se alt i brands</a></div>
+        </div></div>
+      </li>
+      <li><a href="https://www.supermen.dk/pages/om-men">Om MEN</a></li>
+      <li><a href="https://www.supermen.dk/pages/men-pilsner">MEN Pilsner</a></li>
+    </ul>
+  </nav>
+</header>
+
+<!-- ============ MEDLEM ============ -->
+<main id="view-medlem">
+  <section class="hero">
+    <div class="wrap">
+      <div class="eyebrow">MEN Kundeklub</div>
+      <h1>Handl hos os – og få 500 kr retur</h1>
+      <p>For hver 500 kr du handler for i butikken på Søndergade, får du et klik. Når du har samlet 5 klik, får du en rabatkupon på 500 kr til din næste handel.</p>
+      <div class="steps">
+        <div class="step"><div class="n">01</div><h3>Handl</h3><p>Oplys dit telefonnummer ved kassen, når du handler.</p></div>
+        <div class="step"><div class="n">02</div><h3>Saml klik</h3><p>Du får 1 klik for hver 500 kr. Det, der er tilbage, gemmes til næste gang.</p></div>
+        <div class="step"><div class="n">03</div><h3>Få 500 kr</h3><p>Ved 5 klik får du automatisk en rabatkupon på 500 kr.</p></div>
+      </div>
+    </div>
+  </section>
+
+  <div class="wrap">
+    <section class="lookup" id="lookup">
+      <h2 id="login-title">Log ind i kundeklubben</h2>
+      <form id="lookup-form" class="loginform" autocomplete="off">
+        <input class="input" id="lookup-phone" inputmode="numeric" maxlength="11" placeholder="Telefonnummer" aria-label="Telefonnummer">
+        <input class="input pin" id="lookup-pin" inputmode="numeric" maxlength="4" placeholder="Kode (4 cifre)" aria-label="Kode" type="password">
+        <input class="input pin" id="lookup-pin2" inputmode="numeric" maxlength="4" placeholder="Gentag koden" aria-label="Gentag koden" type="password" hidden>
+        <button class="btn" type="submit" id="lookup-btn">Log ind</button>
+      </form>
+      <div class="err" id="lookup-err"></div>
+      <div class="hint" id="lookup-hint">Første gang? Skriv dit nummer – så vælger du selv en kode.<br>Er du ikke medlem endnu? Spørg i butikken – det er gratis.</div>
+    </section>
+
+    <section class="status" id="status" hidden>
+      <div class="top">
+        <div>
+          <div class="eyebrow">Velkommen tilbage</div>
+          <h2 id="st-name">–</h2>
+        </div>
+        <button class="btn ghost small" id="st-logout" type="button">Log ud</button>
+      </div>
+
+      <div class="card">
+        <div class="row">
+          <div>
+            <div class="eyebrow" style="margin-bottom:8px">Dine klik</div>
+            <div class="count"><span id="st-count">0</span><small> / 5</small></div>
+          </div>
+          <div class="punches big" id="st-punches"></div>
+        </div>
+        <p class="msg" id="st-msg"></p>
+        <div class="bar"><span id="st-bar" style="width:0"></span></div>
+        <div class="kv" style="grid-template-columns:1fr">
+          <div><b id="st-rest">0 kr</b><span>Til gode mod næste klik</span></div>
+        </div>
+      </div>
+
+      <div class="card">
+        <h3 class="sec-title">Mit kundekort</h3>
+        <div class="kk">
+          <div class="mcard">
+            <div class="mcard-top"><div><div class="mcard-logo">MEN</div><div class="mcard-sub">Kundeklub</div></div><div class="mcard-no" id="kk-no"></div></div>
+            <div class="mcard-chip"></div>
+            <div class="mcard-bottom">
+              <div><div class="mcard-lbl">Medlem</div><div class="mcard-name" id="kk-cardname"></div></div>
+              <div style="text-align:right"><div class="mcard-lbl">Telefon</div><div class="mcard-phone" id="kk-cardphone"></div></div>
+            </div>
+          </div>
+          <dl class="kk-info">
+            <div><dt>Navn</dt><dd id="kk-name"></dd></div>
+            <div><dt>Telefon</dt><dd id="kk-phone"></dd></div>
+            <div><dt>E-mail</dt><dd id="kk-email"></dd></div>
+            <div><dt>Medlemsnummer</dt><dd id="kk-no2"></dd></div>
+            <div><dt>Medlem siden</dt><dd id="kk-since"></dd></div>
+            <div><dt>Handlet i alt</dt><dd id="kk-total"></dd></div>
+            <div><dt>Aktive rabatkuponer</dt><dd id="kk-coupons"></dd></div>
+            <div class="wide"><dt>Mine størrelser</dt><dd><div class="chips" id="kk-sizes" style="margin-top:4px"></div></dd></div>
+          </dl>
+        </div>
+        <p class="muted" style="font-size:13px;margin:16px 0 0">Vis dit kundekort ved kassen, så registrerer vi dine køb. Er der noget, der skal rettes, så sig det til os i butikken.</p>
+      </div>
+
+      <div class="card">
+        <h3 class="sec-title">Dine rabatkuponer</h3>
+        <div id="st-coupons"></div>
+      </div>
+
+      <div class="card">
+        <h3 class="sec-title">Ret mine størrelser</h3>
+        <p class="muted" style="margin:-6px 0 16px;font-size:14px">Fortæl os dine størrelser, så kan vi hurtigt finde det rigtige til dig i butikken.</p>
+        <div class="sizes-grid" id="st-sizes"></div>
+        <div class="sizes-acts">
+          <button class="btn small" type="button" id="st-sizes-save">Gem størrelser</button>
+          <span class="muted" id="st-sizes-msg" style="font-size:13px"></span>
+        </div>
+      </div>
+
+      <div class="card">
+        <h3 class="sec-title">Seneste aktivitet</h3>
+        <ul class="hist" id="st-hist"></ul>
+      </div>
+    </section>
+  </div>
+
+  <section class="shop" aria-label="Udvalgte produkter">
+    <div class="wrap">
+      <div class="shop-head">
+        <div>
+          <div class="eyebrow">Nyheder &amp; bestsellere</div>
+          <h2>Saml klik på din næste favorit</h2>
+        </div>
+        <div class="shop-nav">
+          <a href="https://www.supermen.dk" target="_blank" rel="noopener">Se alle</a>
+          <button type="button" id="car-prev" aria-label="Forrige">&#8592;</button>
+          <button type="button" id="car-next" aria-label="Næste">&#8594;</button>
+        </div>
+      </div>
+      <div class="viewport" id="car-viewport">
+        <div class="track" id="car-track"></div>
+      </div>
+      <div class="dots" id="car-dots"></div>
+    </div>
+  </section>
+
+  <section class="insta" aria-label="Instagram">
+    <div class="wrap insta-in">
+      <div class="insta-text">
+        <div class="eyebrow">Følg med på Instagram</div>
+        <h2>@MEN_horsens</h2>
+        <p>Nye varer, outfits fra butikken og hvad der ellers sker på Søndergade. Se vores seneste opslag på Instagram.</p>
+        <a class="btn" href="https://www.instagram.com/men_horsens/" target="_blank" rel="noopener">Se seneste opslag</a>
+      </div>
+      <a class="insta-card" href="https://www.instagram.com/men_horsens/" target="_blank" rel="noopener" aria-label="Seneste opslag på Instagram">
+        <div class="ig-top"><span class="ig-av">MEN</span><div><b>men_horsens</b><div class="muted" style="font-size:12px">Horsens, Denmark</div></div></div>
+        <div class="ig-img">
+          <svg viewBox="0 0 24 24" width="54" height="54" fill="none" stroke="currentColor" stroke-width="1.4"><rect x="3" y="3" width="18" height="18" rx="5"/><circle cx="12" cy="12" r="4.2"/><circle cx="17.4" cy="6.6" r="1" fill="currentColor"/></svg>
+          <span>Seneste opslag</span>
+        </div>
+        <div class="ig-foot">Åbn på Instagram →</div>
+      </a>
+    </div>
+  </section>
+
+  <section class="team" aria-label="Mød holdet">
+    <div class="wrap">
+      <div class="eyebrow">Søndergade 15 · Horsens</div>
+      <h2>Mød holdet bag MEN</h2>
+      <div class="team-row" id="team-row"></div>
+    </div>
+  </section>
+</main>
+
+<!-- ============ PERSONALE ============ -->
+<main id="view-personale" hidden>
+  <div class="staff-head">
+    <div class="wrap">
+      <div>
+        <div class="eyebrow">Kun for personale</div>
+        <h1>Registrér klik</h1>
+      </div>
+      <div style="display:flex;gap:10px;flex-wrap:wrap">
+        <button class="btn ghost small" id="btn-new" type="button" style="border-color:#fff">+ Ny kunde</button>
+        <a class="btn small" href="#medlem" style="border-color:#fff;text-decoration:none">← Til kundesiden</a>
+      </div>
+    </div>
+  </div>
+
+  <section class="slogin wrap" id="staff-login">
+    <div class="eyebrow">Personale-login</div>
+    <h2>Hvem er du?</h2>
+    <div class="slogin-row" id="slogin-row"></div>
+    <form id="slogin-form" class="slogin-form" autocomplete="off" hidden>
+      <div class="slogin-who" id="slogin-who"></div>
+      <input class="input pin" id="slogin-pin" inputmode="numeric" maxlength="4" type="password" placeholder="PIN-kode (4 cifre)" aria-label="PIN-kode">
+      <input class="input pin" id="slogin-pin2" inputmode="numeric" maxlength="4" type="password" placeholder="Gentag PIN-kode" aria-label="Gentag PIN-kode" hidden>
+      <button class="btn" type="submit" id="slogin-btn">Log ind</button>
+      <div class="err" id="slogin-err"></div>
+      <button class="linkbtn" type="button" id="slogin-back">← Vælg en anden</button>
+    </form>
+  </section>
+
+  <div class="wrap" id="staff-app" hidden>
+    <div class="staffband">
+      <span class="lbl">Logget ind som</span>
+      <div id="who-row" style="display:flex;gap:8px;flex-wrap:wrap"></div>
+      <button class="linkbtn" type="button" id="staff-logout">Log ud</button>
+      <button class="linkbtn" type="button" id="team-edit">Ret ansatte</button>
+    </div>
+    <div class="notice" id="ro-notice" hidden>Du har kun læseadgang til kundeklubben. Bed ejeren om at give dig adgang som <b>Contributor</b> eller <b>Editor</b>, så du kan registrere klik.</div>
+    <div class="staff">
+      <aside class="list">
+        <div class="search">
+          <input class="input" id="s-search" inputmode="search" placeholder="Søg telefon eller navn" aria-label="Søg kunde" autocomplete="off">
+        </div>
+        <ul id="s-list"></ul>
+        <div class="foot"><span id="s-countall">0 medlemmer</span><span id="s-sync" class="muted"></span></div>
+      </aside>
+
+      <section class="panel" id="s-panel">
+        <div class="placeholder" id="s-empty">
+          <h3>Vælg en kunde</h3>
+          <p>Søg på telefonnummer eller navn til venstre – eller opret en ny kunde.</p>
+        </div>
+
+        <div id="s-detail" hidden>
+          <div class="reward" id="s-reward" hidden>
+            <div>
+              <div class="eyebrow" style="color:#e8e6d8">Ny rabatkupon optjent – giv kunden besked</div>
+              <div class="code" id="s-reward-code"></div>
+            </div>
+            <div style="font-family:var(--head);font-size:28px;font-weight:700">500 kr</div>
+          </div>
+
+          <div class="card">
+            <div class="who">
+              <div>
+                <h2 id="s-name"></h2>
+                <div class="ph" id="s-phone"></div>
+              </div>
+              <button class="btn ghost small" id="s-edit" type="button">Rediger</button>
+            </div>
+            <div class="chips" id="s-sizes"></div>
+
+            <div class="bigcount">
+              <div class="count"><span id="s-count">0</span><small> / 5 klik</small></div>
+              <div class="punches big" id="s-punches"></div>
+            </div>
+            <div class="muted" id="s-sub" style="margin-bottom:22px"></div>
+
+            <div class="field">
+              <label for="s-amount">Købsbeløb (kr)</label>
+              <form class="action" id="s-form" autocomplete="off">
+                <input class="input" id="s-amount" inputmode="decimal" placeholder="f.eks. 1.299">
+                <button class="btn" type="submit" id="s-submit">Registrér køb</button>
+              </form>
+            </div>
+            <div class="quick" id="s-quick">
+              <button type="button" data-amt="500">500 kr</button>
+              <button type="button" data-amt="1000">1.000 kr</button>
+              <button type="button" data-amt="1500">1.500 kr</button>
+              <button type="button" data-amt="2000">2.000 kr</button>
+            </div>
+            <div class="preview" id="s-preview"></div>
+
+            <div class="oneclick">
+              <button class="btn" type="button" id="s-plus1">+1 klik</button>
+              <button class="btn ghost" type="button" id="s-minus1">−1 klik</button>
+              <button class="btn ghost" type="button" id="s-undo">Fortryd sidste</button>
+            </div>
+          </div>
+
+          <div class="card">
+            <h3 class="sec-title">Rabatkuponer</h3>
+            <div id="s-coupons"></div>
+          </div>
+
+          <div class="card">
+            <h3 class="sec-title">Historik</h3>
+            <ul class="hist" id="s-hist"></ul>
+          </div>
+        </div>
+      </section>
+    </div>
+  </div>
+</main>
+
+<footer class="site">
+  <div class="wrap">
+    <div class="cols">
+      <div>
+        <h4>MEN · Horsens</h4>
+        <p>Søndergade 15</p>
+        <p>8700 Horsens</p>
+        <p>Tlf. 76 27 91 11</p>
+        <p>info@supermen.dk</p>
+      </div>
+      <div>
+        <h4>Åbningstider</h4>
+        <p>Man–tor: 10.00–17.30</p>
+        <p>Fredag: 10.00–18.00</p>
+        <p>Lørdag: 10.00–14.00</p>
+        <p>Søndag: Lukket</p>
+      </div>
+      <div>
+        <h4>Kundeklub</h4>
+        <p>1 klik for hver 500 kr.</p>
+        <p>5 klik giver en rabatkupon på 500 kr.</p>
+        <p>Kuponen kan bruges i butikken.</p>
+        <p style="margin-top:10px"><a href="https://www.supermen.dk">www.supermen.dk</a></p>
+      </div>
+    </div>
+    <div class="bottom">
+      <span>© 2026 Supermen.dk · CVR 29780285</span>
+      <span>Instagram: MEN_horsens &nbsp;·&nbsp; <a href="#personale" id="nav-personale" style="color:#8d8a84">Personale</a></span>
+    </div>
+  </div>
+</footer>
+
+<!-- Modal: create / edit -->
+<div class="modal-bg" id="m-bg">
+  <form class="modal" id="m-form" autocomplete="off">
+    <h3 id="m-title">Ny kunde</h3>
+    <div class="field"><label for="m-name">Navn</label><input class="input" id="m-name" required></div>
+    <div class="field"><label for="m-phone">Telefonnummer</label><input class="input" id="m-phone" inputmode="tel" required></div>
+    <div class="field"><label for="m-email">E-mail (valgfri)</label><input class="input" id="m-email" type="email"></div>
+    <div class="field"><label for="m-pin" id="m-pin-lbl">Kundens kode (valgfri, 4 cifre)</label><input class="input" id="m-pin" inputmode="numeric" maxlength="4" placeholder="Kunden kan også selv vælge den første gang"></div>
+    <div class="field"><label>Størrelser (valgfri)</label><div class="sizes-grid" id="m-sizes"></div></div>
+    <div class="err" id="m-err"></div>
+    <div class="acts">
+      <button class="btn ghost" type="button" id="m-cancel">Annullér</button>
+      <button class="btn" type="submit" id="m-save">Opret</button>
+    </div>
+  </form>
+</div>
+
+<!-- Modal: team -->
+<div class="modal-bg" id="t-bg">
+  <form class="modal" id="t-form" autocomplete="off">
+    <h3>De 4 ansatte</h3>
+    <p class="muted" style="margin:-8px 0 16px;font-size:14px">Navn og rolle vises for kunderne under “Mød holdet bag MEN”.</p>
+    <div id="t-rows"></div>
+    <div class="err" id="t-err"></div>
+    <div class="acts">
+      <button class="btn ghost" type="button" id="t-cancel">Annullér</button>
+      <button class="btn" type="submit">Gem</button>
+    </div>
+  </form>
+</div>
+
+<!-- Modal: confirm -->
+<div class="modal-bg" id="c-bg">
+  <div class="modal">
+    <h3 id="c-title">Er du sikker?</h3>
+    <p id="c-text" class="muted"></p>
+    <div class="acts">
+      <button class="btn ghost" type="button" id="c-no">Annullér</button>
+      <button class="btn" type="button" id="c-yes">Ja</button>
+    </div>
+  </div>
+</div>
+
+<div class="toast" id="toast"></div>
+
+<script>
+(() => {
+  const KR_PER_CLICK = 500, CLICKS_FOR_COUPON = 5, COUPON_VALUE = 500, HIST_MAX = 60;
+  const CHECK = '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12.5l4.5 4.5L19 7.5"/></svg>';
+
+  const $ = id => document.getElementById(id);
+  const esc = s => String(s ?? '').replace(/[&<>"']/g, c => ({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
+  const digits = s => String(s || '').replace(/\D/g, '');
+  const normPhone = s => { let d = digits(s); if (d.length === 10 && d.startsWith('45')) d = d.slice(2); return d; };
+  const fmtPhone = d => d && d.length === 8 ? d.replace(/(\d{2})(\d{2})(\d{2})(\d{2})/, '$1 $2 $3 $4') : d;
+  const kr = n => (Math.round(n || 0)).toLocaleString('da-DK') + ' kr';
+  const fmtDate = t => t ? new Date(t).toLocaleDateString('da-DK', {day:'numeric', month:'short', year:'numeric'}) : '–';
+  const fmtDT = t => t ? new Date(t).toLocaleString('da-DK', {day:'numeric', month:'short', hour:'2-digit', minute:'2-digit'}) : '';
+  const parseAmount = s => { const t = String(s || '').trim().replace(/\s/g, '').replace(/\./g, '').replace(',', '.'); const n = parseFloat(t); return isFinite(n) ? n : NaN; };
+
+  function toast(msg){ const t = $('toast'); t.textContent = msg; t.classList.add('show'); clearTimeout(toast._t); toast._t = setTimeout(() => t.classList.remove('show'), 2600); }
+
+  function genCode(){
+    const a = 'ABCDEFGHJKLMNPQRSTUVWXYZ23456789'; let s = '';
+    const r = new Uint32Array(6); crypto.getRandomValues(r);
+    for (const x of r) s += a[x % a.length];
+    return 'MEN-' + s;
+  }
+
+  function punchesHTML(n, popIndex = -1){
+    let h = '';
+    for (let i = 0; i < CLICKS_FOR_COUPON; i++){
+      const on = i < n;
+      const last = i === CLICKS_FOR_COUPON - 1;
+      h += `<div class="punch ${on ? 'on' : ''} ${!on && last ? 'gift' : ''} ${i === popIndex ? 'pop' : ''}">${on ? CHECK : (last ? '500' : i + 1)}</div>`;
+    }
+    return h;
+  }
+  const miniHTML = n => '<span class="mini">' + Array.from({length: CLICKS_FOR_COUPON}, (_, i) => `<i class="${i < n ? 'on' : ''}"></i>`).join('') + '</span>';
+
+  function histLabel(h){
+    switch (h.type){
+      case 'purchase': return `Køb på ${kr(h.amount)}` + (h.clicks ? ` · +${h.clicks} klik` : ' · ingen nye klik');
+      case 'click': return h.clicks > 0 ? `+${h.clicks} klik (manuelt)` : `${h.clicks} klik (rettelse)`;
+      case 'coupon': return `Rabatkupon optjent: ${h.code}`;
+      case 'redeem': return `Kupon brugt: ${h.code}`;
+      case 'unredeem': return `Kupon genaktiveret: ${h.code}`;
+      case 'undo': return `Fortrudt: ${h.what || 'sidste handling'}`;
+      case 'join': return 'Blev medlem';
+      default: return h.type;
+    }
+  }
+  function histHTML(list, limit, showBy){
+    const arr = (list || []).slice().reverse().slice(0, limit);
+    if (!arr.length) return '<li class="muted">Ingen aktivitet endnu.</li>';
+    return arr.map(h => `<li><span>${esc(histLabel(h))}${showBy && h.by ? ` <span class="muted">· ${esc(h.by)}</span>` : ''}</span><span class="d">${esc(fmtDT(h.t))}</span></li>`).join('');
+  }
+
+  /* ---------- Sizes ---------- */
+  const range = (a, b, s = 1) => { const r = []; for (let x = a; x <= b; x += s) r.push(String(x)); return r; };
+  const SIZE_DEFS = [
+    {key:'top',    label:'T-shirt / strik', opts:['XS','S','M','L','XL','XXL','3XL']},
+    {key:'shirt',  label:'Skjorte',         opts:['XS','S','M','L','XL','XXL','3XL']},
+    {key:'jacket', label:'Jakke / habit',   opts:['44','46','48','50','52','54','56','58','60','XS','S','M','L','XL','XXL']},
+    {key:'waist',  label:'Bukser (W)',      opts:range(28, 40)},
+    {key:'length', label:'Benlængde (L)',   opts:range(30, 36)},
+    {key:'shoe',   label:'Sko',             opts:range(39, 47)}
+  ];
+  function sizesSelectHTML(prefix, sizes){
+    sizes = sizes || {};
+    return SIZE_DEFS.map(d => `<div class="field"><label for="${prefix}-${d.key}">${esc(d.label)}</label>
+      <select id="${prefix}-${d.key}" data-size="${d.key}"><option value="">–</option>${d.opts.map(o => `<option ${sizes[d.key] === o ? 'selected' : ''}>${esc(o)}</option>`).join('')}</select></div>`).join('');
+  }
+  function readSizes(container){
+    const out = {};
+    container.querySelectorAll('select[data-size]').forEach(s => { out[s.dataset.size] = s.value || ''; });
+    return out;
+  }
+  function chipsHTML(sizes){
+    const set = SIZE_DEFS.filter(d => sizes && sizes[d.key]);
+    if (!set.length) return '<span class="chip none">Ingen størrelser angivet</span>';
+    return set.map(d => `<span class="chip"><span>${esc(d.label)}</span><b>${esc(sizes[d.key])}</b></span>`).join('');
+  }
+  let sizesDirty = false, sizesFor = null;
+
+  /* ---------- Team ---------- */
+  const DEFAULT_TEAM = [
+    {name:'Klaus', role:'Medejer'},
+    {name:'Henrik', role:'Medejer'},
+    {name:'Silas', role:'Butiksmedarbejder'},
+    {name:'Jesper', role:'Butiksmedarbejder'}
+  ];
+  let team = DEFAULT_TEAM;
+  let cashier = null;      // = logged-in staff member
+  try { cashier = localStorage.getItem('men-klub-staff'); } catch(e){}
+  const initials = n => (n || '?').trim().split(/\s+/).map(w => w[0]).join('').slice(0, 2).toUpperCase();
+  async function hashPin(scope, id, pin){
+    const buf = await crypto.subtle.digest('SHA-256', new TextEncoder().encode(`men-klub|${scope}|${id}|${pin}`));
+    return [...new Uint8Array(buf)].map(b => b.toString(16).padStart(2, '0')).join('');
+  }
+  const isPin = s => /^\d{4}$/.test(s);
+  function renderTeam(){
+    $('team-row').innerHTML = team.map(t => `<div class="tm"><div class="avatar">${esc(initials(t.name))}</div><h3>${esc(t.name)}</h3><div class="role">${esc(t.role || '')}</div></div>`).join('');
+    $('who-row').innerHTML = cashier ? `<span class="who-btn on"><span class="avatar">${esc(initials(cashier))}</span>${esc(cashier)}</span>` : '';
+    $('slogin-row').innerHTML = team.map((t, i) => `<button type="button" data-login="${i}"><div class="avatar">${esc(initials(t.name))}</div>${esc(t.name)}<small>${t.pinHash ? esc(t.role || '') : 'Vælg PIN første gang'}</small></button>`).join('');
+  }
+  function staffLoggedIn(){ return !!cashier && team.some(t => t.name === cashier); }
+  function setStaff(name){
+    cashier = name;
+    try { name ? localStorage.setItem('men-klub-staff', name) : localStorage.removeItem('men-klub-staff'); } catch(e){}
+    renderTeam(); renderStaff();
+  }
+
+  /* ---------- State ---------- */
+  let db = null, user = null, canWrite = null;
+  let members = new Map();   // id -> data
+  let loaded = false;
+  let selectedId = null;
+  let myPhone = null;
+  let busy = false;
+  let lastReward = null;     // {id, codes}
+  let lastClicksShown = {staff:null, member:null};
+
+  try { myPhone = localStorage.getItem('men-klub-phone'); } catch(e){}
+
+  /* ---------- Routing ---------- */
+  function route(){
+    const v = location.hash === '#personale' ? 'personale' : 'medlem';
+    $('view-medlem').hidden = v !== 'medlem';
+    $('view-personale').hidden = v !== 'personale';
+    $('nav-medlem').classList.toggle('on', v === 'medlem');
+    $('nav-personale').classList.toggle('on', v === 'personale');
+    document.querySelectorAll('.staffbtn').forEach(b => b.classList.toggle('on', v === 'personale'));
+    window.scrollTo(0, 0);
+    render();
+    if (v === 'personale') setTimeout(() => $('s-search').focus(), 50);
+  }
+  window.addEventListener('hashchange', route);
+
+  /* ---------- Rendering ---------- */
+  function render(){ renderMember(); renderStaff(); }
+
+  function memberNo(id){
+    const order = [...members.entries()].sort((a, b) => ((a[1].joined || 0) - (b[1].joined || 0)) || a[0].localeCompare(b[0])).map(e => e[0]);
+    const i = order.indexOf(id);
+    return String(i < 0 ? 0 : i + 1).padStart(4, '0');
+  }
+  function renderMember(){
+    const m = myPhone ? members.get(myPhone) : null;
+    if (!myPhone || (loaded && !m)){
+      $('lookup').hidden = false; $('status').hidden = true;
+      if (myPhone && loaded && !m){ $('lookup-err').textContent = 'Vi kunne ikke finde et medlem med det nummer.'; }
+      return;
+    }
+    if (!m){ $('lookup').hidden = false; $('status').hidden = true; return; }
+    $('lookup').hidden = true; $('status').hidden = false;
+    const c = m.clicks || 0;
+    $('st-name').textContent = (m.name || 'Medlem').split(' ')[0];
+    $('st-count').textContent = c;
+    const pop = lastClicksShown.member !== null && c > lastClicksShown.member ? c - 1 : -1;
+    $('st-punches').innerHTML = punchesHTML(c, pop);
+    lastClicksShown.member = c;
+    const left = CLICKS_FOR_COUPON - c;
+    const toGo = left * KR_PER_CLICK - (m.restKr || 0);
+    $('st-msg').innerHTML = left === CLICKS_FOR_COUPON && !(m.restKr)
+      ? `Handl for <b>${kr(KR_PER_CLICK)}</b> for at få dit første klik.`
+      : `Du mangler <b>${left} klik</b> – handl for <b>${kr(toGo)}</b> mere, så får du en rabatkupon på <b>${kr(COUPON_VALUE)}</b>.`;
+    const progress = ((c * KR_PER_CLICK + (m.restKr || 0)) / (CLICKS_FOR_COUPON * KR_PER_CLICK)) * 100;
+    $('st-bar').style.width = Math.min(100, progress) + '%';
+    $('st-rest').textContent = kr(m.restKr);
+    // Kundekort
+    const no = memberNo(myPhone);
+    $('kk-no').textContent = 'Nr. ' + no; $('kk-no2').textContent = no;
+    $('kk-cardname').textContent = m.name || 'Medlem';
+    $('kk-cardphone').textContent = fmtPhone(myPhone);
+    $('kk-name').textContent = m.name || '–';
+    $('kk-phone').textContent = fmtPhone(myPhone);
+    $('kk-email').textContent = m.email || 'Ikke angivet';
+    $('kk-since').textContent = fmtDate(m.joined);
+    $('kk-total').textContent = kr(m.totalKr);
+    const act = (m.coupons || []).filter(x => !x.used).length;
+    $('kk-coupons').textContent = act ? `${act} × ${kr(COUPON_VALUE)}` : 'Ingen lige nu';
+    $('kk-sizes').innerHTML = chipsHTML(m.sizes);
+
+    const coupons = (m.coupons || []).slice().sort((a, b) => (a.used - b.used) || (b.created - a.created));
+    $('st-coupons').innerHTML = coupons.length ? coupons.map(cp => `
+      <div class="coupon ${cp.used ? 'used' : ''}">
+        <div><div class="lbl">${cp.used ? 'Brugt ' + esc(fmtDate(cp.usedAt)) : 'Klar til brug · vis koden ved kassen'}</div><div class="code">${esc(cp.code)}</div></div>
+        <div class="val">${kr(cp.value || COUPON_VALUE)}</div>
+      </div>`).join('') : '<p class="muted" style="margin:0">Du har ingen kuponer endnu. Ved 5 klik får du automatisk en kupon på 500 kr.</p>';
+    $('st-hist').innerHTML = histHTML(m.history, 8);
+    if (!sizesDirty || sizesFor !== myPhone){
+      $('st-sizes').innerHTML = sizesSelectHTML('sz', m.sizes);
+      sizesDirty = false; sizesFor = myPhone;
+    }
+    $('st-sizes-save').disabled = !sizesDirty;
+  }
+
+  function filteredMembers(){
+    const q = $('s-search').value.trim().toLowerCase();
+    const qd = digits(q);
+    let arr = [...members.entries()].map(([id, m]) => ({id, ...m}));
+    if (q) arr = arr.filter(m => (qd && m.id.includes(qd)) || (m.name || '').toLowerCase().includes(q) || (m.email || '').toLowerCase().includes(q));
+    arr.sort((a, b) => (b.updated || 0) - (a.updated || 0));
+    return arr;
+  }
+
+  function renderStaff(){
+    if ($('view-personale').hidden) return;
+    const li = staffLoggedIn();
+    $('staff-login').hidden = li; $('staff-app').hidden = !li; $('btn-new').hidden = !li;
+    if (!li) return;
+    const list = filteredMembers();
+    const q = $('s-search').value.trim();
+    const qd = normPhone(q);
+    let html = list.slice(0, 200).map(m => {
+      const open = (m.coupons || []).filter(c => !c.used).length;
+      return `<li data-id="${esc(m.id)}" class="${m.id === selectedId ? 'sel' : ''}">
+        <div><div class="nm">${esc(m.name || 'Uden navn')}</div><div class="ph">${esc(fmtPhone(m.id))}</div></div>
+        <div style="text-align:right">${miniHTML(m.clicks || 0)}${open ? `<div style="margin-top:5px"><span class="badge">${open} kupon${open > 1 ? 'er' : ''}</span></div>` : ''}</div>
+      </li>`;
+    }).join('');
+    if (!loaded) html = '<li class="empty" style="cursor:default">Henter medlemmer…</li>';
+    else if (!list.length){
+      html = q
+        ? `<li class="empty" style="cursor:default">Ingen fundet.${qd.length === 8 && canWrite !== false ? ` <br><br><button class="btn small" type="button" id="s-create-q">Opret ${esc(fmtPhone(qd))}</button>` : ''}</li>`
+        : '<li class="empty" style="cursor:default">Ingen medlemmer endnu. Tryk “+ Ny kunde” for at oprette den første.</li>';
+    }
+    $('s-list').innerHTML = html;
+    $('s-countall').textContent = members.size + (members.size === 1 ? ' medlem' : ' medlemmer');
+    const cq = $('s-create-q'); if (cq) cq.onclick = () => openMember(null, qd);
+
+    const m = selectedId ? members.get(selectedId) : null;
+    $('s-empty').hidden = !!m; $('s-detail').hidden = !m;
+    if (!m) return;
+    const c = m.clicks || 0;
+    $('s-name').textContent = m.name || 'Uden navn';
+    $('s-phone').textContent = fmtPhone(selectedId) + (m.email ? ' · ' + m.email : '');
+    $('s-sizes').innerHTML = chipsHTML(m.sizes);
+    $('s-count').textContent = c;
+    const pop = lastClicksShown.staff !== null && lastClicksShown.staffId === selectedId && c > lastClicksShown.staff ? c - 1 : -1;
+    $('s-punches').innerHTML = punchesHTML(c, pop);
+    lastClicksShown.staff = c; lastClicksShown.staffId = selectedId;
+    const open = (m.coupons || []).filter(x => !x.used).length;
+    $('s-sub').innerHTML = `${kr(m.restKr)} til gode mod næste klik · Handlet for ${kr(m.totalKr)} i alt · ${m.pinHash ? 'Login-kode valgt' : 'Har ikke valgt login-kode endnu'}` + (open ? ` · <b style="color:var(--olive)">${open} ubrugt${open > 1 ? 'e' : ''} kupon${open > 1 ? 'er' : ''}</b>` : '');
+
+    const showReward = lastReward && lastReward.id === selectedId;
+    $('s-reward').hidden = !showReward;
+    if (showReward) $('s-reward-code').textContent = lastReward.codes.join('  ·  ');
+
+    const coupons = (m.coupons || []).slice().sort((a, b) => (a.used - b.used) || (b.created - a.created));
+    $('s-coupons').innerHTML = coupons.length ? coupons.map(cp => `
+      <div class="coupon ${cp.used ? 'used' : ''}">
+        <div><div class="lbl">${cp.used ? 'Brugt ' + esc(fmtDate(cp.usedAt)) : 'Optjent ' + esc(fmtDate(cp.created))}</div><div class="code">${esc(cp.code)}</div></div>
+        <div style="display:flex;align-items:center;gap:14px"><div class="val">${kr(cp.value || COUPON_VALUE)}</div>
+        ${cp.used ? `<button class="btn ghost small" data-unredeem="${esc(cp.code)}">Fortryd</button>` : `<button class="btn small" data-redeem="${esc(cp.code)}">Markér brugt</button>`}</div>
+      </div>`).join('') : '<p class="muted" style="margin:0">Ingen kuponer endnu.</p>';
+    $('s-hist').innerHTML = histHTML(m.history, 25, true);
+    updatePreview();
+    applyWriteGate();
+  }
+
+  function updatePreview(){
+    const m = selectedId ? members.get(selectedId) : null;
+    if (!m) return;
+    const a = parseAmount($('s-amount').value);
+    if (!(a > 0)){ $('s-preview').innerHTML = '<span class="muted">Skriv beløbet – klik beregnes automatisk (1 klik pr. 500 kr, resten gemmes).</span>'; return; }
+    const total = (m.restKr || 0) + a;
+    const n = Math.floor(total / KR_PER_CLICK);
+    const after = (m.clicks || 0) + n;
+    const coupons = Math.floor(after / CLICKS_FOR_COUPON);
+    let s = `Giver <b>${n} klik</b>`;
+    if (m.restKr) s += ` (inkl. ${kr(m.restKr)} til gode)`;
+    s += ` → kunden får <b>${after % CLICKS_FOR_COUPON}/5 klik</b>`;
+    if (coupons) s += ` og <b style="color:var(--olive)">${coupons} rabatkupon${coupons > 1 ? 'er' : ''} på 500 kr</b>`;
+    s += `. ${kr(total % KR_PER_CLICK)} gemmes til næste gang.`;
+    $('s-preview').innerHTML = s;
+  }
+
+  function applyWriteGate(){
+    const ro = canWrite === false;
+    $('ro-notice').hidden = !ro;
+    ['s-submit','s-plus1','s-minus1','s-undo','btn-new','s-edit'].forEach(id => { const el = $(id); if (el) el.disabled = ro || busy; });
+    document.querySelectorAll('[data-redeem],[data-unredeem]').forEach(b => b.disabled = ro || busy);
+    const m = selectedId ? members.get(selectedId) : null;
+    if (m){
+      $('s-undo').disabled = ro || busy || !m.undo;
+      $('s-minus1').disabled = ro || busy || !(m.clicks > 0);
+    }
+  }
+
+  /* ---------- Mutations ---------- */
+  function snapshotOf(m){ return {clicks: m.clicks || 0, restKr: m.restKr || 0, totalKr: m.totalKr || 0, coupons: (m.coupons || []).map(c => ({...c}))}; }
+  function pushHist(m, entries){ return [...(m.history || []), ...entries.map(e => cashier ? {...e, by: cashier} : e)].slice(-HIST_MAX); }
+
+  async function write(id, data){
+    if (!db) { toast('Ingen forbindelse til kundeklubben.'); return false; }
+    busy = true; applyWriteGate();
+    try {
+      await db.collection('members').doc(id).set(data);
+      return true;
+    } catch (e){
+      if (e && e.code === 'invalid_argument'){ canWrite = false; toast('Du har ikke adgang til at ændre kundeklubben.'); }
+      else if (e && e.code === 'quota_exceeded'){ toast('Databasen er fuld – kontakt ejeren.'); }
+      else if (e && e.code === 'unavailable'){
+        await new Promise(r => setTimeout(r, 400 + Math.random() * 600));
+        try { await db.collection('members').doc(id).set(data); return true; } catch(e2){ toast('Kunne ikke gemme – prøv igen.'); }
+      }
+      else toast('Kunne ikke gemme – prøv igen.');
+      return false;
+    } finally { busy = false; applyWriteGate(); }
+  }
+
+  async function addClicks(id, n, base){
+    const m = members.get(id); if (!m) return;
+    const now = Date.now();
+    let clicks = (m.clicks || 0) + n;
+    const coupons = (m.coupons || []).map(c => ({...c}));
+    const hist = [base];
+    const newCodes = [];
+    while (clicks >= CLICKS_FOR_COUPON){
+      clicks -= CLICKS_FOR_COUPON;
+      const code = genCode();
+      coupons.push({code, value: COUPON_VALUE, created: now, used: false});
+      hist.push({t: now, type: 'coupon', code});
+      newCodes.push(code);
+    }
+    if (clicks < 0) clicks = 0;
+    const next = {
+      ...m,
+      clicks,
+      restKr: base.type === 'purchase' ? base.rest : (m.restKr || 0),
+      totalKr: (m.totalKr || 0) + (base.type === 'purchase' ? base.amount : 0),
+      coupons,
+      history: pushHist(m, hist),
+      undo: {...snapshotOf(m), what: histLabel(base)},
+      updated: now
+    };
+    delete next.rest;
+    const ok = await write(id, next);
+    if (ok){
+      if (newCodes.length){ lastReward = {id, codes: newCodes}; toast(`🎉 ${m.name || 'Kunden'} har optjent en rabatkupon på 500 kr!`); }
+      else { lastReward = null; toast(n > 0 ? `+${n} klik til ${m.name || 'kunden'}` : n < 0 ? 'Klik fjernet' : 'Køb registreret – ingen nye klik'); }
+      render();
+    }
+    return ok;
+  }
+
+  async function registerPurchase(){
+    const id = selectedId, m = members.get(id); if (!m || busy) return;
+    const a = parseAmount($('s-amount').value);
+    if (!(a > 0)){ toast('Skriv et beløb først'); $('s-amount').focus(); return; }
+    if (a > 100000){ toast('Beløbet ser for højt ud – tjek det.'); return; }
+    const total = (m.restKr || 0) + a;
+    const n = Math.floor(total / KR_PER_CLICK);
+    const ok = await addClicks(id, n, {t: Date.now(), type: 'purchase', amount: Math.round(a), clicks: n, rest: Math.round(total % KR_PER_CLICK)});
+    if (ok){ $('s-amount').value = ''; updatePreview(); }
+  }
+
+  async function undoLast(){
+    const id = selectedId, m = members.get(id); if (!m || !m.undo || busy) return;
+    const u = m.undo;
+    const next = {...m, clicks: u.clicks, restKr: u.restKr, totalKr: u.totalKr, coupons: u.coupons,
+      history: pushHist(m, [{t: Date.now(), type: 'undo', what: u.what}]), updated: Date.now()};
+    delete next.undo;
+    if (await write(id, next)){ lastReward = null; toast('Sidste handling er fortrudt'); render(); }
+  }
+
+  async function setCouponUsed(code, used){
+    const id = selectedId, m = members.get(id); if (!m || busy) return;
+    const now = Date.now();
+    const coupons = (m.coupons || []).map(c => c.code === code ? {...c, used, usedAt: used ? now : null} : {...c});
+    const next = {...m, coupons, history: pushHist(m, [{t: now, type: used ? 'redeem' : 'unredeem', code}]),
+      undo: {...snapshotOf(m), what: (used ? 'Kupon brugt: ' : 'Kupon genaktiveret: ') + code}, updated: now};
+    if (await write(id, next)){ if (lastReward && lastReward.id === id) lastReward = null; toast(used ? 'Kupon markeret som brugt' : 'Kupon er aktiv igen'); render(); }
+  }
+
+  /* ---------- Modals ---------- */
+  let editingId = null;
+  function openMember(id, presetPhone){
+    editingId = id;
+    const m = id ? members.get(id) : null;
+    $('m-title').textContent = m ? 'Rediger kunde' : 'Ny kunde';
+    $('m-save').textContent = m ? 'Gem' : 'Opret';
+    $('m-name').value = m ? (m.name || '') : '';
+    $('m-phone').value = m ? fmtPhone(id) : (presetPhone ? fmtPhone(presetPhone) : '');
+    $('m-phone').disabled = !!m;
+    $('m-email').value = m ? (m.email || '') : '';
+    $('m-sizes').innerHTML = sizesSelectHTML('ms', m ? m.sizes : null);
+    $('m-pin').value = '';
+    $('m-pin-lbl').textContent = m ? (m.pinHash ? 'Ny kode til kunden (lad stå tomt for at beholde)' : 'Kundens kode (valgfri, 4 cifre)') : 'Kundens kode (valgfri, 4 cifre)';
+    $('m-err').textContent = '';
+    $('m-bg').classList.add('open');
+    setTimeout(() => $(presetPhone || m ? 'm-name' : 'm-name').focus(), 30);
+  }
+  function closeMember(){ $('m-bg').classList.remove('open'); }
+  $('m-cancel').onclick = closeMember;
+  $('m-bg').addEventListener('click', e => { if (e.target === $('m-bg')) closeMember(); });
+  $('m-form').addEventListener('submit', async e => {
+    e.preventDefault();
+    const name = $('m-name').value.trim();
+    const email = $('m-email').value.trim();
+    const sizes = readSizes($('m-sizes'));
+    const pin = $('m-pin').value.trim();
+    if (!name){ $('m-err').textContent = 'Skriv kundens navn.'; return; }
+    if (pin && !isPin(pin)){ $('m-err').textContent = 'Koden skal være 4 cifre.'; return; }
+    if (editingId){
+      const m = members.get(editingId);
+      const upd = {...m, name, email, sizes, updated: Date.now()};
+      if (pin) upd.pinHash = await hashPin('member', editingId, pin);
+      if (await write(editingId, upd)){ closeMember(); toast(pin ? 'Kunde opdateret – ny kode gemt' : 'Kunde opdateret'); render(); }
+      return;
+    }
+    const phone = normPhone($('m-phone').value);
+    if (phone.length !== 8){ $('m-err').textContent = 'Telefonnummeret skal være 8 cifre.'; return; }
+    if (members.has(phone)){ $('m-err').textContent = 'Der findes allerede en kunde med det nummer.'; return; }
+    const now = Date.now();
+    const pinHash = pin ? await hashPin('member', phone, pin) : '';
+    const data = {name, email, phone, sizes, pinHash, clicks: 0, restKr: 0, totalKr: 0, coupons: [], joined: now, updated: now, history: [{t: now, type: 'join'}]};
+    if (await write(phone, data)){
+      members.set(phone, data);
+      closeMember(); selectedId = phone; $('s-search').value = ''; lastReward = null;
+      toast(`${name} er oprettet`); render();
+      setTimeout(() => $('s-amount').focus(), 50);
+    }
+  });
+
+  let confirmFn = null;
+  function confirmBox(title, text, fn){ $('c-title').textContent = title; $('c-text').textContent = text; confirmFn = fn; $('c-bg').classList.add('open'); }
+  $('c-no').onclick = () => $('c-bg').classList.remove('open');
+  $('c-yes').onclick = () => { $('c-bg').classList.remove('open'); const f = confirmFn; confirmFn = null; f && f(); };
+
+  /* ---------- Events ---------- */
+  let memberFails = 0, memberLockUntil = 0, setupFor = null;
+  function setLoginMode(setup){
+    setupFor = setup;
+    $('lookup-pin2').hidden = !setup;
+    $('lookup-pin').placeholder = setup ? 'Vælg en kode (4 cifre)' : 'Kode (4 cifre)';
+    $('lookup-btn').textContent = setup ? 'Gem kode og log ind' : 'Log ind';
+    $('login-title').textContent = setup ? 'Vælg din kode' : 'Log ind i kundeklubben';
+    $('lookup-hint').innerHTML = setup
+      ? 'Det er første gang, du logger ind. Vælg en 4-cifret kode, du kan huske – du skal kun bruge den på en ny telefon eller computer.'
+      : 'Første gang? Skriv dit nummer – så vælger du selv en kode.<br>Er du ikke medlem endnu? Spørg i butikken – det er gratis.';
+  }
+  function doMemberLogin(p){
+    myPhone = p; lastClicksShown.member = null; sizesDirty = false;
+    try { localStorage.setItem('men-klub-phone', p); } catch(e){}
+    $('lookup-pin').value = ''; $('lookup-pin2').value = ''; setLoginMode(null);
+    renderMember(); window.scrollTo(0, 0);
+  }
+  $('lookup-phone').addEventListener('input', () => {
+    const p = normPhone($('lookup-phone').value);
+    $('lookup-err').textContent = '';
+    if (p.length === 8 && loaded){
+      const m = members.get(p);
+      setLoginMode(m && !m.pinHash ? p : null);
+      if (m) $('lookup-pin').focus();
+    } else if (setupFor) setLoginMode(null);
+  });
+  $('lookup-pin').addEventListener('input', () => { if (!setupFor && isPin($('lookup-pin').value) && normPhone($('lookup-phone').value).length === 8) $('lookup-form').requestSubmit(); });
+  $('lookup-form').addEventListener('submit', async e => {
+    e.preventDefault();
+    const p = normPhone($('lookup-phone').value);
+    const pin = $('lookup-pin').value.trim();
+    $('lookup-err').textContent = '';
+    if (p.length !== 8){ $('lookup-err').textContent = 'Skriv dit telefonnummer med 8 cifre.'; return; }
+    if (!loaded){ $('lookup-err').textContent = 'Henter kundeklubben – prøv igen om et øjeblik.'; return; }
+    const m = members.get(p);
+    if (!m){ $('lookup-err').textContent = 'Vi kunne ikke finde et medlem med det nummer. Spørg i butikken.'; return; }
+    if (Date.now() < memberLockUntil){ $('lookup-err').textContent = 'For mange forsøg – vent et minut.'; return; }
+    if (!m.pinHash){
+      if (setupFor !== p){ setLoginMode(p); $('lookup-pin').focus(); return; }
+      if (!isPin(pin)){ $('lookup-err').textContent = 'Koden skal være 4 cifre.'; return; }
+      if ($('lookup-pin2').value.trim() !== pin){ $('lookup-err').textContent = 'De to koder er ikke ens.'; return; }
+      try {
+        await db.collection('members').doc(p).update({pinHash: await hashPin('member', p, pin), updated: Date.now()});
+        toast('Din kode er gemt'); doMemberLogin(p);
+      } catch(err){ $('lookup-err').textContent = 'Kunne ikke gemme koden – spørg i butikken.'; }
+      return;
+    }
+    if (!isPin(pin)){ $('lookup-err').textContent = 'Skriv din 4-cifrede kode.'; $('lookup-pin').focus(); return; }
+    if (await hashPin('member', p, pin) !== m.pinHash){
+      memberFails++; $('lookup-pin').value = '';
+      if (memberFails >= 5){ memberLockUntil = Date.now() + 60000; memberFails = 0; }
+      $('lookup-err').textContent = 'Forkert kode. Har du glemt den? Spørg i butikken, så nulstiller vi den.'; return;
+    }
+    memberFails = 0; doMemberLogin(p);
+  });
+  $('burger').onclick = () => { const o = $('mainnav').classList.toggle('open'); $('burger').setAttribute('aria-expanded', o); };
+  /* Staff login */
+  let loginIdx = null, staffFails = 0, staffLockUntil = 0;
+  $('slogin-row').addEventListener('click', e => {
+    const b = e.target.closest('[data-login]'); if (!b) return;
+    loginIdx = +b.dataset.login; const t = team[loginIdx]; if (!t) return;
+    $('slogin-row').hidden = true; $('slogin-form').hidden = false;
+    $('slogin-who').innerHTML = `<div class="avatar" style="width:72px;height:72px;font-size:26px;margin:0">${esc(initials(t.name))}</div>${esc(t.name)}`;
+    const first = !t.pinHash;
+    $('slogin-pin2').hidden = !first;
+    $('slogin-pin').placeholder = first ? 'Vælg PIN-kode (4 cifre)' : 'PIN-kode';
+    $('slogin-btn').textContent = first ? 'Gem PIN og log ind' : 'Log ind';
+    $('slogin-pin').value = ''; $('slogin-pin2').value = ''; $('slogin-err').textContent = '';
+    setTimeout(() => $('slogin-pin').focus(), 30);
+  });
+  $('slogin-back').onclick = () => { loginIdx = null; $('slogin-form').hidden = true; $('slogin-row').hidden = false; };
+  $('slogin-pin').addEventListener('input', () => { if (isPin($('slogin-pin').value) && $('slogin-pin2').hidden) $('slogin-form').requestSubmit(); });
+  $('slogin-form').addEventListener('submit', async e => {
+    e.preventDefault();
+    const t = team[loginIdx]; if (!t) return;
+    const pin = $('slogin-pin').value.trim();
+    if (Date.now() < staffLockUntil){ $('slogin-err').textContent = 'For mange forsøg – vent 30 sekunder.'; return; }
+    if (!isPin(pin)){ $('slogin-err').textContent = 'PIN-koden skal være 4 cifre.'; return; }
+    const h = await hashPin('staff', t.name, pin);
+    if (t.pinHash){
+      if (h !== t.pinHash){
+        staffFails++; $('slogin-pin').value = '';
+        if (staffFails >= 5){ staffLockUntil = Date.now() + 30000; staffFails = 0; }
+        $('slogin-err').textContent = 'Forkert PIN-kode.'; return;
+      }
+    } else {
+      if ($('slogin-pin2').value.trim() !== pin){ $('slogin-err').textContent = 'De to PIN-koder er ikke ens.'; return; }
+      if (!db){ $('slogin-err').textContent = 'Ingen forbindelse.'; return; }
+      const list = team.map((x, i) => i === loginIdx ? {...x, pinHash: h} : {...x});
+      try { await db.doc('config/team').set({list, updated: Date.now()}); team = list; }
+      catch(err){ $('slogin-err').textContent = err && err.code === 'invalid_argument' ? 'Du har ikke adgang til at gemme en PIN-kode.' : 'Kunne ikke gemme – prøv igen.'; return; }
+    }
+    staffFails = 0; loginIdx = null;
+    $('slogin-form').hidden = true; $('slogin-row').hidden = false;
+    setStaff(t.name); toast(`Hej ${t.name} – du er logget ind`);
+    setTimeout(() => $('s-search').focus(), 50);
+  });
+  $('staff-logout').onclick = () => { setStaff(null); selectedId = null; toast('Du er logget ud'); };
+
+  $('team-edit').onclick = () => {
+    $('t-rows').innerHTML = [0,1,2,3].map(i => { const t = team[i] || {name:'', role:''}; return `<div class="teamedit-row">
+      <input class="input" data-tn="${i}" placeholder="Navn" value="${esc(t.name)}"><input class="input" data-tr="${i}" placeholder="Rolle" value="${esc(t.role)}">
+      ${t.pinHash ? `<label style="grid-column:1/-1;font-size:13px;color:var(--muted);display:flex;gap:6px;align-items:center;margin-top:-4px"><input type="checkbox" data-treset="${i}"> Nulstil PIN-kode (vælges igen ved næste login)</label>` : ''}</div>`; }).join('');
+    $('t-err').textContent = ''; $('t-bg').classList.add('open');
+  };
+  $('t-cancel').onclick = () => $('t-bg').classList.remove('open');
+  $('t-form').addEventListener('submit', async e => {
+    e.preventDefault();
+    const list = [0,1,2,3].map(i => {
+      const name = document.querySelector(`[data-tn="${i}"]`).value.trim();
+      const role = document.querySelector(`[data-tr="${i}"]`).value.trim();
+      const old = team[i]; const reset = document.querySelector(`[data-treset="${i}"]`);
+      const keep = old && old.pinHash && old.name === name && !(reset && reset.checked);
+      return keep ? {name, role, pinHash: old.pinHash} : {name, role};
+    }).filter(t => t.name);
+    if (!list.length){ $('t-err').textContent = 'Skriv mindst ét navn.'; return; }
+    if (!db){ $('t-err').textContent = 'Ingen forbindelse.'; return; }
+    try { await db.doc('config/team').set({list, updated: Date.now()}); team = list; renderTeam(); if (!staffLoggedIn()) setStaff(null); $('t-bg').classList.remove('open'); toast('Holdet er opdateret'); }
+    catch(err){ $('t-err').textContent = err && err.code === 'invalid_argument' ? 'Du har ikke adgang til at ændre.' : 'Kunne ikke gemme – prøv igen.'; }
+  });
+
+  $('st-sizes').addEventListener('change', () => { sizesDirty = true; $('st-sizes-save').disabled = false; $('st-sizes-msg').textContent = 'Husk at gemme'; });
+  $('st-sizes-save').onclick = async () => {
+    const id = myPhone; const m = members.get(id); if (!m || !db || busy) return;
+    const sizes = readSizes($('st-sizes'));
+    const btn = $('st-sizes-save'); btn.disabled = true; $('st-sizes-msg').textContent = 'Gemmer…';
+    try {
+      await db.collection('members').doc(id).update({sizes, updated: Date.now()});
+      sizesDirty = false; $('st-sizes-msg').textContent = 'Dine størrelser er gemt ✓'; toast('Størrelser gemt');
+    } catch (e){
+      btn.disabled = false;
+      $('st-sizes-msg').textContent = e && e.code === 'invalid_argument' ? 'Kunne ikke gemme – du har ikke adgang til at ændre.' : 'Kunne ikke gemme – prøv igen.';
+    }
+  };
+  $('st-logout').onclick = () => { myPhone = null; try { localStorage.removeItem('men-klub-phone'); } catch(e){} $('lookup-phone').value = ''; $('lookup-err').textContent = ''; renderMember(); };
+
+  $('s-search').addEventListener('input', () => renderStaff());
+  $('s-search').addEventListener('keydown', e => {
+    if (e.key === 'Enter'){ const l = filteredMembers(); if (l.length === 1 || (l.length && normPhone($('s-search').value) === l[0].id)){ select(l[0].id); } }
+  });
+  $('s-list').addEventListener('click', e => { const li = e.target.closest('li[data-id]'); if (li) select(li.dataset.id); });
+  function select(id){ selectedId = id; lastReward = null; lastClicksShown.staff = null; $('s-amount').value = ''; renderStaff(); setTimeout(() => $('s-amount').focus(), 30); if (window.innerWidth < 860) $('s-panel').scrollIntoView({behavior:'smooth'}); }
+
+  $('btn-new').onclick = () => { const q = normPhone($('s-search').value); openMember(null, q.length === 8 ? q : ''); };
+  $('s-edit').onclick = () => selectedId && openMember(selectedId);
+  $('s-form').addEventListener('submit', e => { e.preventDefault(); registerPurchase(); });
+  $('s-amount').addEventListener('input', updatePreview);
+  $('s-quick').addEventListener('click', e => { const b = e.target.closest('button[data-amt]'); if (b){ $('s-amount').value = b.dataset.amt; updatePreview(); $('s-amount').focus(); } });
+  $('s-plus1').onclick = () => { const id = selectedId; if (id && !busy) addClicks(id, 1, {t: Date.now(), type: 'click', clicks: 1}); };
+  $('s-minus1').onclick = () => { const id = selectedId; const m = members.get(id); if (id && m && m.clicks > 0 && !busy) confirmBox('Fjern et klik?', `${m.name || 'Kunden'} går fra ${m.clicks} til ${m.clicks - 1} klik.`, () => addClicks(id, -1, {t: Date.now(), type: 'click', clicks: -1})); };
+  $('s-undo').onclick = () => { const m = members.get(selectedId); if (m && m.undo) confirmBox('Fortryd sidste handling?', `“${m.undo.what}” bliver rullet tilbage.`, undoLast); };
+  $('s-coupons').addEventListener('click', e => {
+    const r = e.target.closest('[data-redeem]'), u = e.target.closest('[data-unredeem]');
+    if (r) confirmBox('Markér kupon som brugt?', `Kupon ${r.dataset.redeem} på 500 kr bliver markeret som brugt.`, () => setCouponUsed(r.dataset.redeem, true));
+    if (u) setCouponUsed(u.dataset.unredeem, false);
+  });
+
+  /* ---------- Product carousel ---------- */
+  const ICONS = {
+    jacket: '<svg viewBox="0 0 100 100" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linejoin="round" stroke-linecap="round"><path d="M38 14l-18 9-8 34 10 3 4-18v46h48V42l4 18 10-3-8-34-18-9"/><path d="M38 14c2 7 7 11 12 11s10-4 12-11"/><path d="M50 25v63"/><path d="M33 58h9M58 58h9"/></svg>',
+    shirt: '<svg viewBox="0 0 100 100" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linejoin="round" stroke-linecap="round"><path d="M40 14l-20 8-10 28 10 4 6-14v48h48V40l6 14 10-4-10-28-20-8"/><path d="M40 14l10 12 10-12"/><path d="M50 26v62"/><circle cx="50" cy="40" r="1.2" fill="currentColor"/><circle cx="50" cy="54" r="1.2" fill="currentColor"/><circle cx="50" cy="68" r="1.2" fill="currentColor"/></svg>',
+    sweat: '<svg viewBox="0 0 100 100" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linejoin="round" stroke-linecap="round"><path d="M38 16l-18 8-10 40 10 3 8-28v45h44V39l8 28 10-3-10-40-18-8"/><path d="M38 16c3 6 7 8 12 8s9-2 12-8"/><path d="M28 80h44"/></svg>',
+    pants: '<svg viewBox="0 0 100 100" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linejoin="round" stroke-linecap="round"><path d="M30 12h40l6 76H58L50 36l-8 52H24z"/><path d="M30 20h40"/><path d="M50 20v16"/></svg>',
+    shoe: '<svg viewBox="0 0 100 100" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linejoin="round" stroke-linecap="round"><path d="M22 26h18v22c8 4 20 6 32 10 8 3 12 8 12 14v4H16V30z"/><path d="M16 70h68"/><path d="M40 40l6-3M40 46l8-3M46 50l6-3"/></svg>'
+  };
+  const PRODUCTS = [
+    {brand:'Morris', title:'Lennox Puffer Jacket Olive', price:2700, type:'jacket', tag:'Nyhed', path:'/products/morris-lennox-puffer-jacket-77-olive'},
+    {brand:'Lee', title:'Relaxed Sherpa Jacket Black', price:1000, type:'jacket', tag:'Nyhed', path:'/products/lee-relaxed-sherpa-jacket-11656-black'},
+    {brand:'Les Deux', title:'Wool Boucle Overshirt Duffel Bag Green', price:1400, type:'shirt', tag:'Ugens favorit', path:'/products/les-deux-wool-boucle-overshirt-duffel-bag-green'},
+    {brand:'Clarks', title:'Cleyhill Top G Dark Brown Lea', price:1100, type:'shoe', tag:'Nyhed', path:'/products/clarks-cleyhill-top-g-5228-dark-brown-lea-cl26329448'},
+    {brand:'Les Deux', title:'Check Overshirt Darkest Spruce Green', price:900, type:'shirt', tag:'Nyhed', path:'/products/les-deux-check-overshirt-darkest-spruce-green'},
+    {brand:'Les Deux', title:'Core Oxford Shirt White', price:800, type:'shirt', tag:'Bestseller', path:'/products/les-deux-core-oxford-shirt-white'},
+    {brand:'Les Deux', title:'Signature Print Sweatshirt Snow Melange', price:700, type:'sweat', tag:'Nyhed', path:'/products/les-deux-signature-print-sweatshirt-snow-melange'},
+    {brand:'Selected', title:'196 Straight Flex Chinos Black', price:600, type:'pants', tag:'Bestseller', path:'/products/selected-196-straight-flex-chinos-black'}
+  ];
+  (function carousel(){
+    const track = $('car-track'), vp = $('car-viewport'), dotsEl = $('car-dots');
+    const N = PRODUCTS.length;
+    const card = p => {
+      const k = Math.floor(p.price / KR_PER_CLICK);
+      const kTxt = k >= CLICKS_FOR_COUPON ? `${k} klik = 500 kr kupon` : `Giver ${k} klik`;
+      return `<a class="prod" href="https://www.supermen.dk${esc(p.path)}" target="_blank" rel="noopener">
+        <div class="img"><span class="brandmark">${esc(p.brand)}</span>${ICONS[p.type] || ICONS.shirt}
+          <span class="tag">${esc(p.tag)}</span><span class="klik ${k >= CLICKS_FOR_COUPON ? 'full' : ''}">${kTxt}</span></div>
+        <div class="meta"><div class="b">${esc(p.brand)}</div><div class="t">${esc(p.title)}</div><div class="p">${kr(p.price)}</div><span class="see">Se produkt</span></div>
+      </a>`;
+    };
+    // Render twice for a seamless loop
+    track.innerHTML = PRODUCTS.map(card).join('') + PRODUCTS.map(card).join('');
+    dotsEl.innerHTML = PRODUCTS.map((_, i) => `<button type="button" aria-label="Produkt ${i + 1}" data-i="${i}"></button>`).join('');
+    let idx = 0, timer = null, paused = false;
+    const step = () => { const first = track.children[0], second = track.children[1]; return second.offsetLeft - first.offsetLeft; };
+    function go(i, animate = true){
+      track.classList.toggle('jump', !animate);
+      idx = i;
+      track.style.transform = `translateX(${-idx * step()}px)`;
+      [...dotsEl.children].forEach((d, j) => d.classList.toggle('on', j === ((idx % N) + N) % N));
+    }
+    track.addEventListener('transitionend', () => {
+      if (idx >= N){ go(idx - N, false); }
+      else if (idx < 0){ go(idx + N, false); }
+    });
+    function next(){ if (idx < 0) go(idx + N, false); requestAnimationFrame(() => go(idx + 1)); }
+    function prev(){
+      if (idx <= 0){ go(idx + N, false); void track.offsetWidth; }
+      requestAnimationFrame(() => go(idx - 1));
+    }
+    function start(){ stop(); timer = setInterval(() => { if (!paused && !document.hidden && !$('view-medlem').hidden) next(); }, 3200); }
+    function stop(){ if (timer) clearInterval(timer); timer = null; }
+    $('car-next').onclick = () => { next(); start(); };
+    $('car-prev').onclick = () => { prev(); start(); };
+    dotsEl.addEventListener('click', e => { const b = e.target.closest('button[data-i]'); if (b){ go(+b.dataset.i); start(); } });
+    vp.addEventListener('mouseenter', () => paused = true);
+    vp.addEventListener('mouseleave', () => paused = false);
+    vp.addEventListener('focusin', () => paused = true);
+    vp.addEventListener('focusout', () => paused = false);
+    let sx = null;
+    vp.addEventListener('touchstart', e => { sx = e.touches[0].clientX; paused = true; }, {passive:true});
+    vp.addEventListener('touchend', e => { if (sx !== null){ const dx = e.changedTouches[0].clientX - sx; if (Math.abs(dx) > 40){ dx < 0 ? next() : prev(); start(); } } sx = null; paused = false; });
+    window.addEventListener('resize', () => go(idx, false));
+    window.addEventListener('hashchange', () => setTimeout(() => go(idx, false), 60));
+    if (matchMedia('(prefers-reduced-motion: reduce)').matches){ track.style.transition = 'none'; }
+    go(0, false);
+    start();
+  })();
+
+  /* ---------- Data ---------- */
+  function onError(msg){
+    $('s-sync').textContent = msg;
+    $('lookup-err').textContent = msg;
+  }
+
+  async function init(){
+    renderTeam();
+    route();
+    const hasClaude = typeof claude !== 'undefined';
+    db = hasClaude ? await claude.use('db') : null;
+    try { user = hasClaude ? await claude.use('user') : null; } catch(e){ user = null; }
+    if (user){ try { canWrite = await user.can('data.write'); } catch(e){ canWrite = null; } }
+    if (!db){
+      onError(hasClaude ? 'Kundeklubben kan ikke hentes i denne visning. Log ind på claude.ai og åbn siden igen.' : 'Visningsversion – kunder og klik gemmes ikke her endnu.');
+      loaded = true; canWrite = false; render(); return;
+    }
+    db.doc('config/team').onSnapshot(s => {
+      const l = s.exists && s.data() && Array.isArray(s.data().list) ? s.data().list : null;
+      team = l && l.length ? l : DEFAULT_TEAM; renderTeam();
+    }, () => {});
+    const timer = setTimeout(() => { if (!loaded) onError('Kan ikke hente data endnu – tjek forbindelsen.'); }, 10000);
+    db.collection('members').onSnapshot(snap => {
+      const map = new Map();
+      snap.docs.forEach(d => { if (d.exists) map.set(d.id, d.data()); });
+      members = map;
+      if (!snap.metadata.fromCache){ loaded = true; clearTimeout(timer); $('s-sync').textContent = 'Live'; }
+      else if (!loaded && map.size){ loaded = true; }
+      render();
+    }, err => {
+      clearTimeout(timer); loaded = true;
+      onError('Forbindelsen til kundeklubben blev afbrudt. Genindlæs siden.');
+      render();
+    });
+  }
+  init();
+})();
+</script>
+</body>
+</html>

@@ -215,6 +215,13 @@
   .sg h4{font-family:var(--serif);font-weight:400;font-size:26px;margin-bottom:16px}
   .sg .tags{display:flex;flex-wrap:wrap;gap:8px}
   .tag{font-size:14px;font-weight:600;padding:6px 12px;border-radius:999px;background:var(--paper);border:1px solid var(--line)}
+  .sg.sys{grid-column:span 2;display:grid;grid-template-columns:1fr 1.4fr;gap:28px;align-items:start}
+  .sg.sys p{font-size:15px;opacity:.8}
+  .sys-rows{display:flex;flex-direction:column;gap:14px}
+  .sys-row{display:grid;grid-template-columns:120px 1fr;gap:12px;align-items:baseline;padding-bottom:14px;border-bottom:1px solid rgba(255,255,255,.12)}
+  .sys-row:last-child{border-bottom:none;padding-bottom:0}
+  .sys-k{font-size:12px;letter-spacing:.08em;text-transform:uppercase;opacity:.65;font-weight:600}
+  @media (max-width:860px){.sg.sys{grid-template-columns:1fr}.sys-row{grid-template-columns:1fr;gap:6px}}
   .sg.dark{background:var(--ink);color:var(--paper);border-color:var(--ink)}
   .sg.dark .tag{background:rgba(255,255,255,.08);border-color:rgba(255,255,255,.18)}
 
@@ -297,6 +304,7 @@
     .sec-head .idx{padding-top:0}
     .skill-groups{grid-template-columns:1fr}
     .sg.ai{grid-column:auto;grid-template-columns:1fr}
+    .sg.sys{grid-column:auto;grid-template-columns:1fr}
     .proj-grid{grid-template-columns:1fr 1fr}
     .proj.feature{grid-column:span 2}
     .profile-body .text{font-size:19px}
@@ -770,9 +778,19 @@
           </div>
           <div class="tags"><span class="tag">Vibecoding</span><span class="tag">AI-assistenter i hverdagen</span><span class="tag">Prompting</span><span class="tag">AI til dataoprydning</span><span class="tag">AI til tekst &amp; content</span><span class="tag">Automatisering</span><span class="tag">Hurtige prototyper</span></div>
         </div>
-        <div class="sg dark">
-          <h4>Data &amp; systemer</h4>
-          <div class="tags"><span class="tag">Master Data</span><span class="tag">ERP</span><span class="tag">PIM</span><span class="tag">DAM</span><span class="tag">WMS</span><span class="tag">CAD</span><span class="tag">EPD</span><span class="tag">Vendorportaler / GS1</span></div>
+        <div class="sg dark sys">
+          <div>
+            <h4>Data &amp; systemer</h4>
+            <p>Masterdata er kernen i mit arbejde. Jeg har arbejdet i systemerne hver dag og sat dem op, så produktdata, billeder og dokumentation flyder korrekt fra ERP og PIM ud til webshop, brandsites og markeder.</p>
+          </div>
+          <div class="sys-rows">
+            <div class="sys-row"><div class="sys-k">ERP</div><div class="tags"><span class="tag">Visma Business</span><span class="tag">Microsoft Dynamics AX (Axapta)</span></div></div>
+            <div class="sys-row"><div class="sys-k">PIM</div><div class="tags"><span class="tag">Struct PIM</span></div></div>
+            <div class="sys-row"><div class="sys-k">DAM</div><div class="tags"><span class="tag">Kontainer</span></div></div>
+            <div class="sys-row"><div class="sys-k">Dokumentation</div><div class="tags"><span class="tag">EPD-databaser</span><span class="tag">CAD-tegninger</span><span class="tag">Certificeringer</span></div></div>
+            <div class="sys-row"><div class="sys-k">Lager &amp; handel</div><div class="tags"><span class="tag">WMS</span><span class="tag">Vendorportaler / GS1</span></div></div>
+            <div class="sys-row"><div class="sys-k">Opgaver</div><div class="tags"><span class="tag">Produktoprettelse</span><span class="tag">Datarensning &amp; validering</span><span class="tag">Datamapping</span><span class="tag">ERP-migrering</span><span class="tag">Governance &amp; workflows</span></div></div>
+          </div>
         </div>
         <div class="sg">
           <h4>E-commerce &amp; analyse</h4>

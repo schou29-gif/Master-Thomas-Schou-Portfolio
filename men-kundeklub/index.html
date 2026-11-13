@@ -228,7 +228,8 @@
   .team h2{font-size:26px;text-transform:uppercase;letter-spacing:.06em;margin:6px 0 26px}
   .team-row{display:grid;grid-template-columns:repeat(4,1fr);gap:20px}
   .tm{background:#fff;padding:26px 20px;text-align:center;border:1px solid var(--line)}
-  .avatar{width:96px;height:96px;border-radius:50%;background:var(--green);color:#fff;display:flex;align-items:center;justify-content:center;font-family:var(--head);font-size:34px;font-weight:600;letter-spacing:.04em;margin:0 auto 14px}
+  .avatar img{width:100%;height:100%;object-fit:cover;border-radius:50%;display:block}
+  .avatar{width:96px;height:96px;border-radius:50%;overflow:hidden;background:var(--green);color:#fff;display:flex;align-items:center;justify-content:center;font-family:var(--head);font-size:34px;font-weight:600;letter-spacing:.04em;margin:0 auto 14px}
   .tm h3{font-size:17px;text-transform:uppercase;letter-spacing:.1em}
   .tm .role{font-size:12px;letter-spacing:.14em;text-transform:uppercase;color:var(--muted);margin-top:4px}
   .loginform{flex-direction:column;gap:10px !important}
@@ -341,8 +342,8 @@
   .prod .img img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;transition:transform .6s}
   .prod:hover .img img{transform:scale(1.04)}
   .prod .brandmark{position:absolute;left:14px;top:12px;font-family:var(--head);font-size:11px;letter-spacing:.2em;text-transform:uppercase;color:var(--muted)}
-  .prod .klik{position:absolute;right:12px;bottom:12px;background:var(--green);color:#fff;font-family:var(--head);font-size:11.5px;letter-spacing:.1em;text-transform:uppercase;padding:6px 9px}
-  .prod .klik.full{background:var(--green-dk)}
+  .prod .klip{position:absolute;right:12px;bottom:12px;background:var(--green);color:#fff;font-family:var(--head);font-size:11.5px;letter-spacing:.1em;text-transform:uppercase;padding:6px 9px}
+  .prod .klip.full{background:var(--green-dk)}
   .prod .tag{position:absolute;left:12px;bottom:12px;background:#fff;font-family:var(--head);font-size:10.5px;letter-spacing:.14em;text-transform:uppercase;padding:5px 8px}
   .prod .meta{padding:12px 2px 0}
   .prod .b{font-family:var(--head);font-size:12px;letter-spacing:.16em;text-transform:uppercase;color:var(--muted)}
@@ -432,7 +433,7 @@
         <svg viewBox="0 0 24 24" width="22" height="22" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M5 8h14l-1.2 12H6.2z"/><path d="M9 8V6a3 3 0 016 0v2"/></svg>
         <span>Kurv</span>
       </a>
-      <a href="#personale" class="hicon staffbtn" title="Personale: registrér klik">
+      <a href="#personale" class="hicon staffbtn" title="Personale: registrér klip">
         <svg viewBox="0 0 24 24" width="22" height="22" fill="none" stroke="currentColor" stroke-width="1.6"><rect x="3" y="6" width="18" height="13" rx="1.5"/><path d="M9 6V4.5h6V6"/><path d="M3 12h18"/><path d="M11 12v2h2v-2"/></svg>
         <span>Personale</span>
       </a>
@@ -536,7 +537,7 @@
       <div class="card">
         <div class="row">
           <div>
-            <div class="eyebrow" style="margin-bottom:8px">Dine klik</div>
+            <div class="eyebrow" style="margin-bottom:8px">Dine klip</div>
             <div class="count"><span id="st-count">0</span><small> / 5</small></div>
           </div>
           <div class="punches big" id="st-punches"></div>
@@ -577,7 +578,7 @@
             </dd></div>
           </dl>
         </div>
-        <p class="muted" style="font-size:13px;margin:16px 0 0">Dit medlemskab er knyttet til dit telefonnummer. Oplys det ved kassen, når du handler, så registrerer vi dine køb og klik. Er der noget, der skal rettes, så sig det til os i butikken.</p>
+        <p class="muted" style="font-size:13px;margin:16px 0 0">Dit medlemskab er knyttet til dit telefonnummer. Oplys det ved kassen, når du handler, så registrerer vi dine køb og klip. Er der noget, der skal rettes, så sig det til os i butikken.</p>
       </div>
 
       <div class="card">
@@ -596,11 +597,11 @@
     <div class="wrap">
       <div class="eyebrow">MEN Kundeklub</div>
       <h1>Handl hos os – og få 500 kr retur</h1>
-      <p>For hver hele 500 kr, du handler for i butikken på Søndergade, får du et klik. Når du har samlet 5 klik, får du en rabatkupon på 500 kr til din næste handel.</p>
+      <p>For hver hele 500 kr, du handler for i butikken på Søndergade, får du et klip. Når du har samlet 5 klip, får du en rabatkupon på 500 kr til din næste handel.</p>
       <div class="steps">
         <div class="step"><div class="n">01</div><h3>Handl</h3><p>Oplys dit telefonnummer ved kassen, når du handler.</p></div>
-        <div class="step"><div class="n">02</div><h3>Saml klik</h3><p>Du får 1 klik for hver hele 500 kr i et køb. Et køb på 1.700 kr giver fx 3 klik.</p></div>
-        <div class="step"><div class="n">03</div><h3>Få 500 kr</h3><p>Ved 5 klik får du automatisk en rabatkupon på 500 kr.</p></div>
+        <div class="step"><div class="n">02</div><h3>Saml klip</h3><p>Du får 1 klip for hver hele 500 kr i et køb. Et køb på 1.700 kr giver fx 3 klip.</p></div>
+        <div class="step"><div class="n">03</div><h3>Få 500 kr</h3><p>Ved 5 klip får du automatisk en rabatkupon på 500 kr.</p></div>
       </div>
     </div>
   </section>
@@ -610,7 +611,7 @@
       <div class="shop-head">
         <div>
           <div class="eyebrow">Nyheder &amp; bestsellere</div>
-          <h2>Saml klik på din næste favorit</h2>
+          <h2>Saml klip på din næste favorit</h2>
         </div>
         <div class="shop-nav">
           <a href="https://www.supermen.dk" target="_blank" rel="noopener">Se alle</a>
@@ -657,7 +658,7 @@
     <div class="wrap">
       <div>
         <div class="eyebrow">Kun for personale</div>
-        <h1>Registrér klik</h1>
+        <h1>Registrér klip</h1>
       </div>
       <div style="display:flex;gap:10px;flex-wrap:wrap">
         <button class="btn ghost small" id="btn-new" type="button" style="border-color:#fff">+ Ny kunde</button>
@@ -687,7 +688,7 @@
       <button class="linkbtn" type="button" id="staff-logout">Log ud</button>
       <button class="linkbtn" type="button" id="team-edit">Ret ansatte</button>
     </div>
-    <div class="notice" id="ro-notice" hidden>Du har kun læseadgang til kundeklubben. Bed ejeren om at give dig adgang som <b>Contributor</b> eller <b>Editor</b>, så du kan registrere klik.</div>
+    <div class="notice" id="ro-notice" hidden>Du har kun læseadgang til kundeklubben. Bed ejeren om at give dig adgang som <b>Contributor</b> eller <b>Editor</b>, så du kan registrere klip.</div>
     <div class="staff">
       <aside class="list">
         <div class="search">
@@ -723,7 +724,7 @@
             <div class="chips" id="s-sizes"></div>
 
             <div class="bigcount">
-              <div class="count"><span id="s-count">0</span><small> / 5 klik</small></div>
+              <div class="count"><span id="s-count">0</span><small> / 5 klip</small></div>
               <div class="punches big" id="s-punches"></div>
             </div>
             <div class="muted" id="s-sub" style="margin-bottom:22px"></div>
@@ -744,8 +745,8 @@
             <div class="preview" id="s-preview"></div>
 
             <div class="oneclick">
-              <button class="btn" type="button" id="s-plus1">+1 klik</button>
-              <button class="btn ghost" type="button" id="s-minus1">−1 klik</button>
+              <button class="btn" type="button" id="s-plus1">+1 klip</button>
+              <button class="btn ghost" type="button" id="s-minus1">−1 klip</button>
               <button class="btn ghost" type="button" id="s-undo">Fortryd sidste</button>
             </div>
           </div>
@@ -784,8 +785,8 @@
       </div>
       <div>
         <h4>Kundeklub</h4>
-        <p>1 klik for hver hele 500 kr pr. køb.</p>
-        <p>5 klik giver en rabatkupon på 500 kr.</p>
+        <p>1 klip for hver hele 500 kr pr. køb.</p>
+        <p>5 klip giver en rabatkupon på 500 kr.</p>
         <p>Kuponen kan bruges i butikken.</p>
         <p style="margin-top:10px"><a href="https://www.supermen.dk">www.supermen.dk</a></p>
       </div>
@@ -879,8 +880,8 @@
 
   function histLabel(h){
     switch (h.type){
-      case 'purchase': return `Køb på ${kr(h.amount)}` + (h.clicks ? ` · +${h.clicks} klik` : ' · ingen nye klik');
-      case 'click': return h.clicks > 0 ? `+${h.clicks} klik (manuelt)` : `${h.clicks} klik (rettelse)`;
+      case 'purchase': return `Køb på ${kr(h.amount)}` + (h.clicks ? ` · +${h.clicks} klip` : ' · ingen nye klip');
+      case 'click': return h.clicks > 0 ? `+${h.clicks} klip (manuelt)` : `${h.clicks} klip (rettelse)`;
       case 'coupon': return `Rabatkupon optjent: ${h.code}`;
       case 'redeem': return `Kupon brugt: ${h.code}`;
       case 'unredeem': return `Kupon genaktiveret: ${h.code}`;
@@ -954,15 +955,17 @@
   let cashier = null;      // = logged-in staff member
   try { cashier = localStorage.getItem('men-klub-staff'); } catch(e){}
   const initials = n => (n || '?').trim().split(/\s+/).map(w => w[0]).join('').slice(0, 2).toUpperCase();
+  const TEAM_PHOTOS = {klaus:'img/team/klaus.jpg', henrik:'img/team/henrik.jpg', silas:'img/team/silas.jpg', jesper:'img/team/jesper.jpg'};
+  const av = n => { const p = TEAM_PHOTOS[(n || '').trim().split(/\s+/)[0].toLowerCase()]; return p ? `<img src="${p}" alt="${esc(n)}">` : esc(initials(n)); };
   async function hashPin(scope, id, pin){
     const buf = await crypto.subtle.digest('SHA-256', new TextEncoder().encode(`men-klub|${scope}|${id}|${pin}`));
     return [...new Uint8Array(buf)].map(b => b.toString(16).padStart(2, '0')).join('');
   }
   const isPin = s => /^\d{4}$/.test(s);
   function renderTeam(){
-    $('team-row').innerHTML = team.map(t => `<div class="tm"><div class="avatar">${esc(initials(t.name))}</div><h3>${esc(t.name)}</h3><div class="role">${esc(t.role || '')}</div></div>`).join('');
-    $('who-row').innerHTML = cashier ? `<span class="who-btn on"><span class="avatar">${esc(initials(cashier))}</span>${esc(cashier)}</span>` : '';
-    $('slogin-row').innerHTML = team.map((t, i) => `<button type="button" data-login="${i}"><div class="avatar">${esc(initials(t.name))}</div>${esc(t.name)}<small>${t.pinHash ? esc(t.role || '') : 'Vælg PIN første gang'}</small></button>`).join('');
+    $('team-row').innerHTML = team.map(t => `<div class="tm"><div class="avatar">${av(t.name)}</div><h3>${esc(t.name)}</h3><div class="role">${esc(t.role || '')}</div></div>`).join('');
+    $('who-row').innerHTML = cashier ? `<span class="who-btn on"><span class="avatar">${av(cashier)}</span>${esc(cashier)}</span>` : '';
+    $('slogin-row').innerHTML = team.map((t, i) => `<button type="button" data-login="${i}"><div class="avatar">${av(t.name)}</div>${esc(t.name)}<small>${t.pinHash ? esc(t.role || '') : 'Vælg PIN første gang'}</small></button>`).join('');
   }
   function staffLoggedIn(){ return !!cashier && team.some(t => t.name === cashier); }
   function setStaff(name){
@@ -1030,8 +1033,8 @@
     const left = CLICKS_FOR_COUPON - c;
     const toGo = left * KR_PER_CLICK;
     $('st-msg').innerHTML = left === CLICKS_FOR_COUPON
-      ? `Handl for <b>${kr(KR_PER_CLICK)}</b> for at få dit første klik.`
-      : `Du mangler <b>${left} klik</b> – handl for <b>${kr(toGo)}</b> mere, så får du en rabatkupon på <b>${kr(COUPON_VALUE)}</b>.`;
+      ? `Handl for <b>${kr(KR_PER_CLICK)}</b> for at få dit første klip.`
+      : `Du mangler <b>${left} klip</b> – handl for <b>${kr(toGo)}</b> mere, så får du en rabatkupon på <b>${kr(COUPON_VALUE)}</b>.`;
     const progress = (c / CLICKS_FOR_COUPON) * 100;
     $('st-bar').style.width = Math.min(100, progress) + '%';
     // Kundekort
@@ -1053,7 +1056,7 @@
       <div class="coupon ${cp.used ? 'used' : ''}">
         <div><div class="lbl">${cp.used ? 'Brugt ' + esc(fmtDate(cp.usedAt)) : 'Klar til brug · vis koden ved kassen'}</div><div class="code">${esc(cp.code)}</div></div>
         <div class="val">${kr(cp.value || COUPON_VALUE)}</div>
-      </div>`).join('') : '<p class="muted" style="margin:0">Du har ingen kuponer endnu. Ved 5 klik får du automatisk en kupon på 500 kr.</p>';
+      </div>`).join('') : '<p class="muted" style="margin:0">Du har ingen kuponer endnu. Ved 5 klip får du automatisk en kupon på 500 kr.</p>';
     $('st-hist').innerHTML = histHTML(m.history, 8);
     if (!sizesDirty || sizesFor !== myPhone){
       $('st-sizes').innerHTML = sizesPickHTML(m.sizes);
@@ -1130,12 +1133,12 @@
     const m = selectedId ? members.get(selectedId) : null;
     if (!m) return;
     const a = parseAmount($('s-amount').value);
-    if (!(a > 0)){ $('s-preview').innerHTML = '<span class="muted">Skriv beløbet – klik beregnes automatisk (1 klik pr. hele 500 kr i købet).</span>'; return; }
+    if (!(a > 0)){ $('s-preview').innerHTML = '<span class="muted">Skriv beløbet – klip beregnes automatisk (1 klip pr. hele 500 kr i købet).</span>'; return; }
     const n = Math.floor(a / KR_PER_CLICK);
     const after = (m.clicks || 0) + n;
     const coupons = Math.floor(after / CLICKS_FOR_COUPON);
-    let s = `Giver <b>${n} klik</b>`;
-    s += ` → kunden får <b>${after % CLICKS_FOR_COUPON}/5 klik</b>`;
+    let s = `Giver <b>${n} klip</b>`;
+    s += ` → kunden får <b>${after % CLICKS_FOR_COUPON}/5 klip</b>`;
     if (coupons) s += ` og <b style="color:var(--olive)">${coupons} rabatkupon${coupons > 1 ? 'er' : ''} på 500 kr</b>`;
     s += '.';
     $('s-preview').innerHTML = s;
@@ -1204,7 +1207,7 @@
     const ok = await write(id, next);
     if (ok){
       if (newCodes.length){ lastReward = {id, codes: newCodes}; toast(`🎉 ${m.name || 'Kunden'} har optjent en rabatkupon på 500 kr!`); }
-      else { lastReward = null; toast(n > 0 ? `+${n} klik til ${m.name || 'kunden'}` : n < 0 ? 'Klik fjernet' : 'Køb registreret – ingen nye klik'); }
+      else { lastReward = null; toast(n > 0 ? `+${n} klip til ${m.name || 'kunden'}` : n < 0 ? 'Klip fjernet' : 'Køb registreret – ingen nye klip'); }
       render();
     }
     return ok;
@@ -1356,7 +1359,7 @@
     const b = e.target.closest('[data-login]'); if (!b) return;
     loginIdx = +b.dataset.login; const t = team[loginIdx]; if (!t) return;
     $('slogin-row').hidden = true; $('slogin-form').hidden = false;
-    $('slogin-who').innerHTML = `<div class="avatar" style="width:72px;height:72px;font-size:26px;margin:0">${esc(initials(t.name))}</div>${esc(t.name)}`;
+    $('slogin-who').innerHTML = `<div class="avatar" style="width:72px;height:72px;font-size:26px;margin:0">${av(t.name)}</div>${esc(t.name)}`;
     const first = !t.pinHash;
     $('slogin-pin2').hidden = !first;
     $('slogin-pin').placeholder = first ? 'Vælg PIN-kode (4 cifre)' : 'PIN-kode';
@@ -1456,7 +1459,7 @@
   $('s-amount').addEventListener('input', updatePreview);
   $('s-quick').addEventListener('click', e => { const b = e.target.closest('button[data-amt]'); if (b){ $('s-amount').value = b.dataset.amt; updatePreview(); $('s-amount').focus(); } });
   $('s-plus1').onclick = () => { const id = selectedId; if (id && !busy) addClicks(id, 1, {t: Date.now(), type: 'click', clicks: 1}); };
-  $('s-minus1').onclick = () => { const id = selectedId; const m = members.get(id); if (id && m && m.clicks > 0 && !busy) confirmBox('Fjern et klik?', `${m.name || 'Kunden'} går fra ${m.clicks} til ${m.clicks - 1} klik.`, () => addClicks(id, -1, {t: Date.now(), type: 'click', clicks: -1})); };
+  $('s-minus1').onclick = () => { const id = selectedId; const m = members.get(id); if (id && m && m.clicks > 0 && !busy) confirmBox('Fjern et klip?', `${m.name || 'Kunden'} går fra ${m.clicks} til ${m.clicks - 1} klip.`, () => addClicks(id, -1, {t: Date.now(), type: 'click', clicks: -1})); };
   $('s-undo').onclick = () => { const m = members.get(selectedId); if (m && m.undo) confirmBox('Fortryd sidste handling?', `“${m.undo.what}” bliver rullet tilbage.`, undoLast); };
   $('s-coupons').addEventListener('click', e => {
     const r = e.target.closest('[data-redeem]'), u = e.target.closest('[data-unredeem]');
@@ -1494,10 +1497,10 @@
     const N = PRODUCTS.length;
     const card = p => {
       const k = Math.floor(p.price / KR_PER_CLICK);
-      const kTxt = k >= CLICKS_FOR_COUPON ? `${k} klik = 500 kr kupon` : `Giver ${k} klik`;
+      const kTxt = k >= CLICKS_FOR_COUPON ? `${k} klip = 500 kr kupon` : `Giver ${k} klip`;
       return `<a class="prod" href="https://www.supermen.dk${esc(p.path)}" target="_blank" rel="noopener">
         <div class="img"><img src="img/${esc(p.path.split('/').pop())}.jpg" alt="${esc(p.brand + ' ' + p.title)}" loading="lazy">
-          <span class="tag">${esc(p.tag)}</span><span class="klik ${k >= CLICKS_FOR_COUPON ? 'full' : ''}">${kTxt}</span></div>
+          <span class="tag">${esc(p.tag)}</span><span class="klip ${k >= CLICKS_FOR_COUPON ? 'full' : ''}">${kTxt}</span></div>
         <div class="meta"><div class="b">${esc(p.brand)}</div><div class="t">${esc(p.title)}</div><div class="p">${kr(p.price)}</div><span class="see">Se produkt</span></div>
       </a>`;
     };

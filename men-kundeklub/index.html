@@ -289,6 +289,38 @@
   .modal{max-height:92vh;overflow:auto}
   @media (max-width:860px){ .sizes-grid{grid-template-columns:repeat(2,1fr)} }
 
+  /* Størrelser på kundekortet: ikoner + fold-ud redigering */
+  .szv{display:grid;grid-template-columns:repeat(6,1fr);gap:6px;margin-top:10px}
+  .szv .it{display:flex;flex-direction:column;align-items:center;gap:5px;text-align:center;padding:4px 2px}
+  .szv svg{width:34px;height:34px;stroke:var(--green);fill:none;stroke-width:1.3;stroke-linejoin:round;stroke-linecap:round}
+  .szv .v{font-family:var(--head);font-weight:700;font-size:19px;line-height:1}
+  .szv .l{font-size:10px;letter-spacing:.1em;white-space:nowrap;text-transform:uppercase;color:var(--muted);line-height:1.25}
+  .szv .it.empty svg{stroke:#c9c4bb}
+  .szv .it.empty .v{color:#c9c4bb;font-weight:500}
+  .sz-toggle{display:inline-flex;align-items:center;gap:8px;margin-top:14px;background:none;border:0;padding:6px 0;font-family:var(--head);font-size:12px;font-weight:600;letter-spacing:.14em;text-transform:uppercase;color:var(--green);border-bottom:1px solid var(--green)}
+  .sz-toggle svg{width:12px;height:12px;transition:transform .3s}
+  .sz-toggle[aria-expanded="true"] svg{transform:rotate(180deg)}
+  .sz-panel{display:grid;grid-template-rows:0fr;transition:grid-template-rows .35s ease}
+  .sz-panel.open{grid-template-rows:1fr}
+  .sz-panel > div{overflow:hidden;min-height:0}
+  .sz-inner{padding-top:14px}
+  .sz-intro{font-size:14px;color:var(--muted);margin:0 0 6px}
+  .pick{display:flex;align-items:center;gap:16px;padding:12px 0;border-top:1px solid var(--line)}
+  .pick .pl{display:flex;align-items:center;gap:10px;width:150px;flex:none;font-size:13px;font-weight:500}
+  .pick .pl svg{width:24px;height:24px;stroke:var(--green);fill:none;stroke-width:1.4;stroke-linejoin:round;stroke-linecap:round;flex:none}
+  .pick .opts{display:flex;flex-wrap:wrap;gap:6px;overflow-x:auto;scrollbar-width:none;padding:2px;-webkit-overflow-scrolling:touch}
+  .pick .opts::-webkit-scrollbar{display:none}
+  .pick .opts button{flex:none;min-width:42px;height:42px;padding:0 11px;border-radius:999px;border:1px solid transparent;background:var(--sand);font-family:var(--head);font-weight:600;font-size:14px;color:var(--ink);transition:background .15s,color .15s,border-color .15s}
+  .pick .opts button:hover{border-color:var(--green)}
+  .pick .opts button.on{background:var(--green);color:#fff}
+  .sz-inner .sizes-acts{border-top:1px solid var(--line);padding-top:16px;margin-top:0}
+  @media (max-width:860px){
+    .szv{grid-template-columns:repeat(3,1fr);row-gap:14px}
+    .pick{flex-direction:column;align-items:flex-start;gap:8px}
+    .pick .pl{width:auto}
+    .pick .opts{width:100%;flex-wrap:nowrap}
+  }
+
   /* Product carousel */
   .shop{border-top:1px solid var(--line);padding:56px 0 64px;background:#fff}
   .shop-head{display:flex;justify-content:space-between;align-items:flex-end;gap:16px;margin-bottom:24px;flex-wrap:wrap}
@@ -529,7 +561,18 @@
             <div><dt>Medlem siden</dt><dd id="kk-since"></dd></div>
             <div><dt>Handlet i alt</dt><dd id="kk-total"></dd></div>
             <div><dt>Aktive rabatkuponer</dt><dd id="kk-coupons"></dd></div>
-            <div class="wide"><dt>Mine størrelser</dt><dd><div class="chips" id="kk-sizes" style="margin-top:4px"></div></dd></div>
+            <div class="wide"><dt>Mine størrelser</dt><dd>
+              <div class="szv" id="kk-sizes"></div>
+              <button type="button" class="sz-toggle" id="sz-toggle" aria-expanded="false" aria-controls="sz-panel">Ret mine størrelser <svg viewBox="0 0 12 12" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M2 4.5l4 4 4-4"/></svg></button>
+              <div class="sz-panel" id="sz-panel"><div><div class="sz-inner">
+                <p class="sz-intro">Tryk på din størrelse – så finder vi hurtigt det rigtige til dig i butikken.</p>
+                <div id="st-sizes"></div>
+                <div class="sizes-acts">
+                  <button class="btn small" type="button" id="st-sizes-save">Gem størrelser</button>
+                  <span class="muted" id="st-sizes-msg" style="font-size:13px"></span>
+                </div>
+              </div></div></div>
+            </dd></div>
           </dl>
         </div>
         <p class="muted" style="font-size:13px;margin:16px 0 0">Dit medlemskab er knyttet til dit telefonnummer. Oplys det ved kassen, når du handler, så registrerer vi dine køb og klik. Er der noget, der skal rettes, så sig det til os i butikken.</p>
@@ -538,16 +581,6 @@
       <div class="card">
         <h3 class="sec-title">Dine rabatkuponer</h3>
         <div id="st-coupons"></div>
-      </div>
-
-      <div class="card">
-        <h3 class="sec-title">Ret mine størrelser</h3>
-        <p class="muted" style="margin:-6px 0 16px;font-size:14px">Fortæl os dine størrelser, så kan vi hurtigt finde det rigtige til dig i butikken.</p>
-        <div class="sizes-grid" id="st-sizes"></div>
-        <div class="sizes-acts">
-          <button class="btn small" type="button" id="st-sizes-save">Gem størrelser</button>
-          <span class="muted" id="st-sizes-msg" style="font-size:13px"></span>
-        </div>
       </div>
 
       <div class="card">
@@ -863,21 +896,42 @@
   /* ---------- Sizes ---------- */
   const range = (a, b, s = 1) => { const r = []; for (let x = a; x <= b; x += s) r.push(String(x)); return r; };
   const SIZE_DEFS = [
-    {key:'top',    label:'T-shirt / strik', opts:['XS','S','M','L','XL','XXL','3XL']},
-    {key:'shirt',  label:'Skjorte',         opts:['XS','S','M','L','XL','XXL','3XL']},
-    {key:'jacket', label:'Jakke / habit',   opts:['44','46','48','50','52','54','56','58','60','XS','S','M','L','XL','XXL']},
-    {key:'waist',  label:'Bukser (W)',      opts:range(28, 40)},
-    {key:'length', label:'Benlængde (L)',   opts:range(30, 36)},
-    {key:'shoe',   label:'Sko',             opts:range(39, 47)}
+    {key:'top', short:'T-shirt',    label:'T-shirt / strik', opts:['XS','S','M','L','XL','XXL','3XL']},
+    {key:'shirt', short:'Skjorte',  label:'Skjorte',         opts:['XS','S','M','L','XL','XXL','3XL']},
+    {key:'jacket', short:'Jakke', label:'Jakke / habit',   opts:['44','46','48','50','52','54','56','58','60','XS','S','M','L','XL','XXL']},
+    {key:'waist', short:'Bukser W',  label:'Bukser (W)',      opts:range(28, 40)},
+    {key:'length', short:'Længde L', label:'Benlængde (L)',   opts:range(30, 36)},
+    {key:'shoe', short:'Sko',   label:'Sko',             opts:range(39, 47)}
   ];
   function sizesSelectHTML(prefix, sizes){
     sizes = sizes || {};
     return SIZE_DEFS.map(d => `<div class="field"><label for="${prefix}-${d.key}">${esc(d.label)}</label>
       <select id="${prefix}-${d.key}" data-size="${d.key}"><option value="">–</option>${d.opts.map(o => `<option ${sizes[d.key] === o ? 'selected' : ''}>${esc(o)}</option>`).join('')}</select></div>`).join('');
   }
+  const SIZE_ICONS = {
+    top:    '<path d="M9 4l-5 3 2 4 2-1v10h8V10l2 1 2-4-5-3c-.5 1.5-1.6 2.3-3 2.3S9.5 5.5 9 4z"/>',
+    shirt:  '<path d="M9 4l-5 3 2 4 2-1v10h8V10l2 1 2-4-5-3"/><path d="M9 4l3 3 3-3"/><path d="M12 7v13"/><path d="M9 4l-1 3 4 0M15 4l1 3-4 0"/>',
+    jacket: '<path d="M8 4l-4 3 1 13h5l2-9 2 9h5l1-13-4-3"/><path d="M8 4l4 7 4-7"/><path d="M8 4l1 5-2 1M16 4l-1 5 2 1"/>',
+    waist:  '<path d="M6 4h12l1 16h-5l-2-10-2 10H5z"/><path d="M6 7h12"/>',
+    length: '<path d="M7 3h10v18H7z"/><path d="M7 7h3M7 11h4M7 15h3M7 19h4"/>',
+    shoe:   '<path d="M3 17v-5l4-1 3-4h2l1 4c3 1 6 2 8 4v2z"/><path d="M3 17h18"/><path d="M10 11l2 1M9 13l2 1"/>'
+  };
+  const sizeIcon = k => `<svg viewBox="0 0 24 24" aria-hidden="true">${SIZE_ICONS[k] || ''}</svg>`;
+  function sizesViewHTML(sizes){
+    sizes = sizes || {};
+    return SIZE_DEFS.map(d => { const v = sizes[d.key];
+      return `<div class="it ${v ? '' : 'empty'}">${sizeIcon(d.key)}<div class="v">${v ? esc(v) : '–'}</div><div class="l">${esc(d.short || d.label)}</div></div>`; }).join('');
+  }
+  function sizesPickHTML(sizes){
+    sizes = sizes || {};
+    return SIZE_DEFS.map(d => `<div class="pick" data-size="${d.key}" role="radiogroup" aria-label="${esc(d.label)}">
+      <div class="pl">${sizeIcon(d.key)}<span>${esc(d.label)}</span></div>
+      <div class="opts">${d.opts.map(o => `<button type="button" role="radio" aria-checked="${sizes[d.key] === o}" class="${sizes[d.key] === o ? 'on' : ''}" data-val="${esc(o)}">${esc(o)}</button>`).join('')}</div></div>`).join('');
+  }
   function readSizes(container){
     const out = {};
     container.querySelectorAll('select[data-size]').forEach(s => { out[s.dataset.size] = s.value || ''; });
+    container.querySelectorAll('.pick[data-size]').forEach(p => { const b = p.querySelector('button.on'); out[p.dataset.size] = b ? b.dataset.val : ''; });
     return out;
   }
   function chipsHTML(sizes){
@@ -983,7 +1037,7 @@
     $('kk-total').textContent = kr(m.totalKr);
     const act = (m.coupons || []).filter(x => !x.used).length;
     $('kk-coupons').textContent = act ? `${act} × ${kr(COUPON_VALUE)}` : 'Ingen lige nu';
-    $('kk-sizes').innerHTML = chipsHTML(m.sizes);
+    $('kk-sizes').innerHTML = sizesViewHTML(m.sizes);
 
     const coupons = (m.coupons || []).slice().sort((a, b) => (a.used - b.used) || (b.created - a.created));
     $('st-coupons').innerHTML = coupons.length ? coupons.map(cp => `
@@ -993,7 +1047,7 @@
       </div>`).join('') : '<p class="muted" style="margin:0">Du har ingen kuponer endnu. Ved 5 klik får du automatisk en kupon på 500 kr.</p>';
     $('st-hist').innerHTML = histHTML(m.history, 8);
     if (!sizesDirty || sizesFor !== myPhone){
-      $('st-sizes').innerHTML = sizesSelectHTML('sz', m.sizes);
+      $('st-sizes').innerHTML = sizesPickHTML(m.sizes);
       sizesDirty = false; sizesFor = myPhone;
     }
     $('st-sizes-save').disabled = !sizesDirty;
@@ -1352,7 +1406,19 @@
     catch(err){ $('t-err').textContent = err && err.code === 'invalid_argument' ? 'Du har ikke adgang til at ændre.' : 'Kunne ikke gemme – prøv igen.'; }
   });
 
-  $('st-sizes').addEventListener('change', () => { sizesDirty = true; $('st-sizes-save').disabled = false; $('st-sizes-msg').textContent = 'Husk at gemme'; });
+  function setSizesPanel(open){
+    $('sz-panel').classList.toggle('open', open);
+    $('sz-toggle').setAttribute('aria-expanded', String(open));
+    $('sz-toggle').firstChild.textContent = open ? 'Luk ' : 'Ret mine størrelser ';
+  }
+  $('sz-toggle').onclick = () => setSizesPanel(!$('sz-panel').classList.contains('open'));
+  $('st-sizes').addEventListener('click', e => {
+    const b = e.target.closest('.pick .opts button'); if (!b) return;
+    const wasOn = b.classList.contains('on');
+    b.parentNode.querySelectorAll('button').forEach(x => { x.classList.remove('on'); x.setAttribute('aria-checked', 'false'); });
+    if (!wasOn){ b.classList.add('on'); b.setAttribute('aria-checked', 'true'); }
+    sizesDirty = true; $('st-sizes-save').disabled = false; $('st-sizes-msg').textContent = 'Husk at gemme';
+  });
   $('st-sizes-save').onclick = async () => {
     const id = myPhone; const m = members.get(id); if (!m || !db || busy) return;
     const sizes = readSizes($('st-sizes'));
@@ -1360,12 +1426,13 @@
     try {
       await db.collection('members').doc(id).update({sizes, updated: Date.now()});
       sizesDirty = false; $('st-sizes-msg').textContent = 'Dine størrelser er gemt ✓'; toast('Størrelser gemt');
+      setTimeout(() => { if (!sizesDirty){ setSizesPanel(false); $('st-sizes-msg').textContent = ''; } }, 1200);
     } catch (e){
       btn.disabled = false;
       $('st-sizes-msg').textContent = e && e.code === 'invalid_argument' ? 'Kunne ikke gemme – du har ikke adgang til at ændre.' : 'Kunne ikke gemme – prøv igen.';
     }
   };
-  $('st-logout').onclick = () => { myPhone = null; try { localStorage.removeItem('men-klub-phone'); } catch(e){} $('lookup-phone').value = ''; $('lookup-err').textContent = ''; renderMember(); };
+  $('st-logout').onclick = () => { setSizesPanel(false); myPhone = null; try { localStorage.removeItem('men-klub-phone'); } catch(e){} $('lookup-phone').value = ''; $('lookup-err').textContent = ''; renderMember(); };
 
   $('s-search').addEventListener('input', () => renderStaff());
   $('s-search').addEventListener('keydown', e => {

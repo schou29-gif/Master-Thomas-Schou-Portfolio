@@ -199,8 +199,18 @@
   .pimgs.ig .pimg.shot img{aspect-ratio:13/15;object-fit:cover;object-position:50% 0}
   .pimgs.crop .pimg.shot img{aspect-ratio:3/4;object-fit:cover}
   .pimg.shot figcaption{font-size:12px;font-weight:600;margin-top:8px;opacity:.85}
-  .toggle{align-self:flex-start;margin-top:18px;background:none;border:none;font:700 13px var(--sans);color:var(--accent);cursor:pointer;padding:0;display:flex;gap:6px;align-items:center}
-  .toggle b{font-size:18px;line-height:1;transition:transform .3s}
+  .toggle{align-self:flex-start;margin-top:20px;background:none;border:1.5px solid currentColor;border-radius:999px;font:700 13px var(--sans);color:var(--accent);cursor:pointer;padding:7px 8px 7px 16px;display:flex;gap:10px;align-items:center;transition:background .2s,color .2s}
+  .toggle b{display:grid;place-items:center;width:24px;height:24px;border-radius:50%;background:var(--accent);color:#fff;font-size:18px;line-height:1;transition:transform .3s}
+  .proj:not(.open):hover .toggle{background:var(--accent);color:#fff}
+  .proj:not(.open):hover .toggle b{background:#fff;color:var(--accent)}
+  .proj.feature .toggle b{background:#fff;color:var(--accent)}
+  .proj.feature:not(.open):hover .toggle{background:#fff;color:var(--accent)}
+  .proj.feature:not(.open):hover .toggle b{background:var(--accent);color:#fff}
+  .proj-hint{display:flex;align-items:center;gap:8px;font-size:14px;color:var(--ink-2);margin:-18px 0 26px}
+  .proj-hint b{display:grid;place-items:center;width:20px;height:20px;border-radius:50%;background:var(--accent);color:#fff;font-size:15px}
+  details.letter summary{color:var(--accent);align-items:center}
+  details.letter summary::after{display:grid;place-items:center;width:28px;height:28px;border-radius:50%;background:var(--accent);color:#fff!important;font-size:20px!important}
+  details.letter:not([open]):hover{border-color:var(--accent)}
   .proj.open .toggle b{transform:rotate(45deg)}
   .proj.feature .toggle{color:#fff}
   @keyframes fadein{from{opacity:0;transform:translateY(8px)}to{opacity:1;transform:none}}
@@ -596,6 +606,7 @@
       <button data-f="ai">AI &amp; vibe coding</button>
       <button data-f="some">Social media</button>
     </div>
+    <p class="proj-hint reveal"><b>+</b> Click a project to read more and see images.</p>
     <div class="proj-grid">
       <article tabindex="0" class="proj feature" data-c="deg" data-t="ecom masterdata">
         <div class="top"><img class="stack" src="../logos/deg-stacked.svg" alt="Design Eyewear Group"><span class="yr">2019 — 2021</span></div>

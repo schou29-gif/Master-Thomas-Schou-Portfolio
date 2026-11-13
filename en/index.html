@@ -596,7 +596,7 @@
       <button data-f="ai">AI &amp; vibe coding</button>
       <button data-f="some">Social media</button>
     </div>
-    <div class="proj-grid reveal">
+    <div class="proj-grid">
       <article tabindex="0" class="proj feature" data-c="deg" data-t="ecom masterdata">
         <div class="top"><img class="stack" src="../logos/deg-stacked.svg" alt="Design Eyewear Group"><span class="yr">2019 — 2021</span></div>
         <div class="pcats"><span>E-commerce</span><span>Master data</span></div>
@@ -1028,7 +1028,7 @@
         io.unobserve(e.target);
       }
     });
-  },{threshold:.15});
+  },{threshold:0,rootMargin:'0px 0px -8% 0px'});
   document.querySelectorAll('.reveal').forEach(el=>io.observe(el));
 
   document.querySelectorAll('.copy').forEach(b=>{

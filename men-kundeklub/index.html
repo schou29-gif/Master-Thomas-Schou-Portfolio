@@ -7,13 +7,15 @@
 <title>MEN Kundeklub</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Jost:wght@400;500;600;700&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;700&display=swap" rel="stylesheet">
 <style>
   :root{
-    --black:#111111; --ink:#1c1c1c; --muted:#6f6c66; --line:#e4e1db;
-    --paper:#ffffff; --sand:#f4f2ee; --olive:#55583a; --ok:#2f6b3f; --warn:#9a3b2a;
-    --head:'Jost', 'Helvetica Neue', Arial, sans-serif;
-    --body:'Inter', 'Helvetica Neue', Arial, sans-serif;
+    --black:#141414; --ink:#141414; --muted:#666666; --line:#DFDFDF;
+    --paper:#FFFFFF; --sand:#F5F3EF; --beige:#F2ECE1; --mint:#EEF1EA;
+    --green:#3C5045; --green-dk:#2F3F36; --footer:#3A5045;
+    --olive:#3C5045; --ok:#3C5045; --warn:#9a3b2a;
+    --head:'Inter', Arial, sans-serif;
+    --body:'Inter', Arial, sans-serif;
   }
   *{box-sizing:border-box}
   html,body{margin:0;background:var(--paper);color:var(--ink);font-family:var(--body);font-size:15px;line-height:1.5;-webkit-font-smoothing:antialiased}
@@ -23,7 +25,7 @@
   .wrap{max-width:1180px;margin:0 auto;padding:0 20px}
 
   /* Promo bar */
-  .promo{background:var(--black);color:#fff;font-family:var(--head);font-size:12px;letter-spacing:.14em;text-transform:uppercase;text-align:center;padding:9px 12px}
+  .promo{background:var(--green);color:#fff;font-family:var(--head);font-size:12px;letter-spacing:.14em;text-transform:uppercase;text-align:center;padding:9px 12px}
   .promo b{font-weight:600}
 
   /* Header */
@@ -34,27 +36,27 @@
   .logo .s{font-family:var(--head);font-size:9.5px;letter-spacing:.3em;text-transform:uppercase;color:var(--muted);margin-top:3px}
   nav.views{display:flex;gap:4px}
   nav.views a{font-family:var(--head);font-size:13px;font-weight:500;letter-spacing:.12em;text-transform:uppercase;text-decoration:none;padding:10px 14px;border-bottom:2px solid transparent;color:var(--ink)}
-  nav.views a.on{border-bottom-color:var(--black)}
+  nav.views a.on{border-bottom-color:var(--green)}
   nav.views a:hover{color:var(--muted)}
 
   /* Headings & buttons */
-  h1,h2,h3{font-family:var(--head);font-weight:600;letter-spacing:.02em;margin:0}
+  h1,h2,h3{font-family:var(--head);font-weight:700;letter-spacing:.02em;margin:0}
   .eyebrow{font-family:var(--head);font-size:12px;letter-spacing:.22em;text-transform:uppercase;color:var(--muted)}
-  .btn{display:inline-flex;align-items:center;justify-content:center;gap:8px;border:1px solid var(--black);background:var(--black);color:#fff;font-size:13px;font-weight:500;letter-spacing:.14em;text-transform:uppercase;padding:14px 22px;border-radius:0;transition:background .15s,color .15s}
-  .btn:hover{background:#333}
-  .btn.ghost{background:#fff;color:var(--black)}
-  .btn.ghost:hover{background:var(--sand)}
+  .btn{display:inline-flex;align-items:center;justify-content:center;gap:8px;border:1px solid var(--green);background:var(--green);color:#fff;font-size:13px;font-weight:500;letter-spacing:.14em;text-transform:uppercase;padding:14px 22px;border-radius:0;transition:background .15s,color .15s}
+  .btn:hover{background:var(--green-dk);border-color:var(--green-dk)}
+  .btn.ghost{background:#fff;color:var(--green)}
+  .btn.ghost:hover{background:var(--mint)}
   .btn.small{padding:9px 14px;font-size:11.5px}
   .btn:disabled{opacity:.4;cursor:not-allowed}
   .field{display:flex;flex-direction:column;gap:6px}
   .field label{font-family:var(--head);font-size:12px;letter-spacing:.14em;text-transform:uppercase;color:var(--muted)}
   .input{border:1px solid #cfcbc4;background:#fff;padding:14px 14px;font-size:16px;border-radius:0;outline:none;width:100%}
-  .input:focus{border-color:var(--black)}
+  .input:focus{border-color:var(--green)}
 
   /* Punch card */
   .punches{display:flex;gap:12px;flex-wrap:wrap}
   .punch{width:62px;height:62px;border-radius:50%;border:2px dashed #bdb8af;display:flex;align-items:center;justify-content:center;font-family:var(--head);font-weight:600;font-size:18px;color:#bdb8af;background:#fff;transition:all .25s}
-  .punch.on{border:2px solid var(--black);background:var(--black);color:#fff}
+  .punch.on{border:2px solid var(--green);background:var(--green);color:#fff}
   .punch.on svg{width:26px;height:26px}
   .punch.gift{border-style:solid;border-color:var(--olive);color:var(--olive)}
   .punch.pop{animation:pop .5s ease}
@@ -63,10 +65,10 @@
   .punches.big .punch.on svg{width:34px;height:34px}
   .mini{display:inline-flex;gap:4px;vertical-align:middle}
   .mini i{width:12px;height:12px;border-radius:50%;border:1.5px solid #bdb8af;display:inline-block}
-  .mini i.on{background:var(--black);border-color:var(--black)}
+  .mini i.on{background:var(--green);border-color:var(--green)}
 
-  .bar{height:6px;background:var(--sand);position:relative;overflow:hidden}
-  .bar span{position:absolute;inset:0 auto 0 0;background:var(--black);transition:width .4s}
+  .bar{height:6px;background:var(--mint);position:relative;overflow:hidden}
+  .bar span{position:absolute;inset:0 auto 0 0;background:var(--green);transition:width .4s}
 
   /* Member view */
   .hero{background:var(--sand);padding:64px 0 56px;border-bottom:1px solid var(--line)}
@@ -99,7 +101,7 @@
   .kv b{display:block;font-family:var(--head);font-size:20px;font-weight:600}
   .kv span{font-size:12px;letter-spacing:.12em;text-transform:uppercase;color:var(--muted)}
 
-  .coupon{display:flex;justify-content:space-between;align-items:center;gap:16px;border:2px dashed var(--black);padding:18px 20px;background:var(--sand)}
+  .coupon{display:flex;justify-content:space-between;align-items:center;gap:16px;border:2px dashed var(--green);padding:18px 20px;background:var(--beige)}
   .coupon + .coupon{margin-top:10px}
   .coupon .code{font-family:var(--head);font-size:22px;font-weight:600;letter-spacing:.12em}
   .coupon .val{font-family:var(--head);font-size:26px;font-weight:700}
@@ -113,17 +115,17 @@
   .sec-title{font-family:var(--head);font-size:13px;letter-spacing:.18em;text-transform:uppercase;margin:0 0 14px;font-weight:600}
 
   /* Staff view */
-  .staff-head{background:var(--black);color:#fff;padding:22px 0}
+  .staff-head{background:var(--green);color:#fff;padding:22px 0}
   .staff-head .wrap{display:flex;justify-content:space-between;align-items:center;gap:16px;flex-wrap:wrap}
   .staff-head h1{font-size:22px;text-transform:uppercase;letter-spacing:.1em}
-  .staff-head .eyebrow{color:#aaa}
+  .staff-head .eyebrow{color:rgba(255,255,255,.7)}
   .staff{display:grid;grid-template-columns:360px 1fr;gap:28px;padding-top:28px;padding-bottom:64px;align-items:start}
   .list{border:1px solid var(--line);background:#fff}
   .list .search{padding:16px;border-bottom:1px solid var(--line);background:var(--sand)}
   .list ul{list-style:none;margin:0;padding:0;max-height:62vh;overflow:auto}
   .list li{padding:14px 16px;border-bottom:1px solid var(--line);cursor:pointer;display:flex;justify-content:space-between;align-items:center;gap:10px}
-  .list li:hover{background:#faf9f7}
-  .list li.sel{background:var(--sand);box-shadow:inset 3px 0 0 var(--black)}
+  .list li:hover{background:var(--sand)}
+  .list li.sel{background:var(--mint);box-shadow:inset 3px 0 0 var(--green)}
   .list li .nm{font-weight:600}
   .list li .ph{color:var(--muted);font-size:13px}
   .list .empty{padding:22px 16px;color:var(--muted);font-size:14px}
@@ -156,22 +158,22 @@
   .modal .field{margin-bottom:14px}
   .modal .acts{display:flex;gap:10px;justify-content:flex-end;margin-top:20px}
   .err{color:var(--warn);font-size:13px;min-height:18px}
-  .toast{position:fixed;left:50%;bottom:24px;transform:translateX(-50%) translateY(20px);background:var(--black);color:#fff;padding:14px 22px;font-size:14px;opacity:0;transition:all .25s;z-index:60;pointer-events:none;max-width:90vw}
+  .toast{position:fixed;left:50%;bottom:24px;transform:translateX(-50%) translateY(20px);background:var(--green-dk);color:#fff;padding:14px 22px;font-size:14px;opacity:0;transition:all .25s;z-index:60;pointer-events:none;max-width:90vw}
   .toast.show{opacity:1;transform:translateX(-50%) translateY(0)}
-  .notice{background:#fff7e8;border:1px solid #ecd8ac;padding:12px 16px;font-size:14px;margin:18px 0}
+  .notice{background:var(--beige);border:1px solid var(--line);padding:12px 16px;font-size:14px;margin:18px 0}
   .muted{color:var(--muted)}
 
   /* Header like supermen.dk */
   .promo{display:flex;align-items:center;justify-content:center;gap:14px;flex-wrap:wrap}
   .promo-btn{color:#fff;text-decoration:none;border:1px solid #fff;padding:4px 10px;font-size:11px;letter-spacing:.14em}
-  .promo-btn:hover{background:#fff;color:var(--black)}
+  .promo-btn:hover{background:#fff;color:var(--green)}
   .hdr{display:grid;grid-template-columns:auto 1fr auto;gap:28px}
   .burger{display:none;background:none;border:0;width:40px;height:40px;padding:8px;flex-direction:column;justify-content:space-between}
   .burger span{display:block;height:2px;background:var(--black)}
   .hsearch{display:flex;align-items:center;gap:10px;border:1px solid #d6d2cb;padding:0 14px;max-width:520px;width:100%;justify-self:center;height:44px}
   .hsearch input{border:0;outline:0;font-size:14px;width:100%;background:transparent}
   .hsearch:focus-within{border-color:var(--black)}
-  .hicons{display:flex;gap:18px}
+  .hicons{display:flex;gap:18px;justify-self:end}
   .hicon{display:flex;flex-direction:column;align-items:center;gap:2px;text-decoration:none;font-size:11px;letter-spacing:.06em}
   .hicon:hover{color:var(--muted)}
   .hicon.staffbtn{border-right:1px solid var(--line);padding-right:18px}
@@ -211,8 +213,8 @@
   .insta-card{display:block;border:1px solid var(--line);text-decoration:none;background:#fff;transition:box-shadow .2s}
   .insta-card:hover{box-shadow:0 10px 30px rgba(0,0,0,.08)}
   .ig-top{display:flex;align-items:center;gap:10px;padding:12px 14px;font-size:14px}
-  .ig-av{width:34px;height:34px;border-radius:50%;background:var(--black);color:#fff;font-family:var(--head);font-size:10px;font-weight:700;letter-spacing:.06em;display:flex;align-items:center;justify-content:center;box-shadow:0 0 0 2px #fff,0 0 0 3.5px #c13584}
-  .ig-img{aspect-ratio:1/1;background:linear-gradient(135deg,#f4f2ee,#e6e2da);display:flex;flex-direction:column;gap:10px;align-items:center;justify-content:center;color:#2a2a2a;font-family:var(--head);font-size:12px;letter-spacing:.18em;text-transform:uppercase}
+  .ig-av{width:34px;height:34px;border-radius:50%;background:var(--green);color:#fff;font-family:var(--head);font-size:10px;font-weight:700;letter-spacing:.06em;display:flex;align-items:center;justify-content:center;box-shadow:0 0 0 2px #fff,0 0 0 3.5px #c13584}
+  .ig-img{aspect-ratio:1/1;background:linear-gradient(135deg,#F5F3EF,#F2ECE1);display:flex;flex-direction:column;gap:10px;align-items:center;justify-content:center;color:#2a2a2a;font-family:var(--head);font-size:12px;letter-spacing:.18em;text-transform:uppercase}
   .ig-foot{padding:12px 14px;font-family:var(--head);font-size:12px;letter-spacing:.14em;text-transform:uppercase}
   @media (max-width:860px){ .insta-in{grid-template-columns:1fr} }
 
@@ -221,7 +223,7 @@
   .team h2{font-size:26px;text-transform:uppercase;letter-spacing:.06em;margin:6px 0 26px}
   .team-row{display:grid;grid-template-columns:repeat(4,1fr);gap:20px}
   .tm{background:#fff;padding:26px 20px;text-align:center;border:1px solid var(--line)}
-  .avatar{width:96px;height:96px;border-radius:50%;background:var(--black);color:#fff;display:flex;align-items:center;justify-content:center;font-family:var(--head);font-size:34px;font-weight:600;letter-spacing:.04em;margin:0 auto 14px}
+  .avatar{width:96px;height:96px;border-radius:50%;background:var(--green);color:#fff;display:flex;align-items:center;justify-content:center;font-family:var(--head);font-size:34px;font-weight:600;letter-spacing:.04em;margin:0 auto 14px}
   .tm h3{font-size:17px;text-transform:uppercase;letter-spacing:.1em}
   .tm .role{font-size:12px;letter-spacing:.14em;text-transform:uppercase;color:var(--muted);margin-top:4px}
   .loginform{flex-direction:column;gap:10px !important}
@@ -242,37 +244,38 @@
   .staffband .lbl{font-family:var(--head);font-size:12px;letter-spacing:.16em;text-transform:uppercase;color:var(--muted);margin-right:6px}
   .who-btn{display:flex;align-items:center;gap:10px;border:1px solid #cfcbc4;background:#fff;padding:6px 14px 6px 6px;font-family:var(--head);font-size:14px;font-weight:500;letter-spacing:.04em}
   .who-btn .avatar{width:34px;height:34px;font-size:13px;margin:0;background:#bdb8af}
-  .who-btn.on{border-color:var(--black);background:var(--black);color:#fff}
-  .who-btn.on .avatar{background:#fff;color:var(--black)}
-  .who-btn:hover{border-color:var(--black)}
+  .who-btn.on{border-color:var(--green);background:var(--green);color:#fff}
+  .who-btn.on .avatar{background:#fff;color:var(--green)}
+  .who-btn:hover{border-color:var(--green)}
   .linkbtn{background:none;border:0;font-family:var(--head);font-size:12px;letter-spacing:.12em;text-transform:uppercase;text-decoration:underline;color:var(--muted);padding:6px}
   .teamedit-row{display:grid;grid-template-columns:1fr 1fr;gap:10px;margin-bottom:10px}
   @media (max-width:860px){ .team-row{grid-template-columns:repeat(2,1fr)} }
 
   /* Kundekort */
-  .kk{display:grid;grid-template-columns:340px 1fr;gap:32px;align-items:start}
-  .mcard{aspect-ratio:1.586/1;background:linear-gradient(140deg,#1b1b1b 0%,#0c0c0c 60%,#262620 100%);color:#fff;padding:22px 24px;display:flex;flex-direction:column;justify-content:space-between;box-shadow:0 14px 30px rgba(0,0,0,.18);position:relative;overflow:hidden}
-  .mcard::after{content:"";position:absolute;right:-60px;top:-60px;width:200px;height:200px;border-radius:50%;border:1px solid rgba(255,255,255,.08)}
+  .kk{display:grid;grid-template-columns:340px 1fr;gap:32px;align-items:stretch}
+  .mcard{aspect-ratio:auto;min-height:200px;height:100%;background:linear-gradient(140deg,#3C5045 0%,#2F3F36 60%,#3A5045 100%);color:#fff;padding:22px 24px;display:flex;flex-direction:column;justify-content:space-between;box-shadow:0 14px 30px rgba(0,0,0,.18);position:relative;overflow:hidden}
+  .mcard::after{content:"";position:absolute;inset:0;background:url("img/facade-hvid.png") center 30%/cover no-repeat;opacity:.35;pointer-events:none}
+  .mcard > *{position:relative;z-index:1}
   .mcard-top{display:flex;justify-content:space-between;align-items:flex-start}
   .mcard-logo{font-family:var(--head);font-weight:700;font-size:30px;letter-spacing:.08em;line-height:1}
-  .mcard-sub{font-family:var(--head);font-size:10px;letter-spacing:.32em;text-transform:uppercase;color:#bdb8af;margin-top:4px}
-  .mcard-no{font-family:var(--head);font-size:13px;letter-spacing:.18em;color:#bdb8af}
-  .mcard-chip{width:40px;height:30px;border-radius:5px;background:linear-gradient(135deg,#c9c3b4,#8f8a7c);opacity:.85}
+  .mcard-sub{font-family:var(--head);font-size:10px;letter-spacing:.32em;text-transform:uppercase;color:rgba(255,255,255,.7);margin-top:4px}
+  .mcard-no{font-family:var(--head);font-size:13px;letter-spacing:.18em;color:rgba(255,255,255,.7)}
+  .mcard-chip{width:40px;height:30px;border-radius:5px;background:linear-gradient(135deg,#F2ECE1,#c9c3b4);opacity:.85}
   .mcard-bottom{display:flex;justify-content:space-between;align-items:flex-end;gap:10px}
-  .mcard-lbl{font-size:9.5px;letter-spacing:.22em;text-transform:uppercase;color:#9d998f}
+  .mcard-lbl{font-size:9.5px;letter-spacing:.22em;text-transform:uppercase;color:rgba(255,255,255,.6)}
   .mcard-name{font-family:var(--head);font-size:17px;font-weight:600;letter-spacing:.1em;text-transform:uppercase;margin-top:2px}
-  .mcard-phone{font-family:var(--head);font-size:15px;letter-spacing:.12em;margin-top:2px}
+  .mcard-phone{font-family:var(--head);font-size:15px;letter-spacing:.12em;margin-top:2px;white-space:nowrap}
   .kk-info{display:grid;grid-template-columns:1fr 1fr;gap:0 24px;margin:0}
   .kk-info > div{padding:10px 0;border-bottom:1px solid var(--line)}
   .kk-info > div.wide{grid-column:1/-1;border-bottom:0}
   .kk-info dt{font-family:var(--head);font-size:11px;letter-spacing:.16em;text-transform:uppercase;color:var(--muted)}
   .kk-info dd{margin:2px 0 0;font-size:15px;font-weight:500;word-break:break-word}
-  @media (max-width:860px){ .kk{grid-template-columns:1fr} .mcard{max-width:360px} }
+  @media (max-width:860px){ .kk{grid-template-columns:1fr} .mcard{max-width:360px;height:auto;aspect-ratio:1.9/1} }
 
   /* Sizes */
   .sizes-grid{display:grid;grid-template-columns:repeat(5,1fr);gap:12px}
   .sizes-grid select{appearance:none;-webkit-appearance:none;border:1px solid #cfcbc4;background:#fff url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='10' height='6'%3E%3Cpath d='M1 1l4 4 4-4' fill='none' stroke='%23111' stroke-width='1.4'/%3E%3C/svg%3E") no-repeat right 12px center;padding:12px 30px 12px 12px;font-size:15px;font-family:var(--body);border-radius:0;width:100%}
-  .sizes-grid select:focus{outline:none;border-color:var(--black)}
+  .sizes-grid select:focus{outline:none;border-color:var(--green)}
   .sizes-acts{display:flex;align-items:center;gap:14px;margin-top:16px;flex-wrap:wrap}
   .chips{display:flex;flex-wrap:wrap;gap:8px;margin-top:14px}
   .chip{border:1px solid var(--black);padding:6px 10px;font-size:13px;background:#fff}
@@ -289,7 +292,7 @@
   .shop-head h2{font-size:26px;text-transform:uppercase;letter-spacing:.06em;margin-top:6px}
   .shop-nav{display:flex;gap:8px;align-items:center}
   .shop-nav button{width:44px;height:44px;border:1px solid var(--black);background:#fff;font-size:18px;display:flex;align-items:center;justify-content:center}
-  .shop-nav button:hover{background:var(--black);color:#fff}
+  .shop-nav button:hover{background:var(--green);border-color:var(--green);color:#fff}
   .shop-nav a{font-family:var(--head);font-size:12.5px;letter-spacing:.14em;text-transform:uppercase;margin-right:10px}
   .viewport{overflow:hidden}
   .track{display:flex;gap:20px;transition:transform .7s cubic-bezier(.4,0,.2,1);will-change:transform}
@@ -298,9 +301,11 @@
   .prod .img{aspect-ratio:3/4;background:var(--sand);position:relative;display:flex;align-items:center;justify-content:center;overflow:hidden}
   .prod .img svg{width:46%;height:auto;color:#2a2a2a;opacity:.85;transition:transform .5s}
   .prod:hover .img svg{transform:scale(1.06)}
+  .prod .img img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;transition:transform .6s}
+  .prod:hover .img img{transform:scale(1.04)}
   .prod .brandmark{position:absolute;left:14px;top:12px;font-family:var(--head);font-size:11px;letter-spacing:.2em;text-transform:uppercase;color:var(--muted)}
-  .prod .klik{position:absolute;right:12px;bottom:12px;background:var(--black);color:#fff;font-family:var(--head);font-size:11.5px;letter-spacing:.1em;text-transform:uppercase;padding:6px 9px}
-  .prod .klik.full{background:var(--olive)}
+  .prod .klik{position:absolute;right:12px;bottom:12px;background:var(--green);color:#fff;font-family:var(--head);font-size:11.5px;letter-spacing:.1em;text-transform:uppercase;padding:6px 9px}
+  .prod .klik.full{background:var(--green-dk)}
   .prod .tag{position:absolute;left:12px;bottom:12px;background:#fff;font-family:var(--head);font-size:10.5px;letter-spacing:.14em;text-transform:uppercase;padding:5px 8px}
   .prod .meta{padding:12px 2px 0}
   .prod .b{font-family:var(--head);font-size:12px;letter-spacing:.16em;text-transform:uppercase;color:var(--muted)}
@@ -309,16 +314,16 @@
   .prod .see{display:inline-block;margin-top:8px;font-family:var(--head);font-size:11.5px;letter-spacing:.14em;text-transform:uppercase;border-bottom:1px solid var(--black)}
   .dots{display:flex;gap:6px;justify-content:center;margin-top:24px}
   .dots button{width:24px;height:3px;border:0;background:#d6d2cb;padding:0}
-  .dots button.on{background:var(--black)}
+  .dots button.on{background:var(--green)}
   @media (max-width:980px){ .prod{flex-basis:calc((100% - 20px)/2)} }
   @media (max-width:560px){ .prod{flex-basis:78%} .track{gap:14px} }
 
-  footer.site{background:var(--black);color:#d9d6d0;padding:44px 0 28px;font-size:14px}
+  footer.site{background:var(--footer);color:#EEF1EA;padding:44px 0 28px;font-size:14px}
   footer .cols{display:grid;grid-template-columns:repeat(3,1fr);gap:28px}
   footer h4{font-family:var(--head);color:#fff;font-size:13px;letter-spacing:.18em;text-transform:uppercase;margin:0 0 12px;font-weight:600}
   footer p{margin:0 0 4px}
-  footer .bottom{border-top:1px solid #2c2c2c;margin-top:30px;padding-top:18px;font-size:12px;color:#8d8a84;display:flex;justify-content:space-between;flex-wrap:wrap;gap:10px}
-  footer a{color:#d9d6d0}
+  footer .bottom{border-top:1px solid rgba(255,255,255,.18);margin-top:30px;padding-top:18px;font-size:12px;color:rgba(255,255,255,.65);display:flex;justify-content:space-between;flex-wrap:wrap;gap:10px}
+  footer a{color:#EEF1EA}
 
   [hidden]{display:none !important}
 
@@ -360,10 +365,7 @@
       <span class="m">MEN</span>
       <span class="s">Lokal siden 2006</span>
     </a>
-    <form class="hsearch" action="https://www.supermen.dk/search" method="get" target="_blank">
-      <svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="1.8"><circle cx="11" cy="11" r="7"/><path d="M20 20l-3.5-3.5"/></svg>
-      <input type="search" name="q" placeholder="Søg efter varer og brands" aria-label="Søg efter varer og brands">
-    </form>
+    <span aria-hidden="true"></span>
     <div class="hicons">
       <a href="#personale" class="hicon staffbtn" title="Personale: registrér klik">
         <svg viewBox="0 0 24 24" width="22" height="22" fill="none" stroke="currentColor" stroke-width="1.6"><rect x="3" y="6" width="18" height="13" rx="1.5"/><path d="M9 6V4.5h6V6"/><path d="M3 12h18"/><path d="M11 12v2h2v-2"/></svg>
@@ -456,10 +458,10 @@
     <div class="wrap">
       <div class="eyebrow">MEN Kundeklub</div>
       <h1>Handl hos os – og få 500 kr retur</h1>
-      <p>For hver 500 kr du handler for i butikken på Søndergade, får du et klik. Når du har samlet 5 klik, får du en rabatkupon på 500 kr til din næste handel.</p>
+      <p>For hver hele 500 kr, du handler for i butikken på Søndergade, får du et klik. Når du har samlet 5 klik, får du en rabatkupon på 500 kr til din næste handel.</p>
       <div class="steps">
         <div class="step"><div class="n">01</div><h3>Handl</h3><p>Oplys dit telefonnummer ved kassen, når du handler.</p></div>
-        <div class="step"><div class="n">02</div><h3>Saml klik</h3><p>Du får 1 klik for hver 500 kr. Det, der er tilbage, gemmes til næste gang.</p></div>
+        <div class="step"><div class="n">02</div><h3>Saml klik</h3><p>Du får 1 klik for hver hele 500 kr i et køb. Et køb på 1.700 kr giver fx 3 klik.</p></div>
         <div class="step"><div class="n">03</div><h3>Få 500 kr</h3><p>Ved 5 klik får du automatisk en rabatkupon på 500 kr.</p></div>
       </div>
     </div>
@@ -497,17 +499,13 @@
         </div>
         <p class="msg" id="st-msg"></p>
         <div class="bar"><span id="st-bar" style="width:0"></span></div>
-        <div class="kv" style="grid-template-columns:1fr">
-          <div><b id="st-rest">0 kr</b><span>Til gode mod næste klik</span></div>
-        </div>
       </div>
 
       <div class="card">
-        <h3 class="sec-title">Mit kundekort</h3>
+        <h3 class="sec-title">Mit medlemskab</h3>
         <div class="kk">
           <div class="mcard">
-            <div class="mcard-top"><div><div class="mcard-logo">MEN</div><div class="mcard-sub">Kundeklub</div></div><div class="mcard-no" id="kk-no"></div></div>
-            <div class="mcard-chip"></div>
+            <div class="mcard-top"><div><div class="mcard-logo">MEN</div><div class="mcard-sub">Digitalt medlemskab</div></div><div class="mcard-no" id="kk-no"></div></div>
             <div class="mcard-bottom">
               <div><div class="mcard-lbl">Medlem</div><div class="mcard-name" id="kk-cardname"></div></div>
               <div style="text-align:right"><div class="mcard-lbl">Telefon</div><div class="mcard-phone" id="kk-cardphone"></div></div>
@@ -524,7 +522,7 @@
             <div class="wide"><dt>Mine størrelser</dt><dd><div class="chips" id="kk-sizes" style="margin-top:4px"></div></dd></div>
           </dl>
         </div>
-        <p class="muted" style="font-size:13px;margin:16px 0 0">Vis dit kundekort ved kassen, så registrerer vi dine køb. Er der noget, der skal rettes, så sig det til os i butikken.</p>
+        <p class="muted" style="font-size:13px;margin:16px 0 0">Dit medlemskab er knyttet til dit telefonnummer. Oplys det ved kassen, når du handler, så registrerer vi dine køb og klik. Er der noget, der skal rettes, så sig det til os i butikken.</p>
       </div>
 
       <div class="card">
@@ -730,7 +728,7 @@
       </div>
       <div>
         <h4>Kundeklub</h4>
-        <p>1 klik for hver 500 kr.</p>
+        <p>1 klik for hver hele 500 kr pr. køb.</p>
         <p>5 klik giver en rabatkupon på 500 kr.</p>
         <p>Kuponen kan bruges i butikken.</p>
         <p style="margin-top:10px"><a href="https://www.supermen.dk">www.supermen.dk</a></p>
@@ -946,13 +944,12 @@
     $('st-punches').innerHTML = punchesHTML(c, pop);
     lastClicksShown.member = c;
     const left = CLICKS_FOR_COUPON - c;
-    const toGo = left * KR_PER_CLICK - (m.restKr || 0);
-    $('st-msg').innerHTML = left === CLICKS_FOR_COUPON && !(m.restKr)
+    const toGo = left * KR_PER_CLICK;
+    $('st-msg').innerHTML = left === CLICKS_FOR_COUPON
       ? `Handl for <b>${kr(KR_PER_CLICK)}</b> for at få dit første klik.`
       : `Du mangler <b>${left} klik</b> – handl for <b>${kr(toGo)}</b> mere, så får du en rabatkupon på <b>${kr(COUPON_VALUE)}</b>.`;
-    const progress = ((c * KR_PER_CLICK + (m.restKr || 0)) / (CLICKS_FOR_COUPON * KR_PER_CLICK)) * 100;
+    const progress = (c / CLICKS_FOR_COUPON) * 100;
     $('st-bar').style.width = Math.min(100, progress) + '%';
-    $('st-rest').textContent = kr(m.restKr);
     // Kundekort
     const no = memberNo(myPhone);
     $('kk-no').textContent = 'Nr. ' + no; $('kk-no2').textContent = no;
@@ -1027,7 +1024,7 @@
     $('s-punches').innerHTML = punchesHTML(c, pop);
     lastClicksShown.staff = c; lastClicksShown.staffId = selectedId;
     const open = (m.coupons || []).filter(x => !x.used).length;
-    $('s-sub').innerHTML = `${kr(m.restKr)} til gode mod næste klik · Handlet for ${kr(m.totalKr)} i alt · ${m.pinHash ? 'Login-kode valgt' : 'Har ikke valgt login-kode endnu'}` + (open ? ` · <b style="color:var(--olive)">${open} ubrugt${open > 1 ? 'e' : ''} kupon${open > 1 ? 'er' : ''}</b>` : '');
+    $('s-sub').innerHTML = `Handlet for ${kr(m.totalKr)} i alt · ${m.pinHash ? 'Login-kode valgt' : 'Har ikke valgt login-kode endnu'}` + (open ? ` · <b style="color:var(--olive)">${open} ubrugt${open > 1 ? 'e' : ''} kupon${open > 1 ? 'er' : ''}</b>` : '');
 
     const showReward = lastReward && lastReward.id === selectedId;
     $('s-reward').hidden = !showReward;
@@ -1049,16 +1046,14 @@
     const m = selectedId ? members.get(selectedId) : null;
     if (!m) return;
     const a = parseAmount($('s-amount').value);
-    if (!(a > 0)){ $('s-preview').innerHTML = '<span class="muted">Skriv beløbet – klik beregnes automatisk (1 klik pr. 500 kr, resten gemmes).</span>'; return; }
-    const total = (m.restKr || 0) + a;
-    const n = Math.floor(total / KR_PER_CLICK);
+    if (!(a > 0)){ $('s-preview').innerHTML = '<span class="muted">Skriv beløbet – klik beregnes automatisk (1 klik pr. hele 500 kr i købet).</span>'; return; }
+    const n = Math.floor(a / KR_PER_CLICK);
     const after = (m.clicks || 0) + n;
     const coupons = Math.floor(after / CLICKS_FOR_COUPON);
     let s = `Giver <b>${n} klik</b>`;
-    if (m.restKr) s += ` (inkl. ${kr(m.restKr)} til gode)`;
     s += ` → kunden får <b>${after % CLICKS_FOR_COUPON}/5 klik</b>`;
     if (coupons) s += ` og <b style="color:var(--olive)">${coupons} rabatkupon${coupons > 1 ? 'er' : ''} på 500 kr</b>`;
-    s += `. ${kr(total % KR_PER_CLICK)} gemmes til næste gang.`;
+    s += '.';
     $('s-preview').innerHTML = s;
   }
 
@@ -1136,9 +1131,8 @@
     const a = parseAmount($('s-amount').value);
     if (!(a > 0)){ toast('Skriv et beløb først'); $('s-amount').focus(); return; }
     if (a > 100000){ toast('Beløbet ser for højt ud – tjek det.'); return; }
-    const total = (m.restKr || 0) + a;
-    const n = Math.floor(total / KR_PER_CLICK);
-    const ok = await addClicks(id, n, {t: Date.now(), type: 'purchase', amount: Math.round(a), clicks: n, rest: Math.round(total % KR_PER_CLICK)});
+    const n = Math.floor(a / KR_PER_CLICK);
+    const ok = await addClicks(id, n, {t: Date.now(), type: 'purchase', amount: Math.round(a), clicks: n, rest: 0});
     if (ok){ $('s-amount').value = ''; updatePreview(); }
   }
 
@@ -1389,7 +1383,14 @@
     {brand:'Les Deux', title:'Check Overshirt Darkest Spruce Green', price:900, type:'shirt', tag:'Nyhed', path:'/products/les-deux-check-overshirt-darkest-spruce-green'},
     {brand:'Les Deux', title:'Core Oxford Shirt White', price:800, type:'shirt', tag:'Bestseller', path:'/products/les-deux-core-oxford-shirt-white'},
     {brand:'Les Deux', title:'Signature Print Sweatshirt Snow Melange', price:700, type:'sweat', tag:'Nyhed', path:'/products/les-deux-signature-print-sweatshirt-snow-melange'},
-    {brand:'Selected', title:'196 Straight Flex Chinos Black', price:600, type:'pants', tag:'Bestseller', path:'/products/selected-196-straight-flex-chinos-black'}
+    {brand:'Selected', title:'196 Straight Flex Chinos Black', price:600, type:'pants', tag:'Bestseller', path:'/products/selected-196-straight-flex-chinos-black'},
+    {brand:'Morris', title:'Flannel Big Check Shirt Slim Fit Olive', price:1100, type:'shirt', tag:'Nyhed', path:'/products/morris-flannel-big-check-shirt-slim-fit-75-olive'},
+    {brand:'Wax London', title:'Whiting Overshirt Overlap Check Natural/Ecru', price:1400, type:'shirt', tag:'Nyhed', path:'/products/wax-london-whiting-overshirt-overlap-check-natural-ecru'},
+    {brand:'Selected', title:'Bobby Leather Derby Shoe Demitasse', price:1000, type:'shoe', tag:'Nyhed', path:'/products/selected-bobby-leather-derby-shoe-demitasse'},
+    {brand:'Calvin Klein', title:'Straight Pleated Satin Trousers Dark Sapphire', price:800, type:'pants', tag:'Nyhed', path:'/products/calvin-klein-calvin-klein-straight-pleated-satin-trousers-lv04lf625g'},
+    {brand:'Selected', title:'Slim Wool Blend Blazer Flex Dark Grey', price:1500, type:'jacket', tag:'Nyhed', path:'/products/selected-slmslim-wool-blend-blz-flex-dark-grey'},
+    {brand:'Selected', title:'Jackie Sweat Jacket Forest Night', price:600, type:'sweat', tag:'Bestseller', path:'/products/selected-jackie-sweat-jacket-forest-night'},
+    {brand:'Les Deux', title:'Nørregaard T-Shirt Rosin Green', price:300, type:'sweat', tag:'Bestseller', path:'/products/les-deux-norregaard-rosin-green'}
   ];
   (function carousel(){
     const track = $('car-track'), vp = $('car-viewport'), dotsEl = $('car-dots');
@@ -1398,7 +1399,7 @@
       const k = Math.floor(p.price / KR_PER_CLICK);
       const kTxt = k >= CLICKS_FOR_COUPON ? `${k} klik = 500 kr kupon` : `Giver ${k} klik`;
       return `<a class="prod" href="https://www.supermen.dk${esc(p.path)}" target="_blank" rel="noopener">
-        <div class="img"><span class="brandmark">${esc(p.brand)}</span>${ICONS[p.type] || ICONS.shirt}
+        <div class="img"><img src="img/${esc(p.path.split('/').pop())}.jpg" alt="${esc(p.brand + ' ' + p.title)}" loading="lazy">
           <span class="tag">${esc(p.tag)}</span><span class="klik ${k >= CLICKS_FOR_COUPON ? 'full' : ''}">${kTxt}</span></div>
         <div class="meta"><div class="b">${esc(p.brand)}</div><div class="t">${esc(p.title)}</div><div class="p">${kr(p.price)}</div><span class="see">Se produkt</span></div>
       </a>`;
@@ -1448,15 +1449,65 @@
     $('lookup-err').textContent = msg;
   }
 
+  /* ---------- Demo-tilstand (uden for claude.ai): data gemmes kun i denne browser ---------- */
+  async function demoDb(){
+    const KEY = 'men-klub-demo-v1';
+    let store = null;
+    try { store = JSON.parse(localStorage.getItem(KEY) || 'null'); } catch(e){}
+    if (!store){
+      const now = Date.now(), day = 86400000;
+      const pin = await hashPin('member', '12345678', '1234');
+      const staffPin = n => hashPin('staff', n, '1234');
+      store = {
+        members: {
+          '12345678': {name:'Anders Testkunde', email:'test@example.dk', phone:'12345678', pinHash: pin,
+            sizes:{top:'L', shirt:'L', jacket:'50', waist:'32', length:'32', shoe:'43'},
+            clicks:3, restKr:0, totalKr:1700, coupons:[], joined: now - 60*day, updated: now - 2*day,
+            history:[{t: now - 60*day, type:'join'}, {t: now - 30*day, type:'purchase', amount:1100, clicks:2, by:'Klaus'}, {t: now - 2*day, type:'purchase', amount:600, clicks:1, by:'Silas'}]},
+          '87654321': {name:'Mads Jensen', email:'', phone:'87654321', pinHash:'', sizes:{}, clicks:1, restKr:0, totalKr:800,
+            coupons:[], joined: now - 10*day, updated: now - 10*day, history:[{t: now - 10*day, type:'join'}, {t: now - 10*day, type:'purchase', amount:800, clicks:1, by:'Henrik'}]}
+        },
+        config: { team: { list: await Promise.all(DEFAULT_TEAM.map(async t => ({...t, pinHash: await staffPin(t.name)}))), updated: now } }
+      };
+    }
+    const save = () => { try { localStorage.setItem(KEY, JSON.stringify(store)); } catch(e){} };
+    save();
+    const subs = { members: [], team: [] };
+    const clone = o => JSON.parse(JSON.stringify(o));
+    const emitMembers = () => {
+      const docs = Object.keys(store.members).map(id => ({ id, exists: true, data: () => clone(store.members[id]) }));
+      subs.members.forEach(cb => cb({ docs, metadata: { fromCache: false } }));
+    };
+    const emitTeam = () => subs.team.forEach(cb => cb({ exists: true, data: () => clone(store.config.team) }));
+    const memberDoc = id => ({
+      set: async data => { store.members[id] = clone(data); save(); setTimeout(emitMembers, 0); },
+      update: async part => { store.members[id] = { ...(store.members[id] || {}), ...clone(part) }; save(); setTimeout(emitMembers, 0); }
+    });
+    const banner = document.createElement('div');
+    banner.textContent = 'Demo – data gemmes kun i din browser. Kunde: 12345678 / 1234 · Personale-PIN: 1234';
+    banner.style.cssText = 'background:#F2ECE1;color:#141414;text-align:center;font-size:12.5px;padding:7px 12px;border-bottom:1px solid #DFDFDF';
+    document.body.prepend(banner);
+    return {
+      collection: name => ({
+        doc: id => memberDoc(id),
+        onSnapshot: (cb) => { subs.members.push(cb); setTimeout(emitMembers, 0); return () => {}; }
+      }),
+      doc: path => ({
+        set: async data => { store.config.team = clone(data); save(); setTimeout(emitTeam, 0); },
+        onSnapshot: (cb) => { subs.team.push(cb); setTimeout(emitTeam, 0); return () => {}; }
+      })
+    };
+  }
+
   async function init(){
     renderTeam();
     route();
     const hasClaude = typeof claude !== 'undefined';
-    db = hasClaude ? await claude.use('db') : null;
+    db = hasClaude ? await claude.use('db') : await demoDb();
     try { user = hasClaude ? await claude.use('user') : null; } catch(e){ user = null; }
     if (user){ try { canWrite = await user.can('data.write'); } catch(e){ canWrite = null; } }
     if (!db){
-      onError(hasClaude ? 'Kundeklubben kan ikke hentes i denne visning. Log ind på claude.ai og åbn siden igen.' : 'Visningsversion – kunder og klik gemmes ikke her endnu.');
+      onError('Kundeklubben kan ikke hentes i denne visning. Log ind på claude.ai og åbn siden igen.');
       loaded = true; canWrite = false; render(); return;
     }
     db.doc('config/team').onSnapshot(s => {

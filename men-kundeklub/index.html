@@ -81,7 +81,7 @@
   .step h3{font-size:14px;letter-spacing:.14em;text-transform:uppercase;margin:6px 0 6px}
   .step p{margin:0;color:var(--muted);font-size:14px}
 
-  .lookup{max-width:520px;margin:48px auto;text-align:center}
+  .lookup{max-width:520px;margin:40px auto 48px;text-align:center}
   .lookup h2{font-size:22px;text-transform:uppercase;letter-spacing:.08em}
   .lookup form{display:flex;gap:0;margin-top:20px}
   .lookup form .input{border-right:0}
@@ -176,7 +176,7 @@
   .hicons{display:flex;gap:18px;justify-self:end}
   .hicon{display:flex;flex-direction:column;align-items:center;gap:2px;text-decoration:none;font-size:11px;letter-spacing:.06em}
   .hicon:hover{color:var(--muted)}
-  .hicon.staffbtn{border-right:1px solid var(--line);padding-right:18px}
+  .hicon.staffbtn{border-left:1px solid var(--line);padding-left:18px}
   .hicon.staffbtn.on{color:var(--olive)}
   .mainnav{border-top:1px solid var(--line);background:#fff}
   .mainnav > ul{list-style:none;display:flex;justify-content:center;gap:4px;margin:0 auto;padding:0 20px}
@@ -352,6 +352,26 @@
     .action{grid-template-columns:1fr}
     .action .input{border-right:1px solid #cfcbc4;border-bottom:0}
   }
+
+  /* Mobil-header: logo øverst, derefter tre lige brede knapper */
+  @media (max-width:860px){
+    .promo{font-size:10.5px;letter-spacing:.1em;padding:7px 10px;gap:8px}
+    .promo-btn{padding:3px 8px;font-size:10px}
+    .hdr{grid-template-columns:40px 1fr 40px;grid-template-rows:auto auto;height:auto;gap:0;padding:8px 0 0}
+    .hdr > span[aria-hidden]{display:block;grid-column:3;grid-row:1}
+    .burger{grid-column:1;grid-row:1;align-self:center}
+    .logo{grid-column:2;grid-row:1;justify-self:center;align-items:center;padding:4px 0 10px}
+    .logo .m{font-size:30px}
+    .hicons{grid-column:1/-1;grid-row:2;display:grid;grid-template-columns:repeat(3,1fr);gap:0;justify-self:stretch;border-top:1px solid var(--line)}
+    .hicon,.hicon.staffbtn{flex-direction:row;justify-content:center;align-items:center;gap:8px;padding:12px 6px;font-family:var(--head);font-size:12px;font-weight:500;letter-spacing:.1em;text-transform:uppercase;border-right:1px solid var(--line);border-left:0}
+    .hicon:last-child{border-right:0}
+    .hicon span{display:inline}
+    .hicon svg{width:18px;height:18px;flex:none}
+    .hicon.staffbtn.on{background:var(--green);color:#fff}
+  }
+  @media (max-width:360px){
+    .hicon,.hicon.staffbtn{flex-direction:column;gap:3px;font-size:10.5px;padding:9px 4px}
+  }
 </style>
 </head>
 <body>
@@ -367,10 +387,6 @@
     </a>
     <span aria-hidden="true"></span>
     <div class="hicons">
-      <a href="#personale" class="hicon staffbtn" title="Personale: registrér klik">
-        <svg viewBox="0 0 24 24" width="22" height="22" fill="none" stroke="currentColor" stroke-width="1.6"><rect x="3" y="6" width="18" height="13" rx="1.5"/><path d="M9 6V4.5h6V6"/><path d="M3 12h18"/><path d="M11 12v2h2v-2"/></svg>
-        <span>Personale</span>
-      </a>
       <a href="#medlem" id="nav-medlem" class="hicon" title="Log ind">
         <svg viewBox="0 0 24 24" width="22" height="22" fill="none" stroke="currentColor" stroke-width="1.6"><circle cx="12" cy="8" r="4"/><path d="M4 21c1.5-4 4.5-6 8-6s6.5 2 8 6"/></svg>
         <span>Log ind</span>
@@ -378,6 +394,10 @@
       <a href="https://www.supermen.dk/cart" class="hicon" target="_blank" rel="noopener" title="Kurv">
         <svg viewBox="0 0 24 24" width="22" height="22" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M5 8h14l-1.2 12H6.2z"/><path d="M9 8V6a3 3 0 016 0v2"/></svg>
         <span>Kurv</span>
+      </a>
+      <a href="#personale" class="hicon staffbtn" title="Personale: registrér klik">
+        <svg viewBox="0 0 24 24" width="22" height="22" fill="none" stroke="currentColor" stroke-width="1.6"><rect x="3" y="6" width="18" height="13" rx="1.5"/><path d="M9 6V4.5h6V6"/><path d="M3 12h18"/><path d="M11 12v2h2v-2"/></svg>
+        <span>Personale</span>
       </a>
     </div>
   </div>
@@ -454,19 +474,6 @@
 
 <!-- ============ MEDLEM ============ -->
 <main id="view-medlem">
-  <section class="hero">
-    <div class="wrap">
-      <div class="eyebrow">MEN Kundeklub</div>
-      <h1>Handl hos os – og få 500 kr retur</h1>
-      <p>For hver hele 500 kr, du handler for i butikken på Søndergade, får du et klik. Når du har samlet 5 klik, får du en rabatkupon på 500 kr til din næste handel.</p>
-      <div class="steps">
-        <div class="step"><div class="n">01</div><h3>Handl</h3><p>Oplys dit telefonnummer ved kassen, når du handler.</p></div>
-        <div class="step"><div class="n">02</div><h3>Saml klik</h3><p>Du får 1 klik for hver hele 500 kr i et køb. Et køb på 1.700 kr giver fx 3 klik.</p></div>
-        <div class="step"><div class="n">03</div><h3>Få 500 kr</h3><p>Ved 5 klik får du automatisk en rabatkupon på 500 kr.</p></div>
-      </div>
-    </div>
-  </section>
-
   <div class="wrap">
     <section class="lookup" id="lookup">
       <h2 id="login-title">Log ind i kundeklubben</h2>
@@ -546,6 +553,19 @@
       </div>
     </section>
   </div>
+
+  <section class="hero">
+    <div class="wrap">
+      <div class="eyebrow">MEN Kundeklub</div>
+      <h1>Handl hos os – og få 500 kr retur</h1>
+      <p>For hver hele 500 kr, du handler for i butikken på Søndergade, får du et klik. Når du har samlet 5 klik, får du en rabatkupon på 500 kr til din næste handel.</p>
+      <div class="steps">
+        <div class="step"><div class="n">01</div><h3>Handl</h3><p>Oplys dit telefonnummer ved kassen, når du handler.</p></div>
+        <div class="step"><div class="n">02</div><h3>Saml klik</h3><p>Du får 1 klik for hver hele 500 kr i et køb. Et køb på 1.700 kr giver fx 3 klik.</p></div>
+        <div class="step"><div class="n">03</div><h3>Få 500 kr</h3><p>Ved 5 klik får du automatisk en rabatkupon på 500 kr.</p></div>
+      </div>
+    </div>
+  </section>
 
   <section class="shop" aria-label="Udvalgte produkter">
     <div class="wrap">

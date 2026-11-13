@@ -4,6 +4,8 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>Thomas Hansen – Digital Marketing Manager</title>
+<link rel="alternate" hreflang="da" href="https://www.thomasframarketing.dk/">
+<link rel="alternate" hreflang="en" href="https://www.thomasframarketing.dk/en/">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&family=Manrope:wght@400;500;600;700&display=swap" rel="stylesheet">
@@ -325,7 +327,7 @@
   .reveal.in{opacity:1;transform:none}
 
   @media (max-width:900px){
-    nav ul li:not(:last-child){display:none}
+    nav ul li:not(:last-child):not(.lang-li){display:none}
     .hero{padding:64px 0 48px}
     .hero-grid,.contact-grid{grid-template-columns:1fr;gap:32px}
     .num-grid{grid-template-columns:1fr 1fr}
@@ -360,6 +362,8 @@
     .job h3{font-size:28px}
   }
   @media (prefers-reduced-motion:reduce){.reveal{opacity:1;transform:none;transition:none}.bar .fill{transition:none}}
+  .lang{font-size:12px;font-weight:700;letter-spacing:.08em;border:1px solid var(--line);padding:6px 10px;border-radius:999px}
+  .tr-note{font-size:13px;font-style:italic;color:var(--ink-2)}
 </style>
 </head>
 <body>
@@ -375,6 +379,7 @@
       <li><a href="#anbefaling">Anbefaling</a></li>
       <li><a href="#kompetencer">Kompetencer</a></li>
       <li><a href="#om-mig">Om mig</a></li>
+      <li class="lang-li"><a href="en/" class="lang" hreflang="en" lang="en" title="Read this page in English">EN</a></li>
       <li><a href="#kontakt" class="nav-cta">Kontakt mig</a></li>
     </ul>
   </div>

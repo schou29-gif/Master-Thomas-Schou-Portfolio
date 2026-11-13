@@ -378,6 +378,13 @@
   .proj .more .case-k{display:block;font-size:12px;font-weight:700;letter-spacing:.12em;text-transform:uppercase;color:var(--accent);margin-top:22px}
   .proj .more .case-k+p{margin-top:6px}
   .proj.feature .more .case-k{color:#fff;opacity:.75}
+  .plinks{display:flex;flex-wrap:wrap;align-items:center;gap:8px;margin-top:22px}
+  .plinks span{font-size:12px;font-weight:700;letter-spacing:.12em;text-transform:uppercase;color:var(--ink-2);margin-right:4px}
+  .plinks a{font-size:13px;font-weight:700;color:var(--accent);text-decoration:none;border:1.5px solid var(--accent);border-radius:999px;padding:6px 12px;transition:background .2s,color .2s}
+  .plinks a:hover{background:var(--accent);color:#fff}
+  .val-proof a.plink{color:var(--accent);font-weight:700;text-decoration:none;border-bottom:1px solid currentColor}
+  .val.accent .val-proof a.plink{color:#fff}
+  .proj{scroll-margin-top:90px}
 </style>
 </head>
 <body>
@@ -429,7 +436,7 @@
   <div class="wrap">
     <h2 class="reveal">Resultater, der kan <em>måles</em> – ikke bare beskrives.</h2>
     <div class="num-grid reveal">
-      <div class="num"><div class="big">8+<small>år</small></div><p>Som masterdata-ansvarlig i to internationale virksomheder</p></div>
+      <div class="num"><div class="big">8+<small>år</small></div><p>Med ansvar for masterdata hos Plast-Line og Design Eyewear Group</p></div>
       <div class="num"><div class="big">25.000</div><p>Produkter oprettet til plast-line.dk efter faste retningslinjer</p></div>
       <div class="num"><div class="big">4<small>sprog</small></div><p>Fælles produktdata til 8 brandsites og 1 webshop hos Design Eyewear Group</p></div>
       <div class="num"><div class="big">8×<small>vækst</small></div><p>Webshop-omsætning fra 15 til 120 mio. kr. på to år – bygget på et solidt masterdata-fundament</p></div>
@@ -450,7 +457,7 @@
     <div class="profile-body reveal">
       <div></div>
       <div class="text">
-        <p>Jeg arbejder i krydsfeltet mellem forretning, data og IT. De seneste 8 år har jeg været masterdata-ansvarlig i to internationale virksomheder, hvor jeg har udviklet retningslinjer og workflows for produkt-, leverandør- og materialedata i ERP, PIM og WMS.</p>
+        <p>Jeg arbejder i krydsfeltet mellem forretning, data og IT. Hos Plast-Line og Design Eyewear Group har jeg haft ansvaret for masterdata i ERP, PIM og WMS – fra struktur og standarder til den daglige datakvalitet.</p>
         <p>Jeg har arbejdet med Microsoft Dynamics AX – forgængeren til Dynamics 365 – samt Visma Business og Kompas, og jeg har selv flyttet masterdata fra ERP over i Struct PIM i skyen. Min baggrund i e-commerce betyder, at jeg altid ser, hvordan datakvalitet påvirker systemer, processer og beslutninger.</p>
         <p>Jeg er struktureret og detaljeorienteret, men trives med at samle kolleger fra forskellige afdelinger om fælles standarder – på dansk og engelsk.</p>
         <p>I dag bruger jeg AI som en fast del af mit arbejde – til dataoprydning, validering, analyse og hurtige prototyper. Både kundeklubben til Supermen.dk og denne hjemmeside har jeg selv bygget med AI.</p>
@@ -468,19 +475,14 @@
       <div>
         <h3>Masterdata Manager / E-commerce</h3>
         <div class="company">Plast-Line A/S <span>· Middelfart</span></div>
-        <p>Ansvarlig for masterdata på tværs af produktion, indkøb, lager og salg i en virksomhed, der både er producent og grossist.</p>
+        <p>Ansvarlig for alle stamdata i en virksomhed, der både er producent og grossist. Jeg ejer processerne for, hvordan varer, leverandører og materialer oprettes og vedligeholdes, og er bindeleddet mellem produktion, indkøb, lager, salg og IT.</p>
         <ul>
-          <li>Udviklet og implementeret retningslinjer og workflows for oprettelse og vedligeholdelse af produkt-, leverandør- og materialestamdata</li>
-          <li>Driver løbende datarensning og validering samt daglige opdateringer i ERP</li>
-          <li>Arbejder med masterdata i relation til WMS</li>
-          <li>Strukturerede EPD-, CAD- og certificeringsdokumenter i PIM, så hvert dokument hører til de rigtige produkter</li>
-          <li>Prioriterer dataforbedringsinitiativer, træner brugere og har flyttet masterdata fra ERP til Struct PIM i skyen</li>
+          <li>Struktur, standarder og workflows for stamdata</li>
+          <li>Datakvalitet: løbende rensning, validering og daglig drift i ERP og Struct PIM</li>
+          <li>Masterdata i relation til WMS og webshop</li>
+          <li>Træning af brugere og forankring af nye arbejdsgange</li>
         </ul>
-        <div class="highlights">
-          <div class="chip"><b>↑</b> Bedre datakvalitet</div>
-          <div class="chip"><b>↓</b> Færre fejl i driften</div>
-          <div class="chip"><b>↑</b> Bedre konvertering på webshoppen</div>
-        </div>
+        <div class="plinks"><span>Projekter</span><a class="plink" href="#p-governance">Masterdata-governance →</a><a class="plink" href="#p-pim">Fra ERP til cloud-PIM →</a><a class="plink" href="#p-epd">EPD, CAD og certificering →</a></div>
       </div>
     </article>
 
@@ -489,21 +491,14 @@
       <div>
         <h3>Masterdata / E-commerce</h3>
         <div class="company">Design Eyewear Group <span>· Aarhus</span></div>
-        <p>Med reference til CEO og indkøbschef havde jeg ansvaret for virksomhedens masterdata – og for den e-commerce-løsning, der byggede på dem. Jeg var også involveret i WMS-projekter.</p>
-        <div class="sub">Ansvarsområder</div>
+        <p>Med reference til CEO og indkøbschef havde jeg ansvaret for koncernens masterdata og for den digitale platform, der byggede på dem: brandsites, webshop og systemerne bag.</p>
         <ul>
-          <li>Byggede et nyt masterdata-setup, så alle markeder arbejdede ud fra de samme, korrekte produktdata</li>
-          <li>Ansvarlig for PIM, DAM og ERP samt kundeloyalitetsprogrammer</li>
-          <li>Oprettede koncernens mediebank i Kontainer til produktbilleder og brandmateriale</li>
-          <li>Samlede 8 brandsites og 1 webshop på 4 sprog i én headless Umbraco-løsning</li>
-          <li>Etablerede en ny RMA-proces (returhåndtering) med digital dokumentation</li>
-          <li>Ordresystemet "Travel-order" – en iOS-app til salgsteamet</li>
+          <li>Masterdata, PIM, DAM og ERP for alle brands og markeder</li>
+          <li>Webshop, CRO og kundeloyalitetsprogrammer</li>
+          <li>WMS-projekter og ordreappen "Travel-order"</li>
+          <li>Instagram og influencer marketing for koncernens brands</li>
         </ul>
-        <div class="highlights">
-          <div class="chip">Nyt masterdata-setup for alle markeder</div>
-          <div class="chip"><b>15 → 120 mio. kr.</b> webshop-omsætning</div>
-          <div class="chip"><b>5 % → 23 %</b> digital andel af omsætningen</div>
-        </div>
+        <div class="plinks"><span>Projekter</span><a class="plink" href="#p-webshop">Ny webshop →</a><a class="plink" href="#p-setup">Masterdata-setup →</a><a class="plink" href="#p-sites">Fra 5 løsninger til 1 →</a><a class="plink" href="#p-kontainer">Mediebank i Kontainer →</a><a class="plink" href="#p-travel">"Travel-order" →</a><a class="plink" href="#p-instagram">Instagram →</a></div>
       </div>
     </article>
 
@@ -512,17 +507,13 @@
       <div>
         <h3>Online Sales Manager</h3>
         <div class="company">OK a.m.b.a. <span>· Aarhus</span></div>
-        <p>Med reference til onlinechefen ledede og optimerede jeg en ny webshop for OK Energi rettet mod både B2C- og B2B-kunder. Gennem målrettede dashboards skabte vi øget fokus på digitalt salg, hvilket løftede hele den digitale forretning.</p>
+        <p>Med reference til onlinechefen havde jeg ansvaret for salget i OK's onlinekanal – webshoppen på ok.dk og appen "Tank og Betal" – til både private og erhvervskunder. Jeg startede som webkoordinator og blev Online Sales Manager i 2014.</p>
         <ul>
-          <li>Ansvarlig for salg på ok.dk og appen "Tank og Betal" (B2B og B2C)</li>
-          <li>Kommercielt ansvarlig for den prisvindende app "Tank og Betal"</li>
-          <li>Marketing automation-flows som "one-click-buy" og "abandoned cart"-mails</li>
-          <li>Ansvarlig for "MIN OK" og e-mailmarketing</li>
+          <li>Salg og konvertering på ok.dk og i appen</li>
+          <li>KPI-opfølgning og dashboards for onlinekanalen</li>
+          <li>Marketing automation, "MIN OK" og e-mailmarketing</li>
         </ul>
-        <div class="highlights">
-          <div class="chip"><b>600 mio. kr.</b> årlig webshop-omsætning</div>
-          <div class="chip">Prisvindende app</div>
-        </div>
+        <div class="plinks"><span>Projekter</span><a class="plink" href="#p-okdk">Webshop på ok.dk →</a><a class="plink" href="#p-tank">"Tank og Betal" →</a><a class="plink" href="#p-automation">Marketing automation →</a><a class="plink" href="#p-dashboards">Rapportering og dashboards →</a></div>
       </div>
     </article>
 
@@ -552,38 +543,38 @@
       <div class="val">
         <div class="val-n">01</div>
         <h4>Masterdata, I kan stole på</h4>
-        <p>Jeg sætter standarder, workflows og klart ansvar op for oprettelse, godkendelse og vedligeholdelse, så produkt-, leverandør- og materialedata er korrekte og ens på tværs af produktion, indkøb, lager og salg.</p>
-        <div class="val-proof"><b>25.000</b> produkter oprettet til plast-line.dk · 8+ år som masterdata-ansvarlig</div>
+        <p>Jeg sætter standarder, workflows og klart ansvar op for oprettelse, godkendelse og vedligeholdelse, så stamdata er korrekte og ens på tværs af afdelingerne.</p>
+        <div class="val-proof">Se: <a class="plink" href="#p-governance">Masterdata-governance</a> · <a class="plink" href="#p-setup">Masterdata-setup</a></div>
       </div>
       <div class="val">
         <div class="val-n">02</div>
         <h4>Klar til et nyt ERP</h4>
         <p>Før en migrering skal de kritiske data findes, valideres, renses og godkendes. Jeg har selv flyttet masterdata fra ERP til Struct PIM og kender Dynamics AX, forgængeren til Dynamics 365.</p>
-        <div class="val-proof">Migrering fra ERP til Struct PIM · Dynamics AX · Visma Business · Kompas</div>
+        <div class="val-proof">Se: <a class="plink" href="#p-pim">Fra ERP til cloud-PIM</a></div>
       </div>
       <div class="val">
         <div class="val-n">03</div>
         <h4>Datakvalitet, der kan måles</h4>
         <p>Det, der ikke måles, bliver ikke bedre. Jeg bygger dashboards og følger KPI'er tæt – også for datakvalitet som komplethed, korrekthed og ensartethed – så vi kan prioritere rettelser ud fra fakta.</p>
-        <div class="val-proof">Dashboards og KPI-opfølgning i OK's onlineforretning · løbende datarensning og validering</div>
+        <div class="val-proof">Se: <a class="plink" href="#p-dashboards">Rapportering og dashboards</a> · <a class="plink" href="#p-governance">Masterdata-governance</a></div>
       </div>
       <div class="val">
         <div class="val-n">04</div>
         <h4>Systemer, der spiller sammen</h4>
         <p>ERP, PIM, DAM, WMS, webshop og integrationerne imellem skal hænge sammen. Jeg står for opsætning, datamapping og test, så data flytter korrekt, og ingen taster det samme to gange.</p>
-        <div class="val-proof">Visma Business · Kompas · Dynamics AX · Struct · Inriver · Perfion · Kontainer</div>
+        <div class="val-proof">Se: <a class="plink" href="#p-sites">Fra 5 løsninger til 1</a> · <a class="plink" href="#p-kontainer">Mediebank i Kontainer</a></div>
       </div>
       <div class="val">
         <div class="val-n">05</div>
         <h4>Én, der får alle med</h4>
         <p>Nye standarder virker kun, når folk bruger dem. Jeg kommunikerer klart med både teknikere og brugere, træner kolleger og samler afdelinger om fælles måder at arbejde på.</p>
-        <div class="val-proof">"Et helt enestående drive" – Heidi Collin, tidligere onlinechef i OK</div>
+        <div class="val-proof">Se: <a class="plink" href="#anbefaling">Anbefalinger</a></div>
       </div>
       <div class="val accent">
         <div class="val-n">06</div>
         <h4>Hurtigere med AI</h4>
         <p>Jeg bruger AI til dataoprydning, validering og analyse og til selv at bygge små værktøjer. Det, der før tog uger, kan jeg ofte levere på dage.</p>
-        <div class="val-proof">Kundeklub til Supermen.dk og denne hjemmeside, bygget i 2026</div>
+        <div class="val-proof">Se: <a class="plink" href="#p-supermen">Kundeklub til Supermen.dk</a> · <a class="plink" href="#p-governance">Masterdata-governance</a></div>
       </div>
     </div>
 
@@ -611,7 +602,7 @@
     </div>
     <p class="proj-hint reveal"><b>+</b> Klik på et projekt for at læse mere og se billeder.</p>
     <div class="proj-grid">
-      <article tabindex="0" class="proj feature" data-c="deg" data-t="ecom masterdata">
+      <article id="p-webshop" tabindex="0" class="proj feature" data-c="deg" data-t="ecom masterdata">
         <div class="top"><img class="stack" src="logos/deg-stacked.svg" alt="Design Eyewear Group"><span class="yr">2019 — 2021</span></div>
         <div class="pcats"><span>E-commerce</span><span>Masterdata</span></div>
         <h4>Ny webshop: fra opstart til 120 mio. kr.</h4>
@@ -629,7 +620,7 @@
         </div>
         <button class="toggle" aria-expanded="false">Læs mere <b>+</b></button>
       </article>
-      <article tabindex="0" class="proj" data-c="deg" data-t="masterdata">
+      <article id="p-setup" tabindex="0" class="proj" data-c="deg" data-t="masterdata">
         <div class="top"><img class="stack" src="logos/deg-stacked.svg" alt="Design Eyewear Group"><span class="yr">2017 — 2023</span></div>
         <div class="pcats"><span>Masterdata</span></div>
         <h4>Masterdata-setup for alle markeder</h4>
@@ -647,7 +638,7 @@
         </div>
         <button class="toggle" aria-expanded="false">Læs mere <b>+</b></button>
       </article>
-      <article tabindex="0" class="proj" data-c="plast" data-t="masterdata ai">
+      <article id="p-governance" tabindex="0" class="proj" data-c="plast" data-t="masterdata ai">
         <div class="top"><img src="logos/plastline.svg" alt="Plast-Line A/S"><span class="yr">2023 — i dag</span></div>
         <div class="pcats"><span>Masterdata</span><span>AI</span></div>
         <h4>Masterdata-governance</h4>
@@ -665,7 +656,7 @@
         </div>
         <button class="toggle" aria-expanded="false">Læs mere <b>+</b></button>
       </article>
-      <article tabindex="0" class="proj" data-c="plast" data-t="masterdata">
+      <article id="p-pim" tabindex="0" class="proj" data-c="plast" data-t="masterdata">
         <div class="top"><img src="logos/plastline.svg" alt="Plast-Line A/S"><span class="yr">2023 — i dag</span></div>
         <div class="pcats"><span>Masterdata</span></div>
         <h4>Fra ERP til cloud-PIM</h4>
@@ -684,7 +675,7 @@
         </div>
         <button class="toggle" aria-expanded="false">Læs mere <b>+</b></button>
       </article>
-      <article tabindex="0" class="proj" data-c="supermen" data-t="ai ecom">
+      <article id="p-supermen" tabindex="0" class="proj" data-c="supermen" data-t="ai ecom">
         <div class="top"><span class="wm">Supermen</span><span class="yr">2026</span></div>
         <div class="pcats"><span>AI &amp; vibe coding</span><span>E-commerce</span></div>
         <h4>Kundeklub til Supermen.dk</h4>
@@ -699,7 +690,7 @@
         </div>
         <button class="toggle" aria-expanded="false">Læs mere <b>+</b></button>
       </article>
-      <article tabindex="0" class="proj" data-c="ok" data-t="app">
+      <article id="p-tank" tabindex="0" class="proj" data-c="ok" data-t="app">
         <div class="top"><img src="logos/ok.svg" alt="OK" style="max-height:26px"><span class="yr">2011 — 2017</span></div>
         <div class="pcats"><span>App</span></div>
         <h4>"Tank og Betal"-appen</h4>
@@ -714,25 +705,25 @@
         </div>
         <button class="toggle" aria-expanded="false">Læs mere <b>+</b></button>
       </article>
-      <article tabindex="0" class="proj" data-c="ok" data-t="ecom">
+      <article id="p-okdk" tabindex="0" class="proj" data-c="ok" data-t="ecom">
         <div class="top"><img src="logos/ok.svg" alt="OK" style="max-height:26px"><span class="yr">2011 — 2017</span></div>
         <div class="pcats"><span>E-commerce</span></div>
         <h4>Webshop på ok.dk</h4>
         <p>Gjorde onlinesalget til et fokusområde i OK og ledede webshoppen for private og erhvervskunder.</p>
         <div class="metric">600 mio. kr.<small>Årlig omsætning</small></div>
-        <div class="ptags"><span>E-commerce</span><span>Dashboards</span></div>
+        <div class="ptags"><span>E-commerce</span><span>B2C/B2B</span><span>CRO</span></div>
         <div class="more">
           <span class="case-k">Udfordringen</span>
           <p>Da jeg startede, var onlinesalget ikke et fokusområde i OK.</p>
           <span class="case-k">Det gjorde jeg</span>
-          <p>Med reference til onlinechefen ledede og optimerede jeg en ny webshop for OK Energi, rettet mod både private og erhvervskunder. Med målrettede dashboards gjorde vi det digitale salg synligt i hele organisationen.</p>
+          <p>Jeg ledede og optimerede en ny webshop for OK Energi, rettet mod både private og erhvervskunder. Sammen med onlineteamet planlagde og igangsatte jeg løbende nye tiltag og forsøg for at løfte konverteringen.</p>
           <span class="case-k">Resultatet</span>
-          <p>Onlinekanalen fik ledelsens og kollegernes opmærksomhed, og webshoppen voksede til en årlig omsætning på 600 mio. kr.</p>
+          <p>Webshoppen voksede til en årlig omsætning på 600 mio. kr., og onlinekanalen blev en vigtig del af OK's forretning.</p>
           <div class="pimgs" style="grid-template-columns:1fr"><figure class="pimg shot"><img src="images/ok-dk-forside.jpg" alt="Forsiden af ok.dk med kampagner for OK-ladeboks og el samt genveje til app, bilvask, naturgas, el, opladning, varmepumper, serviceaftaler, fyringsolie og kort" loading="lazy"><figcaption>Forsiden af ok.dk i dag</figcaption></figure></div>
         </div>
         <button class="toggle" aria-expanded="false">Læs mere <b>+</b></button>
       </article>
-      <article tabindex="0" class="proj" data-c="ok" data-t="ecom">
+      <article id="p-automation" tabindex="0" class="proj" data-c="ok" data-t="ecom">
         <div class="top"><img src="logos/ok.svg" alt="OK" style="max-height:26px"><span class="yr">2011 — 2017</span></div>
         <div class="pcats"><span>E-commerce</span></div>
         <h4>Marketing automation</h4>
@@ -750,7 +741,7 @@
         </div>
         <button class="toggle" aria-expanded="false">Læs mere <b>+</b></button>
       </article>
-      <article tabindex="0" class="proj" data-c="ok" data-t="ecom">
+      <article id="p-dashboards" tabindex="0" class="proj" data-c="ok" data-t="ecom">
         <div class="top"><img src="logos/ok.svg" alt="OK" style="max-height:26px"><span class="yr">2011 — 2017</span></div>
         <div class="pcats"><span>E-commerce</span></div>
         <h4>Rapportering og dashboards</h4>
@@ -766,7 +757,7 @@
         </div>
         <button class="toggle" aria-expanded="false">Læs mere <b>+</b></button>
       </article>
-      <article tabindex="0" class="proj" data-c="deg" data-t="ecom masterdata">
+      <article id="p-sites" tabindex="0" class="proj" data-c="deg" data-t="ecom masterdata">
         <div class="top"><img class="stack" src="logos/deg-stacked.svg" alt="Design Eyewear Group"><span class="yr">2017 — 2023</span></div>
         <div class="pcats"><span>E-commerce</span><span>Masterdata</span></div>
         <h4>Fra 5 løsninger til 1: 8 brandsites og webshop</h4>
@@ -784,7 +775,7 @@
         </div>
         <button class="toggle" aria-expanded="false">Læs mere <b>+</b></button>
       </article>
-      <article tabindex="0" class="proj" data-c="deg" data-t="masterdata">
+      <article id="p-kontainer" tabindex="0" class="proj" data-c="deg" data-t="masterdata">
         <div class="top"><img class="stack" src="logos/deg-stacked.svg" alt="Design Eyewear Group"><span class="yr">2017 — 2023</span></div>
         <div class="pcats"><span>Masterdata</span></div>
         <h4>Mediebank i Kontainer</h4>
@@ -801,7 +792,7 @@
         </div>
         <button class="toggle" aria-expanded="false">Læs mere <b>+</b></button>
       </article>
-      <article tabindex="0" class="proj" data-c="deg" data-t="some">
+      <article id="p-instagram" tabindex="0" class="proj" data-c="deg" data-t="some">
         <div class="top"><img class="stack" src="logos/deg-stacked.svg" alt="Design Eyewear Group"><span class="yr">2017 — 2023</span></div>
         <div class="pcats"><span>SoMe</span></div>
         <h4>Instagram og influencer marketing</h4>
@@ -818,7 +809,7 @@
         </div>
         <button class="toggle" aria-expanded="false">Læs mere <b>+</b></button>
       </article>
-      <article tabindex="0" class="proj" data-c="deg" data-t="app">
+      <article id="p-travel" tabindex="0" class="proj" data-c="deg" data-t="app">
         <div class="top"><img class="stack" src="logos/deg-stacked.svg" alt="Design Eyewear Group"><span class="yr">2017 — 2023</span></div>
         <div class="pcats"><span>App</span></div>
         <h4>"Travel-order": iOS-app til salget</h4>
@@ -835,7 +826,7 @@
         </div>
         <button class="toggle" aria-expanded="false">Læs mere <b>+</b></button>
       </article>
-      <article tabindex="0" class="proj" data-c="plast" data-t="masterdata">
+      <article id="p-epd" tabindex="0" class="proj" data-c="plast" data-t="masterdata">
         <div class="top"><img src="logos/plastline.svg" alt="Plast-Line A/S"><span class="yr">2023 — i dag</span></div>
         <div class="pcats"><span>Masterdata</span></div>
         <h4>Databaser til EPD, CAD og certificering</h4>
@@ -1119,6 +1110,14 @@
     });
     p.addEventListener('keydown',e=>{if(e.key==='Enter'&&e.target===p){p.click()}});
   });
+  document.querySelectorAll('a.plink').forEach(a=>a.addEventListener('click',e=>{
+    const p=document.getElementById(a.getAttribute('href').slice(1));
+    if(!p||!p.classList.contains('proj')) return;
+    e.preventDefault();
+    const all=document.querySelector('.filters button[data-f="alle"]'); if(all) all.click();
+    projs.forEach(q=>q!==p&&setOpen(q,false)); setOpen(p,true);
+    setTimeout(()=>p.scrollIntoView({behavior:'smooth',block:'start'}),60);
+  }));
 </script>
 </body>
 </html>

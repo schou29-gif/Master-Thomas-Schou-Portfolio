@@ -178,6 +178,8 @@
   .hicon:hover{color:var(--muted)}
   .hicon.staffbtn{border-left:1px solid var(--line);padding-left:18px}
   .hicon.staffbtn.on{color:var(--olive)}
+  .hicon.staffbtn{display:none}
+  body.staff-device .hicon.staffbtn{display:flex}
   .mainnav{border-top:1px solid var(--line);background:#fff}
   .mainnav > ul{list-style:none;display:flex;justify-content:center;gap:4px;margin:0 auto;padding:0 20px}
   .mainnav > ul > li > a{display:block;font-family:var(--head);font-size:13.5px;font-weight:500;letter-spacing:.08em;text-transform:uppercase;text-decoration:none;padding:14px 16px}
@@ -397,9 +399,9 @@
     .burger{grid-column:1;grid-row:1;align-self:center}
     .logo{grid-column:2;grid-row:1;justify-self:center;align-items:center;padding:4px 0 10px}
     .logo .m{font-size:30px}
-    .hicons{grid-column:1/-1;grid-row:2;display:grid;grid-template-columns:repeat(3,1fr);gap:0;justify-self:stretch;border-top:1px solid var(--line)}
+    .hicons{grid-column:1/-1;grid-row:2;display:grid;grid-template-columns:none;grid-auto-flow:column;grid-auto-columns:1fr;gap:0;justify-self:stretch;border-top:1px solid var(--line)}
     .hicon,.hicon.staffbtn{flex-direction:row;justify-content:center;align-items:center;gap:8px;padding:12px 6px;font-family:var(--head);font-size:12px;font-weight:500;letter-spacing:.1em;text-transform:uppercase;border-right:1px solid var(--line);border-left:0}
-    .hicon:last-child{border-right:0}
+    .hicon:last-child,body:not(.staff-device) .hicon:nth-child(2){border-right:0}
     .hicon span{display:inline}
     .hicon svg{width:18px;height:18px;flex:none}
     .hicon.staffbtn.on{background:var(--green);color:#fff}
@@ -966,6 +968,8 @@
   function setStaff(name){
     cashier = name;
     try { name ? localStorage.setItem('men-klub-staff', name) : localStorage.removeItem('men-klub-staff'); } catch(e){}
+    if (name){ try { localStorage.setItem('men-klub-staff-device', '1'); } catch(e){} }
+    markStaffDevice();
     renderTeam(); renderStaff();
   }
 
@@ -982,7 +986,12 @@
   try { myPhone = localStorage.getItem('men-klub-phone'); } catch(e){}
 
   /* ---------- Routing ---------- */
+  function markStaffDevice(){
+    let dev = false; try { dev = localStorage.getItem('men-klub-staff-device') === '1'; } catch(e){}
+    document.body.classList.toggle('staff-device', dev || location.hash === '#personale');
+  }
   function route(){
+    markStaffDevice();
     const v = location.hash === '#personale' ? 'personale' : 'medlem';
     $('view-medlem').hidden = v !== 'medlem';
     $('view-personale').hidden = v !== 'personale';
@@ -1572,7 +1581,7 @@
       update: async part => { store.members[id] = { ...(store.members[id] || {}), ...clone(part) }; save(); setTimeout(emitMembers, 0); }
     });
     const banner = document.createElement('div');
-    banner.textContent = 'Demo – data gemmes kun i din browser. Kunde: 12345678 / 1234 · Personale-PIN: 1234';
+    banner.textContent = 'Demo – data gemmes kun i din browser. Prøv som kunde: 12345678 / kode 1234';
     banner.style.cssText = 'background:#F2ECE1;color:#141414;text-align:center;font-size:12.5px;padding:7px 12px;border-bottom:1px solid #DFDFDF';
     document.body.prepend(banner);
     return {

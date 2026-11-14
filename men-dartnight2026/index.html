@@ -136,7 +136,7 @@
 (function(){
   "use strict";
   // ---- Indstillinger ----
-  var QM_CODE = "bullseye";           // Quizmasterens kode til at rette
+  var QM_CODE = "1234";           // Quizmasterens kode til at rette
   var TEAMS = [
     {name:"Team Indersport", logo:'<svg viewBox="0 0 64 64"><defs><clipPath id="cIA"><circle cx="32" cy="32" r="31"/></clipPath></defs><circle cx="32" cy="32" r="31" fill="#e8892b"/><g clip-path="url(#cIA)"><path d="M8 66q2-19 24-21q22 2 24 21z" fill="#1f4fa8"/><path d="M26 45.5l6 6.5 6-6.5z" fill="#f2b33d"/><rect x="28" y="38" width="8" height="8" fill="#94593a"/></g><circle cx="21" cy="30" r="2.6" fill="#a2663f"/><circle cx="43" cy="30" r="2.6" fill="#a2663f"/><ellipse cx="32" cy="29" rx="11" ry="12.5" fill="#a86b45"/><path d="M20.8 27.5Q19.5 14.5 32 14.5Q44.5 14.5 43.2 27.5Q41 20.5 32 21Q24 20.5 20.8 27.5z" fill="#1b1410"/><path d="M25.5 25.6l4-.8M38.5 25.6l-4-.8" stroke="#1b1410" stroke-width="1.4" stroke-linecap="round"/><circle cx="27.6" cy="29.2" r="1.4" fill="#1b1410"/><circle cx="36.4" cy="29.2" r="1.4" fill="#1b1410"/><path d="M27.5 34.6Q32 32.6 36.5 34.6Q32 36.4 27.5 34.6z" fill="#1b1410"/><path d="M28.8 37.6Q32 40.2 35.2 37.6" stroke="#5a2e1e" stroke-width="1.4" fill="none" stroke-linecap="round"/></svg>'},
     {name:"Springgymnasterne", logo:'<svg viewBox="0 0 64 64"><circle cx="32" cy="32" r="31" fill="#3a6fd8"/><path d="M10 48q22-14 44 0" stroke="#9fc0ff" stroke-width="2" fill="none"/><g stroke="#fff" stroke-width="4.5" stroke-linecap="round" fill="none"><path d="M32 22v12"/><path d="M32 25l-10-10M32 25l10-10"/><path d="M32 34l-17 5M32 34l17 5"/></g><circle cx="32" cy="16" r="5" fill="#fff"/></svg>'},
@@ -451,7 +451,7 @@
   function viewDone(){
     h('<div class="card"><h2>Afleveret!</h2>'+
       (teamObj(st.team)?'<div class="resteam"><span class="logo">'+teamObj(st.team).logo+'</span><span>'+esc(st.team)+'</span></div>':'')+'<p class="lead">'+esc(st.team)+'s svar er låst. Giv telefonen til quizmasteren, når der skal rettes.</p>'+
-      '<label for="c">Quizmasterens kode</label><input type="text" id="c" autocomplete="off" autocapitalize="off">'+
+      '<label for="c">Quizmasterens kode</label><input type="text" id="c" inputmode="numeric" autocomplete="off" autocapitalize="off">'+
       '<div class="err" id="er"></div><button class="btn" id="go">Ret svarene</button></div>');
     var c=document.getElementById("c");
     document.getElementById("go").onclick=function(){
@@ -488,7 +488,7 @@
   function saveBoard(b){ board=b; try{ localStorage.setItem(BKEY,JSON.stringify(b)); }catch(e){} }
   function viewQM(){
     h('<div class="card"><h2>Quizmaster</h2>'+
-      '<label for="c">Kode</label><input type="text" id="c" autocomplete="off" autocapitalize="off">'+
+      '<label for="c">Kode</label><input type="text" id="c" inputmode="numeric" autocomplete="off" autocapitalize="off">'+
       '<div class="err" id="er"></div>'+
       '<button class="btn" id="tav">Samlet stilling</button>'+
       '<button class="btn secondary" id="rs">Start forfra på denne telefon</button>'+

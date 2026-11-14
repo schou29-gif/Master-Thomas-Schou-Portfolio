@@ -270,7 +270,7 @@
 
   function render(){
     document.body.classList.remove("is-splash");
-    if(!st.started && !st.team) return viewSplash();
+    if(!splashSeen) return viewSplash();
     if(!st.team) st.step="team";
     if(st.submitted) return st.unlocked ? viewResult() : viewDone();
     if(st.step==="team") return viewTeam();
@@ -280,6 +280,7 @@
     return viewStep();
   }
 
+  var splashSeen=false; // startsiden vises hver gang siden åbnes
   function viewSplash(){
     document.body.classList.add("is-splash");
     h('<div class="splash"><div class="splash-in">'+
@@ -287,8 +288,8 @@
       '<div class="splash-kicker">Dart Night 2026</div>'+
       '<h2 class="splash-title">Musikquiz</h2>'+
       '<p class="splash-sub">Den svære udgave · 40 numre · 3 hold</p>'+
-      '<button class="btn splash-btn" id="start">Start</button></div></div>');
-    document.getElementById("start").onclick=function(){ st.started=true; save(); render(); };
+      '<button class="btn splash-btn" id="start">'+(st.team?'Fortsæt':'Start')+'</button></div></div>');
+    document.getElementById("start").onclick=function(){ splashSeen=true; st.started=true; save(); render(); };
   }
   function viewTeam(){
     var chips=TEAMS.map(function(t){ return '<button class="teamchip'+(st.team===t.name?' on':'')+'" data-team="'+esc(t.name)+'"><span class="logo">'+t.logo+'</span><span>'+esc(t.name)+'<small class="mem">'+esc(t.members)+'</small></span></button>'; }).join("");
@@ -518,7 +519,7 @@
       '<p class="lead">Alle svar på denne telefon slettes, og quizzen starter forfra med valg af hold.</p>'+
       '<div class="row"><button class="btn secondary" id="no">Annuller</button><button class="btn" id="yes">Start forfra</button></div></div>');
     document.getElementById("no").onclick=render;
-    document.getElementById("yes").onclick=function(){ st=fresh(); save(); render(); };
+    document.getElementById("yes").onclick=function(){ st=fresh(); save(); splashSeen=false; render(); };
   }
   document.getElementById("qmreset").onclick=viewQM;
   render();

@@ -159,8 +159,10 @@
   ];
   var NS = 40, NB = BONUS_Q.length;
   // Prøvespørgsmål – tæller ikke med. Quizmasteren spiller det før nummer 1.
-  var PRACTICE_Q = "Hvem bestiller altid 12 astronauter i baren, selvom festen er lukket?";
-  var PRACTICE_A = "Henrik";
+  var PRACTICE = [
+    {q:"Hvem bestiller altid 12 astronauter i baren, selvom festen er lukket?", a:"Henrik"},
+    {q:"Hvem bliver opfattet ude i byen som rigtig flot, men pisse irriterende?", a:"Henrik"}
+  ];
   // Facitlisten er kodet, så den ikke kan læses direkte i sidens kilde.
   var FACIT = JSON.parse(decodeURIComponent(escape(atob("eyJzb25ncyI6IFtbWyJTaW1wbGUgTWluZHMiXSwgWyJEb24ndCBZb3UgKEZvcmdldCBBYm91dCBNZSkiLCAiRG9uJ3QgWW91IiwgIkZvcmdldCBBYm91dCBNZSJdLCAibSIsIDE5ODVdLCBbWyJUaGUgUHJvZGlneSIsICJQcm9kaWd5Il0sIFsiRmlyZXN0YXJ0ZXIiXSwgIm0iLCAxOTk2XSwgW1siUXVlZW5zIG9mIHRoZSBTdG9uZSBBZ2UiLCAiUU9UU0EiXSwgWyJObyBPbmUgS25vd3MiXSwgIm0iLCAyMDAyXSwgW1siVGFsa2luZyBIZWFkcyJdLCBbIk9uY2UgaW4gYSBMaWZldGltZSJdLCAicyIsIDE5ODBdLCBbWyJMYWlkIEJhY2siXSwgWyJTdW5zaGluZSBSZWdnYWUiXSwgIm0iLCAxOTgyXSwgW1siUmFkaW9oZWFkIl0sIFsiQ3JlZXAiXSwgImwiLCAxOTkyXSwgW1siR29yaWxsYXoiXSwgWyJGZWVsIEdvb2QgSW5jLiIsICJGZWVsIEdvb2QiXSwgIm0iLCAyMDA1XSwgW1siSm95IERpdmlzaW9uIl0sIFsiTG92ZSBXaWxsIFRlYXIgVXMgQXBhcnQiXSwgInMiLCAxOTgwXSwgW1siSGFkZGF3YXkiXSwgWyJXaGF0IElzIExvdmUiXSwgImwiLCAxOTkzXSwgW1siTWV0YWxsaWNhIl0sIFsiTm90aGluZyBFbHNlIE1hdHRlcnMiXSwgIm0iLCAxOTkyXSwgW1siUGV0ZXIgR2FicmllbCJdLCBbIlNsZWRnZWhhbW1lciJdLCAibSIsIDE5ODZdLCBbWyJNYXNzaXZlIEF0dGFjayJdLCBbIlRlYXJkcm9wIl0sICJzIiwgMTk5OF0sIFtbIkthc2htaXIiXSwgWyJSb2NrZXQgQnJvdGhlcnMiXSwgInMiLCAyMDAzXSwgW1siVGhlIENsYXNoIl0sIFsiU2hvdWxkIEkgU3RheSBvciBTaG91bGQgSSBHbyJdLCAibCIsIDE5ODJdLCBbWyJQb3J0aXNoZWFkIl0sIFsiR2xvcnkgQm94Il0sICJzIiwgMTk5NF0sIFtbIkRhZnQgUHVuayJdLCBbIk9uZSBNb3JlIFRpbWUiXSwgImwiLCAyMDAwXSwgW1siVGVhcnMgZm9yIEZlYXJzIl0sIFsiRXZlcnlib2R5IFdhbnRzIHRvIFJ1bGUgdGhlIFdvcmxkIl0sICJtIiwgMTk4NV0sIFtbIkRpenp5IE1penogTGl6enkiXSwgWyJTaWx2ZXJmbGFtZSJdLCAibSIsIDE5OTRdLCBbWyJBdWRpb3NsYXZlIl0sIFsiTGlrZSBhIFN0b25lIl0sICJtIiwgMjAwM10sIFtbIkthdGUgQnVzaCJdLCBbIlJ1bm5pbmcgVXAgVGhhdCBIaWxsIl0sICJtIiwgMTk4NV0sIFtbIlRoZSBDcmFuYmVycmllcyJdLCBbIlpvbWJpZSJdLCAibCIsIDE5OTRdLCBbWyJBcmN0aWMgTW9ua2V5cyJdLCBbIkkgQmV0IFlvdSBMb29rIEdvb2Qgb24gdGhlIERhbmNlZmxvb3IiXSwgIm0iLCAyMDA1XSwgW1siUGl4aWVzIl0sIFsiV2hlcmUgSXMgTXkgTWluZD8iXSwgInMiLCAxOTg4XSwgW1siRmF0Ym95IFNsaW0iXSwgWyJUaGUgUm9ja2FmZWxsZXIgU2thbmsiLCAiUm9ja2FmZWxsZXIgU2thbmsiXSwgIm0iLCAxOTk4XSwgW1siSnVuaW9yIFNlbmlvciJdLCBbIk1vdmUgWW91ciBGZWV0Il0sICJtIiwgMjAwMl0sIFtbIkV1cnl0aG1pY3MiXSwgWyJTd2VldCBEcmVhbXMgKEFyZSBNYWRlIG9mIFRoaXMpIiwgIlN3ZWV0IERyZWFtcyJdLCAibCIsIDE5ODNdLCBbWyJUaGUgU21hc2hpbmcgUHVtcGtpbnMiLCAiU21hc2hpbmcgUHVtcGtpbnMiXSwgWyIxOTc5Il0sICJzIiwgMTk5Nl0sIFtbIkZyYW56IEZlcmRpbmFuZCJdLCBbIlRha2UgTWUgT3V0Il0sICJtIiwgMjAwNF0sIFtbIklOWFMiXSwgWyJOZWVkIFlvdSBUb25pZ2h0Il0sICJtIiwgMTk4N10sIFtbIkJlY2siXSwgWyJMb3NlciJdLCAicyIsIDE5OTNdLCBbWyJNR01UIl0sIFsiS2lkcyJdLCAicyIsIDIwMDddLCBbWyJEZXh5cyBNaWRuaWdodCBSdW5uZXJzIiwgIkRleHlzIl0sIFsiQ29tZSBPbiBFaWxlZW4iXSwgImwiLCAxOTgyXSwgW1siTGVubnkgS3Jhdml0eiJdLCBbIkFyZSBZb3UgR29ubmEgR28gTXkgV2F5Il0sICJsIiwgMTk5M10sIFtbIkJhc2VtZW50IEpheHgiXSwgWyJXaGVyZSdzIFlvdXIgSGVhZCBBdCJdLCAibSIsIDIwMDFdLCBbWyJUaGUgQ3VyZSJdLCBbIkp1c3QgTGlrZSBIZWF2ZW4iXSwgInMiLCAxOTg3XSwgW1siUHVscCJdLCBbIkNvbW1vbiBQZW9wbGUiXSwgInMiLCAxOTk1XSwgW1siVGhlIEhpdmVzIl0sIFsiSGF0ZSB0byBTYXkgSSBUb2xkIFlvdSBTbyJdLCAicyIsIDIwMDBdLCBbWyJEZXBlY2hlIE1vZGUiXSwgWyJKdXN0IENhbid0IEdldCBFbm91Z2giXSwgIm0iLCAxOTgxXSwgW1siV2hpZ2ZpZWxkIl0sIFsiU2F0dXJkYXkgTmlnaHQiXSwgImwiLCAxOTk0XSwgW1siT3V0bGFuZGlzaCJdLCBbIkHDr2NoYSIsICJBaWNoYSJdLCAibSIsIDIwMDNdXSwgImJvbnVzIjogW1siVGhlIEJyZWFrZmFzdCBDbHViIiwgW1siYnJlYWtmYXN0IGNsdWIiXV1dLCBbIkdlbmVzaXMiLCBbWyJnZW5lc2lzIl1dXSwgWyJKb2huIEd1bGRiZXJnIG9nIFRpbSBTdGFobCIsIFtbImd1bGRiZXJnIiwgInN0YWhsIl0sIFsiam9obiIsICJ0aW0iXV1dLCBbIlRoZSBIb3VzZW1hcnRpbnMiLCBbWyJob3VzZW1hcnRpbnMiXV1dLCBbIlRoZSBBaXIgVGhhdCBJIEJyZWF0aGUiLCBbWyJhaXIgdGhhdCBpIGJyZWF0aGUiXV1dLCBbIlN0cmFuZ2VyIFRoaW5ncyIsIFtbInN0cmFuZ2VyIHRoaW5ncyJdXV0sIFsiU2FubmllIENoYXJsb3R0ZSBDYXJsc29uIiwgW1sic2FubmllIl0sIFsiY2FybHNvbiJdXV0sIFsiUmFnZSBBZ2FpbnN0IHRoZSBNYWNoaW5lIiwgW1sicmFnZSBhZ2FpbnN0Il0sIFsicmF0bSJdXV0sIFsiRHIuIEhvdXNlIChIb3VzZSBNLkQuKSIsIFtbImhvdXNlIl1dXSwgWyJOZXcgT3JkZXIiLCBbWyJuZXcgb3JkZXIiXV1dXX0="))));
 
@@ -180,7 +182,7 @@
     var s = {team:"", step:"team", pos:0, songs:[], bonus:[], submitted:false, unlocked:false, over:{}};
     for (var k=0;k<NS;k++) s.songs.push({a:"",t:"",d:""});
     for (var b=0;b<NB;b++) s.bonus.push("");
-    s.practice="";
+    s.practice=["",""];
     return s;
   }
 
@@ -298,12 +300,12 @@
 
   // Rækkefølge: hvert bonusspørgsmål kommer lige efter det nummer, det handler om.
   var BONUS_AFTER = [1,11,5,24,6,20,39,19,12,8]; // nummer (1-40) for bonus 1-10
-  var SEQ=[{k:"p",i:-1}];
+  var SEQ=[{k:"p",i:0},{k:"p",i:1}];
   for(var q=0;q<NS;q++){ SEQ.push({k:"s",i:q}); BONUS_AFTER.forEach(function(n,b){ if(n===q+1) SEQ.push({k:"b",i:b}); }); }
 
   function songOf(i){ return {s:st.songs[i],f:FACIT.songs[i]}; }
   function head(step){
-    var lbl = step.k==="p" ? "Prøvespørgsmål" : step.k==="s" ? "Nummer "+(step.i+1)+" af "+NS : "Bonusspørgsmål";
+    var lbl = step.k==="p" ? "Prøvespørgsmål "+(step.i+1)+" af "+PRACTICE.length : step.k==="s" ? "Nummer "+(step.i+1)+" af "+NS : "Bonusspørgsmål";
     return '<div class="qnum">'+teamTag(st.team)+' · '+lbl+'</div><div class="progress"><i style="width:'+(st.pos/SEQ.length*100)+'%"></i></div>';
   }
   function advance(){
@@ -368,7 +370,7 @@
   function viewStep(){
     st.pos=Math.min(Math.max(st.pos||0,0),SEQ.length-1);
     var step=SEQ[st.pos];
-    if(step.k==="p") return st.prev ? viewPracticeReveal() : viewPractice(step);
+    if(step.k==="p") return st.prev ? viewPracticeReveal(step) : viewPractice(step);
     return step.k==="b" ? viewBonus(step) : viewSong(step);
   }
 
@@ -395,25 +397,26 @@
   }
 
   function viewPractice(step){
-    if(typeof st.practice!=="string") st.practice="";
+    var k=step.i, P=PRACTICE[k];
+    if(!Array.isArray(st.practice)) st.practice=["",""];
     h(head(step)+
-      '<div class="card"><div class="big">Prøve</div><p class="lead">Et prøvespørgsmål, så I kan se, hvordan det virker. Det tæller ikke med i pointene.</p>'+
-      '<p class="bonusq">'+esc(PRACTICE_Q)+'</p>'+
-      '<label for="x">Jeres svar</label><input type="text" id="x" autocomplete="off" value="'+esc(st.practice)+'">'+
+      '<div class="card"><div class="big">Prøve '+(k+1)+'</div><p class="lead">Et prøvespørgsmål, så I kan se, hvordan det virker. Det tæller ikke med i pointene.</p>'+
+      '<p class="bonusq">'+esc(P.q)+'</p>'+
+      '<label for="x">Jeres svar</label><input type="text" id="x" autocomplete="off" value="'+esc(st.practice[k]||"")+'">'+
       '<button class="btn" id="next">Næste</button><div class="saved" id="sv"></div></div>');
     var x=document.getElementById("x");
-    x.oninput=function(){ st.practice=x.value; save(); document.getElementById("sv").textContent="Gemt"; };
+    x.oninput=function(){ st.practice[k]=x.value; save(); document.getElementById("sv").textContent="Gemt"; };
     document.getElementById("next").onclick=function(){ st.prev=true; save(); render(); };
   }
-  function viewPracticeReveal(){
-    var ok=matchAny(st.practice,[PRACTICE_A]);
+  function viewPracticeReveal(step){
+    var k=step.i, P=PRACTICE[k], their=(st.practice||[])[k]||"", ok=matchAny(their,[P.a]), last=k===PRACTICE.length-1;
     h('<div class="bull"><div class="bullboard'+(ok?'':' missboard')+'"><div class="dart'+(ok?'':' missdart')+'"></div></div>'+
       '<div class="bulltxt'+(ok?'':' misstxt')+'">'+(ok?'BULLSEYE!':'WHAT A MISS!')+'</div>'+
-      '<div class="card answer"><div class="qnum">Rigtigt svar · prøvespørgsmål (tæller ikke)</div>'+
-      '<div class="ansline"><span class="mk '+(ok?'y':'n')+'">'+(ok?'✓':'✗')+'</span><div><div class="ar">'+esc(PRACTICE_A)+'</div>'+
-      (ok?'':'<div class="at">I svarede: '+(esc(st.practice)||'–')+'</div>')+'</div></div></div>'+
-      '<p class="lead" style="text-align:center;margin-top:14px">Sådan ser det ud efter hvert nummer: 3 rigtige giver BULLSEYE, 2 giver CLOSE BUT NO CIGAR, og 1 giver WHAT A MISS.</p>'+
-      '<button class="btn answer" id="cont">Videre til nummer 1</button></div>');
+      '<div class="card answer"><div class="qnum">Rigtigt svar · prøvespørgsmål '+(k+1)+' (tæller ikke)</div>'+
+      '<div class="ansline"><span class="mk '+(ok?'y':'n')+'">'+(ok?'✓':'✗')+'</span><div><div class="ar">'+esc(P.a)+'</div>'+
+      (ok?'':'<div class="at">I svarede: '+(esc(their)||'–')+'</div>')+'</div></div></div>'+
+      (last?'<p class="lead" style="text-align:center;margin-top:14px">Sådan ser det ud efter hvert nummer: 3 rigtige giver BULLSEYE, 2 giver CLOSE BUT NO CIGAR, og 1 giver WHAT A MISS.</p>':'')+
+      '<button class="btn answer" id="cont">'+(last?'Videre til nummer 1':'Videre til prøvespørgsmål 2')+'</button></div>');
     document.getElementById("cont").onclick=function(){ st.prev=false; st.pos++; save(); render(); };
   }
   function viewBonus(step){

@@ -147,16 +147,16 @@
   function teamTag(n){ var t=teamObj(n); return (t?'<span class="mini">'+t.logo+'</span>':'')+esc(n); }
   var DECADES = ["70'erne","80'erne","90'erne","00'erne","10'erne"];
   var BONUS_Q = [
-    "Simple Minds' Don't You (Forget About Me) blev skrevet til en kultfilm fra 1985. Hvilken?",
-    "Peter Gabriel var forsanger i et andet band, før han gik solo. Hvilket?",
-    "Laid Back er en dansk duo. Hvad hedder de to medlemmer?",
-    "Fatboy Slim spillede bas i et britisk band i 80'erne, der fik et hit med Caravan of Love. Hvilket band?",
-    "Radiohead måtte dele krediteringen for Creep, fordi den mindede om en sang fra 1974 af The Hollies. Hvilken?",
-    "Kate Bushs Running Up That Hill fik et kæmpe comeback i 2022 takket være en Netflix-serie. Hvilken?",
-    "Whigfield er dansk. Hvad hedder hun i virkeligheden?",
-    "Audioslave bestod af Chris Cornell fra Soundgarden og tre musikere fra et andet band. Hvilket?",
-    "Massive Attacks Teardrop er kendingsmelodi til en tv-serie med Hugh Laurie. Hvilken?",
-    "Efter forsangeren Ian Curtis' død i 1980 fortsatte resten af Joy Division under et nyt navn. Hvilket?"
+      "Simple Minds kommer fra en del af Storbritannien. Hvilken?",
+      "Peter Gabriel var forsanger i Genesis. Hvem tog over som forsanger, da han gik? Tip: Han sang også In the Air Tonight.",
+      "Laid Back kommer fra et land, I kender rigtig godt. Hvilket?",
+      "Fatboy Slim er en kendt dj. Hvilket land kommer han fra?",
+      "Hvad hedder Radioheads forsanger? Tip: Thom …",
+      "Kate Bushs Running Up That Hill fik comeback i 2022 i en Netflix-serie om nogle børn i 80'ernes Hawkins. Hvilken?",
+      "Hvilken ugedag synger Whigfield om?",
+      "Audioslaves forsanger Chris Cornell sang før i et grungeband fra Seattle, der starter med 'Sound…'. Hvilket?",
+      "Massive Attacks Teardrop er kendingsmelodi til en lægeserie med Hugh Laurie som den sure læge. Hvad hedder serien?",
+      "Efter 1980 blev Joy Division til et nyt band, der fik et kæmpe hit med Blue Monday. Hvad hed det? Tip: New …"
   ];
   var NS = 40, NB = BONUS_Q.length;
   // Prøvespørgsmål – tæller ikke med. Quizmasteren spiller det før nummer 1.
@@ -165,7 +165,7 @@
     {q:"Hvem bliver opfattet ude i byen som rigtig flot, men pisse irriterende?", a:"Henrik"}
   ];
   // Facitlisten er kodet, så den ikke kan læses direkte i sidens kilde.
-  var FACIT = JSON.parse(decodeURIComponent(escape(atob("eyJzb25ncyI6IFtbWyJTaW1wbGUgTWluZHMiXSwgWyJEb24ndCBZb3UgKEZvcmdldCBBYm91dCBNZSkiLCAiRG9uJ3QgWW91IiwgIkZvcmdldCBBYm91dCBNZSJdLCAibSIsIDE5ODVdLCBbWyJUaGUgUHJvZGlneSIsICJQcm9kaWd5Il0sIFsiRmlyZXN0YXJ0ZXIiXSwgIm0iLCAxOTk2XSwgW1siUXVlZW5zIG9mIHRoZSBTdG9uZSBBZ2UiLCAiUU9UU0EiXSwgWyJObyBPbmUgS25vd3MiXSwgIm0iLCAyMDAyXSwgW1siT2FzaXMiXSwgWyJEb24ndCBMb29rIEJhY2sgaW4gQW5nZXIiXSwgIm0iLCAxOTk2XSwgW1siTGFpZCBCYWNrIl0sIFsiU3Vuc2hpbmUgUmVnZ2FlIl0sICJtIiwgMTk4Ml0sIFtbIlJhZGlvaGVhZCJdLCBbIkNyZWVwIl0sICJsIiwgMTk5Ml0sIFtbIkdvcmlsbGF6Il0sIFsiRmVlbCBHb29kIEluYy4iLCAiRmVlbCBHb29kIl0sICJtIiwgMjAwNV0sIFtbIkpveSBEaXZpc2lvbiJdLCBbIkxvdmUgV2lsbCBUZWFyIFVzIEFwYXJ0Il0sICJzIiwgMTk4MF0sIFtbIkhhZGRhd2F5Il0sIFsiV2hhdCBJcyBMb3ZlIl0sICJsIiwgMTk5M10sIFtbIk1ldGFsbGljYSJdLCBbIk5vdGhpbmcgRWxzZSBNYXR0ZXJzIl0sICJtIiwgMTk5Ml0sIFtbIlBldGVyIEdhYnJpZWwiXSwgWyJTbGVkZ2VoYW1tZXIiXSwgIm0iLCAxOTg2XSwgW1siTWFzc2l2ZSBBdHRhY2siXSwgWyJUZWFyZHJvcCJdLCAicyIsIDE5OThdLCBbWyJLYXNobWlyIl0sIFsiUm9ja2V0IEJyb3RoZXJzIl0sICJzIiwgMjAwM10sIFtbIlRoZSBDbGFzaCJdLCBbIlNob3VsZCBJIFN0YXkgb3IgU2hvdWxkIEkgR28iXSwgImwiLCAxOTgyXSwgW1siUG9ydGlzaGVhZCJdLCBbIkdsb3J5IEJveCJdLCAicyIsIDE5OTRdLCBbWyJEYWZ0IFB1bmsiXSwgWyJPbmUgTW9yZSBUaW1lIl0sICJsIiwgMjAwMF0sIFtbIlRlYXJzIGZvciBGZWFycyJdLCBbIkV2ZXJ5Ym9keSBXYW50cyB0byBSdWxlIHRoZSBXb3JsZCJdLCAibSIsIDE5ODVdLCBbWyJEaXp6eSBNaXp6IExpenp5Il0sIFsiU2lsdmVyZmxhbWUiXSwgIm0iLCAxOTk0XSwgW1siQXVkaW9zbGF2ZSJdLCBbIkxpa2UgYSBTdG9uZSJdLCAibSIsIDIwMDNdLCBbWyJLYXRlIEJ1c2giXSwgWyJSdW5uaW5nIFVwIFRoYXQgSGlsbCJdLCAibSIsIDE5ODVdLCBbWyJUaGUgQ3JhbmJlcnJpZXMiXSwgWyJab21iaWUiXSwgImwiLCAxOTk0XSwgW1siQXJjdGljIE1vbmtleXMiXSwgWyJJIEJldCBZb3UgTG9vayBHb29kIG9uIHRoZSBEYW5jZWZsb29yIl0sICJtIiwgMjAwNV0sIFtbIlBpeGllcyJdLCBbIldoZXJlIElzIE15IE1pbmQ/Il0sICJzIiwgMTk4OF0sIFtbIkZhdGJveSBTbGltIl0sIFsiVGhlIFJvY2thZmVsbGVyIFNrYW5rIiwgIlJvY2thZmVsbGVyIFNrYW5rIl0sICJtIiwgMTk5OF0sIFtbIkp1bmlvciBTZW5pb3IiXSwgWyJNb3ZlIFlvdXIgRmVldCJdLCAibSIsIDIwMDJdLCBbWyJFdXJ5dGhtaWNzIl0sIFsiU3dlZXQgRHJlYW1zIChBcmUgTWFkZSBvZiBUaGlzKSIsICJTd2VldCBEcmVhbXMiXSwgImwiLCAxOTgzXSwgW1siVGhlIFNtYXNoaW5nIFB1bXBraW5zIiwgIlNtYXNoaW5nIFB1bXBraW5zIl0sIFsiMTk3OSJdLCAicyIsIDE5OTZdLCBbWyJGcmFueiBGZXJkaW5hbmQiXSwgWyJUYWtlIE1lIE91dCJdLCAibSIsIDIwMDRdLCBbWyJJTlhTIl0sIFsiTmVlZCBZb3UgVG9uaWdodCJdLCAibSIsIDE5ODddLCBbWyJCZWNrIl0sIFsiTG9zZXIiXSwgInMiLCAxOTkzXSwgW1siTUdNVCJdLCBbIktpZHMiXSwgInMiLCAyMDA3XSwgW1siRGV4eXMgTWlkbmlnaHQgUnVubmVycyIsICJEZXh5cyJdLCBbIkNvbWUgT24gRWlsZWVuIl0sICJsIiwgMTk4Ml0sIFtbIkxlbm55IEtyYXZpdHoiXSwgWyJBcmUgWW91IEdvbm5hIEdvIE15IFdheSJdLCAibCIsIDE5OTNdLCBbWyJCYXNlbWVudCBKYXh4Il0sIFsiV2hlcmUncyBZb3VyIEhlYWQgQXQiXSwgIm0iLCAyMDAxXSwgW1siVGhlIEN1cmUiXSwgWyJKdXN0IExpa2UgSGVhdmVuIl0sICJzIiwgMTk4N10sIFtbIlB1bHAiXSwgWyJDb21tb24gUGVvcGxlIl0sICJzIiwgMTk5NV0sIFtbIlRoZSBIaXZlcyJdLCBbIkhhdGUgdG8gU2F5IEkgVG9sZCBZb3UgU28iXSwgInMiLCAyMDAwXSwgW1siRGVwZWNoZSBNb2RlIl0sIFsiSnVzdCBDYW4ndCBHZXQgRW5vdWdoIl0sICJtIiwgMTk4MV0sIFtbIldoaWdmaWVsZCJdLCBbIlNhdHVyZGF5IE5pZ2h0Il0sICJsIiwgMTk5NF0sIFtbIk91dGxhbmRpc2giXSwgWyJBw69jaGEiLCAiQWljaGEiXSwgIm0iLCAyMDAzXV0sICJib251cyI6IFtbIlRoZSBCcmVha2Zhc3QgQ2x1YiIsIFtbImJyZWFrZmFzdCBjbHViIl1dXSwgWyJHZW5lc2lzIiwgW1siZ2VuZXNpcyJdXV0sIFsiSm9obiBHdWxkYmVyZyBvZyBUaW0gU3RhaGwiLCBbWyJndWxkYmVyZyIsICJzdGFobCJdLCBbImpvaG4iLCAidGltIl1dXSwgWyJUaGUgSG91c2VtYXJ0aW5zIiwgW1siaG91c2VtYXJ0aW5zIl1dXSwgWyJUaGUgQWlyIFRoYXQgSSBCcmVhdGhlIiwgW1siYWlyIHRoYXQgaSBicmVhdGhlIl1dXSwgWyJTdHJhbmdlciBUaGluZ3MiLCBbWyJzdHJhbmdlciB0aGluZ3MiXV1dLCBbIlNhbm5pZSBDaGFybG90dGUgQ2FybHNvbiIsIFtbInNhbm5pZSJdLCBbImNhcmxzb24iXV1dLCBbIlJhZ2UgQWdhaW5zdCB0aGUgTWFjaGluZSIsIFtbInJhZ2UgYWdhaW5zdCJdLCBbInJhdG0iXV1dLCBbIkRyLiBIb3VzZSAoSG91c2UgTS5ELikiLCBbWyJob3VzZSJdXV0sIFsiTmV3IE9yZGVyIiwgW1sibmV3IG9yZGVyIl1dXV19"))));
+  var FACIT = JSON.parse(decodeURIComponent(escape(atob("eyJzb25ncyI6IFtbWyJTaW1wbGUgTWluZHMiXSwgWyJEb24ndCBZb3UgKEZvcmdldCBBYm91dCBNZSkiLCAiRG9uJ3QgWW91IiwgIkZvcmdldCBBYm91dCBNZSJdLCAibSIsIDE5ODVdLCBbWyJUaGUgUHJvZGlneSIsICJQcm9kaWd5Il0sIFsiRmlyZXN0YXJ0ZXIiXSwgIm0iLCAxOTk2XSwgW1siUXVlZW5zIG9mIHRoZSBTdG9uZSBBZ2UiLCAiUU9UU0EiXSwgWyJObyBPbmUgS25vd3MiXSwgIm0iLCAyMDAyXSwgW1siT2FzaXMiXSwgWyJEb24ndCBMb29rIEJhY2sgaW4gQW5nZXIiXSwgIm0iLCAxOTk2XSwgW1siTGFpZCBCYWNrIl0sIFsiU3Vuc2hpbmUgUmVnZ2FlIl0sICJtIiwgMTk4Ml0sIFtbIlJhZGlvaGVhZCJdLCBbIkNyZWVwIl0sICJsIiwgMTk5Ml0sIFtbIkdvcmlsbGF6Il0sIFsiRmVlbCBHb29kIEluYy4iLCAiRmVlbCBHb29kIl0sICJtIiwgMjAwNV0sIFtbIkpveSBEaXZpc2lvbiJdLCBbIkxvdmUgV2lsbCBUZWFyIFVzIEFwYXJ0Il0sICJzIiwgMTk4MF0sIFtbIkhhZGRhd2F5Il0sIFsiV2hhdCBJcyBMb3ZlIl0sICJsIiwgMTk5M10sIFtbIk1ldGFsbGljYSJdLCBbIk5vdGhpbmcgRWxzZSBNYXR0ZXJzIl0sICJtIiwgMTk5Ml0sIFtbIlBldGVyIEdhYnJpZWwiXSwgWyJTbGVkZ2VoYW1tZXIiXSwgIm0iLCAxOTg2XSwgW1siTWFzc2l2ZSBBdHRhY2siXSwgWyJUZWFyZHJvcCJdLCAicyIsIDE5OThdLCBbWyJLYXNobWlyIl0sIFsiUm9ja2V0IEJyb3RoZXJzIl0sICJzIiwgMjAwM10sIFtbIlRoZSBDbGFzaCJdLCBbIlNob3VsZCBJIFN0YXkgb3IgU2hvdWxkIEkgR28iXSwgImwiLCAxOTgyXSwgW1siUG9ydGlzaGVhZCJdLCBbIkdsb3J5IEJveCJdLCAicyIsIDE5OTRdLCBbWyJEYWZ0IFB1bmsiXSwgWyJPbmUgTW9yZSBUaW1lIl0sICJsIiwgMjAwMF0sIFtbIlRlYXJzIGZvciBGZWFycyJdLCBbIkV2ZXJ5Ym9keSBXYW50cyB0byBSdWxlIHRoZSBXb3JsZCJdLCAibSIsIDE5ODVdLCBbWyJEaXp6eSBNaXp6IExpenp5Il0sIFsiU2lsdmVyZmxhbWUiXSwgIm0iLCAxOTk0XSwgW1siQXVkaW9zbGF2ZSJdLCBbIkxpa2UgYSBTdG9uZSJdLCAibSIsIDIwMDNdLCBbWyJLYXRlIEJ1c2giXSwgWyJSdW5uaW5nIFVwIFRoYXQgSGlsbCJdLCAibSIsIDE5ODVdLCBbWyJUaGUgQ3JhbmJlcnJpZXMiXSwgWyJab21iaWUiXSwgImwiLCAxOTk0XSwgW1siQXJjdGljIE1vbmtleXMiXSwgWyJJIEJldCBZb3UgTG9vayBHb29kIG9uIHRoZSBEYW5jZWZsb29yIl0sICJtIiwgMjAwNV0sIFtbIlBpeGllcyJdLCBbIldoZXJlIElzIE15IE1pbmQ/Il0sICJzIiwgMTk4OF0sIFtbIkZhdGJveSBTbGltIl0sIFsiVGhlIFJvY2thZmVsbGVyIFNrYW5rIiwgIlJvY2thZmVsbGVyIFNrYW5rIl0sICJtIiwgMTk5OF0sIFtbIkp1bmlvciBTZW5pb3IiXSwgWyJNb3ZlIFlvdXIgRmVldCJdLCAibSIsIDIwMDJdLCBbWyJFdXJ5dGhtaWNzIl0sIFsiU3dlZXQgRHJlYW1zIChBcmUgTWFkZSBvZiBUaGlzKSIsICJTd2VldCBEcmVhbXMiXSwgImwiLCAxOTgzXSwgW1siVGhlIFNtYXNoaW5nIFB1bXBraW5zIiwgIlNtYXNoaW5nIFB1bXBraW5zIl0sIFsiMTk3OSJdLCAicyIsIDE5OTZdLCBbWyJGcmFueiBGZXJkaW5hbmQiXSwgWyJUYWtlIE1lIE91dCJdLCAibSIsIDIwMDRdLCBbWyJJTlhTIl0sIFsiTmVlZCBZb3UgVG9uaWdodCJdLCAibSIsIDE5ODddLCBbWyJCZWNrIl0sIFsiTG9zZXIiXSwgInMiLCAxOTkzXSwgW1siTUdNVCJdLCBbIktpZHMiXSwgInMiLCAyMDA3XSwgW1siRGV4eXMgTWlkbmlnaHQgUnVubmVycyIsICJEZXh5cyJdLCBbIkNvbWUgT24gRWlsZWVuIl0sICJsIiwgMTk4Ml0sIFtbIkxlbm55IEtyYXZpdHoiXSwgWyJBcmUgWW91IEdvbm5hIEdvIE15IFdheSJdLCAibCIsIDE5OTNdLCBbWyJCYXNlbWVudCBKYXh4Il0sIFsiV2hlcmUncyBZb3VyIEhlYWQgQXQiXSwgIm0iLCAyMDAxXSwgW1siVGhlIEN1cmUiXSwgWyJKdXN0IExpa2UgSGVhdmVuIl0sICJzIiwgMTk4N10sIFtbIlB1bHAiXSwgWyJDb21tb24gUGVvcGxlIl0sICJzIiwgMTk5NV0sIFtbIlRoZSBIaXZlcyJdLCBbIkhhdGUgdG8gU2F5IEkgVG9sZCBZb3UgU28iXSwgInMiLCAyMDAwXSwgW1siRGVwZWNoZSBNb2RlIl0sIFsiSnVzdCBDYW4ndCBHZXQgRW5vdWdoIl0sICJtIiwgMTk4MV0sIFtbIldoaWdmaWVsZCJdLCBbIlNhdHVyZGF5IE5pZ2h0Il0sICJsIiwgMTk5NF0sIFtbIk91dGxhbmRpc2giXSwgWyJBw69jaGEiLCAiQWljaGEiXSwgIm0iLCAyMDAzXV0sICJib251cyI6IFtbIlNrb3RsYW5kIiwgW1sic2tvdGxhbmQiXSwgWyJzY290bGFuZCJdXV0sIFsiUGhpbCBDb2xsaW5zIiwgW1siY29sbGlucyJdXV0sIFsiRGFubWFyayIsIFtbImRhbm1hcmsiXSwgWyJkYW5zayJdLCBbImRlbm1hcmsiXV1dLCBbIkVuZ2xhbmQiLCBbWyJlbmdsYW5kIl0sIFsiZW5nZWxzayJdLCBbInN0b3Jicml0YW5uaWVuIl0sIFsiYnJpdGlzayJdXV0sIFsiVGhvbSBZb3JrZSIsIFtbInlvcmtlIl1dXSwgWyJTdHJhbmdlciBUaGluZ3MiLCBbWyJzdHJhbmdlciB0aGluZ3MiXV1dLCBbIkzDuHJkYWcgKFNhdHVyZGF5KSIsIFtbImzDuHJkYWciXSwgWyJzYXR1cmRheSJdXV0sIFsiU291bmRnYXJkZW4iLCBbWyJzb3VuZGdhcmRlbiJdXV0sIFsiRHIuIEhvdXNlIChIb3VzZSBNLkQuKSIsIFtbImhvdXNlIl1dXSwgWyJOZXcgT3JkZXIiLCBbWyJuZXcgb3JkZXIiXV1dXX0="))));
 
   // ---- Lagring (overlever genindlæsning på telefonen) ----
   var KEY = "dartnight2026-musikquiz";
@@ -190,7 +190,7 @@
 
   // ---- Retning ----
   function norm(x){
-    return String(x||"").normalize("NFD").replace(/[̀-ͯ]/g,"").toLowerCase()
+    return String(x||"").toLowerCase().replace(/ø/g,"o").replace(/æ/g,"ae").replace(/å/g,"aa").normalize("NFD").replace(/[̀-ͯ]/g,"").toLowerCase()
       .replace(/\([^)]*\)|\[[^\]]*\]/g," ")            // tekst i parentes er valgfri
       .replace(/&/g," and ").replace(/['’`´]/g,"").replace(/[^a-z0-9]+/g," ").trim()
       .replace(/^the /,"");
@@ -229,7 +229,7 @@
   }
   // Bonus: hvert nøgleord skal findes i svaret, men må være stavet lidt forkert
   function hasWord(a, kw){
-    var k=norm(kw); if(a.indexOf(k)>=0) return true;
+    var k=norm(kw); if(a.indexOf(k)>=0 || a.replace(/ /g,"").indexOf(k.replace(/ /g,""))>=0) return true;
     var aw=a.split(" "), n=k.split(" ").length;
     for(var i=0;i+n<=aw.length;i++){ if(close(aw.slice(i,i+n).join(" "),k)) return true; }
     return false;

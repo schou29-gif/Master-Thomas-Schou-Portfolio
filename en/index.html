@@ -385,6 +385,34 @@
   .val-proof a.plink{color:var(--accent);font-weight:700;text-decoration:none;border-bottom:1px solid currentColor}
   .val.accent .val-proof a.plink{color:#fff}
   .proj{scroll-margin-top:90px}
+  /* Mobil: lettere version med mindre indhold (desktop uændret) */
+  @media (max-width:760px){
+    .hero .lead{font-size:17px}
+    .hero .btn-ghost{display:none}
+    .growth{display:none}
+    .num p{font-size:13px}
+    .profile-body .text p:nth-child(2),.profile-body .text p:nth-child(3){display:none}
+    .job ul{display:none}
+    .job>div>p{font-size:15px}
+    #vaerdi .val-intro{display:none}
+    .val p{display:none}
+    .val{padding:20px 22px}
+    .plan .step p{display:none}
+    .filters{flex-wrap:nowrap;overflow-x:auto;margin-left:-4px;padding:2px 4px 6px;-webkit-overflow-scrolling:touch}
+    .filters button{flex:none}
+    .proj-hint,.proj .ptags,.proj .pcats{display:none}
+    .rec-points{display:none}
+    .sg>div>p,.sg.ai>div>p{display:none}
+    .sys-row:nth-child(n+5){display:none}
+    .sticker p{display:none}
+    .rec-private{display:none}
+    .motto small{display:none}
+    .motto{margin-top:48px}
+    .proj>p{display:none}
+    .proj-grid.short .proj:nth-child(n+7){display:none}
+    .proj-all{display:block;margin:20px auto 0;font:700 15px var(--sans);padding:14px 22px;border-radius:999px;border:1.5px solid var(--ink);background:transparent;color:var(--ink);cursor:pointer}
+  }
+  .proj-all{display:none}
 </style>
 </head>
 <body>
@@ -601,7 +629,7 @@
       <button data-f="some">Social media</button>
     </div>
     <p class="proj-hint reveal"><b>+</b> Click a project to read more and see images.</p>
-    <div class="proj-grid">
+    <div class="proj-grid short">
       <article id="p-webshop" tabindex="0" class="proj feature" data-c="deg" data-t="ecom masterdata">
         <div class="top"><img class="stack" src="../logos/deg-stacked.svg" alt="Design Eyewear Group"><span class="yr">2019 — 2021</span></div>
         <div class="pcats"><span>E-commerce</span><span>Master data</span></div>
@@ -846,6 +874,7 @@
         <button class="toggle" aria-expanded="false">Read more <b>+</b></button>
       </article>
     </div>
+    <button class="proj-all" type="button">Vis alle 14 projekter ↓</button>
     <p class="proj-empty" hidden>There are no projects in this category yet.</p>
   </div>
 </section>
@@ -1123,6 +1152,11 @@
     projs.forEach(q=>q!==p&&setOpen(q,false)); setOpen(p,true);
     setTimeout(()=>p.scrollIntoView({behavior:'smooth',block:'start'}),60);
   }));
+  const pg=document.querySelector('.proj-grid'),pa=document.querySelector('.proj-all');
+  function showAll(){pg.classList.remove('short');pa.remove();}
+  pa.addEventListener('click',showAll);
+  document.querySelectorAll('.filters button').forEach(b=>b.addEventListener('click',showAll));
+  document.querySelectorAll('a.plink').forEach(a=>a.addEventListener('click',()=>{if(document.getElementById(a.getAttribute('href').slice(1))?.classList.contains('proj'))showAll();},true));
 </script>
 </body>
 </html>

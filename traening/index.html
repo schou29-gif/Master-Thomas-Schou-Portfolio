@@ -108,7 +108,7 @@
   <header>
     <div class="eyebrow">Jens Mortensen · 3 × fuldkrop · 6 uger</div>
     <h1>Trænings<em>log</em></h1>
-    <p class="sub">Vælg uge og dag. Vægt og reps fra sidst står klar – ret med + og −, og sæt flueben, når sættet er taget.</p>
+    <p class="sub">Vælg uge og dag. Vægten fra sidst og programmets reps står klar – ret med + og −, og sæt flueben, når sættet er taget.</p>
   </header>
 
   <section class="card">
@@ -296,7 +296,7 @@ function renderWorkout(){
         const lastKg = pv && pv.kg != null ? pv.kg : (prevItem ? lastNonNull(prevItem.sets, 'kg') : null);
         const lastReps = pv && pv.reps != null ? pv.reps : (prevItem ? lastNonNull(prevItem.sets, 'reps') : null);
         const kgVal = sv && sv.done ? sv.kg : (it.pct && pctKg(it.pct) ? pctKg(it.pct) : lastKg);
-        const rVal = sv && sv.done ? sv.reps : (lastReps != null ? lastReps : (it.reps === 'max' ? null : num(it.reps.split('–')[0])));
+        const rVal = sv && sv.done ? sv.reps : (it.reps === 'max' ? lastReps : num(it.reps.split('–')[0]));
         const optional = it.setsTxt && s >= 2;
         h += '<div class="set"><span class="no">' + (s + 1) + (optional ? '<small>valg</small>' : '') + '</span>' +
           '<div class="step"><button type="button" data-step="kg" data-by="-2.5" aria-label="Mindre vægt">−</button>' +

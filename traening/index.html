@@ -1,0 +1,318 @@
+<!DOCTYPE html>
+<html lang="da">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Træningslog – Thomas</title>
+<meta name="robots" content="noindex, nofollow">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&family=Manrope:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --paper:#F3F0E8; --paper-2:#EAE5D9; --ink:#15181D; --ink-2:#4A4F57; --line:#D6D0C2;
+    --accent:#C8431B; --accent-soft:#F1D9CC; --deep:#1E2A27;
+    --serif:'Instrument Serif', Georgia, serif; --sans:'Manrope', system-ui, sans-serif;
+  }
+  *{box-sizing:border-box;margin:0;padding:0}
+  body{background:var(--paper);color:var(--ink);font-family:var(--sans);font-size:16px;line-height:1.5;-webkit-font-smoothing:antialiased}
+  .wrap{max-width:760px;margin:0 auto;padding:0 18px 60px}
+  header{padding:36px 0 18px}
+  .eyebrow{font-size:12px;font-weight:700;letter-spacing:.18em;text-transform:uppercase;color:var(--accent)}
+  h1{font-family:var(--serif);font-weight:400;font-size:clamp(44px,10vw,72px);line-height:.95;letter-spacing:-.02em;margin-top:8px}
+  h1 em{color:var(--accent)}
+  h2{font-family:var(--serif);font-weight:400;font-size:30px;margin:0 0 12px}
+  .card{background:#fff;border:1px solid var(--line);border-radius:16px;padding:20px;margin-top:20px}
+  label{display:block;font-size:12px;font-weight:700;letter-spacing:.08em;text-transform:uppercase;color:var(--ink-2);margin-bottom:4px}
+  input{width:100%;font:inherit;font-size:16px;padding:10px 12px;border:1.5px solid var(--line);border-radius:10px;background:var(--paper);color:var(--ink)}
+  input:focus{outline:none;border-color:var(--ink)}
+  .row{display:grid;grid-template-columns:2.2fr 1fr 1fr 1fr 36px;gap:8px;align-items:end;margin-top:10px}
+  .row .rm{height:44px;border:none;background:none;font-size:22px;color:var(--ink-2);cursor:pointer}
+  .row .rm:hover{color:var(--accent)}
+  .rowhead{display:grid;grid-template-columns:2.2fr 1fr 1fr 1fr 36px;gap:8px;margin-top:16px}
+  .rowhead label{margin:0}
+  .btns{display:flex;gap:10px;flex-wrap:wrap;margin-top:16px}
+  .btn{font:inherit;font-weight:700;font-size:15px;padding:12px 18px;border-radius:999px;cursor:pointer;border:1.5px solid var(--ink);background:none;color:var(--ink)}
+  .btn-primary{background:var(--accent);border-color:var(--accent);color:#fff}
+  .btn-primary:hover{background:#A9360F}
+  .btn-small{font-size:13px;padding:7px 12px}
+  .msg{margin-top:10px;font-weight:600;color:var(--deep);min-height:1.5em}
+  .week{margin-top:22px}
+  .week h3{font-size:13px;font-weight:700;letter-spacing:.12em;text-transform:uppercase;color:var(--accent);border-bottom:1px solid var(--line);padding-bottom:6px}
+  .session{padding:12px 0;border-bottom:1px solid var(--paper-2)}
+  .session-top{display:flex;justify-content:space-between;align-items:center;font-weight:700}
+  .session-top button{border:none;background:none;color:var(--ink-2);cursor:pointer;font:inherit;font-size:13px;text-decoration:underline}
+  table{width:100%;border-collapse:collapse;margin-top:6px;font-size:15px}
+  td,th{text-align:left;padding:4px 6px 4px 0}
+  th{font-size:11px;letter-spacing:.08em;text-transform:uppercase;color:var(--ink-2);font-weight:700}
+  td.n,th.n{text-align:right}
+  .empty{color:var(--ink-2);margin-top:8px}
+  select{font:inherit;font-size:16px;padding:10px 12px;border:1.5px solid var(--line);border-radius:10px;background:var(--paper);width:100%}
+  .stats{display:grid;grid-template-columns:repeat(3,1fr);gap:10px;margin-top:14px}
+  .stat{background:var(--paper);border-radius:12px;padding:12px}
+  .stat b{display:block;font-family:var(--serif);font-weight:400;font-size:30px;line-height:1.1}
+  .stat span{font-size:12px;color:var(--ink-2);font-weight:600}
+  svg text{font-family:var(--sans)}
+  .note{font-size:13px;color:var(--ink-2);margin-top:12px}
+  @media (max-width:560px){
+    .row,.rowhead{grid-template-columns:1fr 1fr 1fr 36px}
+    .row .ex{grid-column:1 / -1}
+    .rowhead{display:none}
+    .stats{grid-template-columns:1fr 1fr 1fr}
+    .stat b{font-size:24px}
+  }
+</style>
+</head>
+<body>
+<div class="wrap">
+  <header>
+    <div class="eyebrow" id="weekLabel">Uge</div>
+    <h1>Trænings<em>log</em></h1>
+  </header>
+
+  <section class="card">
+    <h2>Ny træning</h2>
+    <label for="date">Dato</label>
+    <input type="date" id="date">
+    <div class="rowhead"><label class="exh">Øvelse</label><label>Sæt</label><label>Reps</label><label>Kg</label><span></span></div>
+    <div id="rows"></div>
+    <datalist id="exList"></datalist>
+    <div class="btns">
+      <button class="btn" id="addRow" type="button">+ Tilføj øvelse</button>
+      <button class="btn btn-primary" id="save" type="button">Gem træning</button>
+    </div>
+    <div class="msg" id="msg"></div>
+  </section>
+
+  <section class="card">
+    <h2>Udvikling</h2>
+    <label for="exPick">Øvelse</label>
+    <select id="exPick"></select>
+    <div id="progress"></div>
+  </section>
+
+  <section class="card">
+    <h2>Historik</h2>
+    <div id="history"></div>
+  </section>
+
+  <section class="card">
+    <h2>Backup</h2>
+    <p class="note" style="margin-top:0">Dine træninger gemmes i denne browser på denne enhed. Hent en backup engang imellem, og indlæs den, hvis du skifter telefon eller browser.</p>
+    <div class="btns">
+      <button class="btn btn-small" id="export" type="button">Hent backup</button>
+      <button class="btn btn-small" id="importBtn" type="button">Indlæs backup</button>
+      <input type="file" id="importFile" accept="application/json" hidden>
+    </div>
+  </section>
+</div>
+
+<script>
+const KEY = 'traeningslog-v1';
+let memory = [];
+
+function load(){
+  try{ const raw = localStorage.getItem(KEY); return raw ? JSON.parse(raw) : memory; }
+  catch(e){ return memory; }
+}
+function store(data){
+  memory = data;
+  try{ localStorage.setItem(KEY, JSON.stringify(data)); }catch(e){}
+}
+
+function isoWeek(dateStr){
+  const d = new Date(dateStr + 'T12:00:00');
+  const t = new Date(Date.UTC(d.getFullYear(), d.getMonth(), d.getDate()));
+  const day = t.getUTCDay() || 7;
+  t.setUTCDate(t.getUTCDate() + 4 - day);
+  const yearStart = new Date(Date.UTC(t.getUTCFullYear(), 0, 1));
+  return { year: t.getUTCFullYear(), week: Math.ceil(((t - yearStart) / 86400000 + 1) / 7) };
+}
+function todayStr(){
+  const d = new Date();
+  return d.getFullYear() + '-' + String(d.getMonth()+1).padStart(2,'0') + '-' + String(d.getDate()).padStart(2,'0');
+}
+function fmtDate(s){
+  return new Date(s + 'T12:00:00').toLocaleDateString('da-DK', { weekday:'long', day:'numeric', month:'long' });
+}
+function num(v){ return v === '' || v == null ? null : Number(String(v).replace(',', '.')); }
+function fmtNum(n){ return n == null ? '–' : String(n).replace('.', ','); }
+function esc(s){ return String(s).replace(/[&<>"]/g, c => ({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[c])); }
+
+const rowsEl = document.getElementById('rows');
+function addRow(ex='', sets='', reps='', kg=''){
+  const div = document.createElement('div');
+  div.className = 'row';
+  div.innerHTML =
+    '<input class="ex" list="exList" placeholder="Øvelse, fx Bænkpres" value="' + esc(ex) + '">' +
+    '<input class="sets" inputmode="numeric" placeholder="Sæt" value="' + esc(sets) + '">' +
+    '<input class="reps" inputmode="numeric" placeholder="Reps" value="' + esc(reps) + '">' +
+    '<input class="kg" inputmode="decimal" placeholder="Kg" value="' + esc(kg) + '">' +
+    '<button class="rm" type="button" aria-label="Fjern">×</button>';
+  div.querySelector('.rm').onclick = () => { div.remove(); if(!rowsEl.children.length) addRow(); };
+  div.querySelector('.ex').addEventListener('change', e => {
+    const last = lastFor(e.target.value.trim());
+    const s = div.querySelector('.sets'), r = div.querySelector('.reps'), k = div.querySelector('.kg');
+    s.placeholder = last && last.sets != null ? 'Sidst ' + last.sets : 'Sæt';
+    r.placeholder = last && last.reps != null ? 'Sidst ' + last.reps : 'Reps';
+    k.placeholder = last && last.kg != null ? 'Sidst ' + fmtNum(last.kg) : 'Kg';
+  });
+  rowsEl.appendChild(div);
+}
+
+function exercises(){
+  const set = new Set();
+  load().forEach(s => s.items.forEach(i => set.add(i.exercise)));
+  return [...set].sort((a,b) => a.localeCompare(b, 'da'));
+}
+function lastFor(name){
+  if(!name) return null;
+  const data = load().slice().sort((a,b) => b.date.localeCompare(a.date));
+  for(const s of data){
+    const it = s.items.find(i => i.exercise.toLowerCase() === name.toLowerCase());
+    if(it) return it;
+  }
+  return null;
+}
+
+function save(){
+  const date = document.getElementById('date').value || todayStr();
+  const items = [...rowsEl.querySelectorAll('.row')].map(r => ({
+    exercise: r.querySelector('.ex').value.trim(),
+    sets: num(r.querySelector('.sets').value),
+    reps: num(r.querySelector('.reps').value),
+    kg: num(r.querySelector('.kg').value)
+  })).filter(i => i.exercise);
+  const msg = document.getElementById('msg');
+  if(!items.length){ msg.textContent = 'Skriv mindst én øvelse.'; return; }
+  const data = load();
+  data.push({ id: Date.now().toString(36), date, items });
+  store(data);
+  rowsEl.innerHTML = '';
+  addRow();
+  msg.textContent = 'Gemt – ' + items.length + (items.length === 1 ? ' øvelse' : ' øvelser') + ' ' + fmtDate(date) + '.';
+  render();
+}
+
+function del(id){
+  if(!confirmDelete(id)) return;
+  store(load().filter(s => s.id !== id));
+  render();
+}
+let pendingDelete = null;
+function confirmDelete(id){
+  if(pendingDelete === id){ pendingDelete = null; return true; }
+  pendingDelete = id;
+  render();
+  return false;
+}
+
+function renderHistory(){
+  const el = document.getElementById('history');
+  const data = load().slice().sort((a,b) => b.date.localeCompare(a.date));
+  if(!data.length){ el.innerHTML = '<p class="empty">Ingen træninger endnu.</p>'; return; }
+  const groups = {};
+  data.forEach(s => {
+    const w = isoWeek(s.date);
+    const k = w.year + '-' + String(w.week).padStart(2,'0');
+    (groups[k] = groups[k] || { label: 'Uge ' + w.week + ' · ' + w.year, sessions: [] }).sessions.push(s);
+  });
+  el.innerHTML = Object.keys(groups).sort().reverse().map(k => {
+    const g = groups[k];
+    return '<div class="week"><h3>' + g.label + ' · ' + g.sessions.length + (g.sessions.length === 1 ? ' træning' : ' træninger') + '</h3>' +
+      g.sessions.map(s =>
+        '<div class="session"><div class="session-top"><span>' + fmtDate(s.date) + '</span>' +
+        '<button data-del="' + s.id + '">' + (pendingDelete === s.id ? 'Tryk igen for at slette' : 'Slet') + '</button></div>' +
+        '<table><tr><th>Øvelse</th><th class="n">Sæt</th><th class="n">Reps</th><th class="n">Kg</th></tr>' +
+        s.items.map(i => '<tr><td>' + esc(i.exercise) + '</td><td class="n">' + fmtNum(i.sets) + '</td><td class="n">' + fmtNum(i.reps) + '</td><td class="n">' + fmtNum(i.kg) + '</td></tr>').join('') +
+        '</table></div>').join('') + '</div>';
+  }).join('');
+  el.querySelectorAll('[data-del]').forEach(b => b.onclick = () => del(b.dataset.del));
+}
+
+function renderProgress(){
+  const pick = document.getElementById('exPick');
+  const out = document.getElementById('progress');
+  const list = exercises();
+  const current = pick.value;
+  pick.innerHTML = list.map(e => '<option' + (e === current ? ' selected' : '') + '>' + esc(e) + '</option>').join('');
+  if(!list.length){ out.innerHTML = '<p class="empty">Gem en træning for at se din udvikling.</p>'; return; }
+  const name = pick.value;
+  const points = load()
+    .map(s => ({ date: s.date, it: s.items.filter(i => i.exercise === name) }))
+    .filter(p => p.it.length)
+    .map(p => ({ date: p.date, kg: Math.max(...p.it.map(i => i.kg ?? 0)), reps: p.it.find(i => (i.kg ?? 0) === Math.max(...p.it.map(x => x.kg ?? 0))).reps }))
+    .sort((a,b) => a.date.localeCompare(b.date));
+  const best = Math.max(...points.map(p => p.kg));
+  const last = points[points.length - 1];
+  const first = points[0];
+  const diff = last.kg - first.kg;
+  out.innerHTML =
+    '<div class="stats">' +
+      '<div class="stat"><b>' + fmtNum(last.kg) + '</b><span>kg senest' + (last.reps ? ' · ' + last.reps + ' reps' : '') + '</span></div>' +
+      '<div class="stat"><b>' + fmtNum(best) + '</b><span>kg bedste</span></div>' +
+      '<div class="stat"><b>' + (diff > 0 ? '+' : '') + fmtNum(Math.round(diff * 10) / 10) + '</b><span>kg siden start</span></div>' +
+    '</div>' + chart(points);
+}
+
+function chart(points){
+  if(points.length < 2) return '<p class="note">Grafen vises, når du har trænet øvelsen mindst to gange.</p>';
+  const W = 360, H = 190, L = 34, R = 10, T = 12, B = 26;
+  const kgs = points.map(p => p.kg);
+  let min = Math.min(...kgs), max = Math.max(...kgs);
+  if(min === max){ min -= 5; max += 5; }
+  const pad = (max - min) * 0.15; min = Math.max(0, min - pad); max += pad;
+  const x = i => L + (W - L - R) * (points.length === 1 ? 0.5 : i / (points.length - 1));
+  const y = v => T + (H - T - B) * (1 - (v - min) / (max - min));
+  const ticks = [min, (min + max) / 2, max].map(v => Math.round(v));
+  const path = points.map((p, i) => (i ? 'L' : 'M') + x(i).toFixed(1) + ' ' + y(p.kg).toFixed(1)).join(' ');
+  const short = d => { const dt = new Date(d + 'T12:00:00'); return dt.getDate() + '/' + (dt.getMonth() + 1); };
+  const labelIdx = [0, Math.floor((points.length - 1) / 2), points.length - 1].filter((v, i, a) => a.indexOf(v) === i);
+  return '<svg viewBox="0 0 ' + W + ' ' + H + '" style="width:100%;height:auto;margin-top:16px" role="img" aria-label="Tungeste kg pr. træning">' +
+    ticks.map(t => '<line x1="' + L + '" x2="' + (W - R) + '" y1="' + y(t) + '" y2="' + y(t) + '" stroke="#EAE5D9"/><text x="' + (L - 8) + '" y="' + (y(t) + 4) + '" text-anchor="end" font-size="11" fill="#4A4F57">' + t + '</text>').join('') +
+    '<path d="' + path + '" fill="none" stroke="#C8431B" stroke-width="2.5" stroke-linejoin="round"/>' +
+    points.map((p, i) => '<circle cx="' + x(i) + '" cy="' + y(p.kg) + '" r="4" fill="#C8431B"><title>' + short(p.date) + ': ' + fmtNum(p.kg) + ' kg</title></circle>').join('') +
+    labelIdx.map(i => '<text x="' + x(i) + '" y="' + (H - 8) + '" text-anchor="' + (i === 0 ? 'start' : i === points.length - 1 ? 'end' : 'middle') + '" font-size="11" fill="#4A4F57">' + short(points[i].date) + '</text>').join('') +
+    '</svg><p class="note">Tungeste vægt pr. træning i kg.</p>';
+}
+
+function render(){
+  document.getElementById('exList').innerHTML = exercises().map(e => '<option value="' + esc(e) + '">').join('');
+  renderProgress();
+  renderHistory();
+}
+
+document.getElementById('addRow').onclick = () => addRow();
+document.getElementById('save').onclick = save;
+document.getElementById('exPick').onchange = renderProgress;
+document.getElementById('date').addEventListener('change', e => {
+  document.getElementById('weekLabel').textContent = 'Uge ' + isoWeek(e.target.value || todayStr()).week;
+});
+document.getElementById('export').onclick = () => {
+  const blob = new Blob([JSON.stringify(load(), null, 2)], { type: 'application/json' });
+  const a = document.createElement('a');
+  a.href = URL.createObjectURL(blob);
+  a.download = 'traeningslog-' + todayStr() + '.json';
+  a.click();
+};
+document.getElementById('importBtn').onclick = () => document.getElementById('importFile').click();
+document.getElementById('importFile').onchange = e => {
+  const f = e.target.files[0]; if(!f) return;
+  f.text().then(t => {
+    try{
+      const incoming = JSON.parse(t);
+      const byId = {}; load().concat(incoming).forEach(s => byId[s.id] = s);
+      store(Object.values(byId));
+      document.getElementById('msg').textContent = 'Backup indlæst.';
+      render();
+    }catch(err){ document.getElementById('msg').textContent = 'Filen kunne ikke læses.'; }
+  });
+};
+
+document.getElementById('date').value = todayStr();
+document.getElementById('weekLabel').textContent = 'Uge ' + isoWeek(todayStr()).week;
+addRow();
+render();
+</script>
+</body>
+</html>

@@ -1,0 +1,1055 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Thomas Hansen × Grundfos – Digital Marketing Manager, Western Europe</title>
+<meta name="robots" content="noindex, nofollow">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&family=Manrope:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --paper:#F3F0E8; --paper-2:#EAE5D9; --ink:#15181D; --ink-2:#4A4F57; --line:#D6D0C2;
+    --accent:#C8431B; --accent-soft:#F1D9CC; --deep:#1E2A27;
+    --serif:'Instrument Serif', Georgia, serif; --sans:'Manrope', system-ui, sans-serif;
+    --max:1160px;
+  }
+  *{box-sizing:border-box;margin:0;padding:0}
+  html{scroll-behavior:smooth}
+  body{background:var(--paper);color:var(--ink);font-family:var(--sans);font-size:17px;line-height:1.6;-webkit-font-smoothing:antialiased}
+  a{color:inherit}
+  .wrap{max-width:var(--max);margin:0 auto;padding:0 28px}
+
+  /* NAV */
+  nav{position:sticky;top:0;z-index:20;background:rgba(243,240,232,.86);backdrop-filter:blur(10px);border-bottom:1px solid var(--line)}
+  nav .wrap{display:flex;align-items:center;justify-content:space-between;height:64px}
+  .logo{font-family:var(--serif);font-size:26px;text-decoration:none;letter-spacing:-.01em}
+  .logo span{color:var(--accent)}
+  nav ul{display:flex;gap:28px;list-style:none;font-size:14px;font-weight:600}
+  nav ul a{text-decoration:none;color:var(--ink-2);transition:color .2s}
+  nav ul a:hover{color:var(--accent)}
+  .nav-cta{background:var(--ink);color:var(--paper)!important;padding:9px 16px;border-radius:999px}
+  .nav-cta:hover{background:var(--accent)}
+
+  /* HERO */
+  .hero{padding:80px 0 64px;position:relative;overflow:hidden}
+  .eyebrow{font-size:13px;font-weight:700;letter-spacing:.18em;text-transform:uppercase;color:var(--accent);display:flex;align-items:center;gap:10px}
+  .eyebrow::before{content:"";width:28px;height:2px;background:var(--accent)}
+  .hero h1{font-family:var(--serif);font-weight:400;font-size:clamp(56px,8.4vw,116px);line-height:.92;letter-spacing:-.03em;margin:0 0 28px}
+  .hero h1 em{color:var(--accent)}
+  .hero-grid{display:grid;grid-template-columns:1.5fr 1fr;gap:56px;align-items:center;margin-top:26px}
+  .hero p.lead{font-size:21px;line-height:1.5;color:var(--ink-2);max-width:560px}
+  .hero-meta{border-left:2px solid var(--ink);padding-left:22px;font-size:15px;color:var(--ink-2)}
+  .hero-meta strong{display:block;color:var(--ink);font-weight:700;font-size:13px;letter-spacing:.12em;text-transform:uppercase;margin-top:14px}
+  .hero-meta strong:first-child{margin-top:0}
+  .btns{display:flex;gap:12px;margin-top:36px;flex-wrap:wrap}
+  .btn{display:inline-flex;align-items:center;gap:8px;padding:14px 22px;border-radius:999px;font-weight:700;font-size:15px;text-decoration:none;transition:transform .2s, background .2s}
+  .btn-primary{background:var(--accent);color:#fff}
+  .btn-primary:hover{transform:translateY(-2px);background:#A9360F}
+  .btn-ghost{border:1.5px solid var(--ink)}
+  .btn-ghost:hover{background:var(--ink);color:var(--paper)}
+  .ring{position:absolute;right:-180px;top:-120px;width:520px;height:520px;border:1.5px solid var(--line);border-radius:50%;z-index:-1}
+  .ring.two{right:-90px;top:-30px;width:340px;height:340px;border-color:var(--accent-soft)}
+
+  /* NUMBERS */
+  .numbers{background:var(--deep);color:var(--paper);padding:72px 0}
+  .numbers h2{font-family:var(--serif);font-weight:400;font-size:clamp(32px,4vw,46px);line-height:1.1;max-width:640px;margin-bottom:48px}
+  .numbers h2 em{color:#F08A63}
+  .num-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:0;border-top:1px solid rgba(255,255,255,.15)}
+  .num{padding:28px 24px 8px 0;border-right:1px solid rgba(255,255,255,.15);margin-right:24px}
+  .num:last-child{border-right:none}
+  .num .big{font-family:var(--serif);font-size:clamp(46px,5vw,68px);line-height:1;letter-spacing:-.02em}
+  .num .big small{font-size:.45em;margin-left:4px;color:#F08A63}
+  .num p{font-size:14px;color:rgba(243,240,232,.72);margin-top:12px;max-width:220px}
+  .growth{margin-top:56px;display:grid;grid-template-columns:240px 1fr;gap:32px;align-items:center}
+  .growth h3{font-size:13px;letter-spacing:.14em;text-transform:uppercase;font-weight:700;color:rgba(243,240,232,.72)}
+  .bars{display:flex;flex-direction:column;gap:12px}
+  .bar{display:grid;grid-template-columns:52px 1fr 92px;align-items:center;gap:14px;font-size:14px}
+  .bar .track{height:14px;background:rgba(255,255,255,.08);border-radius:999px;overflow:hidden}
+  .bar .fill{height:100%;background:#F08A63;border-radius:999px;width:0;transition:width 1.4s cubic-bezier(.2,.8,.2,1)}
+  .bar .val{font-weight:700;text-align:right;background:none;border:0;border-radius:0;padding:0;display:block;color:inherit;white-space:nowrap}
+  .bar .val:hover{transform:none;box-shadow:none}
+
+  /* SECTIONS */
+  section.block{padding:104px 0}
+  .sec-head{display:grid;grid-template-columns:240px 1fr;gap:32px;margin-bottom:56px}
+  .sec-head .idx{font-size:13px;font-weight:700;letter-spacing:.14em;text-transform:uppercase;color:var(--ink-2);padding-top:14px}
+  .sec-head h2{font-family:var(--serif);font-weight:400;font-size:clamp(40px,5.5vw,72px);line-height:1;letter-spacing:-.02em}
+  .sec-head h2 em{color:var(--accent)}
+
+  /* PROFILE */
+  .profile-body{display:grid;grid-template-columns:240px 1fr;gap:32px}
+  .profile-body .text{font-size:22px;line-height:1.55;max-width:760px}
+  .profile-body .text p+p{margin-top:20px}
+  .profile-body .text p:first-child::first-letter{font-family:var(--serif);font-size:3.4em;float:left;line-height:.85;margin:6px 10px 0 0;color:var(--accent)}
+
+  /* EXPERIENCE */
+  #erfaring{background:var(--paper-2)}
+  .job{display:grid;grid-template-columns:240px 1fr;gap:32px;padding:40px 0;border-top:1px solid var(--line)}
+  .job:last-child{border-bottom:1px solid var(--line)}
+  .job .when{font-size:14px;font-weight:600;color:var(--ink-2)}
+  .job .when .now{display:inline-block;margin-top:8px;background:var(--accent);color:#fff;font-size:11px;font-weight:700;letter-spacing:.1em;text-transform:uppercase;padding:3px 9px;border-radius:999px}
+  .job h3{font-family:var(--serif);font-weight:400;font-size:34px;line-height:1.1;letter-spacing:-.01em}
+  .job .company{font-weight:700;font-size:15px;margin:6px 0 18px;color:var(--accent)}
+  .job .company span{color:var(--ink-2);font-weight:500}
+  .job p{color:var(--ink-2);max-width:720px}
+  .job ul{list-style:none;margin-top:16px;display:grid;gap:8px;max-width:760px}
+  .job li{position:relative;padding-left:22px;color:var(--ink-2)}
+  .job li::before{content:"";position:absolute;left:0;top:11px;width:10px;height:2px;background:var(--accent)}
+  .highlights{display:flex;flex-wrap:wrap;gap:10px;margin-top:22px}
+  .chip{background:var(--paper);border:1px solid var(--line);padding:8px 14px;border-radius:10px;font-size:14px}
+  .chip b{color:var(--accent)}
+  .sub{font-size:12px;font-weight:700;letter-spacing:.14em;text-transform:uppercase;margin-top:24px;color:var(--ink)}
+
+  /* PHOTOS */
+  .portrait{display:block;width:210px;aspect-ratio:3/4;object-fit:cover;border-radius:18px;border:6px solid #fff;box-shadow:0 20px 40px -18px rgba(21,24,29,.45);transform:rotate(2.5deg);margin:0 0 26px -6px}
+  .about-photo{width:100%;max-width:240px;aspect-ratio:4/5;object-fit:cover;border-radius:20px;border:6px solid var(--paper);transform:rotate(-3deg)}
+
+  /* RECOMMENDATION */
+  #anbefaling{background:var(--paper-2)}
+  .rec{display:grid;grid-template-columns:240px 1fr;gap:32px}
+  .rec+.rec{margin-top:80px;padding-top:64px;border-top:1px solid var(--line)}
+  .rec-quote{font-family:var(--serif);font-size:clamp(30px,3.6vw,46px);line-height:1.15;letter-spacing:-.01em;position:relative}
+  .rec-quote::before{content:"“";position:absolute;left:-.55em;top:-.25em;font-size:2.4em;color:var(--accent);line-height:1}
+  .rec-quote em{color:var(--accent)}
+  .rec-by{display:flex;align-items:center;gap:18px;margin-top:30px;flex-wrap:wrap}
+  .rec-by .av{width:52px;height:52px;border-radius:50%;background:var(--ink);color:var(--paper);display:flex;align-items:center;justify-content:center;font-weight:700}
+  .rec-by b{display:block}
+  .rec-by span{font-size:14px;color:var(--ink-2)}
+  .rec-by img{height:26px;margin-left:8px}
+  .rec-points{display:grid;grid-template-columns:repeat(3,1fr);gap:16px;margin-top:40px}
+  .rec-points div{background:#fff;border:1px solid var(--line);border-radius:16px;padding:20px}
+  .rec-points b{font-family:var(--serif);font-weight:400;font-size:24px;display:block;margin-bottom:6px}
+  .rec-points p{font-size:14px;color:var(--ink-2)}
+  details.letter{margin-top:28px;background:#fff;border:1px solid var(--line);border-radius:16px;padding:0 24px}
+  details.letter summary{cursor:pointer;font-weight:700;padding:18px 0;list-style:none;display:flex;justify-content:space-between}
+  details.letter summary::after{content:"+";color:var(--accent);font-size:22px;line-height:1}
+  details.letter[open] summary::after{content:"–"}
+  details.letter .body{padding:0 0 24px;color:var(--ink-2);font-size:16px;max-width:760px}
+  details.letter .body p+p{margin-top:14px}
+  .rec-private{margin-top:90px;display:grid;grid-template-columns:240px 1fr;gap:32px;align-items:center}
+  .rec-private .card{background:#E9B44C;color:var(--ink);border-radius:24px;padding:30px 32px;transform:rotate(-1deg);max-width:760px}
+  .rec-private .card p{font-family:var(--serif);font-size:30px;line-height:1.2}
+  .rec-private .card small{display:block;margin-top:14px;font-size:14px;font-weight:600}
+
+  /* LOGOS */
+  .job-logo{display:flex;align-items:center;height:64px;margin-bottom:14px}
+  .job-logo img{max-height:34px;max-width:170px;width:auto;display:block}
+  .job-logo img.wide{max-height:none;width:170px}
+  .job-logo img.stack{max-height:60px;max-width:none;width:auto;height:58px}
+  .site-logo{height:28px;display:flex;align-items:center;margin-bottom:6px}
+  .site-logo img{max-height:26px;max-width:180px}
+  .site-logo img.wide{max-height:none;width:200px}
+  .site-logo:has(img.stack){height:44px}
+  .site-logo img.stack{max-height:none;height:42px;width:auto}
+
+  /* PROJECTS */
+  #projekter{padding-bottom:110px}
+  .filters{display:flex;flex-wrap:wrap;gap:10px;margin-bottom:36px}
+  .filters button{font:700 14px var(--sans);padding:10px 18px;border-radius:999px;border:1.5px solid var(--ink);background:transparent;color:var(--ink);cursor:pointer;transition:all .2s}
+  .filters button:hover{background:var(--paper-2)}
+  .filters button.on{background:var(--ink);color:var(--paper)}
+  .proj-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:20px}
+  .proj{background:#fff;border:1px solid var(--line);border-radius:20px;padding:26px 24px 24px;display:flex;flex-direction:column;transition:transform .3s, box-shadow .3s, opacity .3s}
+  .proj:hover{transform:translateY(-5px);box-shadow:0 18px 40px -20px rgba(21,24,29,.35)}
+  .proj.hide{display:none}
+  .proj .pcats{display:flex;flex-wrap:wrap;gap:6px;margin-bottom:12px}
+  .proj .pcats span{font-size:11px;font-weight:700;letter-spacing:.06em;text-transform:uppercase;padding:4px 10px;border-radius:999px;background:var(--ink);color:var(--paper)}
+  .proj.feature .pcats span{background:#fff;color:var(--accent)}
+  .proj-empty{font-size:16px;color:var(--ink-2);padding:24px 0}
+  .proj .top{display:flex;justify-content:space-between;align-items:center;gap:10px;margin-bottom:22px;min-height:30px}
+  .proj .top img{max-height:22px;max-width:120px}
+  .proj .top img.wide{max-height:none;width:140px}
+  .proj .top img.stack{max-height:none;max-width:none;width:124px;height:auto}
+  .proj .top .wm{font-family:var(--serif);font-size:20px;line-height:1;letter-spacing:.02em;color:var(--ink)}
+  .proj .more a.live{font-weight:700;color:var(--accent);text-decoration:none;border-bottom:1px solid currentColor}
+  .proj .yr{font-size:12px;font-weight:700;color:var(--ink-2);white-space:nowrap}
+  .proj h4{font-family:var(--serif);font-weight:400;font-size:28px;line-height:1.08;margin-bottom:10px}
+  .proj p{font-size:15px;color:var(--ink-2);flex:1}
+  .proj .metric{margin-top:18px;padding-top:16px;border-top:1px dashed var(--line);font-family:var(--serif);font-size:30px;line-height:1;color:var(--accent)}
+  .proj .metric small{display:block;font-family:var(--sans);font-size:12px;color:var(--ink-2);margin-top:6px}
+  .proj .ptags{display:flex;flex-wrap:wrap;gap:6px;margin-top:16px}
+  .proj .ptags span{font-size:12px;font-weight:600;padding:4px 10px;border-radius:999px;background:var(--paper);border:1px solid var(--line)}
+  .proj.feature{grid-column:span 2;background:var(--accent);color:#fff;border-color:var(--accent)}
+  .proj.feature p,.proj.feature .yr,.proj.feature .metric small{color:rgba(255,255,255,.85)}
+  .proj.feature .metric{color:#fff;border-color:rgba(255,255,255,.4);font-size:44px}
+  .proj.feature h4{font-size:38px}
+  .proj.feature .ptags span{background:rgba(255,255,255,.15);border-color:rgba(255,255,255,.3)}
+  .proj.feature .top img{filter:brightness(0) invert(1)}
+
+  .proj{cursor:pointer;position:relative}
+  .proj .more{display:none}
+  .proj.open{grid-column:span 2;grid-row:span 2;cursor:default;box-shadow:0 24px 50px -24px rgba(21,24,29,.45)}
+  .proj.feature.open{grid-column:1/-1}
+  .proj.open>p{flex:none}
+  .proj.open .more{flex:1}
+  .proj.open .more{display:block;animation:fadein .4s ease}
+  .proj.open h4{font-size:36px}
+  .proj .more p{font-size:16px;color:var(--ink-2);margin-top:14px;max-width:640px}
+  .proj.feature .more p{color:rgba(255,255,255,.9)}
+  .pimgs{display:grid;grid-template-columns:1fr 1fr;gap:12px;margin-top:20px}
+  .pimg{aspect-ratio:4/3;border-radius:14px;border:1.5px dashed var(--line);background:var(--paper);display:flex;align-items:center;justify-content:center;font-size:13px;font-weight:600;color:var(--ink-2)}
+  .pimg img{width:100%;height:100%;object-fit:cover;border-radius:12px}
+  .proj.feature .pimg{background:rgba(255,255,255,.12);border-color:rgba(255,255,255,.4);color:#fff}
+  .pimgs{align-items:start}
+  .pimg.shot,.proj.feature .pimg.shot{aspect-ratio:auto;display:block;border:0;background:none;margin:0}
+  .pimg.shot img{height:auto;display:block;border-radius:12px;background:#fff;box-shadow:0 14px 30px -18px rgba(0,0,0,.45)}
+  .pimgs.ig .pimg.shot img{aspect-ratio:13/15;object-fit:cover;object-position:50% 0}
+  .pimgs.crop .pimg.shot img{aspect-ratio:3/4;object-fit:cover}
+  .pimg.shot figcaption{font-size:12px;font-weight:600;margin-top:8px;opacity:.85}
+  .toggle{align-self:flex-start;margin-top:20px;background:none;border:1.5px solid currentColor;border-radius:999px;font:700 13px var(--sans);color:var(--accent);cursor:pointer;padding:7px 8px 7px 16px;display:flex;gap:10px;align-items:center;transition:background .2s,color .2s}
+  .toggle b{display:grid;place-items:center;width:24px;height:24px;border-radius:50%;background:var(--accent);color:#fff;font-size:18px;line-height:1;transition:transform .3s}
+  .proj:not(.open):hover .toggle{background:var(--accent);color:#fff}
+  .proj:not(.open):hover .toggle b{background:#fff;color:var(--accent)}
+  .proj.feature .toggle b{background:#fff;color:var(--accent)}
+  .proj.feature:not(.open):hover .toggle{background:#fff;color:var(--accent)}
+  .proj.feature:not(.open):hover .toggle b{background:var(--accent);color:#fff}
+  .proj-hint{display:flex;align-items:center;gap:8px;font-size:14px;color:var(--ink-2);margin:-18px 0 26px}
+  .proj-hint b{display:grid;place-items:center;width:20px;height:20px;border-radius:50%;background:var(--accent);color:#fff;font-size:15px}
+  details.letter summary{color:var(--accent);align-items:center}
+  details.letter summary::after{display:grid;place-items:center;width:28px;height:28px;border-radius:50%;background:var(--accent);color:#fff!important;font-size:20px!important}
+  details.letter:not([open]):hover{border-color:var(--accent)}
+  .proj.open .toggle b{transform:rotate(45deg)}
+  .proj.feature .toggle{color:#fff}
+  @keyframes fadein{from{opacity:0;transform:translateY(8px)}to{opacity:1;transform:none}}
+  .proj-grid{grid-auto-flow:dense}
+
+  /* SKILLS */
+  .skills-grid{display:grid;grid-template-columns:240px 1fr;gap:32px}
+  .skill-groups{display:grid;grid-template-columns:repeat(2,1fr);gap:20px}
+  .sg.ai{background:linear-gradient(135deg,#C8431B,#E9B44C);color:#fff;border:none;grid-column:span 2;display:grid;grid-template-columns:1fr 1.4fr;gap:24px;align-items:center}
+  .sg.ai h4{font-size:34px;margin-bottom:8px}
+  .sg.ai p{font-size:15px;opacity:.92}
+  .sg.ai .tag{background:rgba(255,255,255,.18);border-color:rgba(255,255,255,.35);color:#fff}
+  .sg.ai .spark{display:inline-block;animation:rot 6s linear infinite}
+  .sg{background:#fff;border:1px solid var(--line);border-radius:18px;padding:26px}
+  .sg h4{font-family:var(--serif);font-weight:400;font-size:26px;margin-bottom:16px}
+  .sg .tags{display:flex;flex-wrap:wrap;gap:8px}
+  .tag{font-size:14px;font-weight:600;padding:6px 12px;border-radius:999px;background:var(--paper);border:1px solid var(--line)}
+  .sg.ai{align-items:start}
+  .ai-badge{display:inline-block;font-size:11px;font-weight:700;letter-spacing:.14em;text-transform:uppercase;background:rgba(255,255,255,.2);border:1px solid rgba(255,255,255,.4);border-radius:999px;padding:6px 12px;margin-bottom:14px}
+  .ai-rows{display:flex;flex-direction:column;gap:14px}
+  .ai-row{display:grid;grid-template-columns:120px 1fr;gap:12px;align-items:baseline;padding-bottom:14px;border-bottom:1px solid rgba(255,255,255,.25)}
+  .ai-row:last-child{border-bottom:none;padding-bottom:0}
+  .ai-k{font-size:12px;letter-spacing:.08em;text-transform:uppercase;font-weight:700;opacity:.85}
+  @media (max-width:860px){.ai-row{grid-template-columns:1fr;gap:6px}}
+  .sg.sys{grid-column:span 2;display:grid;grid-template-columns:1fr 1.4fr;gap:28px;align-items:start}
+  .sg.sys p{font-size:15px;opacity:.8}
+  .sys-rows{display:flex;flex-direction:column;gap:14px}
+  .sys-row{display:grid;grid-template-columns:120px 1fr;gap:12px;align-items:baseline;padding-bottom:14px;border-bottom:1px solid rgba(255,255,255,.12)}
+  .sys-row:last-child{border-bottom:none;padding-bottom:0}
+  .sys-k{font-size:12px;letter-spacing:.08em;text-transform:uppercase;opacity:.65;font-weight:600}
+  @media (max-width:860px){.sg.sys{grid-template-columns:1fr}.sys-row{grid-template-columns:1fr;gap:6px}}
+  .sg.dark{background:var(--ink);color:var(--paper);border-color:var(--ink)}
+  .sg.dark .tag{background:rgba(255,255,255,.08);border-color:rgba(255,255,255,.18)}
+
+  /* EDUCATION + SITES */
+  .two-col{display:grid;grid-template-columns:240px 1fr 1fr;gap:32px}
+  .card-list{display:grid;gap:14px}
+  .edu{padding:22px 0;border-top:1px solid var(--line)}
+  .edu .y{font-size:13px;font-weight:600;color:var(--ink-2)}
+  .edu h4{font-family:var(--serif);font-weight:400;font-size:26px;line-height:1.15;margin:4px 0}
+  .edu p{font-size:15px;color:var(--ink-2)}
+  .col-title{font-size:13px;font-weight:700;letter-spacing:.14em;text-transform:uppercase;margin-bottom:6px}
+  .sites{display:grid;gap:10px;margin-top:6px}
+  .site{display:flex;justify-content:space-between;align-items:center;padding:18px 20px;background:#fff;border:1px solid var(--line);border-radius:14px;text-decoration:none;transition:border-color .2s, transform .2s}
+  .site:hover{border-color:var(--accent);transform:translateX(4px)}
+  .site b{font-family:var(--serif);font-weight:400;font-size:24px}
+  .site span{font-size:13px;color:var(--ink-2)}
+  .site .arr{color:var(--accent);font-size:20px}
+
+  /* ABOUT / PRIVAT */
+  #om-mig{background:var(--ink);color:var(--paper);padding:0 0 110px;overflow:hidden}
+  .ticker{background:#E9B44C;color:var(--ink);transform:rotate(-1.5deg);margin:0 -40px 96px;padding:14px 0;white-space:nowrap;overflow:hidden;border-top:2px solid var(--ink);border-bottom:2px solid var(--ink)}
+  .ticker-inner{display:inline-block;animation:tick 28s linear infinite;font-family:var(--serif);font-size:34px}
+  .ticker-inner span{margin:0 22px}
+  .ticker-inner i{font-style:normal;color:var(--accent)}
+  @keyframes tick{from{transform:translateX(0)}to{transform:translateX(-50%)}}
+  #om-mig .sec-head .idx{color:rgba(243,240,232,.6)}
+  #om-mig .sec-head h2 em{color:#F08A63}
+  .about-intro{display:grid;grid-template-columns:240px 1fr;gap:32px;margin-bottom:64px}
+  .about-intro p{font-size:22px;line-height:1.55;max-width:760px;color:rgba(243,240,232,.88)}
+  .stickers{display:grid;grid-template-columns:repeat(4,1fr);gap:22px}
+  .sticker{border-radius:24px;padding:28px 24px 30px;color:var(--ink);transition:transform .45s cubic-bezier(.3,1.6,.5,1);position:relative;min-height:340px;display:flex;flex-direction:column}
+  .sticker:nth-child(1){background:#F08A63;transform:rotate(-2.5deg)}
+  .sticker:nth-child(2){background:#E9B44C;transform:rotate(1.8deg) translateY(18px)}
+  .sticker:nth-child(3){background:#9CC5B4;transform:rotate(-1.2deg)}
+  .sticker:nth-child(4){background:var(--paper);transform:rotate(2.4deg) translateY(12px)}
+  .sticker:hover{transform:rotate(0) translateY(-8px) scale(1.03)}
+  .sticker svg{width:76px;height:76px;margin-bottom:22px}
+  .sticker .k{font-size:11px;font-weight:700;letter-spacing:.16em;text-transform:uppercase;opacity:.7}
+  .sticker h4{font-family:var(--serif);font-weight:400;font-size:32px;line-height:1.02;margin:6px 0 12px;letter-spacing:-.01em}
+  .sticker p{font-size:15px;line-height:1.5}
+  .sticker .badge{position:absolute;top:-14px;right:18px;background:var(--ink);color:var(--paper);font-size:12px;font-weight:700;padding:6px 12px;border-radius:999px;transform:rotate(6deg)}
+  .motto{margin-top:110px;display:grid;grid-template-columns:240px 1fr;gap:32px;align-items:center}
+  .motto .people{display:flex;gap:6px}
+  .motto .people span{width:34px;height:34px;border-radius:50%;border:2px solid var(--paper);margin-left:-12px}
+  .motto .people span:first-child{margin-left:0}
+  .motto blockquote{font-family:var(--serif);font-size:clamp(44px,7vw,96px);line-height:.98;letter-spacing:-.025em}
+  .motto blockquote em{color:#F08A63}
+  .motto small{display:block;font-family:var(--sans);font-size:17px;letter-spacing:0;line-height:1.55;color:rgba(243,240,232,.75);max-width:620px;margin-top:22px}
+  .bounce{animation:bob 3s ease-in-out infinite}
+  @keyframes bob{0%,100%{transform:translateY(0)}50%{transform:translateY(-6px)}}
+  .spin{transform-origin:center;transform-box:fill-box;animation:rot 2.4s linear infinite}
+  @keyframes rot{to{transform:rotate(360deg)}}
+
+  /* CONTACT */
+  .contact{background:var(--accent);color:#fff;padding:110px 0 90px}
+  .contact h2{font-family:var(--serif);font-weight:400;font-size:clamp(48px,8vw,110px);line-height:.95;letter-spacing:-.03em}
+  .contact h2 em{color:var(--ink)}
+  .contact-grid{display:grid;grid-template-columns:1.3fr 1fr;gap:48px;align-items:end;margin-top:20px}
+  .contact p{font-size:20px;max-width:520px;opacity:.92}
+  .c-items{display:grid;gap:12px}
+  .c-item{display:flex;justify-content:space-between;align-items:center;gap:16px;padding:16px 20px;border:1.5px solid rgba(255,255,255,.5);border-radius:14px}
+  .c-item small{display:block;font-size:11px;letter-spacing:.14em;text-transform:uppercase;opacity:.8;font-weight:700}
+  .c-item a,.c-item span.v{font-weight:700;font-size:18px;text-decoration:none}
+  .copy{background:#fff;color:var(--accent);border:none;font:700 13px var(--sans);padding:8px 12px;border-radius:999px;cursor:pointer;white-space:nowrap}
+  .copy:hover{background:var(--ink);color:#fff}
+  footer{background:var(--ink);color:rgba(243,240,232,.6);font-size:13px;padding:26px 0}
+  footer .wrap{display:flex;justify-content:space-between}
+
+  /* reveal */
+  #vaerdi .val-intro{display:grid;grid-template-columns:240px 1fr;gap:32px;margin:-24px 0 48px}
+  #vaerdi .val-intro p{font-size:19px;line-height:1.55;color:var(--ink-2);max-width:760px}
+  .val-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:20px}
+  .val{background:#fff;border:1px solid var(--line);border-radius:20px;padding:28px 26px;display:flex;flex-direction:column;transition:transform .3s, box-shadow .3s}
+  .val:hover{transform:translateY(-4px);box-shadow:0 22px 44px -26px rgba(21,24,29,.4)}
+  .val-n{font-family:var(--serif);font-size:22px;color:var(--accent)}
+  .val h4{font-family:var(--serif);font-weight:400;font-size:28px;line-height:1.08;margin:10px 0 12px}
+  .val p{font-size:15px;color:var(--ink-2);flex:1}
+  .val-proof{margin-top:20px;padding-top:16px;border-top:1px dashed var(--line);font-size:13px;color:var(--ink-2)}
+  .val-proof b{color:var(--accent);font-weight:700}
+  .val.accent{background:linear-gradient(135deg,#C8431B,#E9B44C);border:none;color:#fff}
+  .val.accent .val-n,.val.accent p,.val.accent .val-proof,.val.accent .val-proof b{color:#fff}
+  .val.accent .val-proof{border-top-color:rgba(255,255,255,.4)}
+  .plan{margin-top:56px;background:var(--ink);color:var(--paper);border-radius:24px;padding:40px}
+  .plan h3{font-family:var(--serif);font-weight:400;font-size:clamp(32px,4vw,48px);line-height:1}
+  .plan h3 em{color:#F08A63}
+  .plan-steps{display:grid;grid-template-columns:repeat(3,1fr);gap:28px;margin-top:28px}
+  .step{border-top:2px solid rgba(255,255,255,.18);padding-top:18px}
+  .step-k{font-size:12px;letter-spacing:.12em;text-transform:uppercase;font-weight:700;color:#F08A63}
+  .step h5{font-family:var(--serif);font-weight:400;font-size:26px;margin:8px 0 8px}
+  .step p{font-size:15px;opacity:.78}
+  @media (max-width:980px){.val-grid{grid-template-columns:1fr 1fr}}
+  @media (max-width:760px){#vaerdi .val-intro{grid-template-columns:1fr;margin-top:-24px}.val-grid,.plan-steps{grid-template-columns:1fr}.plan{padding:28px 22px}}
+  .reveal{opacity:0;transform:translateY(24px);transition:opacity .8s ease, transform .8s ease}
+  .reveal.in{opacity:1;transform:none}
+
+  @media (max-width:900px){
+    nav ul li:not(:last-child):not(.lang-li){display:none}
+    .hero{padding:64px 0 48px}
+    .hero-grid,.contact-grid{grid-template-columns:1fr;gap:32px}
+    .num-grid{grid-template-columns:1fr 1fr}
+    .num{border-right:none;margin-right:0;border-bottom:1px solid rgba(255,255,255,.15);padding-bottom:24px}
+    .growth,.sec-head,.profile-body,.job,.skills-grid,.two-col{grid-template-columns:1fr;gap:14px}
+    .sec-head .idx{padding-top:0}
+    .skill-groups{grid-template-columns:1fr}
+    .sg.ai{grid-column:auto;grid-template-columns:1fr}
+    .sg.sys{grid-column:auto;grid-template-columns:1fr}
+    .proj-grid{grid-template-columns:1fr 1fr}
+    .proj.feature{grid-column:span 2}
+    .profile-body .text{font-size:19px}
+    .rec,.rec-private{grid-template-columns:1fr;gap:16px}
+    .rec-points{grid-template-columns:1fr}
+    .rec-quote::before{position:static;display:block;height:.5em}
+    .portrait{width:170px}
+    .about-intro,.motto{grid-template-columns:1fr;gap:20px}
+    .about-intro p{font-size:19px}
+    .stickers{grid-template-columns:1fr 1fr;gap:28px 18px}
+    .sticker{min-height:0}
+    .motto{margin-top:72px}
+  }
+  @media (max-width:560px){
+    .stickers{grid-template-columns:1fr}
+    .sticker:nth-child(n){transform:none}
+    .proj-grid{grid-template-columns:1fr}
+    .proj.feature{grid-column:auto}
+    .proj.open,.proj.feature.open{grid-column:auto;grid-row:auto}
+    .pimgs{grid-template-columns:1fr}
+    .pimgs.crop{grid-template-columns:1fr 1fr}
+    section.block{padding:72px 0}
+    .job h3{font-size:28px}
+  }
+  @media (prefers-reduced-motion:reduce){.reveal{opacity:1;transform:none;transition:none}.bar .fill{transition:none}}
+  .lang{font-size:12px;font-weight:700;letter-spacing:.08em;border:1px solid var(--line);padding:6px 10px;border-radius:999px}
+  .tr-note{font-size:13px;font-style:italic;color:var(--ink-2)}
+  .proj .more .case-k{display:block;font-size:12px;font-weight:700;letter-spacing:.12em;text-transform:uppercase;color:var(--accent);margin-top:22px}
+  .proj .more .case-k+p{margin-top:6px}
+  .proj.feature .more .case-k{color:#fff;opacity:.75}
+  .plinks{display:flex;flex-wrap:wrap;align-items:center;gap:8px;margin-top:22px}
+  .plinks span{font-size:12px;font-weight:700;letter-spacing:.12em;text-transform:uppercase;color:var(--ink-2);margin-right:4px}
+  .plinks a{font-size:13px;font-weight:700;color:var(--accent);text-decoration:none;border:1.5px solid var(--accent);border-radius:999px;padding:6px 12px;transition:background .2s,color .2s}
+  .plinks a:hover{background:var(--accent);color:#fff}
+  .val-proof a.plink{color:var(--accent);font-weight:700;text-decoration:none;border-bottom:1px solid currentColor}
+  .val.accent .val-proof a.plink{color:#fff}
+  .proj{scroll-margin-top:90px}
+  /* Mobil: lettere version med mindre indhold (desktop uændret) */
+  @media (max-width:760px){
+    .hero .lead{font-size:17px}
+    .hero .btn-ghost{display:none}
+    .growth{display:none}
+    .num p{font-size:13px}
+    .profile-body .text p:nth-child(2),.profile-body .text p:nth-child(3){display:none}
+    .job ul{display:none}
+    .job>div>p{font-size:15px}
+    #vaerdi .val-intro{display:none}
+    .val p{display:none}
+    .val{padding:20px 22px}
+    .plan .step p{display:none}
+    .filters{flex-wrap:nowrap;overflow-x:auto;margin-left:-4px;padding:2px 4px 6px;-webkit-overflow-scrolling:touch}
+    .filters button{flex:none}
+    .proj-hint,.proj .ptags,.proj .pcats{display:none}
+    .rec-points{display:none}
+    .sg>div>p,.sg.ai>div>p{display:none}
+    .sys-row:nth-child(n+5){display:none}
+    .sticker p{display:none}
+    .rec-private{display:none}
+    .motto small{display:none}
+    .motto{margin-top:48px}
+    .proj>p{display:none}
+    .proj-grid.short .proj:nth-child(n+7){display:none}
+    .proj-all{display:block;margin:20px auto 0;font:700 15px var(--sans);padding:14px 22px;border-radius:999px;border:1.5px solid var(--ink);background:transparent;color:var(--ink);cursor:pointer}
+  }
+  .proj-all{display:none}
+
+  /* MÅLRETTET SIDE: match mellem krav og erfaring */
+  .for-tag{display:inline-flex;align-items:center;gap:10px;background:var(--ink);color:var(--paper);font-size:12px;font-weight:700;letter-spacing:.14em;text-transform:uppercase;padding:8px 14px;border-radius:999px;margin-bottom:22px}
+  .for-tag i{font-style:normal;color:#F08A63}
+  .match-intro{display:grid;grid-template-columns:240px 1fr;gap:32px;margin:-24px 0 40px}
+  .match-intro p{font-size:19px;line-height:1.55;color:var(--ink-2);max-width:760px}
+  .match{display:grid;grid-template-columns:240px 1fr;gap:32px}
+  .match-list{border-top:1px solid var(--line)}
+  .mrow{display:grid;grid-template-columns:1fr 1.35fr;gap:36px;padding:28px 0;border-bottom:1px solid var(--line)}
+  .mrow .req small{display:block;font-size:11px;font-weight:700;letter-spacing:.14em;text-transform:uppercase;color:var(--ink-2);margin-bottom:6px}
+  .mrow .req h4{font-family:var(--serif);font-weight:400;font-size:28px;line-height:1.1}
+  .mrow .have p{color:var(--ink-2);font-size:16px}
+  .mrow .have .val-proof{margin-top:12px;padding-top:0;border-top:0}
+  .mrow.gap .req h4{color:var(--accent)}
+  .mrow.gap{background:var(--accent-soft);border-radius:16px;padding:26px 24px;border-bottom:0;margin-top:20px}
+  @media (max-width:900px){.match-intro,.match{grid-template-columns:1fr;gap:14px}.mrow{grid-template-columns:1fr;gap:10px}}
+</style>
+</head>
+<body>
+
+<nav>
+  <div class="wrap">
+    <a href="#top" class="logo">Thomas Hansen<span>.</span></a>
+    <ul>
+      <li><a href="#profil">Why Grundfos</a></li>
+      <li><a href="#match">Your needs</a></li>
+      <li><a href="#projekter">Projects</a></li>
+      <li><a href="#erfaring">Experience</a></li>
+      <li><a href="#anbefaling">References</a></li>
+      <li><a href="#kontakt" class="nav-cta">Contact me</a></li>
+    </ul>
+  </div>
+</nav>
+
+<header class="hero" id="top">
+  <div class="ring"></div><div class="ring two"></div>
+  <div class="wrap">
+    <div class="for-tag">For Grundfos <i>✦</i> Digital Marketing Manager, Western Europe</div>
+    <div class="eyebrow">Digital marketing · Campaigns · SEO · Marketing automation</div>
+    <div class="hero-grid">
+      <div>
+        <h1>Digital strategy –<br>with <em>hands-on</em> execution.</h1>
+        <p class="lead">I'm Thomas – nearly 20 years in digital marketing and e-commerce across international markets. I have grown a webshop from DKK 15 to 120 million in two years, led ok.dk with DKK 600 million in annual revenue and run campaigns, SEO, paid search, marketing automation and lead management. I use AI every day.</p>
+        <div class="btns">
+          <a href="#kontakt" class="btn btn-primary">Let's talk →</a>
+          <a href="#match" class="btn btn-ghost">See your needs – and my answers</a>
+        </div>
+      </div>
+      <div class="hero-meta">
+        <img class="portrait" src="../images/portraet.jpg" alt="Portrait of Thomas Hansen">
+        <strong>Current role</strong>
+        Master Data Manager / E-commerce at Plast-Line A/S
+        <strong>Based in</strong>
+        Horsens, Denmark
+        <strong>Languages</strong>
+        Danish · English
+      </div>
+    </div>
+  </div>
+</header>
+
+<section class="numbers">
+  <div class="wrap">
+    <h2 class="reveal">Digital marketing you can <em>measure</em>.</h2>
+    <div class="num-grid reveal">
+      <div class="num"><div class="big">15 → 120</div><p>DKK million in webshop revenue in two years at Design Eyewear Group</p></div>
+      <div class="num"><div class="big">600<small>m DKK</small></div><p>Annual revenue on ok.dk, which I led</p></div>
+      <div class="num"><div class="big">+3 %</div><p>Higher conversion through marketing automation</p></div>
+      <div class="num"><div class="big">6<small>markets</small></div><p>Brand sites and webshop in 4 languages: DK, DE, UK, NL, SE, FR</p></div>
+    </div>
+  </div>
+</section>
+
+<section class="block" id="profil">
+  <div class="wrap">
+    <div class="sec-head reveal"><div class="idx">01 — Why Grundfos</div><h2>Strategy and execution – in <em>one</em> role.</h2></div>
+    <div class="profile-body reveal">
+      <div></div>
+      <div class="text">
+        <p>You are looking for someone who can set the digital direction for 16 markets – and still roll up their sleeves. That is how I have worked my whole career: responsible for the whole, hands-on in the details.</p>
+        <p>At Design Eyewear Group I was responsible for the digital platform for four international brands across markets: 8 brand sites and a webshop in 4 languages in one solution, Instagram with paid social and influencers, and a media bank for around 10,000 opticians. The webshop grew from DKK 15 to 120 million in two years.</p>
+        <p>At OK I led ok.dk against clear KPIs, built marketing automation that lifted conversion by 3 % and dashboards that made digital sales visible across the organisation. I have worked with SEO, paid search, lead scoring and CRM integration – and I have had staff and budget responsibility with ROI on every activity.</p>
+        <p>AI is part of my everyday work – and I follow closely how AI is changing the way customers search and discover.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="block" id="match">
+  <div class="wrap">
+    <div class="sec-head reveal"><div class="idx">02 — Your needs</div><h2>What you ask for –<br>and what I <em>have done</em>.</h2></div>
+    <div class="match-intro reveal">
+      <div></div>
+      <p>I have gone through the job posting point by point. On the left is what you are looking for, on the right what I have done – with a link to the project as proof.</p>
+    </div>
+    <div class="match reveal">
+      <div></div>
+      <div class="match-list">
+        <div class="mrow">
+          <div class="req"><small>Digital direction</small><h4>A clear roadmap across markets</h4></div>
+          <div class="have"><p>I have set the digital direction for multi-brand platforms in an international group and aligned brand sites and webshop across 6 markets and 4 languages.</p><div class="val-proof">See: <a class="plink" href="#p-sites">From 5 solutions to 1</a> · <a class="plink" href="#p-webshop">New webshop</a></div></div>
+        </div>
+        <div class="mrow">
+          <div class="req"><small>Multi-channel campaigns</small><h4>Web, email, social and search</h4></div>
+          <div class="have"><p>I have planned and run campaigns across web, email, social and paid search at OK, Design Eyewear Group and Plast-Line.</p><div class="val-proof">See: <a class="plink" href="#p-automation">Marketing automation</a> · <a class="plink" href="#p-instagram">Instagram</a></div></div>
+        </div>
+        <div class="mrow">
+          <div class="req"><small>Web performance and SEO</small><h4>Discovery, engagement and conversion</h4></div>
+          <div class="have"><p>I have worked with SEO, CRO and customer journeys – the webshop at Design Eyewear Group grew from DKK 15 to 120 million, and the one at Plast-Line by 75 %.</p><div class="val-proof">See: <a class="plink" href="#p-webshop">New webshop</a></div></div>
+        </div>
+        <div class="mrow">
+          <div class="req"><small>Analytics and ROI</small><h4>Data turned into action</h4></div>
+          <div class="have"><p>I built dashboards in Klipfolio and Power BI, calculated ROI on all activities and used tests and insights to prioritise optimisation.</p><div class="val-proof">See: <a class="plink" href="#p-dashboards">Reporting and dashboards</a></div></div>
+        </div>
+        <div class="mrow">
+          <div class="req"><small>Marketing automation and leads</small><h4>Better lead quality and alignment with Sales</h4></div>
+          <div class="have"><p>I built automated flows such as "one-click-buy" and "abandoned cart" (+3 % conversion) and have worked with B2B automation, lead scoring and CRM integration.</p><div class="val-proof">See: <a class="plink" href="#p-automation">Marketing automation</a></div></div>
+        </div>
+        <div class="mrow">
+          <div class="req"><small>International matrix</small><h4>Global, regional and local teams</h4></div>
+          <div class="have"><p>I worked across markets, purchasing and management in an international group with several brands – and with external agencies and partners.</p><div class="val-proof">See: <a class="plink" href="#p-sites">From 5 solutions to 1</a> · <a class="plink" href="#p-kontainer">Media bank in Kontainer</a></div></div>
+        </div>
+        <div class="mrow">
+          <div class="req"><small>AI and search</small><h4>AI-driven discovery as an opportunity</h4></div>
+          <div class="have"><p>I use AI daily for content, analysis and data clean-up and have built solutions with AI myself.</p><div class="val-proof">See: <a class="plink" href="#p-supermen">Customer club for Supermen.dk</a></div></div>
+        </div>
+        <div class="mrow gap">
+          <div class="req"><small>Honest answer</small><h4>16 markets</h4></div>
+          <div class="have"><p>I have worked across 6 markets – not 16 – and have not worked in a matrix organisation of Grundfos' size. I am ready to scale what I know to a region of that size.</p></div>
+        </div>
+      </div>
+    </div>
+
+    <div class="plan reveal">
+      <h3>My first <em>90 days</em> at Grundfos</h3>
+      <div class="plan-steps">
+        <div class="step"><div class="step-k">Day 1–30</div><h5>Listen and learn</h5><p>I get to know the Western Europe team, the local markets, the global platforms and the current KPIs, campaigns and lead flows.</p></div>
+        <div class="step"><div class="step-k">Day 31–60</div><h5>Roadmap</h5><p>A regional digital roadmap aligned with global frameworks, with the biggest levers for discovery, engagement and conversion.</p></div>
+        <div class="step"><div class="step-k">Day 61–90</div><h5>Activate</h5><p>The first optimised campaigns and journeys live, a shared KPI dashboard and a fixed rhythm with local teams and Sales.</p></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="block" id="projekter">
+  <div class="wrap">
+    <div class="sec-head reveal"><div class="idx">03 — Projects</div><h2>Selected for<br><em>your</em> role.</h2></div>
+    <p class="proj-hint reveal"><b>+</b> Click a project to read more and see images.</p>
+    <div class="proj-grid short">
+      <article id="p-webshop" tabindex="0" class="proj feature" data-c="deg" data-t="ecom masterdata">
+        <div class="top"><img class="stack" src="../logos/deg-stacked.svg" alt="Design Eyewear Group"><span class="yr">2019 — 2021</span></div>
+        <div class="pcats"><span>E-commerce</span><span>Master data</span></div>
+        <h4>New webshop: from launch to DKK 120m</h4>
+        <p>Got master data in order during a new web platform project, then built growth on that foundation.</p>
+        <div class="metric">DKK 15m → 120m<small>Annual webshop revenue</small></div>
+        <div class="ptags"><span>E-commerce</span><span>CRO</span><span>Growth</span></div>
+        <div class="more">
+          <span class="case-k">The challenge</span>
+          <p>I was hired to manage the projects around a new web platform, but the groundwork hadn't been done properly. A number of master data issues were unresolved, so the platform lacked a solid foundation.</p>
+          <span class="case-k">What I did</span>
+          <p>I started by resolving the master data issues and making sure the right data reached the webshop. I then built on that with new initiatives: better product descriptions, virtual try-on, a new digital RMA process for returns, improved CRO and gamification to activate customers.</p>
+          <span class="case-k">The result</span>
+          <p>The webshop grew from DKK 15m to DKK 120m in two years, and the digital share rose from 5% to 23% of total revenue.</p>
+          <div class="pimgs"><figure class="pimg shot"><img src="../images/deg-webshop-forside.jpg" alt="Front page of the Design Eyewear Group webshop with a Prodesign campaign" loading="lazy"><figcaption>The webshop's front page</figcaption></figure><figure class="pimg shot"><img src="../images/deg-brandoversigt.jpg" alt="Overview of Design Eyewear Group's brand portfolio: Prodesign, Face à Face, Woow and William Morris London" loading="lazy"><figcaption>The brand portfolio</figcaption></figure></div>
+        </div>
+        <button class="toggle" aria-expanded="false">Read more <b>+</b></button>
+      </article>
+      <article id="p-automation" tabindex="0" class="proj" data-c="ok" data-t="ecom">
+        <div class="top"><img src="../logos/ok.svg" alt="OK" style="max-height:26px"><span class="yr">2011 — 2017</span></div>
+        <div class="pcats"><span>E-commerce</span></div>
+        <h4>Marketing automation</h4>
+        <p>Built automated flows such as "one-click-buy" and abandoned cart emails that lifted conversion.</p>
+        <div class="metric">+3 %<small>Better conversion</small></div>
+        <div class="ptags"><span>Automation</span><span>Email</span><span>Loyalty</span></div>
+        <div class="more">
+          <span class="case-k">The challenge</span>
+          <p>There were no automated flows to follow up with customers – for example when they left a cart or were due to buy again.</p>
+          <span class="case-k">What I did</span>
+          <p>I built flows that followed the customer all the way: "one-click-buy", which made repeat purchases fast, and abandoned cart emails, which brought customers back to a cart they had left. I was also responsible for the "MIN OK" customer portal and ongoing email marketing.</p>
+          <span class="case-k">The result</span>
+          <p>Conversion improved by 3%.</p>
+          <div class="pimgs" style="grid-template-columns:1fr"><figure class="pimg shot"><img src="../images/marketing-automation.png" alt="Illustration: segmentation, where customers are grouped, versus personalisation, where each customer is treated individually" loading="lazy"><figcaption>From segmentation to personalisation</figcaption></figure></div>
+        </div>
+        <button class="toggle" aria-expanded="false">Read more <b>+</b></button>
+      </article>
+      <article id="p-sites" tabindex="0" class="proj" data-c="deg" data-t="ecom masterdata">
+        <div class="top"><img class="stack" src="../logos/deg-stacked.svg" alt="Design Eyewear Group"><span class="yr">2017 — 2023</span></div>
+        <div class="pcats"><span>E-commerce</span><span>Master data</span></div>
+        <h4>From 5 platforms to 1: 8 brand sites and a webshop</h4>
+        <p>Brought the group's 8 brand sites and webshop in 4 languages together in one headless Umbraco solution.</p>
+        <div class="metric">8 + 1<small>Brand sites and webshop</small></div>
+        <div class="ptags"><span>Umbraco</span><span>Headless</span><span>PIM</span><span>DAM</span></div>
+        <div class="more">
+          <span class="case-k">The challenge</span>
+          <p>The group's 8 brand sites and webshop ran on five different platforms. Every update had to be made in several places and in 4 languages, with no economies of scale.</p>
+          <span class="case-k">What I did</span>
+          <p>I brought all the sites together in one headless Umbraco solution, connected directly to PIM, DAM and ERP, so product data, images and content came from the same source. It required close collaboration with markets, purchasing and management.</p>
+          <span class="case-k">The result</span>
+          <p>One platform to work in instead of five, economies of scale in operations and development, and consistent, up-to-date data across sites and languages.</p>
+          <div class="pimgs"><figure class="pimg shot"><img src="../images/deg-faceaface-soul.jpg" alt="The Face à Face Paris brand site showing the product page for the SOUL frame" loading="lazy"><figcaption>Brand site: Face à Face</figcaption></figure><figure class="pimg shot"><img src="../images/deg-prodesign-prisma.jpg" alt="The Prodesign brand site with the PRISMA collection in four variants" loading="lazy"><figcaption>Brand site: Prodesign</figcaption></figure></div>
+        </div>
+        <button class="toggle" aria-expanded="false">Read more <b>+</b></button>
+      </article>
+      <article id="p-instagram" tabindex="0" class="proj" data-c="deg" data-t="some">
+        <div class="top"><img class="stack" src="../logos/deg-stacked.svg" alt="Design Eyewear Group"><span class="yr">2017 — 2023</span></div>
+        <div class="pcats"><span>Social media</span></div>
+        <h4>Instagram and influencer marketing</h4>
+        <p>Managed – with help from colleagues – Instagram for all the group's eyewear brands with organic content, paid advertising and influencers.</p>
+        <div class="ptags"><span>Instagram</span><span>Paid social</span><span>Influencers</span></div>
+        <div class="more">
+          <span class="case-k">The challenge</span>
+          <p>The group's brands – Prodesign, Face à Face, WOOW and William Morris London – are sold internationally, so the Instagram profiles had to speak to consumers and opticians in many markets at once.</p>
+          <span class="case-k">What I did</span>
+          <p>With help from colleagues, I was responsible for the profiles for all brands and for aligning them with the brand sites and webshop. Organic content built the brands and their communities, paid advertising delivered reach and traffic across countries, and influencer partnerships added credibility.</p>
+          <span class="case-k">The result</span>
+          <p>The brands gained visibility with new audiences in markets around the world. Later, we brought in an external partner to take over running the profiles.</p>
+          <div class="pimgs ig" style="grid-template-columns:repeat(3,1fr)"><figure class="pimg shot"><img src="../images/deg-instagram-woow.jpg" alt="The wooweyewear Instagram profile for WOOW Eyewear with 1,658 posts and 23.6 thousand followers" loading="lazy"><figcaption>WOOW Eyewear</figcaption></figure><figure class="pimg shot"><img src="../images/deg-instagram-william-morris.jpg" alt="The williammorris_ldn Instagram profile for William Morris London with 569 posts and 4,466 followers" loading="lazy"><figcaption>William Morris London</figcaption></figure><figure class="pimg shot"><img src="../images/deg-instagram-prodesign.jpg" alt="Instagram story from prodesigndenmark: Eyewear Snap from the Neo Tokyo Eyewear Show" loading="lazy"><figcaption>Prodesign: story</figcaption></figure></div>
+        </div>
+        <button class="toggle" aria-expanded="false">Read more <b>+</b></button>
+      </article>
+      <article id="p-okdk" tabindex="0" class="proj" data-c="ok" data-t="ecom">
+        <div class="top"><img src="../logos/ok.svg" alt="OK" style="max-height:26px"><span class="yr">2011 — 2017</span></div>
+        <div class="pcats"><span>E-commerce</span></div>
+        <h4>Webshop on ok.dk</h4>
+        <p>Made online sales a focus area at OK and managed the webshop for private and business customers.</p>
+        <div class="metric">DKK 600m<small>Annual revenue</small></div>
+        <div class="ptags"><span>E-commerce</span><span>B2C/B2B</span><span>CRO</span></div>
+        <div class="more">
+          <span class="case-k">The challenge</span>
+          <p>When I started, online sales were not a focus area at OK.</p>
+          <span class="case-k">What I did</span>
+          <p>I managed and optimised a new webshop for OK Energi aimed at both private and business customers. Together with the online team, I continuously planned and launched new initiatives and tests to lift conversion.</p>
+          <span class="case-k">The result</span>
+          <p>The webshop grew to annual revenue of DKK 600m, and the online channel became an important part of OK's business.</p>
+          <div class="pimgs" style="grid-template-columns:1fr"><figure class="pimg shot"><img src="../images/ok-dk-forside.jpg" alt="Front page of ok.dk with campaigns for OK home chargers and electricity, plus shortcuts to the app, car wash, natural gas, electricity, charging, heat pumps, service agreements, heating oil and cards" loading="lazy"><figcaption>The ok.dk front page today</figcaption></figure></div>
+        </div>
+        <button class="toggle" aria-expanded="false">Read more <b>+</b></button>
+      </article>
+      <article id="p-dashboards" tabindex="0" class="proj" data-c="ok" data-t="ecom">
+        <div class="top"><img src="../logos/ok.svg" alt="OK" style="max-height:26px"><span class="yr">2011 — 2017</span></div>
+        <div class="pcats"><span>E-commerce</span></div>
+        <h4>Reporting and dashboards</h4>
+        <p>Built dashboards in Klipfolio and later Power BI that gave the whole organisation a shared view of digital sales.</p>
+        <div class="ptags"><span>Klipfolio</span><span>Power BI</span><span>KPI</span></div>
+        <div class="more">
+          <span class="case-k">The challenge</span>
+          <p>The online channel didn't carry much weight in the organisation, and digital sales figures weren't visible to management and colleagues.</p>
+          <span class="case-k">What I did</span>
+          <p>I built targeted dashboards – first in Klipfolio, later in Microsoft Power BI – that tracked the online channel's KPIs. I used the numbers to plan, prioritise and launch new initiatives and tests together with the rest of the online team.</p>
+          <span class="case-k">The result</span>
+          <p>Digital sales became visible across the organisation, which built attention around the online channel and lifted the entire digital business.</p>
+          <div class="pimgs" style="grid-template-columns:1fr"><figure class="pimg shot"><img src="../images/klipfolio-dashboard.jpg" alt="Klipfolio dashboard with traffic sources, desktop and mobile visits, page performance and traffic breakdown" loading="lazy"><figcaption>One of my dashboards in Klipfolio</figcaption></figure></div>
+        </div>
+        <button class="toggle" aria-expanded="false">Read more <b>+</b></button>
+      </article>
+      <article id="p-kontainer" tabindex="0" class="proj" data-c="deg" data-t="masterdata">
+        <div class="top"><img class="stack" src="../logos/deg-stacked.svg" alt="Design Eyewear Group"><span class="yr">2017 — 2023</span></div>
+        <div class="pcats"><span>Master data</span></div>
+        <h4>Media bank in Kontainer</h4>
+        <p>Built an almost self-running media bank so opticians could fetch images and brand material themselves.</p>
+        <div class="metric">≈ 10,000<small>Opticians the media bank had to serve</small></div>
+        <div class="ptags"><span>Kontainer</span><span>DAM</span><span>Images</span></div>
+        <div class="more">
+          <span class="case-k">The challenge</span>
+          <p>As a supplier you effectively act as the marketing department for your customers – and at Design Eyewear Group that meant close to 10,000 opticians. With many brands, collections and markets, images and materials easily ended up scattered, and the solution had to almost run itself.</p>
+          <span class="case-k">What I did</span>
+          <p>I set up the group's media bank in <a class="live" href="https://kontainer.com" target="_blank" rel="noopener">Kontainer</a>, a Danish Digital Asset Management system, and structured it so everything was gathered in one place and connected to product data, brand sites and the webshop.</p>
+          <span class="case-k">The result</span>
+          <p>Opticians, markets and colleagues could find the right, up-to-date images and materials themselves – without having to ask marketing first.</p>
+          <div class="pimgs" style="grid-template-columns:1fr"><figure class="pimg shot"><img src="../images/kontainer-mediebank.jpg" alt="The media bank in Kontainer with folders and logos for the group's brands, including Prodesign, Face à Face, WOOW, William Morris, Jaguar and JOOP!" loading="lazy"><figcaption>The media bank in Kontainer with all the group's brands</figcaption></figure></div>
+        </div>
+        <button class="toggle" aria-expanded="false">Read more <b>+</b></button>
+      </article>
+      <article id="p-supermen" tabindex="0" class="proj" data-c="supermen" data-t="ai ecom">
+        <div class="top"><span class="wm">Supermen</span><span class="yr">2026</span></div>
+        <div class="pcats"><span>AI &amp; vibe coding</span><span>E-commerce</span></div>
+        <h4>Customer club for Supermen.dk</h4>
+        <p>Built a customer club for Supermen, a menswear store in Horsens that has sold men's fashion on Søndergade since 2006, both in-store and online.</p>
+        <div class="metric">15%<small>Welcome discount for new members</small></div>
+        <div class="ptags"><span>Vibe coding</span><span>Customer club</span><span>Newsletter</span></div>
+        <div class="more">
+          <p>The customer club brings customers from both the store and the webshop together in one membership. You sign up with your name and email, get 15% off your first order and then receive news, offers and styling inspiration.</p>
+          <p>The solution was built with AI and vibe coding, so it went from idea to a working customer club in a short time and without a traditional development process.</p>
+          <div class="pimgs" style="grid-template-columns:1fr"><figure class="pimg shot"><img src="../images/supermen-kundeklub.jpg" alt="MEN Horsens customer club: the member overview with a digital punch card, where 5 punches give DKK 500 off" loading="lazy"><figcaption>Member overview with a digital punch card</figcaption></figure></div>
+          <p><a class="live" href="https://supermen.dk" target="_blank" rel="noopener">See the customer club on supermen.dk ↗</a></p>
+        </div>
+        <button class="toggle" aria-expanded="false">Read more <b>+</b></button>
+      </article>
+    </div>
+    <button class="proj-all" type="button">Show all 8 projects ↓</button>
+    <p class="proj-empty" hidden>There are no projects in this category yet.</p>
+  </div>
+</section>
+
+<section class="block" id="erfaring">
+  <div class="wrap">
+    <div class="sec-head reveal"><div class="idx">04 — Experience</div><h2>A career in <em>four</em> chapters.</h2></div>
+
+    <article class="job reveal">
+      <div class="when"><div class="job-logo"><img src="../logos/plastline.svg" alt="Plast-Line A/S"></div>Sep 2023 — present<br><span class="now">Current</span></div>
+      <div>
+        <h3>Master Data Manager / E-commerce</h3>
+        <div class="company">Plast-Line A/S <span>· Middelfart</span></div>
+        <p>Responsible for all master data in a company that is both a manufacturer and a wholesaler. I own the processes for how items, suppliers and materials are created and maintained, and I am the link between production, purchasing, warehouse, sales and IT.</p>
+        <ul>
+          <li>Structure, standards and workflows for master data</li>
+          <li>Data quality: ongoing cleansing, validation and daily operations in ERP and Struct PIM</li>
+          <li>Master data in relation to the WMS and webshop</li>
+          <li>Training users and embedding new ways of working</li>
+        </ul>
+        <div class="plinks"><span>Projects</span></div>
+      </div>
+    </article>
+
+    <article class="job reveal">
+      <div class="when"><div class="job-logo"><img class="stack" src="../logos/deg-stacked.svg" alt="Design Eyewear Group"></div>May 2017 — Sep 2023</div>
+      <div>
+        <h3>Master Data / E-commerce</h3>
+        <div class="company">Design Eyewear Group <span>· Aarhus</span></div>
+        <p>Reporting to the CEO and the Head of Purchasing, I was responsible for the group's master data and for the digital platform built on it: brand sites, webshop and the systems behind them.</p>
+        <ul>
+          <li>Master data, PIM, DAM and ERP for all brands and markets</li>
+          <li>Webshop, CRO and customer loyalty programmes</li>
+          <li>WMS projects and the "Travel-order" sales app</li>
+          <li>Instagram and influencer marketing for the group's brands</li>
+        </ul>
+        <div class="plinks"><span>Projects</span><a class="plink" href="#p-webshop">New webshop →</a><a class="plink" href="#p-sites">From 5 platforms to 1 →</a><a class="plink" href="#p-kontainer">Media bank in Kontainer →</a><a class="plink" href="#p-instagram">Instagram →</a></div>
+      </div>
+    </article>
+
+    <article class="job reveal">
+      <div class="when"><div class="job-logo"><img src="../logos/ok.svg" alt="OK" style="max-height:40px"></div>Dec 2011 — May 2017</div>
+      <div>
+        <h3>Online Sales Manager</h3>
+        <div class="company">OK a.m.b.a. <span>· Aarhus</span></div>
+        <p>Reporting to the Head of Online, I was responsible for sales in OK's online channel – the ok.dk webshop and the "Tank og Betal" app – for both private and business customers. I started as Web Coordinator and became Online Sales Manager in 2014.</p>
+        <ul>
+          <li>Sales and conversion on ok.dk and in the app</li>
+          <li>KPI tracking and dashboards for the online channel</li>
+          <li>Marketing automation, "MIN OK" and email marketing</li>
+        </ul>
+        <div class="plinks"><span>Projects</span><a class="plink" href="#p-okdk">Webshop on ok.dk →</a><a class="plink" href="#p-automation">Marketing automation →</a><a class="plink" href="#p-dashboards">Reporting and dashboards →</a></div>
+      </div>
+    </article>
+
+    <article class="job reveal">
+      <div class="when"><div class="job-logo"><img src="../logos/boligportal.svg" alt="BoligPortal"></div>Feb 2007 — Dec 2011</div>
+      <div>
+        <h3>Key Account Manager</h3>
+        <div class="company">Boligportal <span>· Aarhus</span></div>
+        <ul>
+          <li>Handled all customers and media agencies</li>
+          <li>Media planning, budget negotiations and ad segmentation</li>
+          <li>Started in customer service</li>
+        </ul>
+      </div>
+    </article>
+  </div>
+</section>
+
+<section class="block" id="anbefaling">
+  <div class="wrap">
+    <div class="sec-head reveal"><div class="idx">05 — References</div><h2>What former<br><em>managers</em> say.</h2></div>
+    <div class="rec reveal">
+      <div></div>
+      <div>
+        <blockquote class="rec-quote">Thomas has always carried out his work <em>professionally, conscientiously</em> and to the letter.</blockquote>
+        <div class="rec-by">
+          <div class="av">LF</div>
+          <div><b>Lars Flyvholm</b><span>CEO, Design Eyewear Group · 2021</span></div>
+          <img src="../logos/deg-stacked.svg" alt="Design Eyewear Group" style="height:auto;width:130px">
+        </div>
+        <div class="rec-points">
+          <div><b>Professional</b><p>Delivers thorough work, to the letter.</p></div>
+          <div><b>Reliable</b><p>A committed employee you can count on.</p></div>
+          <div><b>Valued</b><p>Valued by both colleagues and management.</p></div>
+        </div>
+        <details class="letter">
+          <summary>Read the full reference</summary>
+          <div class="body">
+            <p>"I give Thomas Schou Hansen my highest recommendation. Throughout his time at Design Eyewear Group, Thomas has always carried out his work professionally, conscientiously and to the letter. He is a reliable and committed employee who has been valued by both colleagues and management."</p>
+            <p><b>Lars Flyvholm</b>, CEO, Design Eyewear Group · 2021</p>
+            <p class="tr-note">Translated from Danish. The original is available on the <a href="../#anbefaling" lang="da">Danish page</a>.</p>
+          </div>
+        </details>
+      </div>
+    </div>
+    <div class="rec reveal">
+      <div></div>
+      <div>
+        <blockquote class="rec-quote">Thomas has truly exceptional drive and a <em>fantastic enthusiasm</em> that rubs off on the people around him.</blockquote>
+        <div class="rec-by">
+          <div class="av">HC</div>
+          <div><b>Heidi Collin</b><span>Head of Online, OK a.m.b.a. · Aarhus, 2015</span></div>
+          <img src="../logos/ok.svg" alt="OK">
+        </div>
+        <div class="rec-points">
+          <div><b>Drive</b><p>Runs and optimises sales in the online channel against clear KPIs.</p></div>
+          <div><b>Curiosity</b><p>Dares to try new methods and isn't discouraged when a test fails.</p></div>
+          <div><b>Collaboration</b><p>Spreads optimism and fighting spirit and works well across the organisation.</p></div>
+        </div>
+        <details class="letter">
+          <summary>Read the full reference</summary>
+          <div class="body">
+            <p>Thomas Schou Hansen has been employed full-time in OK's Online Department since 7 December 2011, first as Web Coordinator and from February 2014 as Online Sales Manager. Thomas is still employed in the role on 1 September 2015, when I have chosen to step down as Head of Online. The Online Department currently has 10 employees and reports to the Sales Director.</p>
+            <p>Thomas is responsible for driving and optimising sales in OK's online channel so that we reach the department's KPIs. His tasks involve constantly monitoring the online channel's performance and continuously planning, prioritising and launching new initiatives and tests together with the rest of the online team to lift conversion. The job requires a results-oriented profile with a strong drive and the ability to work with many different people, both within the online department and across the entire organisation.</p>
+            <p>Thomas has truly exceptional drive and a fantastic enthusiasm that rubs off on the people around him. He is curious about new methods and approaches, dares to try new things and is not discouraged if we are below target for a period, or if the first attempts to lift conversion do not succeed.</p>
+            <p>Thomas has a fantastic ability to spread his optimism and fighting spirit to the rest of the team. He brings high spirits and plenty of laughter to the department every day. At the same time, he cares deeply for his colleagues and has a real feel for their mood and situation.</p>
+            <p>I can only give Thomas my warmest recommendation! All in all, he will be a great asset to any company, both professionally and personally.</p>
+            <p><b>Heidi Collin</b>, Head of Online · Aarhus, 24 August 2015<br>Contact details for the reference are available on request.</p>
+            <p class="tr-note">Translated from Danish. The original is available on the <a href="../#anbefaling" lang="da">Danish page</a>.</p>
+          </div>
+        </details>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="block" id="kompetencer">
+  <div class="wrap">
+    <div class="sec-head reveal"><div class="idx">06 — Skills</div><h2>The toolbox.</h2></div>
+    <div class="skills-grid">
+      <div></div>
+      <div class="skill-groups reveal">
+        <div class="sg ai">
+          <div>
+            <div class="ai-badge">AI in daily use</div>
+            <h4><span class="spark">✦</span> AI &amp; vibe coding</h4>
+            <p>AI is a fixed part of my working day and the skill I prioritise most. I use it for analysis, copywriting, data cleansing and ideation, and with vibe coding I build solutions myself that used to require an agency. I go from idea to working tool in hours instead of weeks.</p>
+          </div>
+          <div class="ai-rows">
+            <div class="ai-row"><div class="ai-k">Tools</div><div class="tags"><span class="tag">Claude.ai</span><span class="tag">Codex</span><span class="tag">Vibe coding</span><span class="tag">Prompting</span></div></div>
+            <div class="ai-row"><div class="ai-k">I use AI for</div><div class="tags"><span class="tag">Data cleansing &amp; validation</span><span class="tag">Product copy &amp; content</span><span class="tag">Analysis</span><span class="tag">Automation</span><span class="tag">Fast prototypes</span></div></div>
+            <div class="ai-row"><div class="ai-k">Built with AI</div><div class="tags"><span class="tag">Customer club for Supermen.dk</span><span class="tag">This website</span></div></div>
+          </div>
+        </div>
+        <div class="sg dark sys">
+          <div>
+            <h4>Data &amp; systems</h4>
+            <p>Master data is the core of my work. I have worked in these systems every day and set them up so that product data, images and documentation flow correctly from ERP and PIM out to webshops, brand sites and markets.</p>
+          </div>
+          <div class="sys-rows">
+            <div class="sys-row"><div class="sys-k">ERP</div><div class="tags"><span class="tag">Visma Business</span><span class="tag">Kompas</span><span class="tag">Microsoft Dynamics AX (Axapta)</span></div></div>
+            <div class="sys-row"><div class="sys-k">PIM</div><div class="tags"><span class="tag">Struct PIM</span><span class="tag">Inriver</span><span class="tag">Perfion</span></div></div>
+            <div class="sys-row"><div class="sys-k">DAM</div><div class="tags"><span class="tag">Kontainer</span><span class="tag">Claude.ai</span></div></div>
+            <div class="sys-row"><div class="sys-k">Webshop &amp; CMS</div><div class="tags"><span class="tag">Umbraco</span><span class="tag">Ucommerce</span><span class="tag">WordPress</span><span class="tag">SharePoint</span><span class="tag">Claude.ai</span><span class="tag">Codex</span></div></div>
+            <div class="sys-row"><div class="sys-k">Documentation</div><div class="tags"><span class="tag">EPD databases</span><span class="tag">CAD drawings</span><span class="tag">Certifications</span></div></div>
+            <div class="sys-row"><div class="sys-k">Warehouse &amp; trade</div><div class="tags"><span class="tag">WMS</span><span class="tag">Vendor portals / GS1</span></div></div>
+            <div class="sys-row"><div class="sys-k">Tasks</div><div class="tags"><span class="tag">Product creation</span><span class="tag">Data cleansing &amp; validation</span><span class="tag">Data mapping</span><span class="tag">ERP migration</span><span class="tag">Governance &amp; workflows</span></div></div>
+          </div>
+        </div>
+        <div class="sg">
+          <h4>E-commerce &amp; analytics</h4>
+          <div class="tags"><span class="tag">CRO</span><span class="tag">GA4</span><span class="tag">Klipfolio</span><span class="tag">Power BI</span><span class="tag">Campaign monitoring</span><span class="tag">Marketing automation</span><span class="tag">Email marketing</span></div>
+        </div>
+        <div class="sg">
+          <h4>Business &amp; collaboration</h4>
+          <div class="tags"><span class="tag">Commercial insight</span><span class="tag">Project management</span><span class="tag">Teamwork</span><span class="tag">User training</span><span class="tag">Video &amp; image editing</span><span class="tag">Microsoft Office</span></div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="block" id="uddannelse" style="padding-top:0">
+  <div class="wrap">
+    <div class="sec-head reveal"><div class="idx">07 — Background</div><h2>Education &amp; <em>projects</em>.</h2></div>
+    <div class="two-col reveal">
+      <div></div>
+      <div>
+        <div class="col-title">Education &amp; courses</div>
+        <div class="edu"><div class="y">2005 — 2007</div><h4>AP Degree in Marketing Management</h4><p>IBA Business Academy, Kolding</p></div>
+        <div class="edu"><div class="y">1998 — 2001</div><h4>Higher Commercial Examination (HHX)</h4><p>Horsens Business College · with a focus on marketing</p></div>
+        <div class="edu"><div class="y">2014</div><h4>Project management</h4><p>Mannaz</p></div>
+      </div>
+      <div>
+        <div class="col-title">Websites I have helped build</div>
+        <div class="sites">
+          <a class="site" href="https://www.plast-line.dk" target="_blank" rel="noopener"><div><div class="site-logo"><img src="../logos/plastline.svg" alt="Plast-Line A/S"></div><span>plast-line.dk</span></div><span class="arr">↗</span></a>
+          <a class="site" href="https://designeyeweargroup.com" target="_blank" rel="noopener"><div><div class="site-logo"><img class="stack" src="../logos/deg-stacked.svg" alt="Design Eyewear Group"></div><span>Brand sites &amp; webshop · 4 languages</span></div><span class="arr">↗</span></a>
+          <a class="site" href="https://www.prodesigndenmark.com" target="_blank" rel="noopener"><div><div class="site-logo"><img src="../logos/prodesign.png" alt="ProDesign Denmark" style="max-height:22px"></div><span>prodesigndenmark.com</span></div><span class="arr">↗</span></a>
+          <a class="site" href="https://www.ok.dk" target="_blank" rel="noopener"><div><div class="site-logo"><img src="../logos/ok.svg" alt="OK"></div><span>ok.dk · Tank og Betal</span></div><span class="arr">↗</span></a>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="om-mig">
+  <div class="ticker" aria-hidden="true"><div class="ticker-inner">
+    <span>Handball</span><i>✦</i><span>Football</span><i>✦</i><span>Smukfest</span><i>✦</i><span>Spinning</span><i>✦</i><span>Community</span><i>✦</i><span>The kids</span><i>✦</i><span>Team spirit</span><i>✦</i>
+    <span>Handball</span><i>✦</i><span>Football</span><i>✦</i><span>Smukfest</span><i>✦</i><span>Spinning</span><i>✦</i><span>Community</span><i>✦</i><span>The kids</span><i>✦</i><span>Team spirit</span><i>✦</i>
+  </div></div>
+  <div class="wrap">
+    <div class="sec-head reveal"><div class="idx">08 — About me</div><h2>When the screen<br>is <em>off</em>.</h2></div>
+    <div class="about-intro reveal">
+      <div><img class="about-photo" src="../images/privat.jpg" alt="Thomas Hansen outside work"></div>
+      <p>Outside the office, my life is about people. I live in Horsens and I'm a father of two, and it's rarely quiet at home when Alberte and Valdemar come and go. The common thread in everything I do is community: on the pitch, at the festival site and in the spinning studio.</p>
+    </div>
+
+    <div class="stickers reveal">
+      <div class="sticker">
+        <span class="badge">All my life</span>
+        <svg viewBox="0 0 80 80" class="bounce" aria-hidden="true">
+          <circle cx="40" cy="40" r="30" fill="#fff" stroke="#15181D" stroke-width="3"/>
+          <path d="M40 22l10 7-4 12H34l-4-12z" fill="#15181D"/>
+          <path d="M40 22V10M50 29l12-4M46 41l8 10M34 41l-8 10M30 29l-12-4" stroke="#15181D" stroke-width="3"/>
+        </svg>
+        <div class="k">Coach</div>
+        <h4>Handball &amp; football</h4>
+        <p>I have coached handball and football all my life. It has taught me to motivate, set direction and bring everyone along – including those on the bench.</p>
+      </div>
+      <div class="sticker">
+        <span class="badge">Every August</span>
+        <svg viewBox="0 0 80 80" aria-hidden="true">
+          <path d="M8 66L40 14l32 52z" fill="#C8431B" stroke="#15181D" stroke-width="3" stroke-linejoin="round"/>
+          <path d="M40 14v52M30 66l10-18 10 18" fill="#F3F0E8" stroke="#15181D" stroke-width="3" stroke-linejoin="round"/>
+          <path d="M40 14V4l12 4-12 4" fill="#15181D" stroke="#15181D" stroke-width="2"/>
+          <circle cx="14" cy="22" r="3" fill="#15181D"/><circle cx="66" cy="28" r="2.5" fill="#15181D"/><circle cx="62" cy="10" r="2" fill="#15181D"/>
+        </svg>
+        <div class="k">Volunteer</div>
+        <h4>Smukfest</h4>
+        <p>When the festival hits Skanderborg, I'm one of the volunteers keeping the engine room running. Lots of energy, great experiences and a community that's hard to beat.</p>
+      </div>
+      <div class="sticker">
+        <svg viewBox="0 0 80 80" aria-hidden="true">
+          <circle cx="18" cy="56" r="14" fill="none" stroke="#15181D" stroke-width="3"/>
+          <circle cx="62" cy="56" r="14" fill="none" stroke="#15181D" stroke-width="3"/>
+          <g class="spin"><path d="M62 44v24M50 56h24" stroke="#15181D" stroke-width="2"/></g>
+          <g class="spin"><path d="M18 44v24M6 56h24" stroke="#15181D" stroke-width="2"/></g>
+          <path d="M18 56l14-24h22l8 24M32 32l8 24h22M28 24h10M52 32l-2-10h8" fill="none" stroke="#15181D" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/>
+        </svg>
+        <div class="k">Energy</div>
+        <h4>Training &amp; spinning</h4>
+        <p>Spinning and training are how I recharge. They keep me sharp and give me energy for both work and family.</p>
+      </div>
+      <div class="sticker">
+        <span class="badge">Full house</span>
+        <svg viewBox="0 0 80 80" aria-hidden="true">
+          <path d="M12 38L40 14l28 24v30H12z" fill="#E9B44C" stroke="#15181D" stroke-width="3" stroke-linejoin="round"/>
+          <rect x="33" y="46" width="14" height="22" fill="#15181D"/>
+          <path d="M40 30c-3-5-10-2-7 3l7 6 7-6c3-5-4-8-7-3z" fill="#C8431B" class="bounce"/>
+        </svg>
+        <div class="k">At home</div>
+        <h4>Alberte &amp; Valdemar</h4>
+        <p>I'm the father of Alberte, 19, and Valdemar, 16. I live on my own, but the door is always open, and when the kids drop by, they set the agenda. That's how it should be.</p>
+      </div>
+    </div>
+
+    <div class="rec-private reveal">
+      <div class="idx" style="font-size:13px;font-weight:700;letter-spacing:.14em;text-transform:uppercase;color:rgba(243,240,232,.6)">What others say</div>
+      <div class="card">
+        <p>"He brings high spirits and plenty of laughter to the department every day. At the same time, he cares deeply for his colleagues."</p>
+        <small>Heidi Collin, former Head of Online at OK</small>
+      </div>
+    </div>
+
+    <div class="motto reveal">
+      <div class="people" aria-hidden="true">
+        <span style="background:#F08A63"></span><span style="background:#E9B44C"></span><span style="background:#9CC5B4"></span><span style="background:#F3F0E8"></span><span style="background:#C8431B"></span>
+      </div>
+      <blockquote>Team <em>over</em> individual.
+        <small>That's my approach on the pitch, as a volunteer and at work. We achieve the best results together. My job as a coach is to make the team succeed, not to be the star.</small>
+      </blockquote>
+    </div>
+  </div>
+</section>
+
+<section class="contact" id="kontakt">
+  <div class="wrap">
+    <div class="eyebrow" style="color:#fff">Contact</div>
+    <h2 style="margin-top:20px">Let's<br><em>talk</em>.</h2>
+    <div class="contact-grid">
+      <p>I would be glad to talk about how I can drive digital marketing impact across Grundfos' Western European markets.</p>
+      <div class="c-items">
+        <div class="c-item"><div><small>Email</small><a href="mailto:schou29@gmail.com">schou29@gmail.com</a></div><button class="copy" data-copy="schou29@gmail.com">Copy</button></div>
+        <div class="c-item"><div><small>Phone</small><span class="v">+45 24 25 25 27</span></div><button class="copy" data-copy="+4524252527">Copy</button></div>
+        <div class="c-item"><div><small>Location</small><span class="v">Horsens, Denmark</span></div></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<footer><div class="wrap"><span>© 2026 Thomas Hansen</span><span>Made for Grundfos · <a href="/en/">See my full profile</a></span></div></footer>
+
+
+<script>
+  const io = new IntersectionObserver(es=>{
+    es.forEach(e=>{
+      if(e.isIntersecting){
+        e.target.classList.add('in');
+        e.target.querySelectorAll && e.target.querySelectorAll('.fill').forEach(f=>f.style.width=f.dataset.w+'%');
+        io.unobserve(e.target);
+      }
+    });
+  },{threshold:0,rootMargin:'0px 0px -8% 0px'});
+  document.querySelectorAll('.reveal').forEach(el=>io.observe(el));
+
+  document.querySelectorAll('.copy').forEach(b=>{
+    b.addEventListener('click', async ()=>{
+      const t=b.textContent;
+      try{ await navigator.clipboard.writeText(b.dataset.copy); b.textContent='Copied ✓'; }
+      catch(e){ b.textContent='Select the text'; }
+      setTimeout(()=>b.textContent=t,1800);
+    });
+  });
+
+  document.querySelectorAll('.filters button').forEach(b=>b.addEventListener('click',()=>{
+    document.querySelectorAll('.filters button').forEach(x=>x.classList.toggle('on',x===b));
+    const f=b.dataset.f;
+    let n=0;document.querySelectorAll('.proj').forEach(p=>{const h=f!=='alle'&&!p.dataset.t.split(' ').includes(f);p.classList.toggle('hide',h);if(!h)n++;});document.querySelector('.proj-empty').hidden=n>0;
+  }));
+
+  const projs=[...document.querySelectorAll('.proj')];
+  function setOpen(p,on){p.classList.toggle('open',on);const t=p.querySelector('.toggle');t.setAttribute('aria-expanded',on);t.firstChild.textContent=on?'Close ':'Read more ';}
+  projs.forEach(p=>{
+    p.addEventListener('click',e=>{
+      const wasOpen=p.classList.contains('open');
+      if(wasOpen && !e.target.closest('.toggle')) return;
+      projs.forEach(q=>q!==p&&setOpen(q,false));
+      setOpen(p,!wasOpen);
+      if(!wasOpen) setTimeout(()=>p.scrollIntoView({behavior:'smooth',block:'nearest'}),60);
+    });
+    p.addEventListener('keydown',e=>{if(e.key==='Enter'&&e.target===p){p.click()}});
+  });
+  document.querySelectorAll('a.plink').forEach(a=>a.addEventListener('click',e=>{
+    const p=document.getElementById(a.getAttribute('href').slice(1));
+    if(!p||!p.classList.contains('proj')) return;
+    e.preventDefault();
+    const all=document.querySelector('.filters button[data-f="alle"]'); if(all) all.click();
+    projs.forEach(q=>q!==p&&setOpen(q,false)); setOpen(p,true);
+    setTimeout(()=>p.scrollIntoView({behavior:'smooth',block:'start'}),60);
+  }));
+  const pg=document.querySelector('.proj-grid'),pa=document.querySelector('.proj-all');
+  function showAll(){pg.classList.remove('short');pa.remove();}
+  pa.addEventListener('click',showAll);
+  document.querySelectorAll('.filters button').forEach(b=>b.addEventListener('click',showAll));
+  document.querySelectorAll('a.plink').forEach(a=>a.addEventListener('click',()=>{if(document.getElementById(a.getAttribute('href').slice(1))?.classList.contains('proj'))showAll();},true));
+</script>
+</body>
+</html>

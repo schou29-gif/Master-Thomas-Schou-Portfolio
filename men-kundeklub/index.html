@@ -246,6 +246,34 @@
   .slogin-form .input{text-align:center;font-size:20px}
   .slogin-who{display:flex;flex-direction:column;align-items:center;gap:8px;font-family:var(--head);font-size:18px;font-weight:600;text-transform:uppercase;letter-spacing:.08em;margin-bottom:6px}
   @media (max-width:640px){ .slogin-row{grid-template-columns:repeat(2,1fr)} }
+  /* CRM på personalesiden */
+  .crm-stats{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:12px;padding-top:18px}
+  .crm-stat{border:1px solid var(--line);background:#fff;padding:14px 16px;text-align:left;cursor:pointer;font-family:var(--body);color:var(--ink)}
+  .crm-stat:hover,.crm-stat.on{border-color:var(--green);box-shadow:inset 0 -3px 0 var(--green)}
+  .crm-stat .l{font-family:var(--head);font-size:11px;letter-spacing:.14em;text-transform:uppercase;color:var(--muted);display:block}
+  .crm-stat .v{font-family:var(--head);font-size:28px;font-weight:700;color:var(--green);line-height:1.2}
+  .crm-stat .n{display:block;font-size:12.5px;color:var(--muted)}
+  .list .seg{margin-top:10px;padding:10px 12px;font-size:14px}
+  .list .foot .tools{display:flex;gap:2px}
+  .facts{display:flex;flex-wrap:wrap;gap:8px 22px;margin:-6px 0 20px;font-size:14px}
+  .facts span{color:var(--muted)}
+  .facts b{font-weight:600;color:var(--ink)}
+  .note-form{display:grid;grid-template-columns:130px 1fr auto;gap:8px;margin-bottom:14px}
+  .note-form select,.note-form .input{padding:11px 12px;font-size:15px}
+  .notes{list-style:none;margin:0;padding:0}
+  .notes li{display:grid;grid-template-columns:auto 1fr auto;gap:12px;align-items:start;padding:11px 0;border-bottom:1px solid var(--line);font-size:14px}
+  .notes li:last-child{border-bottom:0}
+  .notes .t{font-family:var(--head);font-size:10.5px;letter-spacing:.12em;text-transform:uppercase;background:var(--beige);padding:3px 7px;white-space:nowrap}
+  .notes .meta{display:block;color:var(--muted);font-size:12.5px;margin-top:2px}
+  .notes .x{background:none;border:0;font-size:20px;line-height:1;color:var(--muted);padding:0 4px}
+  .notes .x:hover{color:var(--warn)}
+  .danger{display:flex;justify-content:flex-end;margin-top:18px}
+  .btn.warn{background:#fff;color:var(--warn);border-color:#e3c4bc}
+  .btn.warn:hover{background:#f7e7e3;border-color:var(--warn)}
+  .addr-grid{display:grid;grid-template-columns:110px 1fr;gap:10px}
+  .check{display:flex;gap:10px;align-items:center;font-size:14px;margin:4px 0 14px}
+  .check input{width:18px;height:18px;accent-color:var(--green)}
+  @media (max-width:860px){ .crm-stats{grid-template-columns:repeat(2,minmax(0,1fr))} .note-form{grid-template-columns:1fr} }
   .staffband{display:flex;align-items:center;gap:10px;flex-wrap:wrap;padding:16px 0;border-bottom:1px solid var(--line)}
   .staffband .lbl{font-family:var(--head);font-size:12px;letter-spacing:.16em;text-transform:uppercase;color:var(--muted);margin-right:6px}
   .who-btn{display:flex;align-items:center;gap:10px;border:1px solid #cfcbc4;background:#fff;padding:6px 14px 6px 6px;font-family:var(--head);font-size:14px;font-weight:500;letter-spacing:.04em}
@@ -688,14 +716,16 @@
       <button class="linkbtn" type="button" id="staff-logout">Log ud</button>
       <button class="linkbtn" type="button" id="team-edit">Ret ansatte</button>
     </div>
+    <div class="crm-stats" id="crm-stats" aria-label="Overblik"></div>
     <div class="notice" id="ro-notice" hidden>Du har kun læseadgang til kundeklubben. Bed ejeren om at give dig adgang som <b>Contributor</b> eller <b>Editor</b>, så du kan registrere klip.</div>
     <div class="staff">
       <aside class="list">
         <div class="search">
-          <input class="input" id="s-search" inputmode="search" placeholder="Søg telefon eller navn" aria-label="Søg kunde" autocomplete="off">
+          <input class="input" id="s-search" inputmode="search" placeholder="Søg telefon, navn, e-mail eller by" aria-label="Søg kunde" autocomplete="off">
+          <select class="input seg" id="s-seg" aria-label="Vis gruppe"></select>
         </div>
         <ul id="s-list"></ul>
-        <div class="foot"><span id="s-countall">0 medlemmer</span><span id="s-sync" class="muted"></span></div>
+        <div class="foot"><span id="s-countall">0 medlemmer</span><span class="tools"><button class="linkbtn" type="button" id="s-csv" title="Eksportér den viste liste som CSV">CSV</button><button class="linkbtn" type="button" id="s-backup" title="Download alle data som backup">Backup</button></span><span id="s-sync" class="muted"></span></div>
       </aside>
 
       <section class="panel" id="s-panel">
@@ -727,7 +757,8 @@
               <div class="count"><span id="s-count">0</span><small> / 5 klip</small></div>
               <div class="punches big" id="s-punches"></div>
             </div>
-            <div class="muted" id="s-sub" style="margin-bottom:22px"></div>
+            <div class="muted" id="s-sub" style="margin-bottom:14px"></div>
+            <div class="facts" id="s-facts"></div>
 
             <div class="field">
               <label for="s-amount">Købsbeløb (kr)</label>
@@ -752,6 +783,16 @@
           </div>
 
           <div class="card">
+            <h3 class="sec-title">Noter</h3>
+            <form class="note-form" id="n-form" autocomplete="off">
+              <select class="input" id="n-type" aria-label="Notetype"><option>Note</option><option>Opkald</option><option>Mail</option><option>Butik</option></select>
+              <input class="input" id="n-text" maxlength="500" placeholder="Fx ønsker, aftaler eller opfølgning" aria-label="Note">
+              <button class="btn small" type="submit" id="n-add">Tilføj</button>
+            </form>
+            <ul class="notes" id="s-notes"></ul>
+          </div>
+
+          <div class="card">
             <h3 class="sec-title">Rabatkuponer</h3>
             <div id="s-coupons"></div>
           </div>
@@ -760,6 +801,7 @@
             <h3 class="sec-title">Historik</h3>
             <ul class="hist" id="s-hist"></ul>
           </div>
+          <div class="danger"><button class="btn warn small" type="button" id="s-delete">Slet kunde (GDPR)</button></div>
         </div>
       </section>
     </div>
@@ -805,6 +847,9 @@
     <div class="field"><label for="m-name">Navn</label><input class="input" id="m-name" required></div>
     <div class="field"><label for="m-phone">Telefonnummer</label><input class="input" id="m-phone" inputmode="tel" required></div>
     <div class="field"><label for="m-email">E-mail (valgfri)</label><input class="input" id="m-email" type="email"></div>
+    <div class="field"><label for="m-addr">Adresse (valgfri)</label><input class="input" id="m-addr" placeholder="Vej og nr."></div>
+    <div class="field"><div class="addr-grid"><input class="input" id="m-zip" inputmode="numeric" maxlength="4" placeholder="Postnr." aria-label="Postnr."><input class="input" id="m-city" placeholder="By" aria-label="By"></div></div>
+    <label class="check"><input type="checkbox" id="m-mkt"> Samtykke til nyhedsbrev og tilbud</label>
     <div class="field"><label for="m-pin" id="m-pin-lbl">Kundens kode (valgfri, 4 cifre)</label><input class="input" id="m-pin" inputmode="numeric" maxlength="4" placeholder="Kunden kan også selv vælge den første gang"></div>
     <div class="field"><label>Størrelser (valgfri)</label><div class="sizes-grid" id="m-sizes"></div></div>
     <div class="err" id="m-err"></div>
@@ -1096,13 +1141,68 @@
     $('st-sizes-save').disabled = !sizesDirty;
   }
 
+  /* ---------- CRM: grupper, nøgletal og eksport ---------- */
+  const DAY = 86400000, INACTIVE_DAYS = 90, NEW_DAYS = 30;
+  const purchasesOf = m => (m.history || []).filter(h => h.type === 'purchase');
+  const lastPurchase = m => purchasesOf(m).reduce((x, h) => Math.max(x, h.t || 0), 0) || null;
+  const openCoupons = m => (m.coupons || []).filter(c => !c.used);
+  const SEGMENTS = {
+    alle:      {label: 'Alle medlemmer',                    test: () => true},
+    taet:      {label: 'Mangler 1 klip til kupon',          test: m => (m.clicks || 0) === CLICKS_FOR_COUPON - 1},
+    kupon:     {label: 'Har ubrugt kupon',                  test: m => openCoupons(m).length > 0},
+    inaktiv:   {label: `Inaktive (${INACTIVE_DAYS}+ dage uden køb)`, test: m => (lastPurchase(m) || m.joined || 0) < Date.now() - INACTIVE_DAYS * DAY},
+    ny:        {label: `Nye (sidste ${NEW_DAYS} dage)`,     test: m => (m.joined || 0) >= Date.now() - NEW_DAYS * DAY},
+    samtykke:  {label: 'Samtykke til nyhedsbrev',           test: m => !!m.marketing}
+  };
+  $('s-seg').innerHTML = Object.entries(SEGMENTS).map(([k, v]) => `<option value="${k}">${esc(v.label)}</option>`).join('');
+  const isToday = t => t && new Date(t).toDateString() === new Date().toDateString();
+  const addrLine = m => [m.address, [m.zip, m.city].filter(Boolean).join(' ')].filter(Boolean).join(', ');
+
   function filteredMembers(){
     const q = $('s-search').value.trim().toLowerCase();
     const qd = digits(q);
+    const seg = SEGMENTS[$('s-seg').value] || SEGMENTS.alle;
     let arr = [...members.entries()].map(([id, m]) => ({id, ...m}));
-    if (q) arr = arr.filter(m => (qd && m.id.includes(qd)) || (m.name || '').toLowerCase().includes(q) || (m.email || '').toLowerCase().includes(q));
+    if (q) arr = arr.filter(m => (qd && m.id.includes(qd)) || (m.name || '').toLowerCase().includes(q) || (m.email || '').toLowerCase().includes(q)
+      || (m.city || '').toLowerCase().includes(q) || (qd.length === 4 && m.zip === qd));
+    arr = arr.filter(seg.test);
     arr.sort((a, b) => (b.updated || 0) - (a.updated || 0));
     return arr;
+  }
+
+  function renderStats(){
+    const all = [...members.values()];
+    const almost = all.filter(SEGMENTS.taet.test).length;
+    const open = all.reduce((n, m) => n + openCoupons(m).length, 0);
+    const today = all.reduce((n, m) => n + (m.history || []).filter(h => isToday(h.t) && (h.type === 'purchase' || h.type === 'click' || h.type === 'undo')).reduce((x, h) => x + (h.clicks || 0), 0), 0);
+    const seg = $('s-seg').value;
+    const tile = (k, l, v, n) => `<button type="button" class="crm-stat ${seg === k ? 'on' : ''}" data-seg="${k}"><span class="l">${l}</span><span class="v">${v}</span>${n ? `<span class="n">${n}</span>` : ''}</button>`;
+    $('crm-stats').innerHTML = tile('alle', 'Medlemmer', all.length, '')
+      + tile('taet', 'Mangler 1 klip', almost, 'tæt på kupon')
+      + tile('kupon', 'Ubrugte kuponer', open, kr(open * COUPON_VALUE))
+      + `<div class="crm-stat" style="cursor:default"><span class="l">Klip i dag</span><span class="v">${today}</span><span class="n">registreret i dag</span></div>`;
+  }
+
+  function download(name, text, type){
+    const a = document.createElement('a');
+    a.href = URL.createObjectURL(new Blob([text], {type})); a.download = name;
+    document.body.appendChild(a); a.click(); a.remove();
+    setTimeout(() => URL.revokeObjectURL(a.href), 1000);
+  }
+  const stamp = () => new Date().toISOString().slice(0, 10);
+  function exportCSV(){
+    const rows = [['Telefon','Navn','E-mail','Adresse','Postnr','By','Nyhedsbrev','Klip','Ubrugte kuponer','Handlet i alt','Sidst handlet','Medlem siden']];
+    filteredMembers().forEach(m => rows.push([m.id, m.name || '', m.email || '', m.address || '', m.zip || '', m.city || '', m.marketing ? 'Ja' : 'Nej',
+      m.clicks || 0, openCoupons(m).length, Math.round(m.totalKr || 0), lastPurchase(m) ? new Date(lastPurchase(m)).toISOString().slice(0, 10) : '',
+      m.joined ? new Date(m.joined).toISOString().slice(0, 10) : '']));
+    const csv = rows.map(r => r.map(v => `"${String(v).replace(/"/g, '""')}"`).join(';')).join('\r\n');
+    download(`men-kundeklub-${stamp()}.csv`, '\uFEFF' + csv, 'text/csv;charset=utf-8');
+    toast(`${rows.length - 1} medlemmer eksporteret`);
+  }
+  function exportBackup(){
+    const data = {}; members.forEach((m, id) => { const c = {...m}; delete c.pinHash; data[id] = c; });
+    download(`men-kundeklub-backup-${stamp()}.json`, JSON.stringify({exported: new Date().toISOString(), members: data}, null, 2), 'application/json');
+    toast('Backup downloadet (uden login-koder)');
   }
 
   function renderStaff(){
@@ -1110,6 +1210,7 @@
     const li = staffLoggedIn();
     $('staff-login').hidden = li; $('staff-app').hidden = !li; $('btn-new').hidden = !li;
     if (!li) return;
+    renderStats();
     const list = filteredMembers();
     const q = $('s-search').value.trim();
     const qd = normPhone(q);
@@ -1124,10 +1225,11 @@
     else if (!list.length){
       html = q
         ? `<li class="empty" style="cursor:default">Ingen fundet.${qd.length === 8 && canWrite !== false ? ` <br><br><button class="btn small" type="button" id="s-create-q">Opret ${esc(fmtPhone(qd))}</button>` : ''}</li>`
-        : '<li class="empty" style="cursor:default">Ingen medlemmer endnu. Tryk “+ Ny kunde” for at oprette den første.</li>';
+        : ($('s-seg').value !== 'alle' && members.size ? '<li class="empty" style="cursor:default">Ingen medlemmer i denne gruppe lige nu.</li>'
+          : '<li class="empty" style="cursor:default">Ingen medlemmer endnu. Tryk “+ Ny kunde” for at oprette den første.</li>');
     }
     $('s-list').innerHTML = html;
-    $('s-countall').textContent = members.size + (members.size === 1 ? ' medlem' : ' medlemmer');
+    $('s-countall').textContent = (list.length !== members.size ? list.length + ' af ' : '') + members.size + (members.size === 1 ? ' medlem' : ' medlemmer');
     const cq = $('s-create-q'); if (cq) cq.onclick = () => openMember(null, qd);
 
     const m = selectedId ? members.get(selectedId) : null;
@@ -1135,7 +1237,7 @@
     if (!m) return;
     const c = m.clicks || 0;
     $('s-name').textContent = m.name || 'Uden navn';
-    $('s-phone').textContent = fmtPhone(selectedId) + (m.email ? ' · ' + m.email : '');
+    $('s-phone').textContent = [fmtPhone(selectedId), m.email, addrLine(m)].filter(Boolean).join(' · ');
     $('s-sizes').innerHTML = chipsHTML(m.sizes);
     $('s-count').textContent = c;
     const pop = lastClicksShown.staff !== null && lastClicksShown.staffId === selectedId && c > lastClicksShown.staff ? c - 1 : -1;
@@ -1143,6 +1245,14 @@
     lastClicksShown.staff = c; lastClicksShown.staffId = selectedId;
     const open = (m.coupons || []).filter(x => !x.used).length;
     $('s-sub').innerHTML = `Handlet for ${kr(m.totalKr)} i alt · ${m.pinHash ? 'Login-kode valgt' : 'Har ikke valgt login-kode endnu'}` + (open ? ` · <b style="color:var(--olive)">${open} ubrugt${open > 1 ? 'e' : ''} kupon${open > 1 ? 'er' : ''}</b>` : '');
+
+    const lp = lastPurchase(m), pc = purchasesOf(m).length;
+    $('s-facts').innerHTML = `<span>Medlem siden <b>${esc(fmtDate(m.joined))}</b></span><span>Sidst handlet <b>${lp ? esc(fmtDate(lp)) : 'aldrig'}</b></span>`
+      + `<span>Køb <b>${pc}</b></span><span>Gns. køb <b>${pc ? kr((m.totalKr || 0) / pc) : '–'}</b></span>`
+      + `<span>Nyhedsbrev <b>${m.marketing ? 'Ja' : 'Nej'}</b></span>`;
+    const notes = (m.notes || []).slice().sort((a, b) => b.t - a.t);
+    $('s-notes').innerHTML = notes.length ? notes.map(n => `<li><span class="t">${esc(n.type)}</span><span>${esc(n.text)}<span class="meta">${esc(fmtDT(n.t))}${n.by ? ' · ' + esc(n.by) : ''}</span></span><button type="button" class="x" data-del-note="${esc(n.id)}" aria-label="Slet note">×</button></li>`).join('')
+      : '<li class="muted" style="display:block">Ingen noter endnu. Noter ses kun af personalet.</li>';
 
     const showReward = lastReward && lastReward.id === selectedId;
     $('s-reward').hidden = !showReward;
@@ -1178,8 +1288,8 @@
   function applyWriteGate(){
     const ro = canWrite === false;
     $('ro-notice').hidden = !ro;
-    ['s-submit','s-plus1','s-minus1','s-undo','btn-new','s-edit'].forEach(id => { const el = $(id); if (el) el.disabled = ro || busy; });
-    document.querySelectorAll('[data-redeem],[data-unredeem]').forEach(b => b.disabled = ro || busy);
+    ['s-submit','s-plus1','s-minus1','s-undo','btn-new','s-edit','n-add','s-delete'].forEach(id => { const el = $(id); if (el) el.disabled = ro || busy; });
+    document.querySelectorAll('[data-redeem],[data-unredeem],[data-del-note]').forEach(b => b.disabled = ro || busy);
     const m = selectedId ? members.get(selectedId) : null;
     if (m){
       $('s-undo').disabled = ro || busy || !m.undo;
@@ -1258,7 +1368,8 @@
     const id = selectedId, m = members.get(id); if (!m || !m.undo || busy) return;
     const u = m.undo;
     const next = {...m, clicks: u.clicks, restKr: u.restKr, totalKr: u.totalKr, coupons: u.coupons,
-      history: pushHist(m, [{t: Date.now(), type: 'undo', what: u.what}]), updated: Date.now()};
+      history: pushHist(m, [{t: Date.now(), type: 'undo', what: u.what,
+        clicks: (u.clicks + (u.coupons || []).length * CLICKS_FOR_COUPON) - ((m.clicks || 0) + (m.coupons || []).length * CLICKS_FOR_COUPON)}]), updated: Date.now()};
     delete next.undo;
     if (await write(id, next)){ lastReward = null; toast('Sidste handling er fortrudt'); render(); }
   }
@@ -1283,6 +1394,10 @@
     $('m-phone').value = m ? fmtPhone(id) : (presetPhone ? fmtPhone(presetPhone) : '');
     $('m-phone').disabled = !!m;
     $('m-email').value = m ? (m.email || '') : '';
+    $('m-addr').value = m ? (m.address || '') : '';
+    $('m-zip').value = m ? (m.zip || '') : '';
+    $('m-city').value = m ? (m.city || '') : '';
+    $('m-mkt').checked = !!(m && m.marketing);
     $('m-sizes').innerHTML = sizesSelectHTML('ms', m ? m.sizes : null);
     $('m-pin').value = '';
     $('m-pin-lbl').textContent = m ? (m.pinHash ? 'Ny kode til kunden (lad stå tomt for at beholde)' : 'Kundens kode (valgfri, 4 cifre)') : 'Kundens kode (valgfri, 4 cifre)';
@@ -1299,11 +1414,15 @@
     const email = $('m-email').value.trim();
     const sizes = readSizes($('m-sizes'));
     const pin = $('m-pin').value.trim();
+    const address = $('m-addr').value.trim(), zip = digits($('m-zip').value), city = $('m-city').value.trim(), marketing = $('m-mkt').checked;
     if (!name){ $('m-err').textContent = 'Skriv kundens navn.'; return; }
+    if (email && !/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)){ $('m-err').textContent = 'E-mailadressen ser forkert ud.'; return; }
+    if ($('m-zip').value.trim() && zip.length !== 4){ $('m-err').textContent = 'Postnummeret skal være 4 cifre.'; return; }
+    if ((zip && !city) || (city && !zip)){ $('m-err').textContent = 'Udfyld både postnummer og by – eller ingen af dem.'; return; }
     if (pin && !isPin(pin)){ $('m-err').textContent = 'Koden skal være 4 cifre.'; return; }
     if (editingId){
       const m = members.get(editingId);
-      const upd = {...m, name, email, sizes, updated: Date.now()};
+      const upd = {...m, name, email, sizes, address, zip, city, marketing, updated: Date.now()};
       if (pin) upd.pinHash = await hashPin('member', editingId, pin);
       if (await write(editingId, upd)){ closeMember(); toast(pin ? 'Kunde opdateret – ny kode gemt' : 'Kunde opdateret'); render(); }
       return;
@@ -1313,7 +1432,7 @@
     if (members.has(phone)){ $('m-err').textContent = 'Der findes allerede en kunde med det nummer.'; return; }
     const now = Date.now();
     const pinHash = pin ? await hashPin('member', phone, pin) : '';
-    const data = {name, email, phone, sizes, pinHash, clicks: 0, restKr: 0, totalKr: 0, coupons: [], joined: now, updated: now, history: [{t: now, type: 'join'}]};
+    const data = {name, email, phone, sizes, address, zip, city, marketing, notes: [], pinHash, clicks: 0, restKr: 0, totalKr: 0, coupons: [], joined: now, updated: now, history: [{t: now, type: 'join'}]};
     if (await write(phone, data)){
       members.set(phone, data);
       closeMember(); selectedId = phone; $('s-search').value = ''; lastReward = null;
@@ -1484,6 +1603,40 @@
   $('s-list').addEventListener('click', e => { const li = e.target.closest('li[data-id]'); if (li) select(li.dataset.id); });
   function select(id){ selectedId = id; lastReward = null; lastClicksShown.staff = null; $('s-amount').value = ''; renderStaff(); setTimeout(() => $('s-amount').focus(), 30); if (window.innerWidth < 860) $('s-panel').scrollIntoView({behavior:'smooth'}); }
 
+  /* CRM-handlinger */
+  $('s-seg').addEventListener('change', () => renderStaff());
+  $('crm-stats').addEventListener('click', e => { const b = e.target.closest('[data-seg]'); if (b){ $('s-seg').value = b.dataset.seg; renderStaff(); } });
+  $('s-csv').onclick = exportCSV;
+  $('s-backup').onclick = exportBackup;
+  $('n-form').addEventListener('submit', async e => {
+    e.preventDefault();
+    const id = selectedId, m = members.get(id); if (!m || busy) return;
+    const text = $('n-text').value.trim();
+    if (!text){ toast('Skriv noten først'); $('n-text').focus(); return; }
+    const now = Date.now();
+    const note = {id: 'n' + now.toString(36) + Math.random().toString(36).slice(2, 6), t: now, type: $('n-type').value, text, by: cashier || ''};
+    if (await write(id, {...m, notes: [...(m.notes || []), note], updated: now})){ $('n-text').value = ''; toast('Noten er gemt'); render(); }
+  });
+  $('s-notes').addEventListener('click', e => {
+    const b = e.target.closest('[data-del-note]'); if (!b) return;
+    const id = selectedId, nid = b.dataset.delNote;
+    confirmBox('Slet note?', 'Noten slettes permanent.', async () => {
+      const m = members.get(id); if (!m) return;
+      if (await write(id, {...m, notes: (m.notes || []).filter(n => n.id !== nid), updated: Date.now()})){ toast('Noten er slettet'); render(); }
+    });
+  });
+  $('s-delete').onclick = () => {
+    const id = selectedId, m = members.get(id); if (!m || busy) return;
+    confirmBox('Slet kunde permanent?', `${m.name || 'Kunden'} (${fmtPhone(id)}) og alle klip, kuponer, noter og historik slettes. Det kan ikke fortrydes.`, async () => {
+      const ref = db && db.collection('members').doc(id);
+      if (!ref || typeof ref.delete !== 'function'){ toast('Sletning understøttes ikke her endnu.'); return; }
+      busy = true; applyWriteGate();
+      try { await ref.delete(); members.delete(id); selectedId = null; lastReward = null; toast(`${m.name || 'Kunden'} er slettet`); }
+      catch(err){ toast(err && err.code === 'invalid_argument' ? 'Du har ikke adgang til at slette.' : 'Kunne ikke slette – prøv igen.'); }
+      finally { busy = false; render(); }
+    });
+  };
+
   $('btn-new').onclick = () => { const q = normPhone($('s-search').value); openMember(null, q.length === 8 ? q : ''); };
   $('s-edit').onclick = () => selectedId && openMember(selectedId);
   $('s-form').addEventListener('submit', e => { e.preventDefault(); registerPurchase(); });
@@ -1593,6 +1746,8 @@
         members: {
           '12345678': {name:'Anders Testkunde', email:'test@example.dk', phone:'12345678', pinHash: pin,
             sizes:{top:'L', shirt:'L', jacket:'50', waist:'32', length:'32', shoe:'43'},
+            address:'Klippekortvej 12', zip:'8700', city:'Horsens', marketing:true,
+            notes:[{id:'n-demo1', t: now - 2*day, type:'Butik', text:'Spurgte efter ny Les Deux-kollektion – giv besked når den kommer.', by:'Silas'}],
             clicks:3, restKr:0, totalKr:1700, coupons:[], joined: now - 60*day, updated: now - 2*day,
             history:[{t: now - 60*day, type:'join'}, {t: now - 30*day, type:'purchase', amount:1100, clicks:2, by:'Klaus'}, {t: now - 2*day, type:'purchase', amount:600, clicks:1, by:'Silas'}]},
           '87654321': {name:'Mads Jensen', email:'', phone:'87654321', pinHash:'', sizes:{}, clicks:1, restKr:0, totalKr:800,
@@ -1612,7 +1767,8 @@
     const emitTeam = () => subs.team.forEach(cb => cb({ exists: true, data: () => clone(store.config.team) }));
     const memberDoc = id => ({
       set: async data => { store.members[id] = clone(data); save(); setTimeout(emitMembers, 0); },
-      update: async part => { store.members[id] = { ...(store.members[id] || {}), ...clone(part) }; save(); setTimeout(emitMembers, 0); }
+      update: async part => { store.members[id] = { ...(store.members[id] || {}), ...clone(part) }; save(); setTimeout(emitMembers, 0); },
+      delete: async () => { delete store.members[id]; save(); setTimeout(emitMembers, 0); }
     });
     const banner = document.createElement('div');
     banner.textContent = 'Demo – data gemmes kun i din browser. Prøv som kunde: 12345678 / kode 1234';

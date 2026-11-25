@@ -1,0 +1,181 @@
+<!doctype html>
+<html lang="da">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="robots" content="noindex">
+  <title>MEN Kundeklub · Offentlig demo</title>
+  <style>
+    :root { color-scheme: light; font-family: system-ui, sans-serif; color: #252c24; background: #f4f1e9; }
+    * { box-sizing: border-box; }
+    [hidden] { display: none !important; }
+    body { margin: 0; }
+    .site-header { background: #23392d; color: white; }
+    .site-header > div { max-width: 66rem; margin: auto; padding: 1.15rem clamp(1rem, 5vw, 3.5rem); display: flex; align-items: center; gap: 1rem; }
+    .wordmark { font-weight: 900; letter-spacing: .1em; font-size: 1.45rem; }
+    main { max-width: 66rem; padding: clamp(2rem, 6vw, 5rem) clamp(1rem, 5vw, 3.5rem); margin: auto; }
+    .layout { display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 1.15fr); gap: clamp(1.5rem, 6vw, 5rem); align-items: start; }
+    h1, h2 { font-family: Georgia, serif; font-weight: 500; line-height: 1.1; margin: 0; }
+    h1 { font-size: clamp(2.6rem, 6vw, 4.5rem); }
+    h2 { font-size: 2rem; }
+    p { line-height: 1.55; margin: .8rem 0 0; }
+    .quiet { color: #4f5a4e; }
+    .card { background: #fffefa; border: 1px solid #d9d9ca; border-radius: .9rem; padding: clamp(1.1rem, 4vw, 2rem); }
+    .card + .card { margin-top: 1rem; }
+    label { display: block; font-weight: 650; margin: 1rem 0 .35rem; }
+    input, select, button { font: inherit; }
+    input, select { width: 100%; border-radius: .35rem; border: 1px solid #8c9486; background: white; color: inherit; min-height: 2.7rem; padding: .55rem .7rem; }
+    button { border: 1px solid #23392d; border-radius: .35rem; padding: .6rem .85rem; min-height: 2.7rem; background: #23392d; color: white; cursor: pointer; font-weight: 650; }
+    button:hover { background: #345541; }
+    button.secondary { color: #23392d; background: #fffefa; }
+    button.secondary:hover { background: #edece2; }
+    :focus-visible { outline: 3px solid #a4592e; outline-offset: 3px; }
+    .actions { display: flex; flex-wrap: wrap; align-items: center; gap: .75rem; margin-top: 1rem; }
+    .error { color: #9a251c; }
+    .error:empty { margin: 0; }
+    .punches { display: grid; grid-template-columns: repeat(5, minmax(0, 1fr)); padding: 0; gap: .5rem; list-style: none; margin: 1rem 0; }
+    .punches li { display: grid; place-items: center; min-height: 2.6rem; border: 1px dashed #8c9486; border-radius: .35rem; font-weight: 700; }
+    .punches li.filled { background: #dce8d9; border: 1px solid #567459; }
+    .totals { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: .6rem; margin: 1rem 0 0; }
+    .totals div { padding: .75rem; background: #f2f0e8; border-radius: .35rem; }
+    .totals dt { color: #4f5a4e; font-size: .875rem; }
+    .totals dd { margin: .2rem 0 0; font-weight: 700; }
+    @media (max-width: 44rem) { .layout { grid-template-columns: 1fr; } }
+  </style>
+</head>
+<body>
+  <header class="site-header">
+    <div><span class="wordmark">MEN</span><span>Kundeklub · Offentlig demo</span></div>
+  </header>
+  <main class="layout">
+    <section>
+      <h1>Dit klippekort</h1>
+      <p>Du får ét klip for hver hele 500 kr. i et køb. Fem klip udløser en kupon på 500 kr.</p>
+      <p class="quiet">Vælg en af de 20 fiktive testkunder. Brug PIN-koden <strong>1234</strong>. Køb og kuponer i demoen er fiktive.</p>
+    </section>
+    <div>
+      <section id="login-panel" class="card" aria-labelledby="login-heading">
+        <h2 id="login-heading">Log ind som testkunde</h2>
+        <label for="test-customer">Vælg testkunde</label>
+        <select id="test-customer">
+          <option value="">Vælg en kunde for at udfylde nummeret</option>
+        </select>
+        <form id="login-form">
+          <label for="phone">Testtelefonnummer</label>
+          <input id="phone" type="tel" inputmode="numeric" autocomplete="off" required>
+          <label for="pin">PIN-kode</label>
+          <input id="pin" type="password" inputmode="numeric" autocomplete="off" maxlength="4" required>
+          <p id="login-error" class="error" role="alert"></p>
+          <div class="actions"><button type="submit">Log ind</button></div>
+        </form>
+      </section>
+      <div id="member-panel" hidden>
+        <section class="card" aria-labelledby="member-name">
+          <h2 id="member-name" tabindex="-1"></h2>
+          <p id="balance" role="status"></p>
+          <ol id="punches" class="punches" aria-hidden="true"></ol>
+          <dl class="totals">
+            <div><dt>Kuponer på 500 kr.</dt><dd id="coupons"></dd></div>
+            <div><dt>Køb i alt</dt><dd id="total"></dd></div>
+          </dl>
+          <div class="actions"><button id="logout" type="button" class="secondary">Log ud</button></div>
+        </section>
+        <section class="card" aria-labelledby="purchase-heading">
+          <h2 id="purchase-heading">Prøv et demokøb</h2>
+          <p class="quiet">Demokøb gælder kun i dit aktuelle besøg.</p>
+          <form id="purchase-form">
+            <label for="amount">Beløb i kroner</label>
+            <input id="amount" type="number" inputmode="decimal" min="0.01" max="999999" step="0.01" required>
+            <div class="actions"><button type="submit">Registrér demokøb</button></div>
+          </form>
+          <p id="purchase-note" role="status"></p>
+        </section>
+      </div>
+    </div>
+  </main>
+  <script>
+    const names = [
+      'Alma Madsen', 'Oscar Berg', 'Freja Holm', 'Elias Lund', 'Nora Dahl',
+      'Viggo Bak', 'Clara Strand', 'William Toft', 'Agnes Birk', 'Aksel Friis',
+      'Ella Vang', 'Theo Sander', 'Sofia Lind', 'Felix Storm', 'Ida Krog',
+      'Otto Ravn', 'Laura Frost', 'Malthe Hald', 'Anna Feld', 'Lucas Skov'
+    ];
+    const testPin = '1234';
+    const purchaseOrePerClip = 50_000;
+    const clipsPerCoupon = 5;
+    const $ = id => document.getElementById(id);
+    const kroner = new Intl.NumberFormat('da-DK', { style: 'currency', currency: 'DKK' });
+    const testCustomers = new Map(names.map((name, index) => [
+      String(12001 + index).padStart(8, '0'),
+      { name, totalOre: index * purchaseOrePerClip, clips: index % clipsPerCoupon, coupons: Math.floor(index / clipsPerCoupon) }
+    ]));
+    let member;
+
+    for (const [phone, customer] of testCustomers) {
+      $('test-customer').add(new Option(`${customer.name} · ${phone}`, phone));
+    }
+
+    $('test-customer').addEventListener('change', event => {
+      $('phone').value = event.target.value;
+      $('login-error').textContent = '';
+      if (event.target.value) $('pin').focus();
+    });
+
+    function renderCard() {
+      $('member-name').textContent = member.name;
+      $('balance').textContent = `${member.clips} af ${clipsPerCoupon} klip på kortet`;
+      $('coupons').textContent = member.coupons;
+      $('total').textContent = kroner.format(member.totalOre / 100);
+      $('punches').replaceChildren(...Array.from({ length: clipsPerCoupon }, (_, index) => {
+        const punch = document.createElement('li');
+        const filled = index < member.clips;
+        punch.classList.toggle('filled', filled);
+        punch.textContent = filled ? '✓' : String(index + 1);
+        return punch;
+      }));
+    }
+
+    $('login-form').addEventListener('submit', event => {
+      event.preventDefault();
+      const phone = $('phone').value.replace(/\s/g, '');
+      const customer = testCustomers.get(phone);
+      if (!customer || $('pin').value !== testPin) {
+        $('login-error').textContent = 'Kontrollér testtelefonnummeret og PIN-koden.';
+        return;
+      }
+      $('login-error').textContent = '';
+      $('pin').value = '';
+      member = { ...customer };
+      renderCard();
+      $('login-panel').hidden = true;
+      $('member-panel').hidden = false;
+      $('member-name').focus();
+    });
+
+    $('logout').addEventListener('click', () => {
+      member = undefined;
+      $('purchase-form').reset();
+      $('purchase-note').textContent = '';
+      $('member-panel').hidden = true;
+      $('login-panel').hidden = false;
+      $('test-customer').focus();
+    });
+
+    $('purchase-form').addEventListener('submit', event => {
+      event.preventDefault();
+      const amount = $('amount');
+      if (!member || !amount.validity.valid) return;
+      const ore = Math.round(amount.valueAsNumber * 100);
+      const earnedClips = Math.floor(ore / purchaseOrePerClip);
+      const clips = member.clips + earnedClips;
+      const earnedCoupons = Math.floor(clips / clipsPerCoupon);
+      member.totalOre += ore;
+      member.clips = clips % clipsPerCoupon;
+      member.coupons += earnedCoupons;
+      renderCard();
+      $('purchase-note').textContent = `Demokøb på ${kroner.format(ore / 100)} gav ${earnedClips} klip og ${earnedCoupons} ${earnedCoupons === 1 ? 'kupon' : 'kuponer'}.`;
+      event.target.reset();
+    });
+  </script>
+</body>
+</html>

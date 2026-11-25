@@ -1,182 +1,1779 @@
-<!doctype html>
+<!DOCTYPE html>
 <html lang="da">
 <head>
-  <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-  <meta name="robots" content="noindex">
-  <meta name="description" content="Prøv MEN Kundeklubs klippekort med en af 20 fiktive testkunder.">
-  <title>MEN Kundeklub · Offentlig demo</title>
-  <style>
-    :root { color-scheme: light; font-family: system-ui, sans-serif; color: #252c24; background: #f4f1e9; }
-    * { box-sizing: border-box; }
-    [hidden] { display: none !important; }
-    body { margin: 0; }
-    .site-header { background: #23392d; color: white; }
-    .site-header > div { max-width: 66rem; margin: auto; padding: 1.15rem clamp(1rem, 5vw, 3.5rem); display: flex; align-items: center; gap: 1rem; }
-    .wordmark { font-weight: 900; letter-spacing: .1em; font-size: 1.45rem; }
-    main { max-width: 66rem; padding: clamp(2rem, 6vw, 5rem) clamp(1rem, 5vw, 3.5rem); margin: auto; }
-    .layout { display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 1.15fr); gap: clamp(1.5rem, 6vw, 5rem); align-items: start; }
-    h1, h2 { font-family: Georgia, serif; font-weight: 500; line-height: 1.1; margin: 0; }
-    h1 { font-size: clamp(2.6rem, 6vw, 4.5rem); }
-    h2 { font-size: 2rem; }
-    p { line-height: 1.55; margin: .8rem 0 0; }
-    .quiet { color: #4f5a4e; }
-    .card { background: #fffefa; border: 1px solid #d9d9ca; border-radius: .9rem; padding: clamp(1.1rem, 4vw, 2rem); }
-    .card + .card { margin-top: 1rem; }
-    label { display: block; font-weight: 650; margin: 1rem 0 .35rem; }
-    input, select, button { font: inherit; }
-    input, select { width: 100%; border-radius: .35rem; border: 1px solid #8c9486; background: white; color: inherit; min-height: 2.7rem; padding: .55rem .7rem; }
-    button { border: 1px solid #23392d; border-radius: .35rem; padding: .6rem .85rem; min-height: 2.7rem; background: #23392d; color: white; cursor: pointer; font-weight: 650; }
-    button:hover { background: #345541; }
-    button.secondary { color: #23392d; background: #fffefa; }
-    button.secondary:hover { background: #edece2; }
-    :focus-visible { outline: 3px solid #a4592e; outline-offset: 3px; }
-    .actions { display: flex; flex-wrap: wrap; align-items: center; gap: .75rem; margin-top: 1rem; }
-    .error { color: #9a251c; }
-    .error:empty { margin: 0; }
-    .punches { display: grid; grid-template-columns: repeat(5, minmax(0, 1fr)); padding: 0; gap: .5rem; list-style: none; margin: 1rem 0; }
-    .punches li { display: grid; place-items: center; min-height: 2.6rem; border: 1px dashed #8c9486; border-radius: .35rem; font-weight: 700; }
-    .punches li.filled { background: #dce8d9; border: 1px solid #567459; }
-    .totals { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: .6rem; margin: 1rem 0 0; }
-    .totals div { padding: .75rem; background: #f2f0e8; border-radius: .35rem; }
-    .totals dt { color: #4f5a4e; font-size: .875rem; }
-    .totals dd { margin: .2rem 0 0; font-weight: 700; }
-    @media (max-width: 44rem) { .layout { grid-template-columns: 1fr; } }
-  </style>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="robots" content="noindex">
+<title>MEN Kundeklub · Offentlig demo</title>
+<link rel="preconnect" href="https://www.supermen.dk" crossorigin>
+<style>
+@font-face{font-family:Inter;font-style:normal;font-weight:400;font-display:swap;src:url("https://www.supermen.dk/cdn/fonts/inter/inter_n4.b2a3f24c19b4de56e8871f609e73ca7f6d2e2bb9.woff2") format("woff2")}
+@font-face{font-family:Inter;font-style:normal;font-weight:500;font-display:swap;src:url("https://www.supermen.dk/cdn/fonts/inter/inter_n5.d7101d5e168594dd06f56f290dd759fba5431d97.woff2") format("woff2")}
+@font-face{font-family:Inter;font-style:normal;font-weight:700;font-display:swap;src:url("https://www.supermen.dk/cdn/fonts/inter/inter_n7.02711e6b374660cfc7915d1afc1c204e633421e4.woff2") format("woff2")}
+@font-face{font-family:"Supermen Spartan";font-style:normal;font-weight:100 900;font-display:swap;src:url("https://www.supermen.dk/cdn/shop/t/38/assets/supermen-league-spartan.woff2?v=162525475818884443731795030553") format("woff2")}
+
+:root{
+    --black:#141414; --ink:#141414; --muted:#666666; --line:#DFDFDF;
+    --paper:#fff; --sand:#f5f3ef; --beige:#f2ece1; --mint:#eef1ea;
+    --primary:#3c5045; --primary-hover:#2f3f36; --footer:#3a5045;
+    --ok:#3c5045; --warn:#9a3b2a;
+    --head:'Inter', Arial, sans-serif;
+    --body:'Inter', Arial, sans-serif;
+  }
+  *{box-sizing:border-box}
+  html,body{margin:0;background:var(--paper);color:var(--ink);font-family:var(--body);font-size:15px;line-height:1.5;-webkit-font-smoothing:antialiased}
+  a{color:inherit}
+  button{font-family:var(--head);cursor:pointer}
+  input{font-family:var(--body)}
+  .wrap{max-width:1180px;margin:0 auto;padding:0 20px}
+
+  /* Promo bar */
+  .promo{background:var(--primary);color:#fff;font-size:14px;text-align:center;padding:9px 12px}
+  .promo a{text-decoration:none}
+  .promo a:hover{text-decoration:underline}
+  .promo .promo-campaign{color:#fff}
+  .promo-campaign strong{font-family:"Supermen Spartan",var(--head);text-transform:uppercase}
+
+  /* Header */
+  header.site{border-bottom:1px solid var(--line);background:#fff;position:sticky;top:0;z-index:20}
+  .hdr{display:flex;align-items:center;justify-content:space-between;gap:20px;height:76px}
+  .logo{display:flex;flex-direction:column;align-items:flex-start;text-decoration:none;line-height:1}
+  .logo img{display:block;width:clamp(106px,13vw,174px);height:auto}
+  nav.views{display:flex;gap:4px}
+  nav.views a{font-family:var(--head);font-size:13px;font-weight:500;letter-spacing:.12em;text-transform:uppercase;text-decoration:none;padding:10px 14px;border-bottom:2px solid transparent;color:var(--ink)}
+  nav.views a.on{border-bottom-color:var(--primary)}
+  nav.views a:hover{color:var(--muted)}
+
+  /* Headings & buttons */
+  h1,h2,h3{font-family:var(--head);font-weight:700;letter-spacing:-.025em;margin:0}
+  .eyebrow{font-family:var(--head);font-size:12px;letter-spacing:.22em;text-transform:uppercase;color:var(--muted)}
+  .btn{display:inline-flex;align-items:center;justify-content:center;gap:8px;border:1px solid var(--primary);background:var(--primary);color:#fff;font-size:14px;font-weight:500;padding:14px 22px;border-radius:0;transition:background .15s,color .15s}
+  .btn:hover{background:var(--primary-hover);border-color:var(--primary-hover)}
+  .btn.ghost{background:#fff;color:var(--primary)}
+  .btn.ghost:hover{background:var(--mint)}
+  .btn.small{padding:9px 14px;font-size:11.5px}
+  .btn:disabled{opacity:.4;cursor:not-allowed}
+  .field{display:flex;flex-direction:column;gap:6px}
+  .pin-mask{-webkit-text-security:disc;text-security:disc}
+  .field label{font-family:var(--head);font-size:12px;letter-spacing:.14em;text-transform:uppercase;color:var(--muted)}
+  .input{border:1px solid var(--line);background:#fff;padding:14px 14px;font-size:16px;border-radius:0;outline:none;width:100%}
+  .input:focus{border-color:var(--primary)}
+
+  /* Punch card */
+  .punches{display:flex;gap:12px;flex-wrap:wrap}
+  .punch{width:62px;height:62px;border-radius:50%;border:2px dashed #bdb8af;display:flex;align-items:center;justify-content:center;font-family:var(--head);font-weight:600;font-size:18px;color:#bdb8af;background:#fff;transition:all .25s}
+  .punch.on{border:2px solid var(--primary);background:var(--primary);color:#fff}
+  .punch.on svg{width:26px;height:26px}
+  .punch.gift{border-style:solid;border-color:var(--primary);color:var(--primary)}
+  .punch.pop{animation:pop .5s ease}
+  @keyframes pop{0%{transform:scale(.6)}60%{transform:scale(1.15)}100%{transform:scale(1)}}
+  .punches.big .punch{width:84px;height:84px;font-size:24px}
+  .punches.big .punch.on svg{width:34px;height:34px}
+  .mini{display:inline-flex;gap:4px;vertical-align:middle}
+  .mini i{width:12px;height:12px;border-radius:50%;border:1.5px solid #bdb8af;display:inline-block}
+  .mini i.on{background:var(--primary);border-color:var(--primary)}
+
+  .bar{height:6px;background:var(--mint);position:relative;overflow:hidden}
+  .bar span{position:absolute;inset:0 auto 0 0;background:var(--primary);transition:width .4s}
+
+  /* Member view */
+  .hero{background:var(--sand);padding:64px 0 56px;border-bottom:1px solid var(--line)}
+  .hero h1{font-size:clamp(32px,5vw,56px);font-weight:500;line-height:1.08;letter-spacing:-.028em;max-width:680px;margin-top:12px}
+  .hero p{max-width:540px;color:var(--muted);font-size:16px;margin:16px 0 0}
+  .steps{display:grid;grid-template-columns:repeat(3,1fr);gap:0;border:1px solid var(--line);margin:40px 0 0;background:#fff}
+  .step{padding:24px;border-right:1px solid var(--line)}
+  .step:last-child{border-right:0}
+  .step h3{font-size:18px;font-weight:500;margin:0 0 6px}
+  .step p{margin:0;color:var(--muted);font-size:14px}
+
+  /* Member login */
+  .lookup{max-width:420px;margin:0 auto;padding:64px 0 72px;text-align:left;color:var(--ink);background:#dfdcdc;box-shadow:0 0 0 100vmax #dfdcdc;clip-path:inset(0 -100vmax)}
+  .lookup h2{font-size:28px;font-weight:500;letter-spacing:-.028em;margin:0}
+  .lookup .sub{font-size:15px;margin:6px 0 20px}
+  .lookup form.sf-form{display:flex;flex-direction:column;gap:12px;margin:0}
+  .lookup .sf-field{display:flex;align-items:center;background:#fff;border:1px solid var(--line);overflow:hidden;transition:border-color .15s,box-shadow .15s}
+  .lookup .sf-field[hidden],.lookup .sf-go[hidden]{display:none}
+  .lookup .sf-field:focus-within{border-color:var(--primary);box-shadow:0 0 0 1px var(--primary)}
+  .lookup .sf-field .input{flex:1;min-width:0;border:0 !important;background:transparent;padding:13.5px 12px;font-family:var(--body);font-size:16px;font-weight:400;letter-spacing:normal;text-align:left}
+  .lookup .sf-field .input.pin-mask{letter-spacing:.2em}
+  .lookup .sf-field .input::placeholder{letter-spacing:normal;color:rgba(0,0,0,.56)}
+  .lookup .sf-go{flex:none;width:90px;min-height:40px;margin-right:5px;display:flex;align-items:center;justify-content:center;background:var(--paper);border:0;color:var(--ink);cursor:pointer;padding:0}
+  .lookup .sf-go:hover{background:#f2f2f2}
+  .lookup .sf-go svg{width:16px;height:16px}
+  .lookup .err{margin-top:10px}
+  .lookup .hint{color:rgba(0,0,0,.56);font-size:12px;margin-top:14px;text-align:center;line-height:1.5}
+  .lookup .linkbtn{font-size:14px;letter-spacing:normal;text-transform:none;padding:8px 0}
+
+  .status{max-width:820px;margin:44px auto 64px}
+  .status .top{display:flex;justify-content:space-between;align-items:flex-end;gap:16px;flex-wrap:wrap;margin-bottom:22px}
+  .status .top h2{font-size:28px;text-transform:uppercase;letter-spacing:.04em}
+  .card{border:1px solid var(--line);background:#fff;padding:28px}
+  .card + .card{margin-top:18px}
+  .count{font-family:var(--head);font-size:56px;font-weight:600;line-height:1}
+  .count small{font-size:20px;color:var(--muted);font-weight:500}
+  .status .row{display:flex;gap:28px;align-items:center;flex-wrap:wrap;justify-content:space-between}
+  .status .msg{font-size:16px;margin:18px 0 12px}
+  .kv{display:grid;grid-template-columns:repeat(3,1fr);gap:0;border-top:1px solid var(--line);margin-top:22px}
+  .kv div{padding:16px 0 0}
+  .kv b{display:block;font-family:var(--head);font-size:20px;font-weight:600}
+  .kv span{font-size:12px;letter-spacing:.12em;text-transform:uppercase;color:var(--muted)}
+
+  .coupon{display:flex;justify-content:space-between;align-items:center;gap:16px;border:2px dashed var(--primary);padding:18px 20px;background:var(--beige)}
+  .coupon + .coupon{margin-top:10px}
+  .coupon .code{font-family:var(--head);font-size:22px;font-weight:600;letter-spacing:.12em}
+  .coupon .val{font-family:var(--head);font-size:26px;font-weight:700}
+  .coupon.used{opacity:.5;border-color:#bdb8af;background:#fff}
+  .coupon .lbl{font-size:12px;color:var(--muted);letter-spacing:.1em;text-transform:uppercase}
+
+  .hist{list-style:none;margin:0;padding:0}
+  .hist li{display:flex;justify-content:space-between;gap:12px;padding:11px 0;border-bottom:1px solid var(--line);font-size:14px}
+  .hist li:last-child{border-bottom:0}
+  .hist .d{color:var(--muted);white-space:nowrap}
+  .sec-title{font-family:var(--head);font-size:13px;letter-spacing:.18em;text-transform:uppercase;margin:0 0 14px;font-weight:600}
+
+  /* Staff view */
+  .staff-head{background:var(--primary);color:#fff;padding:22px 0}
+  .staff-head .wrap{display:flex;justify-content:space-between;align-items:center;gap:16px;flex-wrap:wrap}
+  .staff-head h1{font-size:22px;text-transform:uppercase;letter-spacing:.1em}
+  .staff-head .eyebrow{color:rgba(255,255,255,.7)}
+  .staff{display:grid;grid-template-columns:360px 1fr;gap:28px;padding-top:28px;padding-bottom:64px;align-items:start}
+  .list{border:1px solid var(--line);background:#fff}
+  .list .search{padding:16px;border-bottom:1px solid var(--line);background:var(--sand)}
+  .list ul{list-style:none;margin:0;padding:0;max-height:62vh;overflow:auto}
+  .list li{padding:14px 16px;border-bottom:1px solid var(--line);cursor:pointer;display:flex;justify-content:space-between;align-items:center;gap:10px}
+  .list li:hover{background:var(--sand)}
+  .list li.sel{background:var(--mint);box-shadow:inset 3px 0 0 var(--primary)}
+  .list li .nm{font-weight:600}
+  .list li .ph{color:var(--muted);font-size:13px}
+  .list .empty{padding:22px 16px;color:var(--muted);font-size:14px}
+  .list .foot{padding:12px 16px;display:flex;justify-content:space-between;align-items:center;font-size:13px;color:var(--muted)}
+  .badge{font-family:var(--head);font-size:11px;letter-spacing:.1em;text-transform:uppercase;background:var(--primary);color:#fff;padding:3px 7px}
+
+  .panel .who{display:flex;justify-content:space-between;align-items:flex-start;gap:16px;flex-wrap:wrap}
+  .panel .who h2{font-size:30px;text-transform:uppercase;letter-spacing:.03em}
+  .panel .who .ph{color:var(--muted)}
+  .bigcount{display:flex;align-items:center;gap:28px;flex-wrap:wrap;margin:24px 0 8px}
+  .bigcount .count{font-size:72px}
+  .action{display:grid;grid-template-columns:1fr auto;gap:0;margin-top:6px}
+  .action .input{font-size:22px;font-family:var(--head);font-weight:500;border-right:0}
+  .quick{display:flex;gap:8px;flex-wrap:wrap;margin-top:10px}
+  .quick button{border:1px solid var(--line);background:#fff;padding:9px 14px;font-size:13px;letter-spacing:.06em}
+  .quick button:hover{border-color:var(--black)}
+  .preview{margin-top:12px;font-size:15px;min-height:24px}
+  .preview b{font-family:var(--head)}
+  .oneclick{display:flex;gap:10px;flex-wrap:wrap;margin-top:18px;padding-top:18px;border-top:1px solid var(--line)}
+  .reward{background:var(--primary);color:#fff;padding:18px 20px;display:flex;justify-content:space-between;align-items:center;gap:12px;margin-bottom:18px;animation:pop .5s ease}
+  .reward .code{font-family:var(--head);font-size:24px;font-weight:700;letter-spacing:.14em}
+  .placeholder{border:1px dashed var(--line);padding:60px 24px;text-align:center;color:var(--muted)}
+  .placeholder h3{color:var(--ink);font-size:16px;letter-spacing:.12em;text-transform:uppercase;margin-bottom:6px}
+
+  /* Modal / toast / notice */
+  .modal-bg{position:fixed;inset:0;background:rgba(17,17,17,.55);display:none;align-items:center;justify-content:center;z-index:50;padding:20px}
+  .modal-bg.open{display:flex}
+  .modal{background:#fff;width:100%;max-width:440px;padding:28px}
+  .modal h3{font-size:18px;text-transform:uppercase;letter-spacing:.1em;margin-bottom:18px}
+  .modal .field{margin-bottom:14px}
+  .modal .acts{display:flex;gap:10px;justify-content:flex-end;margin-top:20px}
+  .err{color:var(--warn);font-size:13px;min-height:18px}
+  .toast{position:fixed;left:50%;bottom:24px;transform:translateX(-50%) translateY(20px);background:var(--primary-hover);color:#fff;padding:14px 22px;font-size:14px;opacity:0;transition:all .25s;z-index:60;pointer-events:none;max-width:90vw}
+  .toast.show{opacity:1;transform:translateX(-50%) translateY(0)}
+  .notice{background:var(--beige);border:1px solid var(--line);padding:12px 16px;font-size:14px;margin:18px 0}
+  .muted{color:var(--muted)}
+
+  /* Header like supermen.dk */
+  .promo{display:flex;align-items:center;justify-content:center;gap:14px;flex-wrap:wrap}
+  .hdr{display:grid;grid-template-columns:auto 1fr auto;gap:28px}
+  .burger{display:none;background:none;border:0;width:40px;height:40px;padding:8px;flex-direction:column;justify-content:space-between}
+  .burger span{display:block;height:2px;background:var(--black)}
+  .hsearch{display:flex;align-items:center;gap:10px;border:1px solid #d6d2cb;padding:0 14px;max-width:520px;width:100%;justify-self:center;height:44px}
+  .hsearch input{border:0;outline:0;font-size:14px;width:100%;background:transparent}
+  .hsearch:focus-within{border-color:var(--black)}
+  .hicons{display:flex;gap:18px;justify-self:end}
+  .hicon{display:flex;flex-direction:column;align-items:center;gap:2px;text-decoration:none;font-size:11px;letter-spacing:.06em}
+  .hicon:hover{color:var(--muted)}
+  .hicon.staffbtn{border-left:1px solid var(--line);padding-left:18px}
+  .hicon.staffbtn.on{color:var(--primary)}
+  .hicon.staffbtn{display:none}
+  body.staff-device .hicon.staffbtn{display:flex}
+  .mainnav{border-top:1px solid var(--line);background:#fff}
+  .mainnav > ul{list-style:none;display:flex;justify-content:center;gap:4px;margin:0 auto;padding:0 20px}
+  .mainnav > ul > li > a{display:block;font-family:var(--head);font-size:15px;font-weight:600;text-transform:uppercase;text-decoration:none;padding:14px 16px}
+  #nav-campaign a{color:var(--primary)}
+  .mainnav > ul > li > a:hover{color:var(--muted)}
+  .mainnav .dd{position:static}
+  .mega{position:absolute;left:0;right:0;top:100%;background:#fff;border-top:1px solid var(--line);border-bottom:1px solid var(--line);box-shadow:0 12px 24px rgba(0,0,0,.06);display:none;z-index:30}
+  .dd:hover .mega,.dd:focus-within .mega{display:block}
+  .mega-in{display:flex;gap:64px;padding:28px 20px 32px}
+  .mega h5{font-family:var(--head);font-size:12px;letter-spacing:.18em;text-transform:uppercase;margin:0 0 12px;color:var(--muted);font-weight:500}
+  .mega a{display:block;text-decoration:none;font-size:14.5px;padding:4px 0}
+  .mega a:hover{text-decoration:underline}
+  .mega a.all{font-weight:600;margin-top:6px}
+  @media (max-width:860px){
+    .hdr{grid-template-columns:auto 1fr auto;gap:12px}
+    .burger{display:flex}
+    .logo{justify-self:center}
+    .hsearch{display:none}
+    .hicon span{display:none}
+    .mainnav{display:none;max-height:75vh;overflow:auto}
+    .mainnav.open{display:block}
+    .mainnav > ul{flex-direction:column;padding:0}
+    .mainnav > ul > li{border-bottom:1px solid var(--line)}
+    .mega{position:static;display:block;box-shadow:none;border:0;background:var(--sand)}
+    .mega-in{flex-direction:column;gap:6px;padding:8px 20px 14px}
+    .mega h5{margin:8px 0 4px}
+  }
+
+  /* Staff login */
+  .loginform{flex-direction:column;gap:10px !important}
+  .loginform .input{border-right:1px solid var(--line) !important;border-bottom:1px solid var(--line) !important;text-align:center;font-size:18px}
+  .input.pin{letter-spacing:.5em;font-family:var(--head);font-weight:600}
+  .slogin{text-align:center;padding-top:48px;padding-bottom:72px}
+  .slogin h2{font-size:26px;text-transform:uppercase;letter-spacing:.08em;margin:8px 0 28px}
+  .slogin-row{display:grid;grid-template-columns:repeat(4,minmax(0,170px));gap:16px;justify-content:center}
+  .slogin-row button{background:#fff;border:1px solid var(--line);padding:22px 10px;font-family:var(--head);font-size:16px;font-weight:600;letter-spacing:.08em;text-transform:uppercase}
+  .slogin-row button:hover{border-color:var(--black)}
+  .slogin-row button .avatar{width:72px;height:72px;font-size:26px;margin-bottom:12px}
+  .slogin-row button small{display:block;font-family:var(--body);font-weight:400;font-size:12px;letter-spacing:.04em;text-transform:none;color:var(--muted);margin-top:4px}
+  .slogin-form{max-width:320px;margin:0 auto;display:flex;flex-direction:column;gap:10px}
+  .slogin-form .input{text-align:center;font-size:20px}
+  .slogin-who{display:flex;flex-direction:column;align-items:center;gap:8px;font-family:var(--head);font-size:18px;font-weight:600;text-transform:uppercase;letter-spacing:.08em;margin-bottom:6px}
+  @media (max-width:640px){ .slogin-row{grid-template-columns:repeat(2,1fr)} }
+  .staffband{display:flex;align-items:center;gap:10px;flex-wrap:wrap;padding:16px 0;border-bottom:1px solid var(--line)}
+  .staffband .lbl{font-family:var(--head);font-size:12px;letter-spacing:.16em;text-transform:uppercase;color:var(--muted);margin-right:6px}
+  .who-btn{display:flex;align-items:center;gap:10px;border:1px solid var(--line);background:#fff;padding:6px 14px 6px 6px;font-family:var(--head);font-size:14px;font-weight:500;letter-spacing:.04em}
+  .who-btn .avatar{width:34px;height:34px;font-size:13px;margin:0;background:#bdb8af}
+  .who-btn.on{border-color:var(--primary);background:var(--primary);color:#fff}
+  .who-btn.on .avatar{background:#fff;color:var(--primary)}
+  .who-btn:hover{border-color:var(--primary)}
+  .linkbtn{background:none;border:0;font-family:var(--head);font-size:12px;letter-spacing:.12em;text-transform:uppercase;text-decoration:underline;color:var(--muted);padding:6px}
+  .teamedit-row{display:grid;grid-template-columns:1fr 1fr;gap:10px;margin-bottom:10px}
+
+  /* Kundekort */
+  .kk{display:grid;grid-template-columns:340px 1fr;gap:32px;align-items:stretch}
+  .mcard{aspect-ratio:auto;min-height:200px;height:100%;background:linear-gradient(140deg,var(--primary) 0%,var(--primary-hover) 60%,var(--footer) 100%);color:#fff;padding:22px 24px;display:flex;flex-direction:column;justify-content:space-between;box-shadow:0 14px 30px rgba(0,0,0,.18);position:relative;overflow:hidden}
+  .mcard::after{content:"";position:absolute;inset:0;background:url("img/facade-hvid.png") center 30%/cover no-repeat;opacity:.35;pointer-events:none}
+  .mcard > *{position:relative;z-index:1}
+  .mcard-top{display:flex;justify-content:space-between;align-items:flex-start}
+  .mcard-logo{font-family:var(--head);font-weight:700;font-size:30px;letter-spacing:.08em;line-height:1}
+  .mcard-sub{font-family:var(--head);font-size:10px;letter-spacing:.32em;text-transform:uppercase;color:rgba(255,255,255,.7);margin-top:4px}
+  .mcard-no{font-family:var(--head);font-size:13px;letter-spacing:.18em;color:rgba(255,255,255,.7)}
+  .mcard-chip{width:40px;height:30px;border-radius:5px;background:linear-gradient(135deg,#F2ECE1,#c9c3b4);opacity:.85}
+  .mcard-bottom{display:flex;justify-content:space-between;align-items:flex-end;gap:10px}
+  .mcard-lbl{font-size:9.5px;letter-spacing:.22em;text-transform:uppercase;color:rgba(255,255,255,.6)}
+  .mcard-name{font-family:var(--head);font-size:17px;font-weight:600;letter-spacing:.1em;text-transform:uppercase;margin-top:2px}
+  .mcard-phone{font-family:var(--head);font-size:15px;letter-spacing:.12em;margin-top:2px;white-space:nowrap}
+  .kk-info{display:grid;grid-template-columns:1fr 1fr;gap:0 24px;margin:0}
+  .kk-info > div{padding:10px 0;border-bottom:1px solid var(--line)}
+  .kk-info > div.wide{grid-column:1/-1;border-bottom:0}
+  .kk-info dt{font-family:var(--head);font-size:11px;letter-spacing:.16em;text-transform:uppercase;color:var(--muted)}
+  .kk-info dd{margin:2px 0 0;font-size:15px;font-weight:500;word-break:break-word}
+  #profile-form{display:grid;gap:12px;margin-top:14px}
+  #profile-save{justify-self:start}
+  @media (max-width:860px){ .kk{grid-template-columns:1fr} .mcard{max-width:360px;height:auto;aspect-ratio:1.9/1} }
+
+  /* Sizes */
+  .sizes-grid{display:grid;grid-template-columns:repeat(5,1fr);gap:12px}
+  .sizes-grid select{appearance:none;-webkit-appearance:none;border:1px solid var(--line);background:#fff url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='10' height='6'%3E%3Cpath d='M1 1l4 4 4-4' fill='none' stroke='%23111' stroke-width='1.4'/%3E%3C/svg%3E") no-repeat right 12px center;padding:12px 30px 12px 12px;font-size:15px;font-family:var(--body);border-radius:0;width:100%}
+  .sizes-grid select:focus{outline:none;border-color:var(--primary)}
+  .sizes-acts{display:flex;align-items:center;gap:14px;margin-top:16px;flex-wrap:wrap}
+  .chips{display:flex;flex-wrap:wrap;gap:8px;margin-top:14px}
+  .chip{border:1px solid var(--black);padding:6px 10px;font-size:13px;background:#fff}
+  .chip span{font-family:var(--head);font-size:10.5px;letter-spacing:.14em;text-transform:uppercase;color:var(--muted);margin-right:6px}
+  .chip b{font-family:var(--head);font-weight:600}
+  .chip.none{border-style:dashed;border-color:var(--line);color:var(--muted)}
+  .modal .sizes-grid{grid-template-columns:repeat(3,1fr)}
+  .modal{max-height:92vh;overflow:auto}
+  @media (max-width:860px){ .sizes-grid{grid-template-columns:repeat(2,1fr)} }
+
+  /* Størrelser på kundekortet: ikoner + fold-ud redigering */
+  .szv{display:grid;grid-template-columns:repeat(6,1fr);gap:6px;margin-top:10px}
+  .szv .it{display:flex;flex-direction:column;align-items:center;gap:5px;text-align:center;padding:4px 2px}
+  .szv svg{width:34px;height:34px;stroke:var(--primary);fill:none;stroke-width:1.3;stroke-linejoin:round;stroke-linecap:round}
+  .szv .v{font-family:var(--head);font-weight:700;font-size:19px;line-height:1}
+  .szv .l{font-size:10px;letter-spacing:.1em;white-space:nowrap;text-transform:uppercase;color:var(--muted);line-height:1.25}
+  .szv .it.empty svg{stroke:#c9c4bb}
+  .szv .it.empty .v{color:#c9c4bb;font-weight:500}
+  .sz-toggle{display:inline-flex;align-items:center;gap:8px;margin-top:14px;background:none;border:0;padding:6px 0;font-family:var(--head);font-size:12px;font-weight:600;letter-spacing:.14em;text-transform:uppercase;color:var(--primary);border-bottom:1px solid var(--primary)}
+  .sz-toggle svg{width:12px;height:12px;transition:transform .3s}
+  .sz-toggle[aria-expanded="true"] svg{transform:rotate(180deg)}
+  .sz-panel{display:grid;grid-template-rows:0fr;transition:grid-template-rows .35s ease}
+  .sz-panel.open{grid-template-rows:1fr}
+  .sz-panel > div{overflow:hidden;min-height:0}
+  .sz-inner{padding-top:14px}
+  .sz-intro{font-size:14px;color:var(--muted);margin:0 0 6px}
+  .pick{display:flex;align-items:center;gap:16px;padding:12px 0;border-top:1px solid var(--line)}
+  .pick .pl{display:flex;align-items:center;gap:10px;width:150px;flex:none;font-size:13px;font-weight:500}
+  .pick .pl svg{width:24px;height:24px;stroke:var(--primary);fill:none;stroke-width:1.4;stroke-linejoin:round;stroke-linecap:round;flex:none}
+  .pick .opts{display:flex;flex-wrap:wrap;gap:6px;overflow-x:auto;scrollbar-width:none;padding:2px;-webkit-overflow-scrolling:touch}
+  .pick .opts::-webkit-scrollbar{display:none}
+  .pick .opts button{flex:none;min-width:42px;height:42px;padding:0 11px;border-radius:999px;border:1px solid transparent;background:var(--sand);font-family:var(--head);font-weight:600;font-size:14px;color:var(--ink);transition:background .15s,color .15s,border-color .15s}
+  .pick .opts button:hover{border-color:var(--primary)}
+  .pick .opts button.on{background:var(--primary);color:#fff}
+  .sz-inner .sizes-acts{border-top:1px solid var(--line);padding-top:16px;margin-top:0}
+  @media (max-width:860px){
+    .szv{grid-template-columns:repeat(3,1fr);row-gap:14px}
+    .pick{flex-direction:column;align-items:flex-start;gap:8px}
+    .pick .pl{width:auto}
+    .pick .opts{width:100%;flex-wrap:nowrap}
+  }
+
+  /* Product carousel */
+  .shop{border-top:1px solid var(--line);padding:56px 0 64px;background:var(--paper)}
+  .shop-head{display:flex;justify-content:space-between;align-items:flex-end;gap:16px;margin-bottom:24px;flex-wrap:wrap}
+  .shop-head h2{font-size:22px;font-weight:500;letter-spacing:-.015em}
+  .shop-nav{display:flex;gap:8px;align-items:center}
+  .shop-nav button{width:44px;height:44px;border:1px solid var(--black);background:#fff;font-size:18px;display:flex;align-items:center;justify-content:center}
+  .shop-nav button:hover{background:var(--primary);border-color:var(--primary);color:#fff}
+  .shop-nav a{color:#4a4a4a;font-size:14px;margin-right:10px}
+  .viewport{overflow-x:auto;scroll-snap-type:x mandatory;scrollbar-color:var(--muted) var(--sand)}
+  .track{display:flex;gap:20px;padding-bottom:12px}
+  .prod{flex:0 0 calc((100% - 60px)/4);min-width:0;scroll-snap-align:start;text-decoration:none;color:inherit;display:block}
+  .prod .img{aspect-ratio:3/4;background:var(--sand);position:relative;overflow:hidden}
+  .prod .img img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;transition:transform .6s}
+  .prod:hover .img img{transform:scale(1.04)}
+  .prod .promo-badge{position:absolute;left:0;top:0;background:var(--primary);color:#fff;font-family:"Supermen Spartan",var(--head);text-transform:uppercase;font-size:14px;padding:6px 9px}
+  .prod .tag{margin-left:8px;color:var(--muted);font-size:12px}
+  .prod .meta{padding:12px 2px 0}
+  .prod .b{font-size:13px;font-weight:500}
+  .prod .t{font-size:15px;margin:3px 0 4px;line-height:1.35}
+  .prod .p{font-weight:500;font-size:15px}
+  .prod .p span{color:var(--primary)}
+  .prod .p del{color:var(--muted);font-weight:400}
+  .prod:hover .t{text-decoration:underline}
+  @media (max-width:980px){ .prod{flex-basis:calc((100% - 20px)/2)} }
+  @media (max-width:560px){ .prod{flex-basis:78%} .track{gap:14px} }
+
+  footer.site{background:var(--footer);color:var(--mint);padding:44px 0 28px;font-size:15px}
+  footer .cols{display:grid;grid-template-columns:repeat(3,1fr);gap:28px}
+  footer h2{color:var(--paper);font-size:19px;letter-spacing:normal;margin:0 0 12px;font-weight:700}
+  footer p{margin:0 0 4px}
+  footer .bottom{border-top:1px solid rgba(255,255,255,.18);margin-top:30px;padding-top:18px;font-size:12px;color:rgba(255,255,255,.65);display:flex;justify-content:space-between;flex-wrap:wrap;gap:10px}
+  footer a{color:inherit}
+  .footer-cta{display:inline-block;margin-top:14px;padding:10px 16px;background:var(--paper);color:var(--primary);border-radius:6px;font-weight:500;text-decoration:none}
+  .footer-cta:hover{text-decoration:underline}
+  .footer-address{margin-top:12px}
+  :focus-visible{outline:2px solid var(--primary);outline-offset:3px}
+  footer :focus-visible,.promo :focus-visible{outline-color:var(--paper)}
+
+  [hidden]{display:none !important}
+
+  @media (max-width:860px){
+    .staff{grid-template-columns:1fr}
+    .list ul{max-height:280px}
+    .steps{grid-template-columns:1fr}
+    .step{border-right:0;border-bottom:1px solid var(--line)}
+    .step:last-child{border-bottom:0}
+    .hero h1{font-size:32px}
+    footer .cols{grid-template-columns:1fr}
+    .punches.big .punch{width:58px;height:58px;font-size:18px}
+    .punches.big .punch.on svg{width:24px;height:24px}
+    .bigcount .count{font-size:56px}
+    .kv{grid-template-columns:1fr 1fr}
+  }
+  @media (max-width:520px){
+    .hdr{height:64px}
+      nav.views a{padding:8px 8px;font-size:11.5px;letter-spacing:.08em}
+    .punch{width:48px;height:48px;font-size:15px}
+    .punches{gap:8px}
+    .punches.big .punch{width:50px;height:50px}
+    .lookup form{flex-direction:column}
+    .lookup form .input{border-right:1px solid var(--line);border-bottom:0}
+    .action{grid-template-columns:1fr}
+    .action .input{border-right:1px solid var(--line);border-bottom:0}
+  }
+
+  /* Mobil-header: logo øverst, derefter tre lige brede knapper */
+  @media (max-width:860px){
+    .promo{font-size:12px;padding:7px 10px;gap:8px}
+    .hdr{grid-template-columns:40px 1fr 40px;grid-template-rows:auto auto;height:auto;gap:0;padding:8px 0 0}
+    .hdr > span[aria-hidden]{display:block;grid-column:3;grid-row:1}
+    .burger{grid-column:1;grid-row:1;align-self:center}
+    .logo{grid-column:2;grid-row:1;justify-self:center;align-items:center;padding:4px 0 10px}
+      .hicons{grid-column:1/-1;grid-row:2;display:grid;grid-template-columns:none;grid-auto-flow:column;grid-auto-columns:1fr;gap:0;justify-self:stretch;border-top:1px solid var(--line)}
+    .hicon,.hicon.staffbtn{flex-direction:row;justify-content:center;align-items:center;gap:8px;padding:12px 6px;font-family:var(--head);font-size:12px;font-weight:500;letter-spacing:.1em;text-transform:uppercase;border-right:1px solid var(--line);border-left:0}
+    .hicon:last-child,body:not(.staff-device) .hicon:nth-child(2){border-right:0}
+    .hicon span{display:inline}
+    .hicon svg{width:18px;height:18px;flex:none}
+    .hicon.staffbtn.on{background:var(--primary);color:#fff}
+  }
+  @media (max-width:360px){
+    .hicon,.hicon.staffbtn{flex-direction:column;gap:3px;font-size:10.5px;padding:9px 4px}
+  }
+
+.demo-notice { margin: 0; padding: 9px 16px; text-align: center; background: var(--primary); color: white; font-size: 13px; }
+.lookup .demo-select { display: block; width: 100%; margin: 0 auto 12px; text-align: left; }
+.lookup .demo-select .input { width: 100%; margin-top: 4px; }
+.demo-purchase { display: flex; align-items: end; flex-wrap: wrap; gap: 10px; margin-top: 12px; }
+.demo-purchase .field { margin: 0; }
+#lookup-first, #nav-personale, .hicon.staffbtn { display: none !important; }
+</style>
 </head>
 <body>
-  <header class="site-header">
-    <div><span class="wordmark">MEN</span><span>Kundeklub · Offentlig demo</span></div>
-  </header>
-  <main class="layout">
-    <section>
-      <h1>Dit klippekort</h1>
-      <p>Du får ét klip for hver hele 500 kr. i et køb. Fem klip udløser en kupon på 500 kr.</p>
-      <p class="quiet">Vælg en af de 20 fiktive testkunder. Brug PIN-koden <strong>1234</strong>. Køb og kuponer i demoen er fiktive.</p>
+
+<aside class="promo" aria-label="Nyt fra webshoppen">
+  <a class="promo-campaign" id="promo-campaign" href="https://www.supermen.dk/collections/black-days" hidden><strong>Black Days</strong> · Op til 70%</a>
+  <a href="https://www.supermen.dk/policies/shipping-policy">Fri fragt ved køb over 499 kr.</a>
+</aside>
+
+<header class="site">
+  <div class="wrap hdr">
+    <button class="burger" type="button" id="burger" aria-label="Menu" aria-expanded="false"><span></span><span></span><span></span></button>
+    <a class="logo" href="https://www.supermen.dk/" aria-label="MEN Supermen.dk">
+      <img src="https://www.supermen.dk/cdn/shop/files/men-logo-lokal-siden-2006-sort.svg?v=1792693468&amp;width=348" alt="MEN · Lokal siden 2006" width="174" height="54">
+    </a>
+    <span aria-hidden="true"></span>
+    <div class="hicons">
+      <a href="#medlem" id="nav-medlem" class="hicon" title="Log ind">
+        <svg viewBox="0 0 24 24" width="22" height="22" fill="none" stroke="currentColor" stroke-width="1.6"><circle cx="12" cy="8" r="4"/><path d="M4 21c1.5-4 4.5-6 8-6s6.5 2 8 6"/></svg>
+        <span>Log ind</span>
+      </a>
+      <a href="https://www.supermen.dk/cart" class="hicon" target="_blank" rel="noopener" title="Kurv">
+        <svg viewBox="0 0 24 24" width="22" height="22" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M5 8h14l-1.2 12H6.2z"/><path d="M9 8V6a3 3 0 016 0v2"/></svg>
+        <span>Kurv</span>
+      </a>
+      <a href="#personale" class="hicon staffbtn" title="Personale: registrér klip">
+        <svg viewBox="0 0 24 24" width="22" height="22" fill="none" stroke="currentColor" stroke-width="1.6"><rect x="3" y="6" width="18" height="13" rx="1.5"/><path d="M9 6V4.5h6V6"/><path d="M3 12h18"/><path d="M11 12v2h2v-2"/></svg>
+        <span>Personale</span>
+      </a>
+    </div>
+  </div>
+  <nav class="mainnav" id="mainnav" aria-label="Hovedmenu">
+    <ul class="wrap">
+      <li id="nav-campaign" hidden><a href="https://www.supermen.dk/collections/black-days">Black Days</a></li>
+      <li><a href="https://www.supermen.dk/collections/nyheder">Nyheder</a></li>
+      <li class="dd"><a href="https://www.supermen.dk/collections/toj">TØJ</a>
+        <div class="mega"><div class="wrap mega-in">
+          <div><h5>Tøj</h5>
+            <a href="https://www.supermen.dk/products/gavekort-valgfrit-belob">Gavekort</a>
+            <a href="https://www.supermen.dk/collections/nyheder">Nyheder</a>
+            <a href="https://www.supermen.dk/collections/toj">Alt tøj</a>
+            <a href="https://www.supermen.dk/collections/t-shirts">T-Shirts</a>
+            <a href="https://www.supermen.dk/collections/strik">Strik</a>
+            <a href="https://www.supermen.dk/collections/cardigan">Cardigan</a></div>
+          <div><h5>&nbsp;</h5>
+            <a href="https://www.supermen.dk/collections/sweatshirts">Sweatshirts</a>
+            <a href="https://www.supermen.dk/collections/bukser">Bukser</a>
+            <a href="https://www.supermen.dk/collections/jeans">Jeans</a>
+            <a href="https://www.supermen.dk/collections/polo">Polo</a>
+            <a href="https://www.supermen.dk/collections/skjorter">Skjorter</a>
+            <a class="all" href="https://www.supermen.dk/collections/toj">Se alt i tøj</a></div>
+          <div><h5>Overtøj</h5>
+            <a href="https://www.supermen.dk/collections/overshirts">Overshirts</a>
+            <a href="https://www.supermen.dk/collections/jakkesaet-habitter">Jakkesæt &amp; Habitter</a>
+            <a href="https://www.supermen.dk/collections/frakker-og-jakker">Jakker &amp; Frakker</a></div>
+        </div></div>
+      </li>
+      <li class="dd"><a href="https://www.supermen.dk/collections/sko-stovler">Sko</a>
+        <div class="mega"><div class="wrap mega-in">
+          <div><h5>Sko</h5>
+            <a href="https://www.supermen.dk/collections/sko-stovler">Sko &amp; Støvler</a>
+            <a href="https://www.supermen.dk/collections/hjemmesko">Hjemmesko</a>
+            <a class="all" href="https://www.supermen.dk/collections/sko-stovler">Se alt i sko</a></div>
+        </div></div>
+      </li>
+      <li class="dd"><a href="https://www.supermen.dk/collections/accessories">Accessories</a>
+        <div class="mega"><div class="wrap mega-in">
+          <div><h5>Accessories</h5>
+            <a href="https://www.supermen.dk/collections/accessories">Accessories</a>
+            <a href="https://www.supermen.dk/collections/undertoj">Undertøj</a>
+            <a href="https://www.supermen.dk/collections/sokker">Strømper</a>
+            <a class="all" href="https://www.supermen.dk/collections/accessories">Se alt i accessories</a></div>
+        </div></div>
+      </li>
+      <li class="dd"><a href="https://www.supermen.dk/collections">Brands</a>
+        <div class="mega"><div class="wrap mega-in">
+          <div><h5>Brands</h5>
+            <a href="https://www.supermen.dk/collections/calvin-klein">Calvin Klein</a>
+            <a href="https://www.supermen.dk/collections/clarks">Clarks</a>
+            <a href="https://www.supermen.dk/collections/elsk">Elsk</a>
+            <a href="https://www.supermen.dk/collections/fred-perry">Fred Perry</a>
+            <a href="https://www.supermen.dk/collections/glerups">Glerups</a></div>
+          <div><h5>&nbsp;</h5>
+            <a href="https://www.supermen.dk/collections/jbs">Jbs</a>
+            <a href="https://www.supermen.dk/collections/lee">Lee</a>
+            <a href="https://www.supermen.dk/collections/les-deux">Les Deux</a>
+            <a href="https://www.supermen.dk/collections/the-mercer-brand">The Mercer Brand</a>
+            <a href="https://www.supermen.dk/collections/morris">Morris</a></div>
+          <div><h5>&nbsp;</h5>
+            <a href="https://www.supermen.dk/collections/replay">Replay</a>
+            <a href="https://www.supermen.dk/collections/revolution">Revolution</a>
+            <a href="https://www.supermen.dk/collections/selected">Selected</a>
+            <a href="https://www.supermen.dk/collections/wax-london">Wax London</a>
+            <a href="https://www.supermen.dk/collections/bestsellere">Bestsellere</a>
+            <a class="all" href="https://www.supermen.dk/collections">Se alt i brands</a></div>
+        </div></div>
+      </li>
+      <li><a href="https://www.supermen.dk/pages/om-men">Om MEN</a></li>
+    </ul>
+  </nav>
+</header>
+
+<!-- ============ MEDLEM ============ -->
+<main id="view-medlem">
+  <p class="demo-notice">Offentlig demo med fiktive testkunder og kuponer</p>
+  <div class="wrap">
+    <section class="lookup" id="lookup">
+      <h2 id="login-title">Log ind på dit klippekort</h2>
+      <p class="sub">Vælg en fiktiv testkunde og brug PIN-koden <strong>1234</strong>.</p>
+      <label class="demo-select" for="demo-customer">Testkunde
+        <select id="demo-customer" class="input"><option value="">Vælg en af de 20 testkunder</option></select>
+      </label>
+      <form id="lookup-form" class="sf-form" autocomplete="off">
+        <div class="sf-field"><input class="input" id="lookup-phone" type="tel" inputmode="numeric" pattern="[0-9+ ]*" autocomplete="tel" maxlength="15" placeholder="Telefonnummer" aria-label="Telefonnummer"></div>
+        <div class="sf-field" id="lookup-act-wrap" hidden><input class="input" id="lookup-activation" maxlength="12" placeholder="Engangskode" aria-label="Engangskode" autocomplete="off"></div>
+        <div class="sf-field"><input class="input pin pin-mask" id="lookup-pin" type="password" inputmode="numeric" pattern="[0-9]*" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false" maxlength="4" placeholder="Kode (4 tal)" aria-label="Kode"><button class="sf-go" type="submit" id="lookup-btn" aria-label="Log ind"><svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M2.5 8h11M9 3.5 13.5 8 9 12.5"/></svg></button></div>
+        <div class="sf-field" id="lookup-pin2-wrap" hidden><input class="input pin pin-mask" id="lookup-pin2" type="password" inputmode="numeric" pattern="[0-9]*" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false" maxlength="4" placeholder="Gentag koden" aria-label="Gentag koden"><button class="sf-go" type="submit" id="lookup-activate" aria-label="Gem kode og log ind"><svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M2.5 8h11M9 3.5 13.5 8 9 12.5"/></svg></button></div>
+      </form>
+      <button class="linkbtn" type="button" id="lookup-first">Aktivér medlemskab med engangskode</button>
+      <div class="err" id="lookup-err"></div>
+      <div class="hint" id="lookup-hint">Du kan også indtaste et af demoens telefonnumre direkte.</div>
     </section>
-    <div>
-      <section id="login-panel" class="card" aria-labelledby="login-heading">
-        <h2 id="login-heading">Log ind som testkunde</h2>
-        <label for="test-customer">Vælg testkunde</label>
-        <select id="test-customer">
-          <option value="">Vælg en kunde for at udfylde nummeret</option>
-        </select>
-        <form id="login-form">
-          <label for="phone">Testtelefonnummer</label>
-          <input id="phone" type="tel" inputmode="numeric" autocomplete="off" required>
-          <label for="pin">PIN-kode</label>
-          <input id="pin" type="password" inputmode="numeric" autocomplete="off" maxlength="4" required>
-          <p id="login-error" class="error" role="alert"></p>
-          <div class="actions"><button type="submit">Log ind</button></div>
-        </form>
-      </section>
-      <div id="member-panel" hidden>
-        <section class="card" aria-labelledby="member-name">
-          <h2 id="member-name" tabindex="-1"></h2>
-          <p id="balance" role="status"></p>
-          <ol id="punches" class="punches" aria-hidden="true"></ol>
-          <dl class="totals">
-            <div><dt>Kuponer på 500 kr.</dt><dd id="coupons"></dd></div>
-            <div><dt>Køb i alt</dt><dd id="total"></dd></div>
+
+    <section class="status" id="status" hidden>
+      <div class="top">
+        <div>
+          <div class="eyebrow">Velkommen tilbage</div>
+          <h2 id="st-name">–</h2>
+        </div>
+        <button class="btn ghost small" id="st-logout" type="button">Log ud</button>
+      </div>
+
+      <div class="card">
+        <div class="row">
+          <div>
+            <div class="eyebrow" style="margin-bottom:8px">Dine klip</div>
+            <div class="count"><span id="st-count">0</span><small> / 5</small></div>
+          </div>
+          <div class="punches big" id="st-punches"></div>
+        </div>
+        <p class="msg" id="st-msg"></p>
+        <div class="bar"><span id="st-bar" style="width:0"></span></div>
+      </div>
+
+      <div class="card">
+        <h3 class="sec-title">Mit medlemskab</h3>
+        <div class="kk">
+          <div class="mcard">
+            <div class="mcard-top"><div><div class="mcard-logo">MEN</div><div class="mcard-sub">Digitalt medlemskab</div></div><div class="mcard-no" id="kk-no"></div></div>
+            <div class="mcard-bottom">
+              <div><div class="mcard-lbl">Medlem</div><div class="mcard-name" id="kk-cardname"></div></div>
+              <div style="text-align:right"><div class="mcard-lbl">Telefon</div><div class="mcard-phone" id="kk-cardphone"></div></div>
+            </div>
+          </div>
+          <dl class="kk-info">
+            <div><dt>Navn</dt><dd id="kk-name"></dd></div>
+            <div><dt>Telefon</dt><dd id="kk-phone"></dd></div>
+            <div><dt>E-mail</dt><dd id="kk-email"></dd></div>
+            <div><dt>Medlemsnummer</dt><dd id="kk-no2"></dd></div>
+            <div><dt>Medlem siden</dt><dd id="kk-since"></dd></div>
+            <div><dt>Handlet i alt</dt><dd id="kk-total"></dd></div>
+            <div><dt>Aktive rabatkuponer</dt><dd id="kk-coupons"></dd></div>
+            <div class="wide"><dt>Profiloplysninger</dt><dd>
+              <button type="button" class="sz-toggle" id="profile-toggle" aria-expanded="false" aria-controls="profile-form">Redigér min profil</button>
+              <form id="profile-form" hidden>
+                <div class="field"><label for="profile-name">Navn</label><input class="input" id="profile-name" required maxlength="120" autocomplete="name"></div>
+                <div class="field"><label for="profile-email">E-mail (valgfri)</label><input class="input" id="profile-email" type="email" maxlength="254" autocomplete="email"></div>
+                <button class="btn small" id="profile-save" type="submit">Gem profil</button>
+                <span class="err" id="profile-error" role="alert"></span>
+              </form>
+            </dd></div>
+            <div class="wide"><dt>Mine størrelser</dt><dd>
+              <div class="szv" id="kk-sizes"></div>
+              <button type="button" class="sz-toggle" id="sz-toggle" aria-expanded="false" aria-controls="sz-panel">Ret mine størrelser <svg viewBox="0 0 12 12" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M2 4.5l4 4 4-4"/></svg></button>
+              <div class="sz-panel" id="sz-panel"><div><div class="sz-inner">
+                <p class="sz-intro">Tryk på din størrelse – så finder vi hurtigt det rigtige til dig i butikken.</p>
+                <div id="st-sizes"></div>
+                <div class="sizes-acts">
+                  <button class="btn small" type="button" id="st-sizes-save">Gem størrelser</button>
+                  <span class="muted" id="st-sizes-msg" style="font-size:13px"></span>
+                </div>
+              </div></div></div>
+            </dd></div>
+            <div class="wide" hidden><dt>Login-kode</dt><dd>
+              <div>Du logger ind med dit telefonnummer og en kode på 4 tal.</div>
+              <button type="button" class="sz-toggle" id="pw-toggle" aria-expanded="false" aria-controls="pw-panel">Skift kode <svg viewBox="0 0 12 12" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M2 4.5l4 4 4-4"/></svg></button>
+              <div class="sz-panel" id="pw-panel"><div><div class="sz-inner">
+                <p class="sz-intro">Den nye kode skal være 4 tal.</p>
+                <div class="field" style="margin:0 0 12px"><label for="pw-old">Nuværende kode</label><input class="input pin-mask" id="pw-old" type="password" inputmode="numeric" pattern="[0-9]*" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false" maxlength="4" placeholder="4 tal"></div>
+                <div class="field" style="margin:0 0 12px"><label for="pw-new">Ny kode</label><input class="input pin-mask" id="pw-new" type="password" inputmode="numeric" pattern="[0-9]*" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false" maxlength="4" placeholder="4 tal"></div>
+                <div class="field" style="margin:0 0 12px"><label for="pw-new2">Gentag ny kode</label><input class="input pin-mask" id="pw-new2" type="password" inputmode="numeric" pattern="[0-9]*" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false" maxlength="4" placeholder="4 tal"></div>
+                <div class="sizes-acts">
+                  <button class="btn small" type="button" id="pw-save">Gem ny kode</button>
+                  <span class="muted" id="pw-msg" style="font-size:13px"></span>
+                </div>
+              </div></div></div>
+            </dd></div>
           </dl>
-          <div class="actions"><button id="logout" type="button" class="secondary">Log ud</button></div>
-        </section>
-        <section class="card" aria-labelledby="purchase-heading">
-          <h2 id="purchase-heading">Prøv et demokøb</h2>
-          <p class="quiet">Demokøb gælder kun i dit aktuelle besøg.</p>
-          <form id="purchase-form">
-            <label for="amount">Beløb i kroner</label>
-            <input id="amount" type="number" inputmode="decimal" min="0.01" max="999999" step="0.01" required>
-            <div class="actions"><button type="submit">Registrér demokøb</button></div>
-          </form>
-          <p id="purchase-note" role="status"></p>
-        </section>
+        </div>
+        <p class="muted" style="font-size:13px;margin:16px 0 0">Dit medlemskab er knyttet til dit telefonnummer. Oplys det ved kassen, når du handler, så registrerer vi dine køb og klip. Er der noget, der skal rettes, så sig det til os i butikken.</p>
+      </div>
+
+      <div class="card">
+        <h3 class="sec-title">Dine rabatkuponer</h3>
+        <div id="st-coupons"></div>
+      </div>
+
+      <div class="card">
+        <h3 class="sec-title">Seneste aktivitet</h3>
+        <form id="demo-purchase" class="demo-purchase">
+          <div class="field"><label for="demo-amount">Beløb for demokøb i kr.</label><input class="input" id="demo-amount" type="number" inputmode="decimal" min="0.01" max="999999" step="0.01" required></div>
+          <button class="btn small" type="submit">Registrér demokøb</button>
+        </form>
+        <p id="demo-purchase-result" role="status" class="muted"></p>
+        <ul class="hist" id="st-hist"></ul>
+      </div>
+    </section>
+  </div>
+
+  <section class="hero">
+    <div class="wrap">
+      <div class="eyebrow">MEN Kundeklub</div>
+      <h1>Et klippekort til butikken i Horsens</h1>
+      <p>For hver hele 500 kr, du handler for i butikken på Søndergade, får du et klip. Når du har samlet 5 klip, får du en rabatkupon på 500 kr til din næste handel.</p>
+      <div class="steps">
+        <div class="step"><h3>Oplys dit nummer</h3><p>Brug dit telefonnummer ved kassen.</p></div>
+        <div class="step"><h3>Saml klip</h3><p>Et køb på 1.700 kr giver 3 klip. Ved køb med en kupon optjener du 0 klip.</p></div>
+        <div class="step"><h3>Brug din kupon</h3><p>Vis koden på dit klippekort, når du vil bruge kuponen i butikken.</p></div>
       </div>
     </div>
-  </main>
-  <script>
-    const names = [
-      'Alma Madsen', 'Oscar Berg', 'Freja Holm', 'Elias Lund', 'Nora Dahl',
-      'Viggo Bak', 'Clara Strand', 'William Toft', 'Agnes Birk', 'Aksel Friis',
-      'Ella Vang', 'Theo Sander', 'Sofia Lind', 'Felix Storm', 'Ida Krog',
-      'Otto Ravn', 'Laura Frost', 'Malthe Hald', 'Anna Feld', 'Lucas Skov'
-    ];
-    const testPin = '1234';
-    const purchaseOrePerClip = 50_000;
-    const clipsPerCoupon = 5;
-    const $ = id => document.getElementById(id);
-    const kroner = new Intl.NumberFormat('da-DK', { style: 'currency', currency: 'DKK' });
-    const testCustomers = new Map(names.map((name, index) => [
-      String(12001 + index).padStart(8, '0'),
-      { name, totalOre: index * purchaseOrePerClip, clips: index % clipsPerCoupon, coupons: Math.floor(index / clipsPerCoupon) }
-    ]));
-    let member;
+  </section>
 
-    for (const [phone, customer] of testCustomers) {
-      $('test-customer').add(new Option(`${customer.name} · ${phone}`, phone));
-    }
+  <section class="shop" aria-label="Udvalgte produkter">
+    <div class="wrap">
+      <div class="shop-head">
+        <h2>Nyheder fra Supermen.dk</h2>
+        <div class="shop-nav">
+          <a href="https://www.supermen.dk/collections/nyheder">Se alle nyheder</a>
+          <button type="button" id="car-prev" aria-label="Forrige">&#8592;</button>
+          <button type="button" id="car-next" aria-label="Næste">&#8594;</button>
+        </div>
+      </div>
+      <div class="viewport" id="car-viewport">
+        <div class="track" id="car-track"></div>
+      </div>
+    </div>
+  </section>
 
-    $('test-customer').addEventListener('change', event => {
-      $('phone').value = event.target.value;
-      $('login-error').textContent = '';
-      if (event.target.value) $('pin').focus();
-    });
+</main>
 
-    function renderCard() {
-      $('member-name').textContent = member.name;
-      $('balance').textContent = `${member.clips} af ${clipsPerCoupon} klip på kortet`;
-      $('coupons').textContent = member.coupons;
-      $('total').textContent = kroner.format(member.totalOre / 100);
-      $('punches').replaceChildren(...Array.from({ length: clipsPerCoupon }, (_, index) => {
-        const punch = document.createElement('li');
-        const filled = index < member.clips;
-        punch.classList.toggle('filled', filled);
-        punch.textContent = filled ? '✓' : String(index + 1);
-        return punch;
-      }));
-    }
+<!-- ============ PERSONALE ============ -->
+<main id="view-personale" hidden>
+  <div class="staff-head">
+    <div class="wrap">
+      <div>
+        <div class="eyebrow">Kun for personale</div>
+        <h1>Registrér klip</h1>
+      </div>
+      <div style="display:flex;gap:10px;flex-wrap:wrap">
+        <button class="btn ghost small" id="btn-new" type="button" style="border-color:#fff">+ Ny kunde</button>
+        <a class="btn small" href="#medlem" style="border-color:#fff;text-decoration:none">← Til kundesiden</a>
+      </div>
+    </div>
+  </div>
 
-    $('login-form').addEventListener('submit', event => {
-      event.preventDefault();
-      const phone = $('phone').value.replace(/\s/g, '');
-      const customer = testCustomers.get(phone);
-      if (!customer || $('pin').value !== testPin) {
-        $('login-error').textContent = 'Kontrollér testtelefonnummeret og PIN-koden.';
-        return;
+  <section class="slogin wrap" id="staff-login">
+    <div class="eyebrow">Personale-login</div>
+    <h2>Hvem er du?</h2>
+    <div class="slogin-row" id="slogin-row"></div>
+    <form id="slogin-form" class="slogin-form" autocomplete="off" hidden>
+      <div class="slogin-who" id="slogin-who"></div>
+      <input class="input" id="slogin-act" maxlength="12" placeholder="Engangskode" aria-label="Engangskode" autocomplete="off" hidden>
+      <input class="input pin pin-mask" id="slogin-pin" type="password" inputmode="numeric" pattern="[0-9]*" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false" maxlength="4" placeholder="PIN-kode (4 cifre)" aria-label="PIN-kode">
+      <input class="input pin pin-mask" id="slogin-pin2" type="password" inputmode="numeric" pattern="[0-9]*" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false" maxlength="4" placeholder="Gentag PIN-kode" aria-label="Gentag PIN-kode" hidden>
+      <button class="btn" type="submit" id="slogin-btn">Log ind</button>
+      <div class="err" id="slogin-err"></div>
+      <button class="linkbtn" type="button" id="slogin-back">← Vælg en anden</button>
+    </form>
+  </section>
+
+  <div class="wrap" id="staff-app" hidden>
+    <div class="staffband">
+      <span class="lbl">Logget ind som</span>
+      <div id="who-row" style="display:flex;gap:8px;flex-wrap:wrap"></div>
+      <button class="linkbtn" type="button" id="staff-logout">Log ud</button>
+      <button class="linkbtn" type="button" id="team-edit">Ret ansatte</button>
+    </div>
+    <div class="notice" id="ro-notice" hidden>Du har læseadgang. En medejer kan give dig adgang til at registrere køb og klip.</div>
+    <div class="staff">
+      <aside class="list">
+        <div class="search">
+          <input class="input" id="s-search" inputmode="search" placeholder="Søg telefon eller navn" aria-label="Søg kunde" autocomplete="off">
+        </div>
+        <ul id="s-list"></ul>
+        <div class="foot"><span id="s-countall">0 medlemmer</span><span id="s-sync" class="muted"></span></div>
+      </aside>
+
+      <section class="panel" id="s-panel">
+        <div class="placeholder" id="s-empty">
+          <h3>Vælg en kunde</h3>
+          <p>Søg på telefonnummer eller navn til venstre – eller opret en ny kunde.</p>
+        </div>
+
+        <div id="s-detail" hidden>
+          <div class="reward" id="s-reward" hidden>
+            <div>
+              <div class="eyebrow" style="color:#e8e6d8">Ny rabatkupon optjent – giv kunden besked</div>
+              <div class="code" id="s-reward-code"></div>
+            </div>
+            <div style="font-family:var(--head);font-size:28px;font-weight:700">500 kr</div>
+          </div>
+
+          <div class="card">
+            <div class="who">
+              <div>
+                <h2 id="s-name"></h2>
+                <div class="ph" id="s-phone"></div>
+              </div>
+              <button class="btn ghost small" id="s-edit" type="button">Rediger</button>
+            </div>
+            <div class="chips" id="s-sizes"></div>
+
+            <div class="bigcount">
+              <div class="count"><span id="s-count">0</span><small> / 5 klip</small></div>
+              <div class="punches big" id="s-punches"></div>
+            </div>
+            <div class="muted" id="s-sub" style="margin-bottom:22px"></div>
+
+            <div class="field">
+              <label for="s-amount">Købsbeløb (kr)</label>
+              <form class="action" id="s-form" autocomplete="off">
+                <input class="input" id="s-amount" inputmode="decimal" placeholder="f.eks. 1.299">
+                <button class="btn" type="submit" id="s-submit">Registrér køb</button>
+              </form>
+            </div>
+            <div class="quick" id="s-quick">
+              <button type="button" data-amt="500">500 kr</button>
+              <button type="button" data-amt="1000">1.000 kr</button>
+              <button type="button" data-amt="1500">1.500 kr</button>
+              <button type="button" data-amt="2000">2.000 kr</button>
+            </div>
+            <div class="field" id="s-usecoupon-wrap" hidden style="margin-top:12px">
+              <label for="s-usecoupon">Rabatkupon til købet</label>
+              <select class="input" id="s-usecoupon"><option value="">Ingen kupon</option></select>
+            </div>
+            <div class="preview" id="s-preview"></div>
+
+            <div class="oneclick">
+              <button class="btn" type="button" id="s-plus1">+1 klip</button>
+              <button class="btn ghost" type="button" id="s-minus1">−1 klip</button>
+              <button class="btn ghost" type="button" id="s-undo">Fortryd sidste</button>
+            </div>
+          </div>
+
+          <div class="card">
+            <h3 class="sec-title">Rabatkuponer</h3>
+            <div id="s-coupons"></div>
+          </div>
+
+          <div class="card">
+            <h3 class="sec-title">Historik</h3>
+            <ul class="hist" id="s-hist"></ul>
+          </div>
+        </div>
+      </section>
+    </div>
+  </div>
+</main>
+
+<footer class="site">
+  <div class="wrap">
+    <div class="cols">
+      <div>
+        <h2>MEN Kundeklub på Supermen.dk</h2>
+        <p>Få nyheder og tilbud på e-mail.</p>
+        <a class="footer-cta" href="https://www.supermen.dk/pages/kundeklub">Bliv medlem</a>
+      </div>
+      <div>
+        <h2>Åbningstider</h2>
+        <p>Man–tor: 10.00–17.30</p>
+        <p>Fredag: 10.00–18.00</p>
+        <p>Lørdag: 10.00–14.00</p>
+        <p>Søndag: Lukket</p>
+        <p class="footer-address">Søndergade 15, 8700 Horsens</p>
+        <p><a href="tel:+4576279111">76 27 91 11</a> · <a href="mailto:info@supermen.dk">info@supermen.dk</a></p>
+      </div>
+      <div>
+        <h2>Information</h2>
+        <p><a href="https://www.supermen.dk/pages/om-men">Om MEN</a></p>
+        <p><a href="https://www.supermen.dk/pages/men-pilsner">MEN Pilsner</a></p>
+        <p><a href="https://www.supermen.dk/pages/retur">Retur og bytte</a></p>
+        <p><a href="https://www.supermen.dk/policies/shipping-policy">Levering</a></p>
+        <p><a href="https://www.supermen.dk/policies/terms-of-service">Handelsbetingelser</a></p>
+        <p><a href="https://www.supermen.dk/policies/privacy-policy">Privatlivspolitik</a></p>
+      </div>
+    </div>
+    <div class="bottom">
+      <span>© 2026 Supermen.dk · CVR 29780285</span>
+      <span><a href="https://www.facebook.com/supermendk/">Facebook</a> · <a href="https://www.instagram.com/MEN_horsens/">Instagram</a> · <a href="#personale" id="nav-personale">Personale</a></span>
+    </div>
+  </div>
+</footer>
+
+<!-- Modal: create / edit -->
+<div class="modal-bg" id="m-bg">
+  <form class="modal" id="m-form" autocomplete="off">
+    <h3 id="m-title">Ny kunde</h3>
+    <div class="field"><label for="m-name">Navn</label><input class="input" id="m-name" required></div>
+    <div class="field"><label for="m-phone">Telefonnummer</label><input class="input" id="m-phone" type="tel" inputmode="numeric" pattern="[0-9 ]*" required></div>
+    <div class="field"><label for="m-email">E-mail (valgfri)</label><input class="input" id="m-email" type="email"></div>
+    <div class="field"><label for="m-pin" id="m-pin-lbl">Kundens kode (valgfri, 4 cifre)</label><input class="input" id="m-pin" type="password" inputmode="numeric" pattern="[0-9]*" autocomplete="off" maxlength="4" placeholder="Kunden kan også selv vælge den første gang"></div>
+    <label id="m-reset-wrap" hidden><input type="checkbox" id="m-reset"> Nulstil PIN og lav ny engangskode (lad ny PIN stå tom)</label>
+    <div class="field"><label>Størrelser (valgfri)</label><div class="sizes-grid" id="m-sizes"></div></div>
+    <div class="err" id="m-err"></div>
+    <div class="acts">
+      <button class="btn ghost" type="button" id="m-cancel">Annullér</button>
+      <button class="btn" type="submit" id="m-save">Opret</button>
+    </div>
+  </form>
+</div>
+
+<!-- Modal: team -->
+<div class="modal-bg" id="t-bg">
+  <form class="modal" id="t-form" autocomplete="off">
+    <h3>De 4 ansatte</h3>
+    <p class="muted" style="margin:-8px 0 16px;font-size:14px">Navn og rolle vises på personalets login.</p>
+    <div id="t-rows"></div>
+    <div class="err" id="t-err"></div>
+    <div class="acts">
+      <button class="btn ghost" type="button" id="t-cancel">Annullér</button>
+      <button class="btn" type="submit">Gem</button>
+    </div>
+  </form>
+</div>
+
+<!-- Modal: confirm -->
+<div class="modal-bg" id="c-bg">
+  <div class="modal">
+    <h3 id="c-title">Er du sikker?</h3>
+    <p id="c-text" class="muted"></p>
+    <div class="acts">
+      <button class="btn ghost" type="button" id="c-no">Annullér</button>
+      <button class="btn" type="button" id="c-yes">Ja</button>
+    </div>
+  </div>
+</div>
+
+<div class="modal-bg" id="act-bg">
+  <div class="modal" role="dialog" aria-modal="true" aria-labelledby="act-title">
+    <h3 id="act-title">Engangskode</h3>
+    <p class="muted">Giv koden til den person, den tilhører. Koden gælder i 7 dage og vises kun her.</p>
+    <div id="act-codes"></div>
+    <div class="acts"><button class="btn" type="button" id="act-close">Luk</button></div>
+  </div>
+</div>
+<div class="toast" id="toast" role="status"></div>
+
+<script>
+const demoApi = (() => {
+  const names = [
+    'Alma Madsen', 'Oscar Berg', 'Freja Holm', 'Elias Lund', 'Nora Dahl',
+    'Viggo Bak', 'Clara Strand', 'William Toft', 'Agnes Birk', 'Aksel Friis',
+    'Ella Vang', 'Theo Sander', 'Sofia Lind', 'Felix Storm', 'Ida Krog',
+    'Otto Ravn', 'Laura Frost', 'Malthe Hald', 'Anna Feld', 'Lucas Skov'
+  ];
+  const pin = '1234';
+  const joined = Date.parse('2026-11-25T09:00:00+01:00');
+  const customers = new Map(names.map((name, index) => {
+    const number = index + 1;
+    const phone = String(12001 + index).padStart(8, '0');
+    const totalKr = index * 500;
+    const history = [{ t: joined, type: 'join' }];
+    if (index) history.push({ t: joined, type: 'purchase', amount: totalKr, clicks: index });
+    const member = { number, phone, name, email: '', joined, clicks: index % 5, totalKr, history, sizes: {}, coupons: [] };
+    for (let count = 0; count < Math.floor(index / 5); count++) addCoupon(member, joined);
+    return [phone, member];
+  }));
+
+  const picker = document.getElementById('demo-customer');
+  for (const [phone, { name }] of customers) picker.add(new Option(`${name} · ${phone}`, phone));
+  picker.addEventListener('change', () => {
+    document.getElementById('lookup-phone').value = picker.value;
+    document.getElementById('lookup-err').textContent = '';
+    if (picker.value) document.getElementById('lookup-pin').focus();
+  });
+  let member;
+
+  function addCoupon(account, time) {
+    const code = `DEMO-${account.number}-${account.coupons.length + 1}`;
+    account.coupons.push({ code, value: 500, created: time, used: false });
+    account.history.push({ t: time, type: 'coupon', code });
+  }
+
+  function fail(status, message) {
+    throw Object.assign(new Error(message), { status });
+  }
+
+  return async (path, data) => {
+    switch (path) {
+      case 'team':
+        return { team: [] };
+      case 'staff':
+        fail(401, 'Personalevisningen er lukket i demoen.');
+        break;
+      case 'member/login': {
+        const account = customers.get(data.id);
+        if (!account || data.pin !== pin) fail(401, 'Kontrollér testtelefonnummeret og PIN-koden.');
+        member = structuredClone(account);
+        return { ok: true };
       }
-      $('login-error').textContent = '';
-      $('pin').value = '';
-      member = { ...customer };
-      renderCard();
-      $('login-panel').hidden = true;
-      $('member-panel').hidden = false;
-      $('member-name').focus();
-    });
+      case 'member/logout':
+        member = undefined;
+        return { ok: true };
+    }
 
-    $('logout').addEventListener('click', () => {
-      member = undefined;
-      $('purchase-form').reset();
-      $('purchase-note').textContent = '';
-      $('member-panel').hidden = true;
-      $('login-panel').hidden = false;
-      $('test-customer').focus();
-    });
+    if (!member) fail(401, 'Log ind for at fortsætte.');
+    const time = Date.now();
+    switch (path) {
+      case 'member':
+        return { member: structuredClone(member) };
+      case 'member/profile':
+        member.name = data.name.trim();
+        member.email = data.email.trim();
+        member.history.push({ t: time, type: 'profile' });
+        return { member: structuredClone(member) };
+      case 'member/sizes':
+        member.sizes = { ...data.sizes };
+        member.history.push({ t: time, type: 'sizes' });
+        return { member: structuredClone(member) };
+      case 'member/demo-purchase': {
+        const ore = Math.round(data.amount * 100);
+        if (!Number.isFinite(ore) || ore < 1 || ore > 99_999_900) fail(400, 'Indtast et gyldigt demobeløb.');
+        const earned = Math.floor(ore / 50_000);
+        const clicks = member.clicks + earned;
+        const coupons = Math.floor(clicks / 5);
+        member.totalKr = (Math.round(member.totalKr * 100) + ore) / 100;
+        member.clicks = clicks % 5;
+        member.history.push({ t: time, type: 'purchase', amount: ore / 100, clicks: earned });
+        for (let count = 0; count < coupons; count++) addCoupon(member, time);
+        return { result: `Demokøbet gav ${earned} klip og ${coupons} ${coupons === 1 ? 'kupon' : 'kuponer'}.` };
+      }
+      default:
+        fail(404, 'Handlingen er ikke tilgængelig i demoen.');
+    }
+  };
+})();
 
-    $('purchase-form').addEventListener('submit', event => {
-      event.preventDefault();
-      const amount = $('amount');
-      if (!member || !amount.validity.valid) return;
-      const ore = Math.round(amount.valueAsNumber * 100);
-      const earnedClips = Math.floor(ore / purchaseOrePerClip);
-      const clips = member.clips + earnedClips;
-      const earnedCoupons = Math.floor(clips / clipsPerCoupon);
-      member.totalOre += ore;
-      member.clips = clips % clipsPerCoupon;
-      member.coupons += earnedCoupons;
-      renderCard();
-      $('purchase-note').textContent = `Demokøb på ${kroner.format(ore / 100)} gav ${earnedClips} klip og ${earnedCoupons} ${earnedCoupons === 1 ? 'kupon' : 'kuponer'}.`;
+(() => {
+  const KR_PER_CLICK = 500, CLICKS_FOR_COUPON = 5, COUPON_VALUE = 500;
+  const CHECK = '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12.5l4.5 4.5L19 7.5"/></svg>';
+
+  const $ = id => document.getElementById(id);
+  const esc = s => String(s ?? '').replace(/[&<>"']/g, c => ({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
+  const digits = s => String(s || '').replace(/\D/g, '');
+  const normPhone = s => { let d = digits(s); if (d.length === 10 && d.startsWith('45')) d = d.slice(2); return d; };
+  const fmtPhone = d => d && d.length === 8 ? d.replace(/(\d{2})(\d{2})(\d{2})(\d{2})/, '$1 $2 $3 $4') : d;
+  const kr = n => (n || 0).toLocaleString('da-DK', {maximumFractionDigits: 2}) + ' kr';
+  const fmtDate = t => t ? new Date(t).toLocaleDateString('da-DK', {day:'numeric', month:'short', year:'numeric'}) : '–';
+  const fmtDT = t => t ? new Date(t).toLocaleString('da-DK', {day:'numeric', month:'short', hour:'2-digit', minute:'2-digit'}) : '';
+  function parseAmount(value){
+    const text = value.trim().replace(/\s/g, '');
+    if (!/^(?:\d+|\d{1,3}(?:\.\d{3})+)(?:,\d{1,2})?$/.test(text)) return NaN;
+    return Number(text.replaceAll('.', '').replace(',', '.'));
+  }
+
+  function toast(msg){ const t = $('toast'); t.textContent = msg; t.classList.add('show'); clearTimeout(toast._t); toast._t = setTimeout(() => t.classList.remove('show'), 2600); }
+
+  function punchesHTML(n, popIndex = -1){
+    let h = '';
+    for (let i = 0; i < CLICKS_FOR_COUPON; i++){
+      const on = i < n;
+      const last = i === CLICKS_FOR_COUPON - 1;
+      h += `<div class="punch ${on ? 'on' : ''} ${!on && last ? 'gift' : ''} ${i === popIndex ? 'pop' : ''}">${on ? CHECK : (last ? '500' : i + 1)}</div>`;
+    }
+    return h;
+  }
+  const miniHTML = n => '<span class="mini">' + Array.from({length: CLICKS_FOR_COUPON}, (_, i) => `<i class="${i < n ? 'on' : ''}"></i>`).join('') + '</span>';
+
+  function histLabel(h){
+    switch (h.type){
+      case 'purchase': return `Køb på ${kr(h.amount)}` + (h.coupon ? ` med kupon ${h.coupon} · ingen klip` : (h.clicks ? ` · +${h.clicks} klip` : ' · ingen nye klip'));
+      case 'click': return h.clicks > 0 ? `+${h.clicks} klip (manuelt)` : `${h.clicks} klip (rettelse)`;
+      case 'coupon': return `Rabatkupon optjent: ${h.code}`;
+      case 'redeem': return `Kupon brugt: ${h.code}`;
+      case 'unredeem': return `Kupon genaktiveret: ${h.code}`;
+      case 'undo': return `Fortrudt: ${h.what || 'sidste handling'}`;
+      case 'join': return 'Blev medlem';
+      case 'profile': return 'Kundeoplysninger opdateret';
+      case 'sizes': return 'Størrelser opdateret';
+      case 'pin': return 'Login-kode opdateret';
+      default: return h.type;
+    }
+  }
+  function histHTML(list, limit, showBy){
+    const arr = (list || []).slice().reverse().slice(0, limit);
+    if (!arr.length) return '<li class="muted">Ingen aktivitet endnu.</li>';
+    return arr.map(h => `<li><span>${esc(histLabel(h))}${showBy && h.by ? ` <span class="muted">· ${esc(h.by)}</span>` : ''}</span><span class="d">${esc(fmtDT(h.t))}</span></li>`).join('');
+  }
+
+  /* ---------- Sizes ---------- */
+  const range = (a, b, s = 1) => { const r = []; for (let x = a; x <= b; x += s) r.push(String(x)); return r; };
+  const SIZE_DEFS = [
+    {key:'top', short:'T-shirt',    label:'T-shirt / strik', opts:['XS','S','M','L','XL','XXL','3XL']},
+    {key:'shirt', short:'Skjorte',  label:'Skjorte',         opts:['XS','S','M','L','XL','XXL','3XL']},
+    {key:'jacket', short:'Jakke', label:'Jakke / habit',   opts:['44','46','48','50','52','54','56','58','60','XS','S','M','L','XL','XXL']},
+    {key:'waist', short:'Bukser W',  label:'Bukser (W)',      opts:range(28, 40)},
+    {key:'length', short:'Længde L', label:'Benlængde (L)',   opts:range(30, 36)},
+    {key:'shoe', short:'Sko',   label:'Sko',             opts:range(39, 47)}
+  ];
+  function sizesSelectHTML(prefix, sizes){
+    sizes = sizes || {};
+    return SIZE_DEFS.map(d => `<div class="field"><label for="${prefix}-${d.key}">${esc(d.label)}</label>
+      <select id="${prefix}-${d.key}" data-size="${d.key}"><option value="">–</option>${d.opts.map(o => `<option ${sizes[d.key] === o ? 'selected' : ''}>${esc(o)}</option>`).join('')}</select></div>`).join('');
+  }
+  const SIZE_ICONS = {
+    top:    '<path d="M9 4l-5 3 2 4 2-1v10h8V10l2 1 2-4-5-3c-.5 1.5-1.6 2.3-3 2.3S9.5 5.5 9 4z"/>',
+    shirt:  '<path d="M9 4l-5 3 2 4 2-1v10h8V10l2 1 2-4-5-3"/><path d="M9 4l3 3 3-3"/><path d="M12 7v13"/><path d="M9 4l-1 3 4 0M15 4l1 3-4 0"/>',
+    jacket: '<path d="M8 4l-4 3 1 13h5l2-9 2 9h5l1-13-4-3"/><path d="M8 4l4 7 4-7"/><path d="M8 4l1 5-2 1M16 4l-1 5 2 1"/>',
+    waist:  '<path d="M6 4h12l1 16h-5l-2-10-2 10H5z"/><path d="M6 7h12"/>',
+    length: '<path d="M7 3h10v18H7z"/><path d="M7 7h3M7 11h4M7 15h3M7 19h4"/>',
+    shoe:   '<path d="M3 17v-5l4-1 3-4h2l1 4c3 1 6 2 8 4v2z"/><path d="M3 17h18"/><path d="M10 11l2 1M9 13l2 1"/>'
+  };
+  const sizeIcon = k => `<svg viewBox="0 0 24 24" aria-hidden="true">${SIZE_ICONS[k] || ''}</svg>`;
+  function sizesViewHTML(sizes){
+    sizes = sizes || {};
+    return SIZE_DEFS.map(d => { const v = sizes[d.key];
+      return `<div class="it ${v ? '' : 'empty'}">${sizeIcon(d.key)}<div class="v">${v ? esc(v) : '–'}</div><div class="l">${esc(d.short || d.label)}</div></div>`; }).join('');
+  }
+  function sizesPickHTML(sizes){
+    sizes = sizes || {};
+    return SIZE_DEFS.map(d => `<div class="pick" data-size="${d.key}" role="radiogroup" aria-label="${esc(d.label)}">
+      <div class="pl">${sizeIcon(d.key)}<span>${esc(d.label)}</span></div>
+      <div class="opts">${d.opts.map(o => `<button type="button" role="radio" aria-checked="${sizes[d.key] === o}" class="${sizes[d.key] === o ? 'on' : ''}" data-val="${esc(o)}">${esc(o)}</button>`).join('')}</div></div>`).join('');
+  }
+  function readSizes(container){
+    const out = {};
+    container.querySelectorAll('select[data-size]').forEach(s => { out[s.dataset.size] = s.value || ''; });
+    container.querySelectorAll('.pick[data-size]').forEach(p => { const b = p.querySelector('button.on'); out[p.dataset.size] = b ? b.dataset.val : ''; });
+    return out;
+  }
+  function chipsHTML(sizes){
+    const set = SIZE_DEFS.filter(d => sizes && sizes[d.key]);
+    if (!set.length) return '<span class="chip none">Ingen størrelser angivet</span>';
+    return set.map(d => `<span class="chip"><span>${esc(d.label)}</span><b>${esc(sizes[d.key])}</b></span>`).join('');
+  }
+  let sizesDirty = false, sizesFor = null;
+
+  /* ---------- Team ---------- */
+  const DEFAULT_TEAM = [
+    {name:'Klaus', role:'Medejer'},
+    {name:'Henrik', role:'Medejer'},
+    {name:'Silas', role:'Butiksmedarbejder'},
+    {name:'Jesper', role:'Butiksmedarbejder'}
+  ];
+  let team = DEFAULT_TEAM;
+  let cashier = null;
+  let staff = null, ownerTeam = [];
+  const initials = n => (n || '?').trim().split(/\s+/).map(w => w[0]).join('').slice(0, 2).toUpperCase();
+  const TEAM_PHOTOS = {klaus:'img/team/klaus.jpg', henrik:'img/team/henrik.jpg', silas:'img/team/silas.jpg', jesper:'img/team/jesper.jpg'};
+  const av = n => { const p = TEAM_PHOTOS[(n || '').trim().split(/\s+/)[0].toLowerCase()]; return p ? `<img src="${p}" alt="${esc(n)}">` : esc(initials(n)); };
+  const isPin = s => /^\d{4}$/.test(s);
+  function renderTeam(){
+    $('who-row').innerHTML = cashier ? `<span class="who-btn on"><span class="avatar">${av(cashier)}</span>${esc(cashier)}</span>` : '';
+    $('slogin-row').innerHTML = team.map((t, i) => `<button type="button" data-login="${i}"><div class="avatar">${av(t.name)}</div>${esc(t.name)}<small>${t.hasPin ? esc(t.role || '') : 'Vælg PIN første gang'}</small></button>`).join('');
+  }
+  function staffLoggedIn(){ return !!staff; }
+
+  let members = new Map();
+  let ownMember = null;
+  let loaded = false, canWrite = false, busy = false, refreshing = false;
+  let selectedId = null, myPhone = null, lastReward = null;
+  let lastClicksShown = {staff:null, member:null};
+  let stateVersion = 0;
+
+  const api = demoApi;
+  async function current(path){
+    try { return await api(path); }
+    catch (error){ if (error.status !== 401) throw error; return null; }
+  }
+  async function refresh(){
+    if (refreshing) return;
+    const version = stateVersion;
+    refreshing = true;
+    try {
+      const [publicData, staffData, memberData] = await Promise.all([
+        api('team'), current('staff'), current('member')
+      ]);
+      if (version !== stateVersion) return;
+      const previousId = staff?.id;
+      const previousPhone = myPhone;
+      team = publicData.team;
+      staff = staffData?.staff || null;
+      cashier = staff?.name || null;
+      canWrite = !!staff && staff.access !== 'read';
+      ownerTeam = staffData?.team || [];
+      members = new Map((staffData?.members || []).map(member => [member.phone, member]));
+      ownMember = memberData?.member || null;
+      myPhone = ownMember?.phone || null;
+      if (myPhone !== previousPhone){
+        sizesDirty = false;
+        lastClicksShown.member = null;
+        setProfileForm(false);
+        setSizesPanel(false);
+        setPwPanel(false);
+      }
+      if (staff && previousId !== staff.id){
+        try { localStorage.setItem('men-klub-staff-device', '1'); } catch(e){}
+        markStaffDevice();
+      }
+      if (previousId && previousId !== staff?.id) clearStaffSelection();
+      loaded = true;
+      $('s-sync').textContent = 'Opdateret';
+      renderTeam();
+      render();
+    } catch {
+      $('s-sync').textContent = 'Forbindelsen er afbrudt';
+      if (!loaded) $('lookup-err').textContent = 'Kundeklubben kunne ikke hentes. Prøv igen om lidt.';
+    } finally {
+      refreshing = false;
+      if (version !== stateVersion) void refresh();
+    }
+  }
+  function clearStaffSelection(){
+    selectedId = null;
+    lastReward = null;
+    $('s-search').value = '';
+    closeMember();
+    $('t-bg').classList.remove('open');
+    $('c-bg').classList.remove('open');
+    closeActivation();
+  }
+
+  /* ---------- Routing ---------- */
+  function markStaffDevice(){
+    let dev = false; try { dev = localStorage.getItem('men-klub-staff-device') === '1'; } catch(e){}
+    document.body.classList.toggle('staff-device', dev || location.hash === '#personale');
+  }
+  function route(){
+    markStaffDevice();
+    const v = 'medlem';
+    $('view-medlem').hidden = v !== 'medlem';
+    $('view-personale').hidden = v !== 'personale';
+    $('nav-medlem').classList.toggle('on', v === 'medlem');
+    $('nav-personale').classList.toggle('on', v === 'personale');
+    document.querySelectorAll('.staffbtn').forEach(b => b.classList.toggle('on', v === 'personale'));
+    window.scrollTo(0, 0);
+    render();
+    if (v === 'personale') setTimeout(() => $('s-search').focus(), 50);
+  }
+  window.addEventListener('hashchange', route);
+
+  /* ---------- Rendering ---------- */
+  function render(){ renderMember(); renderStaff(); }
+
+  function renderMember(){
+    const m = ownMember;
+    if (!m){ $('lookup').hidden = false; $('status').hidden = true; return; }
+    $('lookup').hidden = true; $('status').hidden = false;
+    const c = m.clicks || 0;
+    $('st-name').textContent = (m.name || 'Medlem').split(' ')[0];
+    $('st-count').textContent = c;
+    const pop = lastClicksShown.member !== null && c > lastClicksShown.member ? c - 1 : -1;
+    $('st-punches').innerHTML = punchesHTML(c, pop);
+    lastClicksShown.member = c;
+    const left = CLICKS_FOR_COUPON - c;
+    const toGo = left * KR_PER_CLICK;
+    $('st-msg').innerHTML = left === CLICKS_FOR_COUPON
+      ? `Handl for <b>${kr(KR_PER_CLICK)}</b> for at få dit første klip.`
+      : `Du mangler <b>${left} klip</b> – handl for <b>${kr(toGo)}</b> mere, så får du en rabatkupon på <b>${kr(COUPON_VALUE)}</b>.`;
+    const progress = (c / CLICKS_FOR_COUPON) * 100;
+    $('st-bar').style.width = Math.min(100, progress) + '%';
+    // Kundekort
+    const no = String(m.number).padStart(4, '0');
+    $('kk-no').textContent = 'Nr. ' + no; $('kk-no2').textContent = no;
+    $('kk-cardname').textContent = m.name || 'Medlem';
+    $('kk-cardphone').textContent = fmtPhone(myPhone);
+    $('kk-name').textContent = m.name || '–';
+    $('kk-phone').textContent = fmtPhone(myPhone);
+    $('kk-email').textContent = m.email || 'Ikke angivet';
+    $('kk-since').textContent = fmtDate(m.joined);
+    $('kk-total').textContent = kr(m.totalKr);
+    const act = (m.coupons || []).filter(x => !x.used).length;
+    $('kk-coupons').textContent = act ? `${act} × ${kr(COUPON_VALUE)}` : 'Ingen lige nu';
+    $('kk-sizes').innerHTML = sizesViewHTML(m.sizes);
+
+    const coupons = (m.coupons || []).slice().sort((a, b) => (a.used - b.used) || (b.created - a.created));
+    $('st-coupons').innerHTML = coupons.length ? coupons.map(cp => `
+      <div class="coupon ${cp.used ? 'used' : ''}">
+        <div><div class="lbl">${cp.used ? 'Brugt ' + esc(fmtDate(cp.usedAt)) : 'Demokupon · 500 kr.'}</div><div class="code">${esc(cp.code)}</div></div>
+        <div class="val">${kr(cp.value || COUPON_VALUE)}</div>
+      </div>`).join('') : '<p class="muted" style="margin:0">Du har ingen kuponer endnu. Ved 5 klip får du automatisk en kupon på 500 kr.</p>';
+    $('st-hist').innerHTML = histHTML(m.history, 8);
+    if (!sizesDirty || sizesFor !== myPhone){
+      $('st-sizes').innerHTML = sizesPickHTML(m.sizes);
+      sizesDirty = false; sizesFor = myPhone;
+    }
+    $('st-sizes-save').disabled = !sizesDirty;
+  }
+
+  function filteredMembers(){
+    const q = $('s-search').value.trim().toLowerCase();
+    const qd = digits(q);
+    let arr = [...members.entries()].map(([id, m]) => ({id, ...m}));
+    if (q) arr = arr.filter(m => (qd && m.id.includes(qd)) || (m.name || '').toLowerCase().includes(q) || (m.email || '').toLowerCase().includes(q));
+    arr.sort((a, b) => (b.updated || 0) - (a.updated || 0));
+    return arr;
+  }
+
+  function renderStaff(){
+    if ($('view-personale').hidden) return;
+    const li = staffLoggedIn();
+    $('staff-login').hidden = li; $('staff-app').hidden = !li; $('btn-new').hidden = !li;
+    $('team-edit').hidden = staff?.access !== 'owner';
+    $('ro-notice').hidden = !li || canWrite;
+    $('btn-new').disabled = !canWrite || busy;
+    if (!li) return;
+    const list = filteredMembers();
+    const q = $('s-search').value.trim();
+    const qd = normPhone(q);
+    let html = list.slice(0, 200).map(m => {
+      const open = (m.coupons || []).filter(c => !c.used).length;
+      return `<li data-id="${esc(m.id)}" class="${m.id === selectedId ? 'sel' : ''}">
+        <div><div class="nm">${esc(m.name || 'Uden navn')}</div><div class="ph">${esc(fmtPhone(m.id))}</div></div>
+        <div style="text-align:right">${miniHTML(m.clicks || 0)}${open ? `<div style="margin-top:5px"><span class="badge">${open} kupon${open > 1 ? 'er' : ''}</span></div>` : ''}</div>
+      </li>`;
+    }).join('');
+    if (!loaded) html = '<li class="empty" style="cursor:default">Henter medlemmer…</li>';
+    else if (!list.length){
+      html = q
+        ? `<li class="empty" style="cursor:default">Ingen fundet.${qd.length === 8 && canWrite !== false ? ` <br><br><button class="btn small" type="button" id="s-create-q">Opret ${esc(fmtPhone(qd))}</button>` : ''}</li>`
+        : '<li class="empty" style="cursor:default">Ingen medlemmer endnu. Tryk “+ Ny kunde” for at oprette den første.</li>';
+    }
+    $('s-list').innerHTML = html;
+    $('s-countall').textContent = members.size + (members.size === 1 ? ' medlem' : ' medlemmer');
+    const cq = $('s-create-q'); if (cq) cq.onclick = () => openMember(null, qd);
+
+    const m = selectedId ? members.get(selectedId) : null;
+    $('s-empty').hidden = !!m; $('s-detail').hidden = !m;
+    if (!m) return;
+    const c = m.clicks || 0;
+    $('s-name').textContent = m.name || 'Uden navn';
+    $('s-phone').textContent = fmtPhone(selectedId) + (m.email ? ' · ' + m.email : '');
+    $('s-sizes').innerHTML = chipsHTML(m.sizes);
+    $('s-count').textContent = c;
+    const pop = lastClicksShown.staff !== null && lastClicksShown.staffId === selectedId && c > lastClicksShown.staff ? c - 1 : -1;
+    $('s-punches').innerHTML = punchesHTML(c, pop);
+    lastClicksShown.staff = c; lastClicksShown.staffId = selectedId;
+    const open = (m.coupons || []).filter(x => !x.used).length;
+    $('s-sub').innerHTML = `Handlet for ${kr(m.totalKr)} i alt · ${m.hasPin ? 'Login-kode valgt' : 'Har ikke valgt login-kode endnu'}` + (open ? ` · <b style="color:var(--primary)">${open} ubrugt${open > 1 ? 'e' : ''} kupon${open > 1 ? 'er' : ''}</b>` : '');
+
+    const showReward = lastReward && lastReward.id === selectedId;
+    $('s-reward').hidden = !showReward;
+    if (showReward) $('s-reward-code').textContent = lastReward.codes.join('  ·  ');
+
+    const coupons = (m.coupons || []).slice().sort((a, b) => (a.used - b.used) || (b.created - a.created));
+    $('s-coupons').innerHTML = coupons.length ? coupons.map(cp => `
+      <div class="coupon ${cp.used ? 'used' : ''}">
+        <div><div class="lbl">${cp.used ? 'Brugt ' + esc(fmtDate(cp.usedAt)) : 'Optjent ' + esc(fmtDate(cp.created))}</div><div class="code">${esc(cp.code)}</div></div>
+        <div style="display:flex;align-items:center;gap:14px"><div class="val">${kr(cp.value || COUPON_VALUE)}</div>
+        ${cp.used ? (cp.linked ? '' : `<button class="btn ghost small" data-unredeem="${esc(cp.code)}">Fortryd</button>`) : `<button class="btn small" data-redeem="${esc(cp.code)}">Markér brugt</button>`}</div>
+      </div>`).join('') : '<p class="muted" style="margin:0">Ingen kuponer endnu.</p>';
+    $('s-hist').innerHTML = histHTML(m.history, 25, true);
+    const picker = $('s-usecoupon');
+    const selectedCode = picker.value;
+    const options = '<option value="">Ingen kupon</option>' + coupons.filter(cp => !cp.used)
+      .map(cp => '<option value="' + esc(cp.code) + '">' + esc(cp.code) + ' · 500 kr</option>').join('');
+    if (picker.innerHTML !== options){
+      picker.innerHTML = options;
+      picker.value = coupons.some(cp => !cp.used && cp.code === selectedCode) ? selectedCode : '';
+    }
+    $('s-usecoupon-wrap').hidden = !open;
+    updatePreview();
+    applyWriteGate();
+  }
+
+  function updatePreview(){
+    const m = selectedId ? members.get(selectedId) : null;
+    if (!m) return;
+    const a = parseAmount($('s-amount').value);
+    const useCoupon = $('s-usecoupon').value;
+    if (!(a > 0)){ $('s-preview').innerHTML = '<span class="muted">' + (useCoupon ? 'Skriv beløbet – købet giver ingen klip, fordi kunden bruger en kupon.' : 'Skriv beløbet – klip beregnes automatisk (1 klip pr. hele 500 kr i købet).') + '</span>'; return; }
+    if (useCoupon){ $('s-preview').innerHTML = `Kunden bruger en rabatkupon – købet giver <b>0 klip</b>. Kunden har stadig <b>${(m.clicks || 0)}/5 klip</b>.`; return; }
+    const n = Math.floor(a / KR_PER_CLICK);
+    const after = (m.clicks || 0) + n;
+    const coupons = Math.floor(after / CLICKS_FOR_COUPON);
+    let s = `Giver <b>${n} klip</b>`;
+    s += ` → kunden får <b>${after % CLICKS_FOR_COUPON}/5 klip</b>`;
+    if (coupons) s += ` og <b style="color:var(--primary)">${coupons} rabatkupon${coupons > 1 ? 'er' : ''} på 500 kr</b>`;
+    s += '.';
+    $('s-preview').innerHTML = s;
+  }
+
+  function applyWriteGate(){
+    const ro = canWrite === false;
+    $('ro-notice').hidden = !ro;
+    ['s-submit','s-plus1','s-minus1','s-undo','btn-new','s-edit'].forEach(id => { const el = $(id); if (el) el.disabled = ro || busy; });
+    document.querySelectorAll('[data-redeem],[data-unredeem]').forEach(b => b.disabled = ro || busy);
+    const m = selectedId ? members.get(selectedId) : null;
+    if (m){
+      $('s-undo').disabled = ro || busy || !m.undo;
+      $('s-minus1').disabled = ro || busy || !(m.clicks > 0);
+    }
+  }
+
+  /* ---------- Mutations ---------- */
+  async function saveMember(path, payload){
+    if (!canWrite || busy) return null;
+    busy = true;
+    stateVersion++;
+    applyWriteGate();
+    try {
+      const result = await api(path, payload);
+      stateVersion++;
+      members.set(result.member.phone, result.member);
+      if (ownMember?.phone === result.member.phone) {
+        const {undo, ...view} = result.member;
+        ownMember = view;
+      }
+      return result;
+    } finally {
+      busy = false;
+      applyWriteGate();
+    }
+  }
+
+  async function wallet(id, payload, success){
+    if (!id) return false;
+    try {
+      const result = await saveMember('members/' + id, payload);
+      if (!result) return false;
+      const codes = result.rewards || [];
+      lastReward = codes.length ? {id, codes} : null;
+      toast(codes.length ? (codes.length === 1 ? 'En ny rabatkupon er klar' : codes.length + ' nye rabatkuponer er klar') : success);
+      render();
+      return true;
+    } catch (error){
+      toast(error.message || 'Kunne ikke gemme.');
+      void refresh();
+      return false;
+    }
+  }
+  async function registerPurchase(){
+    const id = selectedId;
+    const amount = parseAmount($('s-amount').value);
+    if (!(amount > 0) || amount > 100000){ toast('Skriv et beløb mellem 0,01 og 100.000 kr.'); return; }
+    if (await wallet(id, {action:'purchase', amountOre: Math.round(amount * 100), coupon:$('s-usecoupon').value}, 'Køb registreret') && id === selectedId){
+      $('s-amount').value = '';
+      $('s-usecoupon').value = '';
+      updatePreview();
+    }
+  }
+
+  /* ---------- Modals ---------- */
+  let editingId = null;
+  function openMember(id, presetPhone){
+    editingId = id;
+    const m = id ? members.get(id) : null;
+    $('m-title').textContent = m ? 'Rediger kunde' : 'Ny kunde';
+    $('m-save').textContent = m ? 'Gem' : 'Opret';
+    $('m-name').value = m ? (m.name || '') : '';
+    $('m-phone').value = m ? fmtPhone(id) : (presetPhone ? fmtPhone(presetPhone) : '');
+    $('m-phone').disabled = !!m;
+    $('m-email').value = m ? (m.email || '') : '';
+    $('m-sizes').innerHTML = sizesSelectHTML('ms', m ? m.sizes : null);
+    $('m-pin').value = '';
+    $('m-reset').checked = false;
+    $('m-reset-wrap').hidden = !m;
+    $('m-pin-lbl').textContent = m ? (m.hasPin ? 'Ny kode til kunden (lad stå tomt for at beholde)' : 'Kundens kode (valgfri, 4 cifre)') : 'Kundens kode (valgfri, 4 cifre)';
+    $('m-err').textContent = '';
+    $('m-bg').classList.add('open');
+    setTimeout(() => $(presetPhone || m ? 'm-name' : 'm-name').focus(), 30);
+  }
+  function closeMember(){ $('m-bg').classList.remove('open'); }
+  $('m-cancel').onclick = closeMember;
+  $('m-bg').addEventListener('click', e => { if (e.target === $('m-bg')) closeMember(); });
+  $('m-form').addEventListener('submit', async e => {
+    e.preventDefault();
+    if (busy) return;
+    const id = editingId;
+    const phone = id || normPhone($('m-phone').value);
+    const payload = {
+      action:'profile', phone, name:$('m-name').value.trim(), email:$('m-email').value.trim(),
+      sizes:readSizes($('m-sizes')), pin:$('m-pin').value.trim(), reset:$('m-reset').checked
+    };
+    $('m-save').disabled = true;
+    $('m-err').textContent = '';
+    try {
+      const result = await saveMember(id ? 'members/' + id : 'members', payload);
+      if (!result) return;
+      closeMember();
+      selectedId = phone;
+      if (!id) $('s-search').value = '';
+      lastReward = null;
+      render();
+      if (result.activation) showActivation([[result.member.name, result.activation]]);
+      else toast(id ? 'Kunde opdateret' : 'Kunde oprettet');
+    } catch (error){
+      $('m-err').textContent = error.message;
+    } finally {
+      $('m-save').disabled = false;
+    }
+  });
+
+  function showActivation(codes){
+    $('act-codes').replaceChildren(...codes.map(([name, code]) => {
+      const row = document.createElement('p');
+      row.textContent = name + ' · ' + code;
+      return row;
+    }));
+    $('act-bg').classList.add('open');
+    $('act-close').focus();
+  }
+  function closeActivation(){
+    $('act-bg').classList.remove('open');
+    $('act-codes').replaceChildren();
+  }
+  $('act-close').onclick = closeActivation;
+
+  let confirmFn = null;
+  function confirmBox(title, text, fn){ $('c-title').textContent = title; $('c-text').textContent = text; confirmFn = fn; $('c-bg').classList.add('open'); }
+  $('c-no').onclick = () => $('c-bg').classList.remove('open');
+  $('c-yes').onclick = () => { $('c-bg').classList.remove('open'); const f = confirmFn; confirmFn = null; f && f(); };
+
+  /* ---------- Events ---------- */
+  $('lookup-first').onclick = () => {
+    const setup = $('lookup-act-wrap').hidden;
+    $('lookup-act-wrap').hidden = !setup;
+    $('lookup-pin2-wrap').hidden = !setup;
+    $('lookup-btn').hidden = setup;
+    $('lookup-first').textContent = setup ? 'Tilbage til login' : 'Aktivér medlemskab med engangskode';
+    $('login-title').textContent = setup ? 'Vælg din kode' : 'Log ind på dit klippekort';
+    $('lookup-err').textContent = '';
+    $('lookup-activation').value = '';
+    $('lookup-pin').value = '';
+    $('lookup-pin2').value = '';
+  };
+  async function submitAuth(kind, button, payload, message){
+    if (button.disabled) return false;
+    button.disabled = true;
+    message.textContent = '';
+    try {
+      await api(kind + '/login', payload);
+      stateVersion++;
+      return true;
+    } catch (error){
+      message.textContent = error.message;
+      return false;
+    } finally {
+      button.disabled = false;
+    }
+  }
+  $('lookup-form').addEventListener('submit', async e => {
+    e.preventDefault();
+    const id = normPhone($('lookup-phone').value);
+    const pin = $('lookup-pin').value.trim();
+    const setup = !$('lookup-act-wrap').hidden;
+    const activation = setup ? $('lookup-activation').value.trim() : '';
+    const message = $('lookup-err');
+    if (id.length !== 8){ message.textContent = 'Skriv dit telefonnummer med 8 cifre.'; return; }
+    if (!isPin(pin)){ message.textContent = 'Skriv din 4-cifrede kode.'; return; }
+    if (setup && (!activation || $('lookup-pin2').value !== pin)){
+      message.textContent = 'Indtast engangskoden og gentag din nye PIN.';
+      return;
+    }
+    const button = setup ? $('lookup-activate') : $('lookup-btn');
+    if (!(await submitAuth('member', button, {id, pin, activation}, message))) return;
+    if (setup) $('lookup-first').click();
+    $('lookup-pin').value = '';
+    await refresh();
+  });
+  $('burger').onclick = () => { const o = $('mainnav').classList.toggle('open'); $('burger').setAttribute('aria-expanded', o); };
+
+  let staffLoginId = null;
+  $('slogin-row').addEventListener('click', e => {
+    const button = e.target.closest('[data-login]');
+    if (!button) return;
+    const person = team[Number(button.dataset.login)];
+    if (!person) return;
+    staffLoginId = person.id;
+    $('slogin-row').hidden = true;
+    $('slogin-form').hidden = false;
+    $('slogin-who').textContent = person.name;
+    const setup = !person.hasPin;
+    $('slogin-act').hidden = !setup;
+    $('slogin-pin2').hidden = !setup;
+    $('slogin-btn').textContent = setup ? 'Gem PIN og log ind' : 'Log ind';
+    ['slogin-act','slogin-pin','slogin-pin2'].forEach(id => { $(id).value = ''; });
+    $('slogin-err').textContent = '';
+    $(setup ? 'slogin-act' : 'slogin-pin').focus();
+  });
+  $('slogin-back').onclick = () => {
+    staffLoginId = null;
+    $('slogin-form').hidden = true;
+    $('slogin-row').hidden = false;
+  };
+  $('slogin-form').addEventListener('submit', async e => {
+    e.preventDefault();
+    if (!staffLoginId) return;
+    const pin = $('slogin-pin').value.trim();
+    const setup = !$('slogin-act').hidden;
+    const activation = setup ? $('slogin-act').value.trim() : '';
+    const message = $('slogin-err');
+    if (!isPin(pin)){ message.textContent = 'PIN-koden skal være 4 cifre.'; return; }
+    if (setup && (!activation || $('slogin-pin2').value !== pin)){
+      message.textContent = 'Indtast engangskoden og gentag din nye PIN.';
+      return;
+    }
+    if (!(await submitAuth('staff', $('slogin-btn'), {id:staffLoginId, pin, activation}, message))) return;
+    $('slogin-pin').value = '';
+    $('slogin-act').value = '';
+    $('slogin-pin2').value = '';
+    $('slogin-back').click();
+    await refresh();
+    if (staff) $('s-search').focus();
+  });
+  async function logout(kind){
+    try {
+      await api(kind + '/logout', {});
+      stateVersion++;
+      if (kind === 'staff'){
+        staff = null; cashier = null; members.clear(); canWrite = false; ownerTeam = [];
+        clearStaffSelection();
+        renderTeam();
+      } else {
+        ownMember = null; myPhone = null; sizesDirty = false;
+        setProfileForm(false); setSizesPanel(false); setPwPanel(false);
+        $('lookup-phone').value = '';
+        $('lookup-err').textContent = '';
+      }
+      render();
+      toast('Du er logget ud');
+    } catch (error){ toast(error.message); }
+  }
+  $('staff-logout').onclick = () => logout('staff');
+
+  $('team-edit').onclick = () => {
+    if (staff?.access !== 'owner') return;
+    $('t-rows').innerHTML = ownerTeam.map(person => `<div class="teamedit-row" data-staff="${esc(person.id)}">
+      <input class="input" data-name aria-label="Navn" value="${esc(person.name)}" required maxlength="80">
+      <input class="input" data-role aria-label="Rolle" value="${esc(person.role)}" maxlength="80">
+      ${person.access === 'owner' ? '<span>Medejer · fuld adgang</span>' : `<select class="input" data-access aria-label="Adgang">
+        <option value="read" ${person.access === 'read' ? 'selected' : ''}>Læseadgang</option>
+        <option value="write" ${person.access === 'write' ? 'selected' : ''}>Læse- og skriveadgang</option>
+      </select>`}
+      ${person.id === staff.id ? '' : `<label><input type="checkbox" data-reset> ${person.hasPin ? 'Nulstil PIN og lav engangskode' : 'Lav engangskode'}</label>`}
+    </div>`).join('');
+    $('t-err').textContent = '';
+    $('t-bg').classList.add('open');
+  };
+  $('t-cancel').onclick = () => $('t-bg').classList.remove('open');
+  $('t-form').addEventListener('submit', async e => {
+    e.preventDefault();
+    const button = e.currentTarget.querySelector('[type=submit]');
+    if (button.disabled) return;
+    const list = [...$('t-rows').querySelectorAll('[data-staff]')].map(row => ({
+      id: row.dataset.staff, name: row.querySelector('[data-name]').value,
+      role: row.querySelector('[data-role]').value, access: row.querySelector('[data-access]')?.value,
+      reset: row.querySelector('[data-reset]')?.checked || false
+    }));
+    button.disabled = true;
+    try {
+      const result = await api('team', {team:list});
+      stateVersion++;
+      $('t-cancel').click();
+      if (result.codes.length) showActivation(result.codes.map(entry => [entry.name, entry.activation]));
+      else toast('Holdet er opdateret');
+      void refresh();
+    } catch (error){ $('t-err').textContent = error.message; }
+    finally { button.disabled = false; }
+  });
+
+  function setProfileForm(open){
+    $('profile-form').hidden = !open;
+    $('profile-toggle').setAttribute('aria-expanded', String(open));
+    $('profile-toggle').textContent = open ? 'Luk profilredigering' : 'Redigér min profil';
+    $('profile-error').textContent = '';
+    $('profile-name').value = open ? ownMember.name : '';
+    $('profile-email').value = open ? ownMember.email : '';
+    if (open) $('profile-name').focus();
+  }
+  $('profile-toggle').onclick = () => {
+    if (ownMember) setProfileForm($('profile-form').hidden);
+  };
+  $('profile-form').addEventListener('submit', async event => {
+    event.preventDefault();
+    const phone = ownMember?.phone;
+    const button = $('profile-save');
+    if (!phone || button.disabled) return;
+    button.disabled = true;
+    $('profile-error').textContent = '';
+    try {
+      const result = await api('member/profile', {
+        name: $('profile-name').value.trim(), email: $('profile-email').value.trim()
+      });
+      if (ownMember?.phone !== phone) return;
+      stateVersion++;
+      ownMember = result.member;
+      setProfileForm(false);
+      renderMember();
+      $('profile-toggle').focus();
+      toast('Din profil er gemt');
+    } catch (error) {
+      if (ownMember?.phone === phone) $('profile-error').textContent = error.message;
+    } finally {
+      button.disabled = false;
+    }
+  });
+  function setSizesPanel(open){
+    $('sz-panel').classList.toggle('open', open);
+    $('sz-toggle').setAttribute('aria-expanded', String(open));
+    $('sz-toggle').firstChild.textContent = open ? 'Luk ' : 'Ret mine størrelser ';
+  }
+  $('sz-toggle').onclick = () => setSizesPanel(!$('sz-panel').classList.contains('open'));
+  $('st-sizes').addEventListener('click', e => {
+    const b = e.target.closest('.pick .opts button'); if (!b) return;
+    const wasOn = b.classList.contains('on');
+    b.parentNode.querySelectorAll('button').forEach(x => { x.classList.remove('on'); x.setAttribute('aria-checked', 'false'); });
+    if (!wasOn){ b.classList.add('on'); b.setAttribute('aria-checked', 'true'); }
+    sizesDirty = true; $('st-sizes-save').disabled = false; $('st-sizes-msg').textContent = 'Husk at gemme';
+  });
+  $('st-sizes-save').onclick = async () => {
+    if (!ownMember) return;
+    const btn = $('st-sizes-save');
+    btn.disabled = true;
+    $('st-sizes-msg').textContent = 'Gemmer…';
+    try {
+      const result = await api('member/sizes', {sizes:readSizes($('st-sizes'))});
+      stateVersion++;
+      ownMember = result.member;
+      sizesDirty = false;
+      renderMember();
+      setSizesPanel(false);
+      $('st-sizes-msg').textContent = '';
+      toast('Størrelser gemt');
+    } catch (error){
+      btn.disabled = false;
+      $('st-sizes-msg').textContent = error.message;
+    }
+  };
+  function setPwPanel(open){
+    $('pw-panel').classList.toggle('open', open);
+    $('pw-toggle').setAttribute('aria-expanded', String(open));
+    $('pw-toggle').firstChild.textContent = open ? 'Luk ' : 'Skift kode ';
+    if (!open){ ['pw-old', 'pw-new', 'pw-new2'].forEach(i => { $(i).value = ''; }); $('pw-msg').textContent = ''; }
+  }
+  $('pw-toggle').onclick = () => setPwPanel(!$('pw-panel').classList.contains('open'));
+  ['pw-old', 'pw-new', 'pw-new2'].forEach(i => $(i).addEventListener('input', e => { e.target.value = e.target.value.replace(/\D/g, '').slice(0, 4); }));
+  $('pw-save').onclick = async () => {
+    if (!ownMember) return;
+    const msg = text => { $('pw-msg').textContent = text; };
+    const old = $('pw-old').value.trim();
+    const pin = $('pw-new').value.trim();
+    if (!isPin(pin) || !isPin(old)){ msg('Begge koder skal være 4 cifre.'); return; }
+    if ($('pw-new2').value.trim() !== pin){ msg('De to nye koder er ikke ens.'); return; }
+    const button = $('pw-save');
+    button.disabled = true;
+    try {
+      const result = await api('member/pin', {old, pin});
+      stateVersion++;
+      ownMember = result.member;
+      setPwPanel(false);
+      toast('Din nye kode er gemt');
+    } catch (error){ msg(error.message); }
+    finally { button.disabled = false; }
+  };
+  $('st-logout').onclick = () => logout('member');
+
+  $('s-search').addEventListener('input', () => renderStaff());
+  $('s-search').addEventListener('keydown', e => {
+    if (e.key === 'Enter'){ const l = filteredMembers(); if (l.length === 1 || (l.length && normPhone($('s-search').value) === l[0].id)){ select(l[0].id); } }
+  });
+  $('s-list').addEventListener('click', e => { const li = e.target.closest('li[data-id]'); if (li) select(li.dataset.id); });
+  function select(id){ selectedId = id; lastReward = null; lastClicksShown.staff = null; $('s-amount').value = ''; $('s-usecoupon').value = ''; renderStaff(); setTimeout(() => $('s-amount').focus(), 30); if (window.innerWidth < 860) $('s-panel').scrollIntoView({behavior:'smooth'}); }
+
+  $('btn-new').onclick = () => { const q = normPhone($('s-search').value); openMember(null, q.length === 8 ? q : ''); };
+  $('s-edit').onclick = () => selectedId && openMember(selectedId);
+  $('s-form').addEventListener('submit', e => { e.preventDefault(); registerPurchase(); });
+  $('s-amount').addEventListener('input', updatePreview);
+  $('s-usecoupon').addEventListener('change', updatePreview);
+  $('s-quick').addEventListener('click', e => { const b = e.target.closest('button[data-amt]'); if (b){ $('s-amount').value = b.dataset.amt; updatePreview(); $('s-amount').focus(); } });
+  $('s-plus1').onclick = () => wallet(selectedId, {action:'click', delta:1}, 'Klip tilføjet');
+  $('s-minus1').onclick = () => {
+    const id = selectedId;
+    const member = members.get(id);
+    if (member?.clicks > 0) confirmBox('Fjern et klip?', member.name + ' går fra ' + member.clicks + ' til ' + (member.clicks - 1) + ' klip.',
+      () => wallet(id, {action:'click', delta:-1}, 'Klip fjernet'));
+  };
+  $('s-undo').onclick = () => {
+    const id = selectedId;
+    const undo = members.get(id)?.undo;
+    if (undo) confirmBox('Fortryd sidste handling?', undo.what + ' bliver rullet tilbage.',
+      () => wallet(id, {action:'undo', undoId:undo.id}, 'Sidste handling er fortrudt'));
+  };
+  $('s-coupons').addEventListener('click', e => {
+    const id = selectedId;
+    const redeem = e.target.closest('[data-redeem]');
+    const restore = e.target.closest('[data-unredeem]');
+    if (redeem) confirmBox('Markér kupon som brugt?', 'Kupon ' + redeem.dataset.redeem + ' på 500 kr markeres som brugt.',
+      () => wallet(id, {action:'redeem', code:redeem.dataset.redeem}, 'Kupon markeret som brugt'));
+    if (restore) wallet(id, {action:'unredeem', code:restore.dataset.unredeem}, 'Kupon er aktiv igen');
+  });
+
+  /* ---------- Webshop ---------- */
+  const SHOP = 'https://www.supermen.dk';
+  const CAMPAIGN_START = Date.parse('2026-11-25T00:00:00+01:00');
+  const CAMPAIGN_END = Date.parse('2026-12-01T00:00:00+01:00');
+  const showCampaign = Date.now() >= CAMPAIGN_START && Date.now() < CAMPAIGN_END;
+  $('promo-campaign').hidden = !showCampaign;
+  $('nav-campaign').hidden = !showCampaign;
+
+  // Udvalget og kampagnepriserne er aflæst på webshoppen 25. november 2026.
+  const products = [
+    { brand: 'LEE', title: 'Relaxed Sherpa Jakke i Fløjl Black', handle: 'lee-relaxed-sherpa-jacket-11656-black', image: '112386293_3.jpg?v=1788690287', price: 800, previous: 1000, local: true },
+    { brand: 'Morris', title: 'Lennox Puffer Jakke Olive', handle: 'morris-lennox-puffer-jacket-77-olive', image: '101115LennoxPufferJacket77Olive2.jpg?v=1789028532', price: 2160, previous: 2700, local: true },
+    { brand: 'Les Deux', title: 'Signature Print Sweatshirt Snow Melange', handle: 'les-deux-signature-print-sweatshirt-snow-melange', image: 'les-deux-signature-print-sweatshirt-snow-melange-6-model-outfit.jpg?v=1791544162', price: 560, previous: 700, local: true },
+    { brand: 'Les Deux', title: 'Check Overshirt Darkest Spruce Green', handle: 'les-deux-check-overshirt-darkest-spruce-green', image: 'les-deux-check-overshirt-darkest-spruce-green-6-model-outfit.jpg?v=1791546353', price: 720, previous: 900, local: true },
+    { brand: 'Morris', title: 'Flannel Big Check Slim Fit Skjorte Olive', handle: 'morris-flannel-big-check-shirt-slim-fit-75-olive', image: '801814FlannelBigCheckShirt-SlimFit75Olive1.jpg?v=1789028986', price: 880, previous: 1100, local: true },
+    { brand: 'Les Deux', title: 'Wool Colourblock Overshirt Brun/Beige', handle: 'les-deux-wool-colourblock-overshirt', image: 'unnamed_34.jpg?v=1785835723', price: 1280, previous: 1600 },
+    { brand: 'Clarks', title: 'Cleyhill Top G Støvle Dark Brown Leather', handle: 'clarks-cleyhill-top-g-5228-dark-brown-lea-cl26329448', image: 'cleyhill-top-brun-ai-fors-g.png?v=1795190286', price: 880, previous: 1100, local: true },
+    { brand: 'Clarks', title: 'Cleyhill Hi G Støvle Dark Sand Suede', handle: 'clarks-cleyhill-hi-g-5232-dark-sand-suede-cl26320158', image: 'cleyhill-hi-sand-par-ai-fors-g.png?v=1795190276', price: 880, previous: 1100 }
+  ];
+  const shopPrice = value => value.toLocaleString('da-DK', { minimumFractionDigits: 2 }) + ' kr';
+  const viewport = $('car-viewport');
+  $('car-track').innerHTML = products.map(product => {
+    const image = SHOP + '/cdn/shop/files/' + product.image + '&width=600';
+    const promotion = showCampaign ? '<span class="promo-badge">Black Days</span>' : '';
+    const cost = showCampaign
+      ? '<div class="p"><span>Nu ' + shopPrice(product.price) + '</span> <del>Før ' + shopPrice(product.previous) + '</del></div>'
+      : '<div class="p">Se pris på Supermen.dk</div>';
+    return '<a class="prod" href="' + SHOP + '/products/' + esc(product.handle) + '">' +
+      '<div class="img"><img src="' + esc(image) + '" alt="" loading="lazy"' +
+      (product.local ? ' data-fallback="img/' + esc(product.handle) + '.jpg"' : '') + '>' + promotion + '</div>' +
+      '<div class="meta"><span class="b">' + esc(product.brand) + '</span><span class="tag">Nyhed</span>' +
+      '<div class="t">' + esc(product.title) + '</div>' + cost + '</div></a>';
+  }).join('');
+  $('car-track').querySelectorAll('img[data-fallback]').forEach(img => {
+    img.addEventListener('error', () => { img.src = img.dataset.fallback; }, { once: true });
+  });
+  const slide = direction => viewport.scrollBy({
+    left: direction * viewport.clientWidth,
+    behavior: matchMedia('(prefers-reduced-motion: reduce)').matches ? 'instant' : 'smooth'
+  });
+  $('car-next').onclick = () => slide(1);
+  $('car-prev').onclick = () => slide(-1);
+
+  $('demo-purchase').addEventListener('submit', async event => {
+    event.preventDefault();
+    try {
+      const { result } = await api('member/demo-purchase', { amount: $('demo-amount').valueAsNumber });
+      $('demo-purchase-result').textContent = result;
       event.target.reset();
-    });
-  </script>
+      await refresh();
+    } catch (error) {
+      $('demo-purchase-result').textContent = error.message;
+    }
+  });
+  $('st-logout').addEventListener('click', () => {
+    $('demo-purchase').reset();
+    $('demo-purchase-result').textContent = '';
+  });
+  renderTeam();
+  route();
+  void refresh();
+  setInterval(() => { if (!document.hidden && !busy) void refresh(); }, 5000);
+  document.addEventListener('visibilitychange', () => { if (!document.hidden) void refresh(); });
+})();
+
+</script>
 </body>
 </html>
+

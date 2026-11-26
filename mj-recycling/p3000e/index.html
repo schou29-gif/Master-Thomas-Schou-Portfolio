@@ -542,6 +542,24 @@
   .contact h2 em{color:#21282B}
   nav{background:rgba(255,255,255,.94)!important;border-bottom-color:#E3E7DC!important}
   .calc .out b{font-size:clamp(34px,3.6vw,48px)!important;white-space:nowrap}
+
+  .model-block{margin:22px 0 4px;background:#F3F5EC;border:1px solid #E3E7DC;border-radius:6px;padding:20px 22px}
+  .model-tag{display:inline-block;background:#21282B;color:#fff;font-size:11px;font-weight:700;letter-spacing:.12em;text-transform:uppercase;padding:6px 10px;border-radius:4px;margin-bottom:12px}
+  .model-note{font-size:14px;color:var(--ink-2);margin-top:10px;max-width:780px}
+  .phase-acts{display:grid;grid-template-columns:repeat(4,1fr);gap:10px;margin-top:10px}
+  .phase-acts div{font-size:13px;color:var(--ink-2);background:#fff;border:1px solid #E3E7DC;border-radius:6px;padding:12px}
+  .phase-acts b{display:block;color:#21282B;font-size:14px;margin-bottom:3px}
+  .phase-acts div:first-child{border-color:#EA5A0B;box-shadow:inset 0 3px 0 #EA5A0B}
+  .sgate{display:flex;align-items:stretch;gap:6px}
+  .sgate .st{flex:1;background:#fff;border:1px solid #CBD1BC;border-radius:6px;padding:12px;font-size:13px;color:var(--ink-2)}
+  .sgate .st span{display:block;font-size:11px;font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:#EA5A0B}
+  .sgate .st b{display:block;color:#21282B;font-size:14px;margin:2px 0}
+  .sgate .st.on{background:#21282B;color:#E3E7DC;border-color:#21282B}.sgate .st.on b{color:#fff}
+  .sgate .gt{width:70px;display:flex;flex-direction:column;align-items:center;justify-content:center;text-align:center}
+  .sgate .gt i{font-style:normal;width:34px;height:34px;transform:rotate(45deg);background:#EA5A0B;display:flex;align-items:center;justify-content:center;color:#fff;font-weight:800;font-size:12px;border-radius:3px}
+  .sgate .gt i em{transform:rotate(-45deg);font-style:normal}
+  .sgate .gt small{font-size:11px;line-height:1.25;margin-top:10px;color:#21282B;font-weight:600}
+  @media (max-width:900px){.phase-acts{grid-template-columns:1fr 1fr}.sgate{flex-direction:column}.sgate .gt{width:auto;flex-direction:row;gap:10px;padding:4px 0}.sgate .gt small{margin-top:0}}
 </style>
 </head>
 <body>
@@ -586,7 +604,8 @@
 <div id="t1"></div>
 <section class="wrap"><div class="task reveal">
   <div><div class="tn">01</div><div class="tk">Go-to-market</div></div>
-  <div><h3>Positionering: Fra <em>maskine</em> til <em>driftsøkonomi</em>.</h3><p class="quote">Fra jobbeskrivelsen: “Drive go-to-market-planlægning og positionering af nye produkter og produktforbedringer”</p><p class="lead2">Kunderne køber ikke en forneddeler – de køber stabil drift og lavere omkostninger pr. ton. Derfor ville jeg positionere P3000e på driftsøkonomi først og teknik bagefter.</p><div class="pos"><small>Positionering – mit udkast</small><p>For anlæg med blandede og skiftende affaldsstrømme er P3000e den forneddeler, der holder kapaciteten stabil – og bruger op til 80 % mindre energi end konventionelle løsninger.</p></div>
+  <div><h3>Positionering: Fra <em>maskine</em> til <em>driftsøkonomi</em>.</h3><p class="quote">Fra jobbeskrivelsen: “Drive go-to-market-planlægning og positionering af nye produkter og produktforbedringer”</p><p class="lead2">Kunderne køber ikke en forneddeler – de køber stabil drift og lavere omkostninger pr. ton. Derfor ville jeg positionere P3000e på driftsøkonomi først og teknik bagefter.</p><div class="model-tag">Model: STP – segmentering, targeting, positionering (Kotler)</div>
+<div class="pos"><small>Positionering – mit udkast</small><p>For anlæg med blandede og skiftende affaldsstrømme er P3000e den forneddeler, der holder kapaciteten stabil – og bruger op til 80 % mindre energi end konventionelle løsninger.</p></div>
 <div class="cards">
   <div class="card2"><small>Segment 1</small><h5>RDF/SRF-producenter</h5><p>Leverer brændsel til cementindustrien. Budskab: stabil kapacitet og ensartet output, så finneddeleren efter den kører optimalt.</p></div>
   <div class="card2"><small>Segment 2</small><h5>Waste-to-energy</h5><p>Kraftværker med store mængder blandet affald. Budskab: oppetid og lav totalomkostning (TCO) over maskinens levetid.</p></div>
@@ -597,7 +616,16 @@
   <div><b>Partner-launch</b><p>Salgspakke og træning til alle 50+ partnere</p></div>
   <div><b>Bevis</b><p>Første referenceanlæg med målte tal pr. affaldsstrøm</p></div>
   <div><b>Skalering</b><p>Cases og TCO-tal ud på alle markeder og sprog</p></div>
-</div></div>
+</div>
+<div class="model-block">
+  <div class="model-tag">Model: Crossing the Chasm (Geoffrey Moore)</div>
+  <svg viewBox="0 0 800 270" role="img" aria-label="Adoptionskurven med kløften mellem early adopters og early majority. P3000e står i dag hos early adopters." style="width:100%;height:auto;display:block;font-family:Inter,Arial,sans-serif">
+    <defs><marker id="ah" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="7" markerHeight="7" orient="auto"><path d="M1 1L9 5L1 9z" fill="#21282B"/></marker></defs>
+    <path d="M-18.0,200.0 L-18.0,199.1 L-13.6,199.0 L-9.2,198.9 L-4.8,198.7 L-0.4,198.6 L4.0,198.4 L8.4,198.2 L12.8,198.0 L17.2,197.8 L21.6,197.6 L26.0,197.3 L30.4,197.0 L34.8,196.7 L39.2,196.3 L43.6,195.9 L48.0,195.5 L52.4,195.1 L56.8,194.6 L61.2,194.0 L65.6,193.5 L70.0,192.8 L74.4,192.2 L78.8,191.4 L83.2,190.7 L87.6,189.8 L92.0,188.9 L96.4,188.0 L100.8,187.0 L105.2,185.9 L109.6,184.7 L114.0,183.5 L114.0,200.0 Z" fill="#36434B" stroke="#fff" stroke-width="2"/><text x="48" y="222" text-anchor="middle" font-size="13" font-weight="700" fill="#21282B">Innovators</text><text x="48" y="239" text-anchor="middle" font-size="12" fill="#4F5B62">2,5 %</text><path d="M114.0,200.0 L114.0,183.5 L118.4,182.2 L122.8,180.8 L127.2,179.3 L131.6,177.7 L136.0,176.1 L140.4,174.4 L144.8,172.6 L149.2,170.7 L153.6,168.7 L158.0,166.6 L162.4,164.4 L166.8,162.2 L171.2,159.8 L175.6,157.4 L180.0,154.9 L184.4,152.3 L188.8,149.6 L193.2,146.8 L197.6,144.0 L202.0,141.0 L206.4,138.1 L210.8,135.0 L215.2,131.9 L219.6,128.7 L224.0,125.5 L228.4,122.3 L232.8,119.0 L237.2,115.7 L241.6,112.4 L246.0,109.0 L246.0,200.0 Z" fill="#EA5A0B" stroke="#fff" stroke-width="2"/><text x="180" y="222" text-anchor="middle" font-size="13" font-weight="700" fill="#21282B">Early adopters</text><text x="180" y="239" text-anchor="middle" font-size="12" fill="#4F5B62">13,5 %</text><path d="M280.0,200.0 L280.0,109.0 L284.0,106.0 L288.0,103.0 L292.0,100.0 L296.0,97.0 L300.0,94.0 L304.0,91.1 L308.0,88.2 L312.0,85.4 L316.0,82.6 L320.0,79.9 L324.0,77.3 L328.0,74.7 L332.0,72.2 L336.0,69.9 L340.0,67.6 L344.0,65.5 L348.0,63.4 L352.0,61.5 L356.0,59.8 L360.0,58.1 L364.0,56.6 L368.0,55.2 L372.0,54.0 L376.0,53.0 L380.0,52.1 L384.0,51.3 L388.0,50.7 L392.0,50.3 L396.0,50.1 L400.0,50.0 L400.0,200.0 Z" fill="#E3E7DC" stroke="#fff" stroke-width="2"/><text x="340" y="222" text-anchor="middle" font-size="13" font-weight="700" fill="#21282B">Early majority</text><text x="340" y="239" text-anchor="middle" font-size="12" fill="#4F5B62">34 %</text><path d="M400.0,200.0 L400.0,50.0 L404.0,50.1 L408.0,50.3 L412.0,50.7 L416.0,51.3 L420.0,52.1 L424.0,53.0 L428.0,54.0 L432.0,55.2 L436.0,56.6 L440.0,58.1 L444.0,59.8 L448.0,61.5 L452.0,63.4 L456.0,65.5 L460.0,67.6 L464.0,69.9 L468.0,72.2 L472.0,74.7 L476.0,77.3 L480.0,79.9 L484.0,82.6 L488.0,85.4 L492.0,88.2 L496.0,91.1 L500.0,94.0 L504.0,97.0 L508.0,100.0 L512.0,103.0 L516.0,106.0 L520.0,109.0 L520.0,200.0 Z" fill="#E3E7DC" stroke="#fff" stroke-width="2"/><text x="460" y="222" text-anchor="middle" font-size="13" font-weight="700" fill="#21282B">Late majority</text><text x="460" y="239" text-anchor="middle" font-size="12" fill="#4F5B62">34 %</text><path d="M520.0,200.0 L520.0,109.0 L528.8,115.7 L537.6,122.3 L546.4,128.7 L555.2,135.0 L564.0,141.0 L572.8,146.8 L581.6,152.3 L590.4,157.4 L599.2,162.2 L608.0,166.6 L616.8,170.7 L625.6,174.4 L634.4,177.7 L643.2,180.8 L652.0,183.5 L660.8,185.9 L669.6,188.0 L678.4,189.8 L687.2,191.4 L696.0,192.8 L704.8,194.0 L713.6,195.1 L722.4,195.9 L731.2,196.7 L740.0,197.3 L748.8,197.8 L757.6,198.2 L766.4,198.6 L775.2,198.9 L784.0,199.1 L784.0,200.0 Z" fill="#E3E7DC" stroke="#fff" stroke-width="2"/><text x="652" y="222" text-anchor="middle" font-size="13" font-weight="700" fill="#21282B">Laggards</text><text x="652" y="239" text-anchor="middle" font-size="12" fill="#4F5B62">16 %</text><line x1="263.0" y1="40" x2="263.0" y2="200" stroke="#EA5A0B" stroke-width="2" stroke-dasharray="5 5"/><text x="263.0" y="30" text-anchor="middle" font-size="13" font-weight="800" fill="#EA5A0B">KLØFTEN</text><circle cx="180" cy="139" r="9" fill="#21282B"/><text x="166" y="125" text-anchor="end" font-size="13" font-weight="800" fill="#21282B">P3000e i dag</text><path d="M203.0,70 C243.0,40 283.0,40 323.0,70" fill="none" stroke="#21282B" stroke-width="2" marker-end="url(#ah)"/><text x="331.0" y="66" font-size="13" font-weight="700" fill="#21282B">Broen: målte tal fra referenceanlæg</text>
+  </svg>
+  <p class="model-note">De første kunder køber teknologien. Den store, pragmatiske majoritet køber først, når anlæg som deres eget kan vise målte resultater. Derfor: vind ét segment helt (et “beachhead”), dokumentér tallene – og brug dem til at krydse kløften.</p>
+</div>
+</div>
 </div></section>
 
 
@@ -630,7 +658,26 @@
 <div id="t3"></div>
 <section class="wrap"><div class="task reveal">
   <div><div class="tn">03</div><div class="tk">Livscyklus</div></div>
-  <div><h3>Følg tallene – <em>hele vejen</em>.</h3><p class="quote">Fra jobbeskrivelsen: “Følge produkternes performance, konkurrenceevne og kundefeedback gennem hele produktets livscyklus”</p><p class="lead2">P3000e er i introduktionsfasen. Her handler det om at bevise løftet og lære hurtigt. Jeg ville bygge ét fælles dashboard, så Sales, Service og R&amp;D kigger på de samme tal – ligesom jeg gjorde hos OK og Design Eyewear Group.</p><div class="lc"><span class="on">Introduktion</span><span>Vækst</span><span>Modenhed</span><span>Opdatering / udfasning</span></div>
+  <div><h3>Følg tallene – <em>hele vejen</em>.</h3><p class="quote">Fra jobbeskrivelsen: “Følge produkternes performance, konkurrenceevne og kundefeedback gennem hele produktets livscyklus”</p><p class="lead2">P3000e er i introduktionsfasen. Her handler det om at bevise løftet og lære hurtigt. Jeg ville bygge ét fælles dashboard, så Sales, Service og R&amp;D kigger på de samme tal – ligesom jeg gjorde hos OK og Design Eyewear Group.</p><div class="model-block">
+  <div class="model-tag">Model: Produktlivscyklussen (PLC)</div>
+  <svg viewBox="0 0 800 250" role="img" aria-label="Produktlivscyklussens fire faser. P3000e er i introduktionsfasen." style="width:100%;height:auto;display:block;font-family:Inter,Arial,sans-serif">
+    <line x1="60" y1="210" x2="760" y2="210" stroke="#21282B" stroke-width="1.5"/>
+    <path d="M60.0,196.4 L67.0,196.4 L74.0,196.3 L81.0,196.1 L88.0,195.9 L95.0,195.6 L102.0,195.2 L109.0,194.8 L116.0,194.3 L123.0,193.8 L130.0,193.1 L137.0,192.5 L144.0,191.7 L151.0,190.9 L158.0,190.0 L165.0,189.1 L172.0,188.0 L179.0,187.0 L186.0,185.8 L193.0,184.6 L200.0,183.3 L207.0,182.0 L214.0,180.6 L221.0,179.1 L228.0,177.6 L235.0,176.0 L242.0,175.5 L249.0,174.1 L256.0,171.9 L263.0,169.0 L270.0,165.4 L277.0,161.2 L284.0,156.5 L291.0,151.4 L298.0,145.9 L305.0,140.1 L312.0,134.1 L319.0,128.1 L326.0,121.9 L333.0,115.9 L340.0,109.9 L347.0,104.1 L354.0,98.6 L361.0,93.5 L368.0,88.8 L375.0,84.6 L382.0,81.0 L389.0,78.1 L396.0,75.9 L403.0,74.5 L410.0,74.0 L417.0,71.9 L424.0,69.8 L431.0,67.7 L438.0,65.8 L445.0,64.0 L452.0,62.4 L459.0,60.9 L466.0,59.6 L473.0,58.6 L480.0,57.8 L487.0,57.3 L494.0,57.0 L501.0,57.0 L508.0,57.3 L515.0,57.8 L522.0,58.6 L529.0,59.6 L536.0,60.9 L543.0,62.4 L550.0,64.0 L557.0,65.8 L564.0,67.7 L571.0,69.8 L578.0,71.9 L585.0,74.0 L592.0,74.8 L599.0,76.2 L606.0,77.9 L613.0,79.9 L620.0,82.0 L627.0,84.4 L634.0,86.9 L641.0,89.5 L648.0,92.3 L655.0,95.2 L662.0,98.2 L669.0,101.4 L676.0,104.6 L683.0,108.0 L690.0,111.4 L697.0,115.0 L704.0,118.6 L711.0,122.3 L718.0,126.1 L725.0,130.0 L732.0,133.9 L739.0,138.0 L746.0,142.1 L753.0,146.3 L760.0,150.5 L760,210 L60,210 Z" fill="#E3E7DC"/>
+    <text x="147" y="236" text-anchor="middle" font-size="13" font-weight="800" fill="#21282B">Introduktion</text><line x1="235" y1="20" x2="235" y2="210" stroke="#CBD1BC" stroke-dasharray="4 4"/><text x="322" y="236" text-anchor="middle" font-size="13" font-weight="800" fill="#21282B">Vækst</text><line x1="410" y1="20" x2="410" y2="210" stroke="#CBD1BC" stroke-dasharray="4 4"/><text x="497" y="236" text-anchor="middle" font-size="13" font-weight="800" fill="#21282B">Modenhed</text><line x1="585" y1="20" x2="585" y2="210" stroke="#CBD1BC" stroke-dasharray="4 4"/><text x="672" y="236" text-anchor="middle" font-size="13" font-weight="800" fill="#21282B">Nedgang / fornyelse</text>
+    <path d="M60.0,196.4 L67.0,196.4 L74.0,196.3 L81.0,196.1 L88.0,195.9 L95.0,195.6 L102.0,195.2 L109.0,194.8 L116.0,194.3 L123.0,193.8 L130.0,193.1 L137.0,192.5 L144.0,191.7 L151.0,190.9 L158.0,190.0 L165.0,189.1 L172.0,188.0 L179.0,187.0 L186.0,185.8 L193.0,184.6 L200.0,183.3 L207.0,182.0 L214.0,180.6 L221.0,179.1 L228.0,177.6 L235.0,176.0 L242.0,175.5 L249.0,174.1 L256.0,171.9 L263.0,169.0 L270.0,165.4 L277.0,161.2 L284.0,156.5 L291.0,151.4 L298.0,145.9 L305.0,140.1 L312.0,134.1 L319.0,128.1 L326.0,121.9 L333.0,115.9 L340.0,109.9 L347.0,104.1 L354.0,98.6 L361.0,93.5 L368.0,88.8 L375.0,84.6 L382.0,81.0 L389.0,78.1 L396.0,75.9 L403.0,74.5 L410.0,74.0 L417.0,71.9 L424.0,69.8 L431.0,67.7 L438.0,65.8 L445.0,64.0 L452.0,62.4 L459.0,60.9 L466.0,59.6 L473.0,58.6 L480.0,57.8 L487.0,57.3 L494.0,57.0 L501.0,57.0 L508.0,57.3 L515.0,57.8 L522.0,58.6 L529.0,59.6 L536.0,60.9 L543.0,62.4 L550.0,64.0 L557.0,65.8 L564.0,67.7 L571.0,69.8 L578.0,71.9 L585.0,74.0 L592.0,74.8 L599.0,76.2 L606.0,77.9 L613.0,79.9 L620.0,82.0 L627.0,84.4 L634.0,86.9 L641.0,89.5 L648.0,92.3 L655.0,95.2 L662.0,98.2 L669.0,101.4 L676.0,104.6 L683.0,108.0 L690.0,111.4 L697.0,115.0 L704.0,118.6 L711.0,122.3 L718.0,126.1 L725.0,130.0 L732.0,133.9 L739.0,138.0 L746.0,142.1 L753.0,146.3 L760.0,150.5" fill="none" stroke="#EA5A0B" stroke-width="4" stroke-linecap="round"/>
+    <circle cx="144" cy="192" r="9" fill="#21282B"/><text x="138" y="166" font-size="13" font-weight="800" fill="#21282B">P3000e – nu</text>
+    <circle cx="494" cy="57" r="7" fill="#36434B"/><text x="494" y="41" text-anchor="middle" font-size="12" font-weight="700" fill="#36434B">P250e-serien (mit skøn)</text>
+    <circle cx="690" cy="111" r="7" fill="#9AA39F"/><text x="660" y="151" text-anchor="middle" font-size="12" font-weight="700" fill="#4F5B62">4000S → afløst af P250</text>
+    <text x="40" y="24" font-size="12" fill="#4F5B62" transform="rotate(-90 40 24)" text-anchor="end">Salg</text>
+  </svg>
+  <div class="phase-acts">
+    <div><b>Introduktion</b>Bevis løftet: referenceanlæg, målte tal, partnertræning</div>
+    <div><b>Vækst</b>Skalér: flere markeder, faste pakker, kapacitet i service</div>
+    <div><b>Modenhed</b>Forsvar: varianter, serviceaftaler, opgraderinger</div>
+    <div><b>Nedgang / fornyelse</b>Planlæg næste generation og flyt kunderne med</div>
+  </div>
+</div>
+
 <div class="kpi" style="margin-top:14px">
   <div><small>Salg</small><b>Pipeline &amp; win rate</b><p>Tilbud, ordrer og vundne/tabte sager pr. marked og segment</p></div>
   <div><small>Konkurrenceevne</small><b>Hvorfor vinder vi?</b><p>Årsager til vundne og tabte sager mod de vigtigste konkurrenter</p></div>
@@ -672,13 +719,22 @@
 <div id="t6"></div>
 <section class="wrap"><div class="task reveal">
   <div><div class="tn">06</div><div class="tk">R&amp;D &amp; Engineering</div></div>
-  <div><h3>Fra påstand til <em>bevis</em>.</h3><p class="quote">Fra jobbeskrivelsen: “Samarbejde tæt med R&amp;D og Engineering om udvikling og validering af nye løsninger og produktforbedringer”</p><p class="lead2">Det stærkeste salgsargument er et målt tal hos en rigtig kunde. Jeg ville arbejde tæt med R&amp;D om at validere P3000e ude i drift – og sende læringen direkte tilbage i udviklingen.</p><div class="vsteps">
-  <div><span class="n">1</span><b>Hypotese</b>Fx: besparelsen er størst ved meget skiftende affald</div>
-  <div><span class="n">2</span><b>Pilot</b>Udvalgte kunder i hvert segment</div>
-  <div><span class="n">3</span><b>Måling</b>Energi, kapacitet, slid og oppetid over tid</div>
-  <div><span class="n">4</span><b>Læring</b>Hvad virker – og hvad skal forbedres?</div>
-  <div><span class="n">5</span><b>Tilbage</b>Til R&amp;D som krav og til salget som bevis</div>
-</div></div>
+  <div><h3>Fra påstand til <em>bevis</em>.</h3><p class="quote">Fra jobbeskrivelsen: “Samarbejde tæt med R&amp;D og Engineering om udvikling og validering af nye løsninger og produktforbedringer”</p><p class="lead2">Det stærkeste salgsargument er et målt tal hos en rigtig kunde. Jeg ville arbejde tæt med R&amp;D om at validere forbedringer ude i drift – og bruge Stage-Gate, så beslutningerne bygger på kundebehov og målte tal.</p><div class="model-block">
+  <div class="model-tag">Model: Stage-Gate (Robert G. Cooper)</div>
+  <div class="sgate">
+    <div class="st"><span>Stage 1</span><b>Idé &amp; indsigt</b>Kundefeedback, service, partnere</div>
+    <div class="gt" title="Gate 1"><i><em>G1</em></i><small>Reelt kundebehov?</small></div>
+    <div class="st"><span>Stage 2</span><b>Business case</b>Gevinst for kunde og M&amp;J</div>
+    <div class="gt"><i><em>G2</em></i><small>Holder casen?</small></div>
+    <div class="st"><span>Stage 3</span><b>Udvikling</b>R&amp;D og Engineering</div>
+    <div class="gt"><i><em>G3</em></i><small>Teknisk klar?</small></div>
+    <div class="st"><span>Stage 4</span><b>Pilot &amp; måling</b>Energi, kapacitet, slid hos kunden</div>
+    <div class="gt"><i><em>G4</em></i><small>Målte tal holder?</small></div>
+    <div class="st on"><span>Stage 5</span><b>Lancering</b>Ud til salg og partnere – og opfølgning</div>
+  </div>
+  <p class="model-note">Ved hver gate beslutter vi sammen: fortsæt, ret til eller stop. Mit bidrag som Product Manager er at bringe kundens stemme og forretningscasen ind ved hver beslutning – så R&amp;D bruger tiden på det, der skaber mest værdi.</p>
+</div>
+</div>
 </div></section>
 
 

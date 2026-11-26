@@ -7,11 +7,11 @@
 <meta name="robots" content="noindex, nofollow">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&family=Manrope:wght@400;500;600;700&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@500;600;700;800&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
 <style>
   :root{
     --paper:#F3F0E8; --paper-2:#EAE5D9; --ink:#15181D; --ink-2:#4A4F57; --line:#D6D0C2;
-    --accent:#C8431B; --accent-soft:#F1D9CC; --deep:#1E2A27;
+    --accent:#EA5A0B; --accent-soft:#FCE6DA; --deep:#1E2A27;
     --serif:'Instrument Serif', Georgia, serif; --sans:'Manrope', system-ui, sans-serif;
     --max:1160px;
   }
@@ -46,7 +46,7 @@
   .btns{display:flex;gap:12px;margin-top:36px;flex-wrap:wrap}
   .btn{display:inline-flex;align-items:center;gap:8px;padding:14px 22px;border-radius:999px;font-weight:700;font-size:15px;text-decoration:none;transition:transform .2s, background .2s}
   .btn-primary{background:var(--accent);color:#fff}
-  .btn-primary:hover{transform:translateY(-2px);background:#A9360F}
+  .btn-primary:hover{transform:translateY(-2px);background:#C44A08}
   .btn-ghost{border:1.5px solid var(--ink)}
   .btn-ghost:hover{background:var(--ink);color:var(--paper)}
   .ring{position:absolute;right:-180px;top:-120px;width:520px;height:520px;border:1.5px solid var(--line);border-radius:50%;z-index:-1}
@@ -55,19 +55,19 @@
   /* NUMBERS */
   .numbers{background:var(--deep);color:var(--paper);padding:72px 0}
   .numbers h2{font-family:var(--serif);font-weight:400;font-size:clamp(32px,4vw,46px);line-height:1.1;max-width:640px;margin-bottom:48px}
-  .numbers h2 em{color:#F08A63}
+  .numbers h2 em{color:#EA5A0B}
   .num-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:0;border-top:1px solid rgba(255,255,255,.15)}
   .num{padding:28px 24px 8px 0;border-right:1px solid rgba(255,255,255,.15);margin-right:24px}
   .num:last-child{border-right:none}
   .num .big{font-family:var(--serif);font-size:clamp(46px,5vw,68px);line-height:1;letter-spacing:-.02em}
-  .num .big small{font-size:.45em;margin-left:4px;color:#F08A63}
+  .num .big small{font-size:.45em;margin-left:4px;color:#EA5A0B}
   .num p{font-size:14px;color:rgba(243,240,232,.72);margin-top:12px;max-width:220px}
   .growth{margin-top:56px;display:grid;grid-template-columns:240px 1fr;gap:32px;align-items:center}
   .growth h3{font-size:13px;letter-spacing:.14em;text-transform:uppercase;font-weight:700;color:rgba(243,240,232,.72)}
   .bars{display:flex;flex-direction:column;gap:12px}
   .bar{display:grid;grid-template-columns:52px 1fr 92px;align-items:center;gap:14px;font-size:14px}
   .bar .track{height:14px;background:rgba(255,255,255,.08);border-radius:999px;overflow:hidden}
-  .bar .fill{height:100%;background:#F08A63;border-radius:999px;width:0;transition:width 1.4s cubic-bezier(.2,.8,.2,1)}
+  .bar .fill{height:100%;background:#EA5A0B;border-radius:999px;width:0;transition:width 1.4s cubic-bezier(.2,.8,.2,1)}
   .bar .val{font-weight:700;text-align:right;background:none;border:0;border-radius:0;padding:0;display:block;color:inherit;white-space:nowrap}
   .bar .val:hover{transform:none;box-shadow:none}
 
@@ -218,7 +218,7 @@
   /* SKILLS */
   .skills-grid{display:grid;grid-template-columns:240px 1fr;gap:32px}
   .skill-groups{display:grid;grid-template-columns:repeat(2,1fr);gap:20px}
-  .sg.ai{background:linear-gradient(135deg,#C8431B,#E9B44C);color:#fff;border:none;grid-column:span 2;display:grid;grid-template-columns:1fr 1.4fr;gap:24px;align-items:center}
+  .sg.ai{background:linear-gradient(135deg,#EA5A0B,#E9B44C);color:#fff;border:none;grid-column:span 2;display:grid;grid-template-columns:1fr 1.4fr;gap:24px;align-items:center}
   .sg.ai h4{font-size:34px;margin-bottom:8px}
   .sg.ai p{font-size:15px;opacity:.92}
   .sg.ai .tag{background:rgba(255,255,255,.18);border-color:rgba(255,255,255,.35);color:#fff}
@@ -267,12 +267,12 @@
   .ticker-inner i{font-style:normal;color:var(--accent)}
   @keyframes tick{from{transform:translateX(0)}to{transform:translateX(-50%)}}
   #om-mig .sec-head .idx{color:rgba(243,240,232,.6)}
-  #om-mig .sec-head h2 em{color:#F08A63}
+  #om-mig .sec-head h2 em{color:#EA5A0B}
   .about-intro{display:grid;grid-template-columns:240px 1fr;gap:32px;margin-bottom:64px}
   .about-intro p{font-size:22px;line-height:1.55;max-width:760px;color:rgba(243,240,232,.88)}
   .stickers{display:grid;grid-template-columns:repeat(4,1fr);gap:22px}
   .sticker{border-radius:24px;padding:28px 24px 30px;color:var(--ink);transition:transform .45s cubic-bezier(.3,1.6,.5,1);position:relative;min-height:340px;display:flex;flex-direction:column}
-  .sticker:nth-child(1){background:#F08A63;transform:rotate(-2.5deg)}
+  .sticker:nth-child(1){background:#EA5A0B;transform:rotate(-2.5deg)}
   .sticker:nth-child(2){background:#E9B44C;transform:rotate(1.8deg) translateY(18px)}
   .sticker:nth-child(3){background:#9CC5B4;transform:rotate(-1.2deg)}
   .sticker:nth-child(4){background:var(--paper);transform:rotate(2.4deg) translateY(12px)}
@@ -287,7 +287,7 @@
   .motto .people span{width:34px;height:34px;border-radius:50%;border:2px solid var(--paper);margin-left:-12px}
   .motto .people span:first-child{margin-left:0}
   .motto blockquote{font-family:var(--serif);font-size:clamp(44px,7vw,96px);line-height:.98;letter-spacing:-.025em}
-  .motto blockquote em{color:#F08A63}
+  .motto blockquote em{color:#EA5A0B}
   .motto small{display:block;font-family:var(--sans);font-size:17px;letter-spacing:0;line-height:1.55;color:rgba(243,240,232,.75);max-width:620px;margin-top:22px}
   .bounce{animation:bob 3s ease-in-out infinite}
   @keyframes bob{0%,100%{transform:translateY(0)}50%{transform:translateY(-6px)}}
@@ -320,15 +320,15 @@
   .val p{font-size:15px;color:var(--ink-2);flex:1}
   .val-proof{margin-top:20px;padding-top:16px;border-top:1px dashed var(--line);font-size:13px;color:var(--ink-2)}
   .val-proof b{color:var(--accent);font-weight:700}
-  .val.accent{background:linear-gradient(135deg,#C8431B,#E9B44C);border:none;color:#fff}
+  .val.accent{background:linear-gradient(135deg,#EA5A0B,#E9B44C);border:none;color:#fff}
   .val.accent .val-n,.val.accent p,.val.accent .val-proof,.val.accent .val-proof b{color:#fff}
   .val.accent .val-proof{border-top-color:rgba(255,255,255,.4)}
   .plan{margin-top:56px;background:var(--ink);color:var(--paper);border-radius:24px;padding:40px}
   .plan h3{font-family:var(--serif);font-weight:400;font-size:clamp(32px,4vw,48px);line-height:1}
-  .plan h3 em{color:#F08A63}
+  .plan h3 em{color:#EA5A0B}
   .plan-steps{display:grid;grid-template-columns:repeat(3,1fr);gap:28px;margin-top:28px}
   .step{border-top:2px solid rgba(255,255,255,.18);padding-top:18px}
-  .step-k{font-size:12px;letter-spacing:.12em;text-transform:uppercase;font-weight:700;color:#F08A63}
+  .step-k{font-size:12px;letter-spacing:.12em;text-transform:uppercase;font-weight:700;color:#EA5A0B}
   .step h5{font-family:var(--serif);font-weight:400;font-size:26px;margin:8px 0 8px}
   .step p{font-size:15px;opacity:.78}
   @media (max-width:980px){.val-grid{grid-template-columns:1fr 1fr}}
@@ -415,7 +415,7 @@
 
   /* MÅLRETTET SIDE: match mellem krav og erfaring */
   .for-tag{display:inline-flex;align-items:center;gap:10px;background:var(--ink);color:var(--paper);font-size:12px;font-weight:700;letter-spacing:.14em;text-transform:uppercase;padding:8px 14px;border-radius:999px;margin-bottom:22px}
-  .for-tag i{font-style:normal;color:#F08A63}
+  .for-tag i{font-style:normal;color:#EA5A0B}
   .match-intro{display:grid;grid-template-columns:240px 1fr;gap:32px;margin:-24px 0 40px}
   .match-intro p{font-size:19px;line-height:1.55;color:var(--ink-2);max-width:760px}
   .match{display:grid;grid-template-columns:240px 1fr;gap:32px}
@@ -439,7 +439,7 @@
   .lstep .ln{font-family:var(--serif);font-size:40px;color:var(--accent);line-height:1}
   .lstep h5{font-size:18px;margin:6px 0 6px}
   .lstep p{font-size:15px;color:var(--ink-2)}
-  .lproof{margin-top:12px;display:inline-block;font-size:12px;font-weight:700;letter-spacing:.04em;background:var(--accent-soft);color:#7A2810;border-radius:999px;padding:4px 10px}
+  .lproof{margin-top:12px;display:inline-block;font-size:12px;font-weight:700;letter-spacing:.04em;background:var(--accent-soft);color:#9A3A06;border-radius:999px;padding:4px 10px}
   .lstep::after{content:"→";position:absolute;right:-16px;top:50%;transform:translateY(-50%);font-size:18px;color:var(--accent);font-weight:700}
   .lstep:nth-of-type(4)::after{content:"↓";right:auto;left:50%;top:auto;bottom:-18px;transform:translateX(-50%)}
   .lstep:nth-of-type(7)::after{content:"↑";right:auto;left:50%;top:-18px;transform:translateX(-50%)}
@@ -453,10 +453,10 @@
   .case-note{margin-top:26px;display:inline-flex;gap:10px;align-items:flex-start;border:1.5px dashed var(--accent);border-radius:14px;padding:12px 16px;font-size:14px;color:var(--ink-2);max-width:640px}
   .facts{background:var(--ink);color:var(--paper);padding:64px 0}
   .facts h2{font-family:var(--serif);font-weight:400;font-size:clamp(34px,4vw,52px);line-height:1}
-  .facts h2 em{color:#F08A63}
+  .facts h2 em{color:#EA5A0B}
   .fact-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:22px;margin-top:30px}
   .fact{border-top:2px solid rgba(255,255,255,.18);padding-top:16px}
-  .fact b{font-family:var(--serif);font-weight:400;font-size:34px;display:block;line-height:1.05;color:#F08A63}
+  .fact b{font-family:var(--serif);font-weight:400;font-size:34px;display:block;line-height:1.05;color:#EA5A0B}
   .fact p{font-size:14px;opacity:.78;margin-top:8px}
   .facts .src{font-size:12px;opacity:.5;margin-top:24px}
   .task{display:grid;grid-template-columns:240px 1fr;gap:32px;padding:72px 0;border-top:1px solid var(--line)}
@@ -474,7 +474,7 @@
   .card2 p,.card2 li{font-size:14px;color:var(--ink-2)}
   .card2 ul{padding-left:18px;margin-top:6px}
   .pos{background:var(--accent-soft);border-radius:18px;padding:24px 26px;margin-bottom:18px}
-  .pos small{font-size:11px;font-weight:700;letter-spacing:.14em;text-transform:uppercase;color:#7A2810}
+  .pos small{font-size:11px;font-weight:700;letter-spacing:.14em;text-transform:uppercase;color:#9A3A06}
   .pos p{font-family:var(--serif);font-size:clamp(22px,2.4vw,30px);line-height:1.25;margin-top:6px;color:var(--ink)}
   .tl{display:grid;grid-template-columns:repeat(4,1fr);gap:0;margin-top:18px;position:relative}
   .tl::before{content:"";position:absolute;left:0;right:0;top:9px;height:2px;background:var(--line)}
@@ -487,10 +487,10 @@
   .vc .card2 li{margin-bottom:4px}
   .calc{margin-top:18px;background:var(--ink);color:var(--paper);border-radius:18px;padding:24px 26px;display:grid;grid-template-columns:1.3fr 1fr;gap:28px;align-items:center}
   .calc label{display:block;font-size:13px;margin:10px 0 2px;opacity:.85}
-  .calc label span{float:right;font-weight:700;color:#F08A63}
-  .calc input[type=range]{width:100%;accent-color:#F08A63}
+  .calc label span{float:right;font-weight:700;color:#EA5A0B}
+  .calc input[type=range]{width:100%;accent-color:#EA5A0B}
   .calc .out small{font-size:11px;letter-spacing:.14em;text-transform:uppercase;opacity:.6;font-weight:700}
-  .calc .out b{display:block;font-family:var(--serif);font-weight:400;font-size:clamp(40px,5vw,60px);line-height:1;color:#F08A63;margin:6px 0}
+  .calc .out b{display:block;font-family:var(--serif);font-weight:400;font-size:clamp(40px,5vw,60px);line-height:1;color:#EA5A0B;margin:6px 0}
   .calc .out p{font-size:13px;opacity:.7}
   .kpi{display:grid;grid-template-columns:repeat(4,1fr);gap:12px}
   .kpi div{background:#fff;border:1px solid var(--line);border-radius:14px;padding:16px}
@@ -520,6 +520,28 @@
   .ai-band h4 span{color:var(--accent)}
   .back{display:inline-flex;margin-top:10px}
   @media (max-width:900px){.task{grid-template-columns:1fr;gap:10px;padding:52px 0}.cards,.cards.two,.rm,.port,.kpi,.flow,.vsteps,.fact-grid{grid-template-columns:1fr}.vc{grid-template-columns:1fr}.vc .arrow{transform:rotate(90deg);padding:6px}.calc{grid-template-columns:1fr}.tl{grid-template-columns:1fr 1fr;row-gap:18px}.tl::before{display:none}.flow .card2::after{display:none}.lc{flex-wrap:wrap}.lc span{flex:1 1 40%}}
+
+  /* MJ-FARVER: M&J Recycling-palet (orange #EA5A0B, kul #21282B, skifer #36434B, salvie #E3E7DC) */
+  :root{--paper:#FFFFFF;--paper-2:#E3E7DC;--ink:#21282B;--ink-2:#4F5B62;--line:#CBD1BC;--accent:#EA5A0B;--accent-soft:#FCE6DA;--deep:#36434B;--serif:'Montserrat',Arial,sans-serif;--sans:'Inter',Arial,sans-serif}
+  body{background:#fff}
+  h1,h2,h3,.task h3,.facts h2,.contact h2,.hero h1,.ai-band h4,.pos p,.story,.calc .out b,.fact b{font-family:var(--serif)!important;font-weight:800!important;letter-spacing:-.02em}
+  .hero h1{font-size:clamp(44px,6.4vw,88px);line-height:1}
+  .task h3{font-size:clamp(26px,3vw,38px)}
+  .pos p,.story{font-weight:600!important;font-size:clamp(18px,2vw,24px);letter-spacing:-.01em}
+  .fact b{font-size:28px}
+  .task .tn{font-family:var(--serif);font-weight:800;font-size:60px}
+  em{font-style:normal!important}
+  .hero{background:#F3F5EC}
+  .facts{background:#36434B}
+  .lstep .ln,.vsteps div .n{font-family:var(--serif);font-weight:800}
+  .lc span{border-radius:4px}
+  .card2,.kpi div,.vsteps div,.calc,.pos,.story,.ai-band,.port div{border-radius:6px!important}
+  .btn,.nav-cta,.for-tag{border-radius:4px!important}
+  .ring{display:none}
+  .contact{background:#EA5A0B}
+  .contact h2 em{color:#21282B}
+  nav{background:rgba(255,255,255,.94)!important;border-bottom-color:#E3E7DC!important}
+  .calc .out b{font-size:clamp(34px,3.6vw,48px)!important;white-space:nowrap}
 </style>
 </head>
 <body>
@@ -540,7 +562,7 @@
 <header class="hero" id="top">
   <div class="ring"></div><div class="ring two"></div>
   <div class="wrap">
-    <div class="for-tag">Til M&amp;J Recycling <i>✦</i> Case: P3000e</div>
+    <div class="for-tag">Til M&amp;J Recycling <i>✦</i> Case: P3000e <i>✦</i> I M&amp;J-farver</div>
     <div class="eyebrow">Seks opgaver · Ét produkt · Mit bud</div>
     <h1 style="max-width:900px">Sådan ville jeg arbejde med <em>P3000e</em>.</h1>
     <p class="lead" style="max-width:720px;margin-top:18px">I beder om en Product Manager, der kan drive go-to-market, klæde salget på og bringe kundens stemme ind i R&amp;D. Her tager jeg jeres seks ansvarsområder – i samme rækkefølge som opslaget – og viser, hvordan jeg ville løse dem for jeres nyeste forneddeler.</p>
